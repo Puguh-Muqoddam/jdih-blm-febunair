@@ -1,0 +1,357 @@
+// =============================================================================
+// Skema database JDIH BLM FEB UNAIR
+// Referensi: IMPLEMENTATION_PLAN.md §5 (ERD), §6 (penomoran), §7 (pencarian).
+//
+// Aturan yang TIDAK bisa diekspresikan Prisma ada di migrasi SQL manual
+// (prisma/migrations/0002_hardening): CHECK constraints, trigger aturan jenis,
+// kolom generated `searchVector`, AuditLog append-only, RLS Zero-Trust.
+// Jangan menghapus objek tersebut lewat `prisma migrate dev` tanpa meninjau ulang.
+// =============================================================================
+
+generator client {
+  provider      = "prisma-client"
+  output        = "../src/generated/prisma"
+  // Cloudflare Worker: batas bundle 3 MiB -> query compiler varian "small".
+  compilerBuild = "small"
+  runtime       = "cloudflare"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// -----------------------------------------------------------------------------
+// Enum
+// -----------------------------------------------------------------------------
+
+/// Status keberlakuan hukum. Selalu tampil ke publik sebagai badge.
+enum LegalStatus {
+  BERLAKU
+  DIUBAH // berlaku dengan perubahan
+  DICABUT
+  TIDAK_BERLAKU
+}
+
+/// Status pengelolaan konten. Hanya DRAFT yang tersembunyi dari publik (§5.2).
+enum PublicationState {
+  DRAFT
+  PUBLISHED
+  ARCHIVED // tetap publik, berlabel "Diarsipkan"
+}
+
+/// Sifat Surat Keputusan (khusus SK).
+enum SkNature {
+  A_INTERNAL
+  B_EXTERNAL
+}
+
+/// Presisi tanggal penetapan. Data lama sebagian hanya "Juli 2026".
+enum DatePrecision {
+  DAY
+  MONTH
+}
+
+enum RelationType {
+  MENGUBAH // sumber mengubah target -> target.legalStatus = DIUBAH
+  MENCABUT // sumber mencabut target -> target.legalStatus = DICABUT
+  MENGESAHKAN // mis. SK Pengesahan UU PEMIRA -> UU PEMIRA
+  MELAKSANAKAN // sumber adalah pelaksanaan target
+  TERKAIT
+}
+
+enum AdminRole {
+  SUPER_ADMIN
+  EDITOR
+}
+
+enum RequestStatus {
+  BARU
+  DIPROSES
+  SELESAI
+  DITOLAK
+}
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  PUBLISH
+  UNPUBLISH // tarik ke draf (khusus Super Admin)
+  ARCHIVE
+  RESTORE
+  DELETE
+  STATUS_CHANGE
+  FILE_UPLOAD
+  RELATION_ADD
+  RELATION_REMOVE
+  NUMBER_RESERVE
+  NUMBER_RELEASE
+  NUMBER_OVERRIDE
+  IMPORT
+  USER_CHANGE
+  REQUEST_UPDATE
+}
+
+// -----------------------------------------------------------------------------
+// Master data
+// -----------------------------------------------------------------------------
+
+/// Jenis produk hukum: UU, TAP, SK, LP. Data-driven agar jenis baru tidak butuh kode.
+model DocumentType {
+  id             String  @id @default(cuid())
+  code           String  @unique @db.VarChar(10) // "UU", "TAP", "SK", "LP"
+  name           String  @db.VarChar(100) // "Ketetapan BLM"
+  slug           String  @unique @db.VarChar(60) // "ketetapan-blm"
+  description    String? @db.VarChar(1000)
+  /// Template nomor. Token: {seq} {roman} {year} {nature} {code}
+  numberPattern  String  @db.VarChar(120)
+  numberPadding  Int     @db.SmallInt // UU 2, TAP 3, SK 4, LP 3
+  requiresNature Boolean @default(false) // true hanya SK (sifat A/B + kode singkatan)
+  autoSequence   Boolean @default(true) // false untuk SK (nomor dari Buku Biro Administrasi)
+  hierarchyLevel Int     @db.SmallInt // 1 = tertinggi (UU)
+  sortOrder      Int     @default(0) @db.SmallInt
+
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  documents    LegalDocument[]
+  reservations NumberReservation[]
+  counters     NumberCounter[]
+}
+
+/// Forum penetapan yang dinormalisasi (§2.3 #6).
+model Forum {
+  id        String @id @default(cuid())
+  name      String @unique @db.VarChar(120) // "Sidang Pleno BLM"
+  slug      String @unique @db.VarChar(60)
+  sortOrder Int    @default(0) @db.SmallInt
+
+  documents LegalDocument[]
+}
+
+/// Tag subjek / klaster topik (PEMIRA, Orientasi Studi, LPPM SEKTOR, ...).
+model Tag {
+  id          String  @id @default(cuid())
+  slug        String  @unique @db.VarChar(60)
+  name        String  @unique @db.VarChar(80)
+  description String? @db.VarChar(500)
+
+  documents DocumentTag[]
+}
+
+// -----------------------------------------------------------------------------
+// Produk hukum
+// -----------------------------------------------------------------------------
+
+model LegalDocument {
+  id   String @id @default(cuid())
+  /// Permalink stabil, mis. "sk-2026-0148", "tap-2026-002".
+  slug String @unique @db.VarChar(120)
+
+  typeId         String
+  type           DocumentType @relation(fields: [typeId], references: [id], onDelete: Restrict)
+  year           Int          @db.SmallInt
+  /// Nomor urut (UU/TAP/LP) atau No Buku Biro Administrasi (SK).
+  sequenceNumber Int
+
+  /// Nomor resmi lengkap seperti tercetak/ditampilkan (SK selalu 4 digit).
+  officialNumber   String    @unique @db.VarChar(200)
+  /// Nomor asli sebelum normalisasi (mis. SK "100/..." -> tampil "0100/..."). Tetap dapat dicari.
+  legacyNumber     String?   @db.VarChar(200)
+  /// Kode singkatan SK, persis sesuai Buku Biro Administrasi (tidak dikoreksi).
+  abbreviationCode String?   @db.VarChar(80)
+  nature           SkNature?
+
+  title       String  @db.VarChar(500)
+  summary     String? @db.VarChar(2000)
+  /// Korpus pencarian turunan: teks PDF versi aktif + nama tag. Diisi server, bukan pengguna.
+  contentText String?
+
+  forumId String?
+  forum   Forum?  @relation(fields: [forumId], references: [id], onDelete: SetNull)
+
+  enactedDate          DateTime      @db.Date
+  enactedDatePrecision DatePrecision @default(DAY)
+  romanMonth           String        @db.VarChar(4)
+  placeOfEnactment     String        @default("Surabaya") @db.VarChar(100)
+
+  legalStatus      LegalStatus      @default(BERLAKU)
+  publicationState PublicationState @default(DRAFT)
+  notes            String?          @db.VarChar(1000)
+
+  viewCount     Int @default(0)
+  downloadCount Int @default(0)
+
+  /// Kolom GENERATED ALWAYS (lihat 0002_hardening). Read-only; diabaikan Prisma Client.
+  searchVector Unsupported("tsvector")?
+
+  /// Versi file aktif. Trigger menjamin file milik dokumen yang sama.
+  currentFileId String?       @unique
+  currentFile   DocumentFile? @relation("CurrentFile", fields: [currentFileId], references: [id], onDelete: SetNull)
+
+  publishedAt DateTime? @db.Timestamptz(3)
+  archivedAt  DateTime? @db.Timestamptz(3)
+  createdBy   String?   @db.VarChar(254)
+  updatedBy   String?   @db.VarChar(254)
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime  @updatedAt @db.Timestamptz(3)
+
+  files         DocumentFile[]     @relation("DocumentFiles")
+  relationsFrom DocumentRelation[] @relation("RelationFrom")
+  relationsTo   DocumentRelation[] @relation("RelationTo")
+  tags          DocumentTag[]
+  reservation   NumberReservation?
+  requests      DocumentRequest[]
+
+  @@unique([typeId, year, sequenceNumber])
+  @@index([publicationState, typeId, year(sort: Desc)])
+  @@index([publicationState, enactedDate(sort: Desc)])
+  @@index([forumId])
+  @@index([searchVector], type: Gin)
+  @@index([title(ops: raw("gin_trgm_ops"))], type: Gin, map: "LegalDocument_title_trgm_idx")
+  @@index([officialNumber(ops: raw("gin_trgm_ops"))], type: Gin, map: "LegalDocument_officialNumber_trgm_idx")
+}
+
+/// Versi file PDF. Unggahan baru tidak pernah menimpa versi lama (§8).
+model DocumentFile {
+  id            String        @id @default(cuid())
+  documentId    String
+  document      LegalDocument @relation("DocumentFiles", fields: [documentId], references: [id], onDelete: Cascade)
+  version       Int
+  r2Key         String        @unique @db.VarChar(400)
+  fileName      String        @db.VarChar(255)
+  mimeType      String        @default("application/pdf") @db.VarChar(100)
+  sizeBytes     Int
+  sha256        String        @db.Char(64)
+  /// Teks hasil ekstraksi pdf.js di browser admin (bukan di Worker).
+  extractedText String?
+  uploadedBy    String?       @db.VarChar(254)
+  createdAt     DateTime      @default(now()) @db.Timestamptz(3)
+
+  currentOf LegalDocument? @relation("CurrentFile")
+
+  @@unique([documentId, version])
+  @@index([sha256])
+}
+
+model DocumentRelation {
+  id        String        @id @default(cuid())
+  fromId    String
+  from      LegalDocument @relation("RelationFrom", fields: [fromId], references: [id], onDelete: Cascade)
+  toId      String
+  to        LegalDocument @relation("RelationTo", fields: [toId], references: [id], onDelete: Cascade)
+  type      RelationType
+  note      String?       @db.VarChar(500)
+  createdBy String?       @db.VarChar(254)
+  createdAt DateTime      @default(now()) @db.Timestamptz(3)
+
+  @@unique([fromId, toId, type])
+  @@index([toId])
+}
+
+model DocumentTag {
+  documentId String
+  document   LegalDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  tagId      String
+  tag        Tag           @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([documentId, tagId])
+  @@index([tagId])
+}
+
+// -----------------------------------------------------------------------------
+// Penomoran
+// -----------------------------------------------------------------------------
+
+/// Counter per jenis per tahun. Dikunci dengan SELECT ... FOR UPDATE saat menyimpan
+/// dokumen baru agar dua admin tidak mendapat nomor yang sama (§6.2).
+model NumberCounter {
+  typeId     String
+  type       DocumentType @relation(fields: [typeId], references: [id], onDelete: Cascade)
+  year       Int          @db.SmallInt
+  lastNumber Int          @default(0)
+  updatedAt  DateTime     @updatedAt @db.Timestamptz(3)
+
+  @@id([typeId, year])
+}
+
+/// Nomor yang dipesan sebelum sidang (mis. BIRAD 171–173) (§6.3).
+model NumberReservation {
+  id             String         @id @default(cuid())
+  typeId         String
+  type           DocumentType   @relation(fields: [typeId], references: [id], onDelete: Restrict)
+  year           Int            @db.SmallInt
+  sequenceNumber Int
+  purpose        String?        @db.VarChar(300)
+  reservedBy     String?        @db.VarChar(254)
+  expiresAt      DateTime?      @db.Timestamptz(3)
+  /// Terisi saat nomor dipakai oleh dokumen.
+  documentId     String?        @unique
+  document       LegalDocument? @relation(fields: [documentId], references: [id], onDelete: SetNull)
+  createdAt      DateTime       @default(now()) @db.Timestamptz(3)
+
+  @@unique([typeId, year, sequenceNumber])
+}
+
+// -----------------------------------------------------------------------------
+// Administrasi, akuntabilitas, interaksi publik
+// -----------------------------------------------------------------------------
+
+/// Allowlist admin. Email disimpan lowercase (CHECK). Bootstrap via env SUPER_ADMIN_EMAILS.
+model AdminUser {
+  id          String    @id @default(cuid())
+  email       String    @unique @db.VarChar(254)
+  name        String?   @db.VarChar(120)
+  role        AdminRole @default(EDITOR)
+  isActive    Boolean   @default(true)
+  lastLoginAt DateTime? @db.Timestamptz(3)
+  createdAt   DateTime  @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime  @updatedAt @db.Timestamptz(3)
+}
+
+/// Append-only (trigger menolak UPDATE/DELETE). Tanpa FK agar log tetap ada
+/// walaupun dokumen/admin dihapus.
+model AuditLog {
+  id         String      @id @default(cuid())
+  actorEmail String      @db.VarChar(254)
+  action     AuditAction
+  entity     String      @db.VarChar(50) // "LegalDocument", "AdminUser", ...
+  entityId   String      @db.VarChar(50)
+  /// { before: {...}, after: {...} } atau metadata aksi.
+  diff       Json?
+  ipHash     String?     @db.Char(64)
+  createdAt  DateTime    @default(now()) @db.Timestamptz(3)
+
+  @@index([entity, entityId])
+  @@index([actorEmail])
+  @@index([createdAt(sort: Desc)])
+}
+
+/// Form permohonan dokumen/informasi dari pengunjung (§9.2 /permohonan).
+model DocumentRequest {
+  id                String         @id @default(cuid())
+  name              String         @db.VarChar(120)
+  email             String         @db.VarChar(254)
+  affiliation       String?        @db.VarChar(120) // NIM / unit / instansi
+  message           String         @db.VarChar(2000)
+  relatedDocumentId String?
+  relatedDocument   LegalDocument? @relation(fields: [relatedDocumentId], references: [id], onDelete: SetNull)
+  status            RequestStatus  @default(BARU)
+  adminNote         String?        @db.VarChar(1000)
+  handledBy         String?        @db.VarChar(254)
+  ipHash            String?        @db.Char(64)
+  createdAt         DateTime       @default(now()) @db.Timestamptz(3)
+  updatedAt         DateTime       @updatedAt @db.Timestamptz(3)
+
+  @@index([status, createdAt(sort: Desc)])
+  @@index([relatedDocumentId])
+}
+
+/// Rate limit berbasis hash IP (pola brave-franklin). Dibersihkan cron harian.
+model RateLimit {
+  key         String   @db.VarChar(128) // "<scope>:<ipHash>"
+  windowStart DateTime @db.Timestamptz(3)
+  count       Int      @default(1)
+
+  @@id([key, windowStart])
+  @@index([windowStart])
+}

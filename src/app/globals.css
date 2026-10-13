@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/*
+ * Design Tokens JDIH BLM FEB UNAIR
+ * Brand Identity & Color Palette:
+ *  - Primary: #d4af38 (Emas - khusus tombol berlatar gelap/aksen/border)
+ *  - Secondary: #b96d41 (Terakota hangat)
+ *  - Dark: #3E2C1C (Cokelat tua pekat - teks utama & latar hero/header)
+ *  - Background: #FFFDF7 (Krem terang hangat - latar halaman utama)
+ *  - Accent: #80691d (Emas zaitun gelap - link & teks aksen kontras AA)
+ */
+@theme {
+  --color-primary: #d4af38;
+  --color-secondary: #b96d41;
+  --color-dark: #3E2C1C;
+  --color-background: #FFFDF7;
+  --color-accent: #80691d;
+
+  /* Turunan Kontras Tinggi (WCAG AA >= 4.5:1 pada latar #FFFDF7) */
+  --color-secondary-strong: #96552f;
+  --color-muted: #6B5A48;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F7F1E3;
+  --color-border: #E8DEC4;
+
+  /* Semantik Status Hukum */
+  --color-status-berlaku: #2E6B3F;
+  --color-status-diubah: #96552f;
+  --color-status-dicabut: #A23B2A;
+  --color-status-tidak-berlaku: #6B5A48;
+
+  --font-serif: var(--font-source-serif), "Times New Roman", serif;
+  --font-sans: var(--font-plus-jakarta), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --container-site: 75rem; /* ~1200px */
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-dark);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

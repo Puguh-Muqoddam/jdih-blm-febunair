@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "jdih-blm-febunair",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  // Binding database Hyperdrive -> Supabase Session Pooler (port 5432)
+  // Ganti id hyperdrive setelah dibuat di Cloudflare Dashboard / CLI
+  "hyperdrive": [
+    { "binding": "HYPERDRIVE", "id": "<ID_HYPERDRIVE_CLOUDFLARE>" }
+  ],
+  // Penyimpanan file PDF produk hukum
+  "r2_buckets": [
+    { "binding": "DOCS_BUCKET", "bucket_name": "jdih-blm-docs" }
+  ],
+  // Pertahankan variabel di Cloudflare Dashboard saat deployment
+  "keep_vars": true,
+  "observability": { "enabled": true }
+}
