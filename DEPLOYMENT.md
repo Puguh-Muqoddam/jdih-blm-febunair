@@ -101,8 +101,8 @@ Setelah proses selesai, Cloudflare memberikan URL publik portal hukum:
 https://jdih-blm-febunair.puguhmuqoddam151.workers.dev
 ```
 - **Status Produksi:** Aktif & Online (HTTP 200 OK)
-- **Deployment Version ID:** `560025ae-2653-4fb3-95a0-39e4dab9ce21`
-- **Waktu Build Cloudflare CI:** ~2 menit 29 detik (73 rute statis & dinamis terkompilasi penuh)
+- **Deployment Version ID Terkini:** `691df4c6-64e1-4035-8d2a-f65c77ed0f85`
+- **Fitur Baru Terpasang:** Aset logo resmi BLM & Cakrasena, struktur komisi A/B/C, filosofi lambang, favicon, dan sekretariat GKM Lt. 1 FEB UNAIR
 
 ---
 
