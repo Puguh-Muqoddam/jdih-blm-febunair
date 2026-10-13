@@ -122,10 +122,10 @@ export default function PermohonanDokumenPage() {
             </div>
             <div>
               <h2 className="text-xs font-bold uppercase tracking-wider text-[#3E2C1C]">
-                Unit Pengelola
+                Unit Pengelola & Lokasi
               </h2>
               <p className="text-xs text-[#735D45] mt-1 leading-relaxed">
-                Biro Administrasi & Komisi I (Legislasi & Yudikasi) BLM FEB UNAIR.
+                Komisi B (Legislasi) & BIRAD di Graha Krida Mahasiswa (GKM) Lt. 1 FEB UNAIR.
               </p>
             </div>
           </div>

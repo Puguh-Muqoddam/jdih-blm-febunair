@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Scale,
@@ -85,7 +86,15 @@ export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
       {/* Mobile Header Bar */}
       <div className="md:hidden bg-[#3E2C1C] text-[#FFFDF7] p-4 flex items-center justify-between border-b border-[#E8DEC4]">
         <div className="flex items-center gap-2.5">
-          <Scale className="w-5 h-5 text-[#d4af38]" />
+          <div className="w-8 h-8 rounded-full bg-white p-0.5 overflow-hidden flex items-center justify-center border border-[#d4af38]">
+            <Image
+              src="/images/blm_logo.png"
+              alt="Logo BLM"
+              width={28}
+              height={28}
+              className="w-full h-full object-contain"
+            />
+          </div>
           <span className="font-serif font-bold text-sm">JDIH BLM Admin</span>
         </div>
         <button
@@ -106,16 +115,33 @@ export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
         <div>
           {/* Sidebar Brand Header */}
           <div className="p-5 border-b border-[#FFFDF7]/15 flex items-center justify-between">
-            <Link href="/admin" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-[#d4af38] border border-[#d4af38]/30">
-                <Scale className="w-5 h-5" />
+            <Link href="/admin" className="flex items-center gap-2.5">
+              <div className="flex items-center -space-x-1.5">
+                <div className="w-9 h-9 rounded-full bg-white p-0.5 overflow-hidden flex items-center justify-center border border-[#d4af38] z-10">
+                  <Image
+                    src="/images/blm_logo.png"
+                    alt="Logo BLM"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="w-9 h-9 rounded-full bg-white p-0.5 overflow-hidden flex items-center justify-center border border-[#80691d]">
+                  <Image
+                    src="/images/parliament_logo.png"
+                    alt="Logo Cakrasena"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
               </div>
               <div>
                 <span className="font-serif font-bold text-sm block leading-tight text-[#FFFDF7]">
                   Panel Pengurus
                 </span>
                 <span className="text-[10px] text-[#d4af38] font-mono tracking-wider">
-                  BLM FEB UNAIR
+                  Cakrasena 2026
                 </span>
               </div>
             </Link>

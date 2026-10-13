@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Scale,
@@ -105,16 +106,40 @@ export function SiteHeader() {
             {/* Logo & Brand Identity */}
             <Link
               href="/"
-              className="flex items-center gap-3.5 group focus-visible:outline-2 focus-visible:outline-[#80691d] rounded-md"
+              className="flex items-center gap-3 group focus-visible:outline-2 focus-visible:outline-[#80691d] rounded-md"
               aria-label="Kembali ke Beranda JDIH BLM FEB UNAIR"
             >
-              <div className="w-11 h-11 rounded-lg bg-[#3E2C1C] flex items-center justify-center text-[#d4af38] shadow-md border border-[#80691d]/30 group-hover:bg-[#2e2014] transition-all">
-                <Scale className="w-6 h-6" />
+              <div className="flex items-center -space-x-2">
+                <div className="relative w-11 h-11 rounded-full bg-white p-1 shadow-md border border-[#E8DEC4] overflow-hidden flex items-center justify-center shrink-0 z-10 group-hover:scale-105 transition-transform">
+                  <Image
+                    src="/images/blm_logo.png"
+                    alt="Logo BLM FEB UNAIR"
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-contain"
+                    priority
+                  />
+                </div>
+                <div className="relative w-11 h-11 rounded-full bg-white p-1 shadow-md border border-[#E8DEC4] overflow-hidden flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <Image
+                    src="/images/parliament_logo.png"
+                    alt="Logo Kabinet Cakrasena"
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-contain"
+                    priority
+                  />
+                </div>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif font-bold text-lg leading-tight text-[#3E2C1C] tracking-tight group-hover:text-[#80691d] transition-colors">
-                  JDIH BLM FEB UNAIR
-                </span>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-serif font-bold text-lg leading-tight text-[#3E2C1C] tracking-tight group-hover:text-[#80691d] transition-colors">
+                    JDIH BLM FEB UNAIR
+                  </span>
+                  <span className="hidden sm:inline-block text-[10px] bg-[#d4af38]/20 text-[#80691d] font-bold px-1.5 py-0.5 rounded border border-[#d4af38]/40">
+                    Cakrasena
+                  </span>
+                </div>
                 <span className="text-[11px] font-medium text-[#6B5A48] tracking-wider uppercase">
                   Jaringan Dokumentasi & Informasi Hukum
                 </span>

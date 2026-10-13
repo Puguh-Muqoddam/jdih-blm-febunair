@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
   Scale,
@@ -65,14 +66,33 @@ export default function AdminLoginPage() {
       <div className="w-full max-w-md rounded-2xl border border-[#FFFDF7]/20 bg-[#FFFDF7] p-8 shadow-2xl relative z-10 space-y-6">
         {/* Header Identitas */}
         <div className="text-center space-y-2">
-          <div className="mx-auto w-12 h-12 rounded-xl bg-[#3E2C1C] flex items-center justify-center text-[#d4af38] shadow-md border border-[#80691d]">
-            <Scale className="w-6 h-6" />
+          <div className="flex items-center justify-center -space-x-2">
+            <div className="w-12 h-12 rounded-full bg-white p-1 shadow-md border border-[#d4af38] flex items-center justify-center shrink-0 z-10">
+              <Image
+                src="/images/blm_logo.png"
+                alt="Logo BLM FEB UNAIR"
+                width={44}
+                height={44}
+                className="w-full h-full object-contain"
+                priority
+              />
+            </div>
+            <div className="w-12 h-12 rounded-full bg-white p-1 shadow-md border border-[#80691d] flex items-center justify-center shrink-0">
+              <Image
+                src="/images/parliament_logo.png"
+                alt="Logo Kabinet Cakrasena"
+                width={44}
+                height={44}
+                className="w-full h-full object-contain"
+                priority
+              />
+            </div>
           </div>
           <h1 className="font-serif font-bold text-2xl text-[#3E2C1C]">
             Masuk Panel Pengurus
           </h1>
           <p className="text-xs text-[#6B5A48] max-w-xs mx-auto">
-            Sistem Autentikasi Pengelolaan JDIH Badan Legislatif Mahasiswa FEB UNAIR
+            Kabinet Cakrasena • Pengelolaan JDIH Badan Legislatif Mahasiswa FEB UNAIR
           </p>
         </div>
 
