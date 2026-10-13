@@ -9,14 +9,15 @@
     "binding": "ASSETS"
   },
   // Binding database Hyperdrive -> Supabase Session Pooler (port 5432)
-  // Ganti id hyperdrive setelah dibuat di Cloudflare Dashboard / CLI
-  "hyperdrive": [
-    { "binding": "HYPERDRIVE", "id": "<ID_HYPERDRIVE_CLOUDFLARE>" }
-  ],
-  // Penyimpanan file PDF produk hukum
-  "r2_buckets": [
-    { "binding": "DOCS_BUCKET", "bucket_name": "jdih-blm-docs" }
-  ],
+  // Aktifkan setelah Hyperdrive dibuat di Cloudflare: npx wrangler hyperdrive create ...
+  // "hyperdrive": [
+  //   { "binding": "HYPERDRIVE", "id": "<ID_HYPERDRIVE_CLOUDFLARE>" }
+  // ],
+  // Penyimpanan file PDF produk hukum di Cloudflare R2
+  // Aktifkan setelah bucket dibuat di Cloudflare: npx wrangler r2 bucket create jdih-blm-docs
+  // "r2_buckets": [
+  //   { "binding": "DOCS_BUCKET", "bucket_name": "jdih-blm-docs" }
+  // ],
   // Pertahankan variabel di Cloudflare Dashboard saat deployment
   "keep_vars": true,
   "observability": { "enabled": true }
