@@ -96,10 +96,13 @@ npx opennextjs-cloudflare build
 npx wrangler deploy
 ```
 
-Setelah proses selesai, Cloudflare akan memberikan URL publik portal hukum:
+Setelah proses selesai, Cloudflare memberikan URL publik portal hukum:
 ```
-https://jdih-blm-febunair.<subdomain-cloudflare>.workers.dev
+https://jdih-blm-febunair.puguhmuqoddam151.workers.dev
 ```
+- **Status Produksi:** Aktif & Online (HTTP 200 OK)
+- **Deployment Version ID:** `560025ae-2653-4fb3-95a0-39e4dab9ce21`
+- **Waktu Build Cloudflare CI:** ~2 menit 29 detik (73 rute statis & dinamis terkompilasi penuh)
 
 ---
 
