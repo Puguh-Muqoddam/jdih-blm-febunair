@@ -36,6 +36,17 @@ const nextConfig: NextConfig = {
     ];
   },
   serverExternalPackages: ["@prisma/client", ".prisma/client"],
+  outputFileTracingExcludes: {
+    "*": [
+      "node_modules/@prisma/engines/**",
+      "node_modules/@prisma/studio-core/**",
+      "node_modules/@prisma/dev/**",
+      "node_modules/miniflare/**",
+      "node_modules/wrangler/**",
+      "node_modules/@cloudflare/workerd-*/**",
+      "node_modules/@electric-sql/pglite/**",
+    ],
+  },
   images: {
     unoptimized: true,
   },
