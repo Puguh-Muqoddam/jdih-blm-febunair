@@ -106,7 +106,7 @@ model DocumentType {
   numberPattern  String  @db.VarChar(120)
   numberPadding  Int     @db.SmallInt // UU 2, TAP 3, SK 4, LP 3
   requiresNature Boolean @default(false) // true hanya SK (sifat A/B + kode singkatan)
-  autoSequence   Boolean @default(true) // false untuk SK (nomor dari Buku Biro Administrasi)
+  autoSequence   Boolean @default(true) // false untuk SK (nomor dari Buku Departemen Legislasi)
   hierarchyLevel Int     @db.SmallInt // 1 = tertinggi (UU)
   sortOrder      Int     @default(0) @db.SmallInt
 
@@ -150,14 +150,14 @@ model LegalDocument {
   typeId         String
   type           DocumentType @relation(fields: [typeId], references: [id], onDelete: Restrict)
   year           Int          @db.SmallInt
-  /// Nomor urut (UU/TAP/LP) atau No Buku Biro Administrasi (SK).
+  /// Nomor urut (UU/TAP/LP) atau No Buku Departemen Legislasi (SK).
   sequenceNumber Int
 
   /// Nomor resmi lengkap seperti tercetak/ditampilkan (SK selalu 4 digit).
   officialNumber   String    @unique @db.VarChar(200)
   /// Nomor asli sebelum normalisasi (mis. SK "100/..." -> tampil "0100/..."). Tetap dapat dicari.
   legacyNumber     String?   @db.VarChar(200)
-  /// Kode singkatan SK, persis sesuai Buku Biro Administrasi (tidak dikoreksi).
+  /// Kode singkatan SK, persis sesuai Buku Departemen Legislasi (tidak dikoreksi).
   abbreviationCode String?   @db.VarChar(80)
   nature           SkNature?
 

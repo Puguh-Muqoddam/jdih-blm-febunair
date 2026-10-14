@@ -80,7 +80,7 @@ export default function AdminLoginPage() {
             <div className="w-12 h-12 rounded-full bg-white p-1 shadow-md border border-[#3885CC] flex items-center justify-center shrink-0">
               <Image
                 src="/images/parliament_logo.png"
-                alt="Logo Kabinet Cakrasena"
+                alt="Logo Parlemen Cakrasena"
                 width={44}
                 height={44}
                 className="w-full h-full object-contain"
@@ -92,7 +92,7 @@ export default function AdminLoginPage() {
             Masuk Panel Pengurus
           </h1>
           <p className="text-xs text-stone-600 max-w-xs mx-auto">
-            Kabinet Cakrasena • Pengelolaan JDIH Badan Legislatif Mahasiswa FEB UNAIR
+            Parlemen Cakrasena • Pengelolaan JDIH Badan Legislatif Mahasiswa FEB UNAIR
           </p>
         </div>
 

@@ -107,7 +107,7 @@ export default function HomePage() {
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white p-2 shadow-lg border-2 border-[#A3D0EE] flex items-center justify-center hover:scale-105 transition-transform">
                 <Image
                   src="/images/parliament_logo.png"
-                  alt="Logo Kabinet Cakrasena"
+                  alt="Logo Parlemen Cakrasena"
                   width={72}
                   height={72}
                   className="w-full h-full object-contain"
@@ -118,7 +118,7 @@ export default function HomePage() {
 
             <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-semibold text-[#C6E8F7] backdrop-blur-xs">
               <ShieldCheck className="w-4 h-4 text-[#A3D0EE]" />
-              <span>Portal Resmi JDIH BLM FEB UNAIR • Kabinet Cakrasena 2026</span>
+              <span>Portal Resmi JDIH BLM FEB UNAIR • Parlemen Cakrasena 2026</span>
             </div>
 
             <div className="space-y-3 max-w-3xl mx-auto">
@@ -286,7 +286,7 @@ export default function HomePage() {
                   Tri-Fungsi Parlemen & Komisi Legislasi
                 </h2>
                 <p className="text-xs sm:text-sm text-[#4A5568] max-w-2xl">
-                  BLM FEB UNAIR menjalankan tiga pilar kedaulatan mahasiswa melalui koordinasi 3 Komisi, Biro Administrasi (BIRAD), dan 15 Anggota Parlemen.
+                  BLM FEB UNAIR menjalankan tiga pilar kedaulatan mahasiswa melalui koordinasi 3 Komisi, Departemen Legislasi, dan 15 Anggota Parlemen.
                 </p>
               </div>
 
@@ -361,7 +361,7 @@ export default function HomePage() {
                 <div>
                   <strong className="block text-[#1A1A1A]">Sekretariat Parlemen BLM:</strong>
                   <span className="text-[#4A5568]">
-                    Graha Krida Mahasiswa (GKM) Lantai 1, Fakultas Ekonomi dan Bisnis Universitas Airlangga, Jl. Airlangga 4-6 Surabaya.
+                    Graha Krida Mahasiswa (GKM) Lantai 1, Fakultas Ekonomi dan Bisnis, Universitas Airlangga, Jl. Airlangga No. 4-6, Surabaya.
                   </span>
                 </div>
               </div>

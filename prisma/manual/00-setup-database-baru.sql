@@ -549,7 +549,7 @@ INSERT INTO "DocumentType" (
   'SK',
   'Surat Keputusan',
   'surat-keputusan',
-  'Surat Keputusan Badan Legislatif Mahasiswa FEB UNAIR (Biro Administrasi)',
+  'Surat Keputusan Badan Legislatif Mahasiswa FEB UNAIR (Departemen Legislasi)',
   '{seq}/UN.3.1.4/{nature}/{code}/BLM/{roman}/{year}',
   4,
   true,

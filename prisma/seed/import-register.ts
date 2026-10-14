@@ -333,7 +333,7 @@ async function main() {
       where: { email: "puguhmuqoddam151@gmail.com" },
       create: {
         email: "puguhmuqoddam151@gmail.com",
-        name: "Puguh Muqoddam (Biro Administrasi & Legislasi)",
+        name: "Puguh Muqoddam (Departemen Legislasi)",
         role: "SUPER_ADMIN",
         isActive: true,
       },

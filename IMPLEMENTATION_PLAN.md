@@ -116,10 +116,10 @@ Sifat SK: **A = Internal** (pleno, tata tertib, agenda, peringatan internal, pen
 | 1 | Tahun salah ketik **`2926`** | UU No. 02 → `02/…/2926` | **Koreksi ke `2026`** (Dikonfirmasi). DB dipasang `CHECK year BETWEEN 2000 AND 2100`. |
 | 2 | Lebar nomor SK di register lama: `100`–`108` (3 digit) vs `0126`+ (4 digit) | SK Juli vs Agustus–September | **Ditetapkan selalu 4 digit (`0000`)**. Nomor lama distandarisasi ke format `0100`–`0108`, nomor asli (3 digit) tetap dicatat di `legacyNumber` agar tetap dapat dicari. |
 | 3 | Kode singkatan SK **dipakai ulang** (`SKPLENOI`, `SKTATATERTIB`, dll.) | Banyak baris | Keunikan database ditentukan oleh **(jenis, tahun, nomor urut)** dan nomor resmi utuh, bukan kode singkatan. |
-| 4 | Kode singkatan `SKTPEMBERHENTIANANGGOTA` pada SK 0150 | SK 0150 | **Dipertahankan apa adanya** sesuai Buku Biro Administrasi (Dikonfirmasi). |
+| 4 | Kode singkatan `SKTPEMBERHENTIANANGGOTA` pada SK 0150 | SK 0150 | **Dipertahankan apa adanya** sesuai Buku Departemen Legislasi (Dikonfirmasi). |
 | 5 | Presisi tanggal berbeda: ada yang lengkap (`5 September 2026`), ada yang hanya bulan (`Juli 2026`, `April 2026`) | TAP 001, SK 100–108, SK 126–130, UU | Kolom `enactedDatePrecision` (`DAY`/`MONTH`), dan UI menampilkan tanggal sesuai presisi dokumen. |
 | 6 | Nama forum tidak seragam: `Pleno BLM`, `Sidang Pleno BLM`, `Sidang Protap` | SK vs TAP/LP | Tabel master `Forum`, dinormalisasi jadi *Sidang Pleno BLM* dan *Sidang Prosedur Tetap (Protap)*. |
-| 7 | Celah nomor BIRAD (109–125, 131–140, 153–157) dan baris kosong 171–173 | Register SK | Buku BIRAD dipakai bersama surat non-legislasi; nomor SK diinput manual dengan validasi bentrok. Baris 171–173 ditampung sebagai fitur **Pemesanan Nomor** (§6.3). |
+| 7 | Celah nomor register (109–125, 131–140, 153–157) dan baris kosong 171–173 | Register SK | Buku Departemen Legislasi dipakai bersama surat non-legislasi; nomor SK diinput manual dengan validasi bentrok. Baris 171–173 ditampung sebagai fitur **Pemesanan Nomor** (§6.3). |
 | 8 | Sifat A/B tidak bisa ditebak dari judul | SK | Sifat wajib dipilih admin; seluruhnya dipublikasikan. |
 | 9 | LP 001 dan LP 002 berjudul identik | Surat Laporan | Tampilkan nomor dan forum secara jelas; pengelola dapat menambahkan subjudul/ringkasan deskriptif. |
 | 10 | Belum ada file PDF di folder | — | Kumpulkan PDF final yang sudah ditandatangani untuk diunggah via Unggah Massal (§14). |
@@ -383,7 +383,7 @@ Modul murni `src/lib/numbering.ts` tanpa dependensi DB sehingga mudah diuji.
 ### 6.2 Alur di Form Admin
 1. Admin memilih **jenis** dan **tanggal penetapan**. Bulan Romawi dan tahun terisi otomatis.
 2. Untuk **UU/TAP/LP**, nomor urut berikutnya diusulkan otomatis dari `MAX(sequenceNumber)` per jenis per tahun (perlu dikonfirmasi apakah nomor direset tiap tahun).
-3. Untuk **SK**, admin mengisi **No Buku Biro Administrasi (BIRAD)** secara manual (karena buku dipakai bersama surat lain). Nomor **selalu diformat 4 digit** (`171` → `0171`). Kode singkatan diisi persis seperti di Buku Biro Administrasi. Sistem menampilkan nomor terakhir yang terpakai dan memperingatkan bila bentrok.
+3. Untuk **SK**, admin mengisi **No Buku Departemen Legislasi** secara manual (karena buku dipakai bersama surat lain). Nomor **selalu diformat 4 digit** (`171` → `0171`). Kode singkatan diisi persis seperti di Buku Departemen Legislasi. Sistem menampilkan nomor terakhir yang terpakai dan memperingatkan bila bentrok.
 4. Pratinjau nomor resmi tampil *live*. Override hanya untuk Super Admin, dan setiap override dicatat di audit log.
 5. Saat simpan, transaksi dengan `SELECT … FOR UPDATE` pada baris counter memastikan tidak ada duplikat ketika dua admin menyimpan bersamaan.
 
@@ -619,7 +619,7 @@ flowchart LR
 1. **Normalisasi** (`prisma/seed/import-register.ts`): baca 5 CSV, lewati baris judul dan baris kosong (SK 171–173 menjadi `NumberReservation`), petakan forum, parse tanggal dan presisi, dan jalankan `parseOfficialNumber` untuk memastikan nomor cocok dengan komponen (bulan Romawi = bulan tanggal, tahun = tahun). Koreksi yang sudah disetujui diterapkan otomatis:
    - UU 02: `…/VIII/2926` → `02/UU/BLMFEBUNAIR/VIII/2026`.
    - SK 100–108 dinormalisasi ke 4 digit (`0100`–`0108`), dan nomor asli disimpan di `legacyNumber`.
-   - Kode singkatan SK dipertahankan **persis sesuai Buku Biro Administrasi** (termasuk `SKTPEMBERHENTIANANGGOTA`).
+   - Kode singkatan SK dipertahankan **persis sesuai Buku Departemen Legislasi** (termasuk `SKTPEMBERHENTIANANGGOTA`).
 2. **Laporan validasi** berisi temuan §2.3 yang tersisa (presisi tanggal, forum, judul LP identik) untuk ditinjau sebelum seed.
 3. **Seed** ke-49 entri sebagai `DRAFT` dengan tag dan relasi kandidat dari §2.4. Semua jenis, **termasuk SK sifat A (internal)**, akan diterbitkan.
 4. **PDF**: Sekretariat mengumpulkan PDF final yang sudah ditandatangani dengan konvensi nama `{JENIS}-{NOMOR}-{TAHUN}.pdf`, lalu diunggah lewat fitur unggah massal.
@@ -792,7 +792,7 @@ flowchart TD
 | # | Topik | Keputusan | Dampak pada Rencana |
 |---|---|---|---|
 | 1 | Jumlah produk hukum | **49** (3 TAP, 39 SK, 5 LP, 2 UU) | §0, §2.1, §14, §16 |
-| 2 | Koreksi data | UU 02: `2926` → **`2026`**. Kode SK (termasuk `SKTPEMBERHENTIANANGGOTA`) **mengikuti Buku Biro Administrasi apa adanya**, tidak dikoreksi | §2.3, §14 |
+| 2 | Koreksi data | UU 02: `2926` → **`2026`**. Kode SK (termasuk `SKTPEMBERHENTIANANGGOTA`) **mengikuti Buku Departemen Legislasi apa adanya**, tidak dikoreksi | §2.3, §14 |
 | 3 | Format nomor SK | **Selalu 4 digit (`0000`)** | §2.2, §2.3, §6 |
 | 4 | Produk hukum dicabut/diubah/diarsipkan | **Tetap ditampilkan ke publik** dengan badge statusnya | §5.2, §8, §9 |
 | 5 | Admin & visibilitas | Super Admin awal: **`puguhmuqoddam151@gmail.com`**. **Semua produk hukum dipublikasikan**, termasuk SK sifat A (internal) | §10, §12, §19 |
@@ -935,7 +935,7 @@ Sebelum menjalankan langkah pertama di AI assistant, siapkan:
 * **Tujuan:** Memasukkan seluruh 49 produk hukum dari file CSV register 2026 dan mengaktifkan form interaksi pengunjung.
 * **Template Prompt ke AI:**
   > *"Lanjut Langkah 9. Buat skrip migrasi dan integrasi form pengunjung:
-  > 1. Skrip Migrasi (`prisma/seed/import-register.ts`): Parse 5 file CSV di folder `Nomor Produk Hukum`. Terapkan aturan §14: koreksi tahun UU 02 ke `2026`, normalisasi SK 100-108 ke 4 digit (`0100-0108`), pertahankan kode Biro Admin apa adanya, dan seed ke database.
+  > 1. Skrip Migrasi (`prisma/seed/import-register.ts`): Parse 5 file CSV di folder `Nomor Produk Hukum`. Terapkan aturan §14: koreksi tahun UU 02 ke `2026`, normalisasi SK 100-108 ke 4 digit (`0100-0108`), pertahankan kode Departemen Legislasi apa adanya, dan seed ke database.
   > 2. Form Permohonan Dokumen (`src/app/(public)/permohonan/page.tsx`): Form input pemohon (Nama, NIM, Email, Kebutuhan) yang disimpan ke tabel `DocumentRequest` dengan rate-limit dan Turnstile captcha.
   > 3. Feed & Sitemap: Buat endpoint `/feed.xml` (RSS) dan `src/app/sitemap.ts`."*
 * **Kriteria Selesai (Checklist):**

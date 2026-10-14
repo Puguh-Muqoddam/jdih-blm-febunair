@@ -82,7 +82,7 @@ export default function PermohonanDokumenPage() {
             Permohonan Salinan Dokumen & Informasi Hukum
           </h1>
           <p className="text-sm sm:text-base text-[#4A5568] max-w-2xl mx-auto leading-relaxed">
-            Ajukan permohonan naskah fisik, risalah sidang, atau klarifikasi hukum kepada Biro Administrasi & Legislasi BLM FEB UNAIR.
+            Ajukan permohonan naskah fisik, risalah sidang, atau klarifikasi hukum kepada Departemen Legislasi BLM FEB UNAIR.
           </p>
         </div>
 
@@ -125,7 +125,7 @@ export default function PermohonanDokumenPage() {
                 Unit Pengelola & Lokasi
               </h2>
               <p className="text-xs text-[#4A5568] mt-1 leading-relaxed">
-                Komisi B (Legislasi) & BIRAD di Graha Krida Mahasiswa (GKM) Lt. 1 FEB UNAIR.
+                Departemen Legislasi di Graha Krida Mahasiswa (GKM) Lantai 1, Fakultas Ekonomi dan Bisnis, Universitas Airlangga, Jl. Airlangga No. 4-6, Surabaya.
               </p>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function PermohonanDokumenPage() {
                 {submittedTicket.ticketNumber}
               </h2>
               <p className="text-sm text-[#4A5568] max-w-lg mx-auto">
-                Permohonan Anda telah masuk dalam antrean Biro Administrasi & Legislasi. Konfirmasi tindak lanjut serta salinan dokumen akan dikirimkan ke alamat email:
+                Permohonan Anda telah masuk dalam antrean Departemen Legislasi. Konfirmasi tindak lanjut serta salinan dokumen akan dikirimkan ke alamat email:
               </p>
               <div className="inline-block bg-[#C6E8F7]/40 px-3.5 py-1.5 rounded-xl font-mono text-xs font-bold text-[#1B67BC] border border-[#A3D0EE]">
                 {submittedTicket.email}

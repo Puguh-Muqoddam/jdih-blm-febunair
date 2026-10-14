@@ -72,6 +72,6 @@ export async function submitDocumentRequestAction(input: DocumentRequestInput) {
   return {
     success: true,
     ticketNumber,
-    message: "Permohonan resmi Anda berhasil diajukan ke Biro Administrasi & Legislasi.",
+    message: "Permohonan resmi Anda berhasil diajukan ke Departemen Legislasi.",
   };
 }

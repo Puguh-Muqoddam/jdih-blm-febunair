@@ -123,7 +123,7 @@ export function SiteHeader() {
                 <div className="relative w-11 h-11 rounded-full bg-white p-1 shadow-md border border-[#A3D0EE] overflow-hidden flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                   <Image
                     src="/images/parliament_logo.png"
-                    alt="Logo Kabinet Cakrasena"
+                    alt="Logo Parlemen Cakrasena"
                     width={40}
                     height={40}
                     className="w-full h-full object-contain"

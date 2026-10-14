@@ -317,7 +317,7 @@ describe("Mesin Penomoran JDIH BLM FEB UNAIR (src/lib/numbering.ts)", () => {
         "0147/UN.3.1.4/A/SKTATATERTIB/BLM/IX/2026",
         "0148/UN.3.1.4/B/SKKEPENGURUSANSEMENTARA/BLM/IX/2026",
         "0149/UN.3.1.4/A/SKPENGUNDURANDIRIBLM/BLM/IX/2026",
-        // SK 0150 mempertahankan kode Biro Admin apa adanya: SKTPEMBERHENTIANANGGOTA
+        // SK 0150 mempertahankan kode Departemen Legislasi apa adanya: SKTPEMBERHENTIANANGGOTA
         "0150/UN.3.1.4/A/SKTPEMBERHENTIANANGGOTA/BLM/IX/2026",
         "0151/UN.3.1.4/B/SKREKOMENDASIPEMIRA/BLM/IX/2026",
         "0152/UN.3.1.4/B/SKPEMANGGILANKHUSUS/BLM/IX/2026",

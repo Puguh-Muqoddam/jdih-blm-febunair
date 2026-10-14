@@ -129,7 +129,7 @@ export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
                 <div className="w-9 h-9 rounded-full bg-white p-0.5 overflow-hidden flex items-center justify-center border border-[#3885CC]">
                   <Image
                     src="/images/parliament_logo.png"
-                    alt="Logo Cakrasena"
+                    alt="Logo Parlemen Cakrasena"
                     width={32}
                     height={32}
                     className="w-full h-full object-contain"
@@ -141,7 +141,7 @@ export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
                   Panel Pengurus
                 </span>
                 <span className="text-[10px] text-[#C6E8F7] font-mono tracking-wider">
-                  Cakrasena 2026
+                  Parlemen Cakrasena 2026
                 </span>
               </div>
             </Link>
@@ -232,7 +232,7 @@ export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
             <span className="font-semibold text-[#1A1A1A]">Sesi Pengurus Aktif</span>
             <span>•</span>
-            <span>Biro Administrasi & Baleg BLM 2026</span>
+            <span>Departemen Legislasi BLM 2026</span>
           </div>
 
           <div className="flex items-center gap-4 text-xs">

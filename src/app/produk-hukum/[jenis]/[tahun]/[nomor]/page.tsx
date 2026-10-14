@@ -253,7 +253,7 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                       Salinan Resmi Berkas Produk Hukum
                     </h3>
                     <p className="text-xs text-stone-600 max-w-md mx-auto leading-relaxed">
-                      Dokumen digital resmi bertanda tangan dari Biro Administrasi & Sekretariat Badan Legislatif Mahasiswa FEB UNAIR.
+                      Dokumen digital resmi bertanda tangan dari Departemen Legislasi Badan Legislatif Mahasiswa FEB UNAIR.
                     </p>
                   </div>
 

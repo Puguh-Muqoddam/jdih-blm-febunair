@@ -46,7 +46,7 @@ export function SiteFooter() {
                 <div className="w-10 h-10 rounded-full bg-white p-1 shadow-md border border-[#A3D0EE] overflow-hidden flex items-center justify-center shrink-0">
                   <Image
                     src="/images/parliament_logo.png"
-                    alt="Logo Kabinet Cakrasena"
+                    alt="Logo Parlemen Cakrasena"
                     width={36}
                     height={36}
                     className="w-full h-full object-contain"
@@ -58,7 +58,7 @@ export function SiteFooter() {
                   JDIH BLM FEB UNAIR
                 </h3>
                 <p className="text-xs text-[#A3D0EE] font-medium tracking-wide">
-                  Kabinet Cakrasena 2026
+                  Parlemen Cakrasena 2026
                 </p>
               </div>
             </div>
@@ -94,7 +94,7 @@ export function SiteFooter() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#b96d41] font-bold">•</span>
-                <span><strong>Biro Administrasi (BIRAD)</strong> & Biro Keuangan</span>
+                <span><strong>Departemen Legislasi</strong></span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#b96d41] font-bold">•</span>
@@ -233,10 +233,10 @@ export function SiteFooter() {
         {/* Bottom Bar: Hak Cipta & Lisensi */}
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#C6E8F7]/60 gap-3">
           <p>
-            © {new Date().getFullYear()} Badan Legislatif Mahasiswa FEB Universitas Airlangga. Hak Cipta Dilindungi.
+            © {new Date().getFullYear()} Puguh Muqoddam • Badan Legislatif Mahasiswa FEB Universitas Airlangga. Hak Cipta Dilindungi.
           </p>
           <p className="flex items-center gap-3">
-            <span>Dikelola oleh Biro Administrasi & Baleg BLM</span>
+            <span>Dikembangkan oleh Puguh Muqoddam • Departemen Legislasi BLM</span>
             <span>•</span>
             <span className="text-[#b96d41] font-semibold">v1.0 Produksi</span>
           </p>

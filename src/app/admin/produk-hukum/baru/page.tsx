@@ -154,7 +154,7 @@ export default function TambahProdukHukumBaruPage() {
             Pencatatan Produk Hukum Baru
           </h1>
           <p className="text-sm text-stone-600 mt-1">
-            Penomoran otomatis mematuhi konvensi 4-digit SK dan format baku Biro Administrasi & Legislasi.
+            Penomoran otomatis mematuhi konvensi 4-digit SK dan format baku Departemen Legislasi.
           </p>
         </div>
 
@@ -328,7 +328,7 @@ export default function TambahProdukHukumBaruPage() {
             <div className="p-4 rounded-xl bg-[#C6E8F7]/20 border border-[#A3D0EE] space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <label htmlFor={`${formId}-code`} className="text-xs font-bold text-[#1A1A1A] uppercase tracking-wider">
-                  Kode Singkatan SK (Biro Administrasi) <span className="text-rose-600">*</span>
+                  Kode Singkatan SK (Departemen Legislasi) <span className="text-rose-600">*</span>
                 </label>
                 <button
                   type="button"

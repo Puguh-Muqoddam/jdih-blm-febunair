@@ -3,7 +3,7 @@
 # 🏛️ JDIH BLM FEB UNAIR
 ### Jaringan Dokumentasi dan Informasi Hukum
 **Badan Legislatif Mahasiswa • Fakultas Ekonomi dan Bisnis • Universitas Airlangga**  
-*Kabinet Cakrasena 2026*
+*Parlemen Cakrasena 2026*
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-blue?style=for-the-badge&logo=react)](https://react.dev/)
@@ -21,7 +21,7 @@
 
 ## 📌 Tentang Proyek
 
-**JDIH BLM FEB UNAIR** adalah sistem pangkalan data dan portal temu kembali informasi hukum resmi Badan Legislatif Mahasiswa (BLM) Fakultas Ekonomi dan Bisnis Universitas Airlangga. Dibangun di bawah naungan **Biro Administrasi & Baleg Kabinet Cakrasena 2026**, portal ini mengadopsi standar tata kelola dan metadata **JDIHN (Jaringan Dokumentasi dan Informasi Hukum Nasional)** untuk menjamin akuntabilitas, transparansi regulasi, serta kemudahan akses hukum bagi seluruh sivitas akademika FEB UNAIR.
+**JDIH BLM FEB UNAIR** adalah sistem pangkalan data dan portal temu kembali informasi hukum resmi Badan Legislatif Mahasiswa (BLM) Fakultas Ekonomi dan Bisnis Universitas Airlangga. Dikembangkan dan dikelola di bawah naungan **Departemen Legislasi Parlemen Cakrasena 2026**, portal ini mengadopsi standar tata kelola dan metadata **JDIHN (Jaringan Dokumentasi dan Informasi Hukum Nasional)** untuk menjamin akuntabilitas, transparansi regulasi, serta kemudahan akses hukum bagi seluruh sivitas akademika FEB UNAIR.
 
 Sistem ini mengelola **49 produk hukum resmi** periode 2026 yang terbagi ke dalam empat instrumen hukum:
 1. **Undang-Undang Mahasiswa (UU):** Peraturan tertinggi tingkat fakultas yang disahkan bersama BEM.
@@ -46,7 +46,7 @@ Sistem ini mengelola **49 produk hukum resmi** periode 2026 yang terbagi ke dala
 - **Generator Sitasi Hukum:** Format sitasi standar perundang-undangan siap salin satu-klik untuk keperluan karya ilmiah, proposal, atau rujukan rapat.
 
 ### 3. 📄 Viewer & Berkas Digital PDF Resmi
-- Salinan digital resmi bertanda tangan dari Biro Administrasi & Sekretariat BLM FEB UNAIR.
+- Salinan digital resmi bertanda tangan dari Departemen Legislasi BLM FEB UNAIR.
 - Integrasi penyimpanan awan privat Cloudflare R2 dengan verifikasi integritas hash SHA-256.
 - Pratinjau langsung di peramban serta tombol unduh berkas cepat.
 
@@ -204,15 +204,16 @@ Sistem katalog ini menerapkan metadata baku yang selaras dengan ketentuan JDIHN:
 
 ## 👥 Pengembang & Hak Cipta
 
-- **Institusi:** Badan Legislatif Mahasiswa, Fakultas Ekonomi dan Bisnis, Universitas Airlangga
-- **Kepengurusan:** Kabinet Cakrasena 2026
-- **Divisi:** Biro Administrasi & Badan Legislasi (Baleg)
+- **Pengembang & Pemegang Hak Cipta:** Puguh Muqoddam
+- **Lembaga:** Badan Legislatif Mahasiswa, Fakultas Ekonomi dan Bisnis, Universitas Airlangga
+- **Kepengurusan:** Parlemen Cakrasena 2026
+- **Departemen:** Departemen Legislasi
 - **Kontak & Narahubung:**
-  - Sekretariat: Ruang BLM Gedung Student Center Kampus B UNAIR, Jl. Airlangga No. 4–6, Surabaya
+  - Sekretariat: Graha Krida Mahasiswa (GKM) Lantai 1, Fakultas Ekonomi dan Bisnis, Universitas Airlangga, Jl. Airlangga No. 4-6, Surabaya
   - Surel: `blm.feb@unair.ac.id` / `puguhmuqoddam151@gmail.com`
   - Instagram: [@blmfebunair](https://instagram.com/blmfebunair)
 
 ---
 <div align="center">
-  <small>© 2026 BLM FEB UNAIR • Kabinet Cakrasena. Seluruh Hak Cipta Dilindungi.</small>
+  <small>© 2026 Puguh Muqoddam • Departemen Legislasi BLM FEB UNAIR • Parlemen Cakrasena. Seluruh Hak Cipta Dilindungi.</small>
 </div>

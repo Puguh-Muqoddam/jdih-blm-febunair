@@ -50,7 +50,7 @@ const TYPE_CONFIG: Record<
     code: "SK",
     name: "Surat Keputusan (SK)",
     description:
-      "Keputusan administratif dan persidangan yang menetapkan agenda, tata tertib, ormawa, personalia, serta kebijakan eksternal bernomor Buku Biro Administrasi.",
+      "Keputusan administratif dan persidangan yang menetapkan agenda, tata tertib, ormawa, personalia, serta kebijakan eksternal bernomor Buku Departemen Legislasi.",
     pattern: "[4 digit (0000)]/UN.3.1.4/[A|B]/[Kode Singkatan]/BLM/[Bulan Romawi]/[Tahun]",
     icon: Scroll,
     hierarchyText: "Tingkat 3 (Format Nomor Selalu 4 Digit)",

@@ -452,7 +452,7 @@ export function normalizeOfficialNumber(input: string): {
 
 /**
  * Menghasilkan saran kode singkatan SK dari judul dokumen.
- * Sesuai konvensi Biro Administrasi BLM FEB UNAIR.
+ * Sesuai konvensi Departemen Legislasi BLM FEB UNAIR.
  *
  * Contoh:
  * - "SK Sidang Pleno I" -> "SKPLENOI"

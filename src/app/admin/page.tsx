@@ -54,7 +54,7 @@ export default function AdminDashboardPage() {
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C6E8F7]/30 border border-[#A3D0EE] text-xs font-semibold text-[#1B67BC] mb-3">
             <Scale className="w-3.5 h-3.5" />
-            Biro Administrasi & Legislasi • Register 2026
+            Departemen Legislasi • Register 2026
           </div>
           <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
             Dasbor Kendali Hukum
@@ -224,7 +224,7 @@ export default function AdminDashboardPage() {
               Produk Hukum Terkini
             </h2>
             <p className="text-xs text-stone-600 mt-0.5">
-              10 produk hukum terbaru dalam inventaris register Biro Administrasi & Legislasi
+              10 produk hukum terbaru dalam inventaris register Departemen Legislasi
             </p>
           </div>
           <Link

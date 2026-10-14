@@ -39,7 +39,7 @@ function InstagramIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
 export const metadata: Metadata = {
   title: "Tentang BLM & JDIH | JDIH BLM FEB UNAIR",
   description:
-    "Profil lengkap Badan Legislatif Mahasiswa (BLM) FEB Universitas Airlangga, Kabinet Cakrasena 2026, fungsi legislasi, pengawasan, komisi-komisi, filosofi logo, dan sekretariat.",
+    "Profil lengkap Badan Legislatif Mahasiswa (BLM) FEB Universitas Airlangga, Parlemen Cakrasena 2026, fungsi legislasi, pengawasan, komisi-komisi, filosofi logo, dan sekretariat.",
 };
 
 export default function TentangPage() {
@@ -84,14 +84,14 @@ export default function TentangPage() {
       desc: "Bertanggung jawab atas pengelolaan Bank Aspirasi, penyelenggaraan Rapat Dengar Pendapat (RDP), advokasi fasilitas perkuliahan, transparansi biaya pendidikan, dan isu kesejahteraan mahasiswa FEB UNAIR.",
     },
     {
-      code: "BIRAD",
-      name: "Biro Administrasi",
-      role: "Tata Kelola Registrasi & Surat Menyurat",
-      desc: "Mengelola penomoran resmi 4-digit BIRAD seluruh produk hukum, pengarsipan berkas fisik dan digital di GKM Lantai 1, serta inventarisasi arsip kenegaraan mahasiswa.",
+      code: "LEGISLASI",
+      name: "Departemen Legislasi",
+      role: "Tata Kelola Registrasi & Pengampu Portal JDIH",
+      desc: "Mengelola penomoran resmi seluruh produk hukum, perancangan draf peraturan, pengarsipan berkas fisik dan digital di Graha Krida Mahasiswa (GKM) Lantai 1, serta pemeliharaan pangkalan data JDIH BLM FEB UNAIR.",
     },
     {
-      code: "BIKEU",
-      name: "Biro Keuangan",
+      code: "KEUANGAN",
+      name: "Departemen Keuangan",
       role: "Pengelolaan & Transparansi Anggaran",
       desc: "Mengelola anggaran operasional internal parlemen, alokasi dana persidangan, serta penyusunan laporan keuangan berkala yang akuntabel.",
     },
@@ -207,7 +207,7 @@ export default function TentangPage() {
                 <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white p-2 shadow-md border-2 border-[#3885CC] overflow-hidden flex items-center justify-center">
                   <Image
                     src="/images/parliament_logo.png"
-                    alt="Logo Kabinet Cakrasena"
+                    alt="Logo Parlemen Cakrasena"
                     width={120}
                     height={120}
                     className="w-full h-full object-contain"
@@ -219,7 +219,7 @@ export default function TentangPage() {
               <div className="space-y-3 text-center md:text-left flex-1">
                 <div className="inline-flex items-center gap-2 rounded-full border border-[#A3D0EE] bg-[#C6E8F7]/50 px-3.5 py-1 text-xs font-bold text-[#1B67BC]">
                   <Landmark className="w-3.5 h-3.5" />
-                  <span>Kabinet Cakrasena • Periode 2026</span>
+                  <span>Parlemen Cakrasena • Periode 2026</span>
                 </div>
                 <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#1A1A1A] leading-tight">
                   Badan Legislatif Mahasiswa FEB UNAIR
@@ -288,14 +288,14 @@ export default function TentangPage() {
           </section>
 
           {/* ===================================================================
-              3. VISI & MISI KABINET CAKRASENA
+              3. VISI & MISI PARLEMEN CAKRASENA
              =================================================================== */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             <div className="rounded-2xl bg-gradient-to-br from-[#1B67BC] to-[#124b8a] text-white p-6 sm:p-8 shadow-md space-y-4 border border-[#3885CC] flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#C6E8F7]">
                   <Compass className="w-4 h-4" />
-                  <span>Visi Kabinet Cakrasena 2026</span>
+                  <span>Visi Parlemen Cakrasena 2026</span>
                 </div>
                 <h3 className="font-serif font-bold text-xl sm:text-2xl text-white leading-snug">
                   Terwujudnya Lembaga Representasi Mahasiswa yang Profesional, Transparan, dan Berintegritas
@@ -313,7 +313,7 @@ export default function TentangPage() {
             <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-sm space-y-4">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1B67BC]">
                 <Award className="w-4 h-4" />
-                <span>Misi Kabinet Cakrasena 2026</span>
+                <span>Misi Parlemen Cakrasena 2026</span>
               </div>
               <h3 className="font-serif font-bold text-xl text-[#1A1A1A]">
                 Empat Pilar Strategis Pelaksanaan
@@ -430,7 +430,7 @@ export default function TentangPage() {
                 </h2>
               </div>
               <p className="text-xs sm:text-sm text-[#4A5568] max-w-3xl leading-relaxed">
-                Struktur parlemen BLM FEB UNAIR terdiri dari Pimpinan (Ketua Umum, Sekretaris Jenderal, Bendahara Umum), 3 Komisi fungsional, 2 Biro pendukung, dan departemen teknis dengan total representasi 15 Anggota Parlemen (7 Independen PEMIRA + 8 Delegasi HIMA Prodi).
+                Struktur parlemen BLM FEB UNAIR terdiri dari Pimpinan (Ketua Umum, Sekretaris Jenderal, Bendahara Umum), 3 Komisi fungsional, Departemen Legislasi, Departemen Keuangan, dan jajaran pendukung teknis dengan total representasi 15 Anggota Parlemen (7 Independen PEMIRA + 8 Delegasi HIMA Prodi).
               </p>
             </div>
 
@@ -551,7 +551,7 @@ export default function TentangPage() {
                   <span>Sekretariat Fisik</span>
                 </span>
                 <p className="text-xs text-white/90 leading-relaxed">
-                  Graha Krida Mahasiswa (GKM) Lt. 1, FEB UNAIR, Kampus B, Jl. Airlangga 4-6 Surabaya.
+                  Graha Krida Mahasiswa (GKM) Lantai 1, Fakultas Ekonomi dan Bisnis, Universitas Airlangga, Jl. Airlangga No. 4-6, Surabaya.
                 </p>
               </div>
 

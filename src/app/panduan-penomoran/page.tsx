@@ -56,13 +56,13 @@ export default function PanduanPenomoranPage() {
           <div className="space-y-1">
             <span className="text-xs font-bold uppercase tracking-wider text-[#1B67BC] flex items-center gap-1.5">
               <Hash className="w-3.5 h-3.5" />
-              <span>Standarisasi Biro Administrasi</span>
+              <span>Standarisasi Departemen Legislasi</span>
             </span>
             <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#1A1A1A]">
               Pedoman & Format Penomoran Resmi
             </h1>
             <p className="text-xs sm:text-sm text-[#4A5568] max-w-2xl leading-relaxed">
-              Panduan lengkap tata cara penomoran produk hukum legislatif mahasiswa FEB Universitas Airlangga berdasarkan Buku Panduan & Kode Biro Administrasi (BIRAD).
+              Panduan lengkap tata cara penomoran produk hukum legislatif mahasiswa FEB Universitas Airlangga berdasarkan Buku Panduan & Kode Departemen Legislasi.
             </p>
           </div>
 
@@ -138,7 +138,7 @@ export default function PanduanPenomoranPage() {
                     </code>
                   </p>
                   <p className="text-[11px] leading-relaxed">
-                    Nomor Buku Biro Administrasi (BIRAD) yang selalu berformat 4 digit angka di depan institusi UNAIR.
+                    Nomor Buku Departemen Legislasi yang selalu berformat 4 digit angka di depan institusi UNAIR.
                   </p>
                 </div>
               </div>
@@ -176,7 +176,7 @@ export default function PanduanPenomoranPage() {
                   Penjelasan Standarisasi SK 4 Digit (0000) & Nomor Lama
                 </h3>
                 <p className="text-xs text-[#4A5568] leading-relaxed">
-                  Pada buku register lama bulan Juli 2026, nomor SK tercatat menggunakan 3 digit angka (misal: <code>100</code> s/d <code>108</code>). Mulai bulan Agustus dan September 2026, Biro Administrasi menetapkan format 4 digit (misal: <code>0126</code> s/d <code>0170</code>).
+                  Pada buku register lama bulan Juli 2026, nomor SK tercatat menggunakan 3 digit angka (misal: <code>100</code> s/d <code>108</code>). Mulai bulan Agustus dan September 2026, Departemen Legislasi menetapkan format 4 digit (misal: <code>0126</code> s/d <code>0170</code>).
                 </p>
                 <div className="rounded-xl bg-[#C6E8F7]/25 p-4 text-xs text-[#1A1A1A] space-y-2 border border-[#A3D0EE]">
                   <span className="font-bold text-[#1B67BC] block">

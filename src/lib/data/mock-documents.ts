@@ -3,7 +3,7 @@
  * JDIH BLM FEB UNAIR - Data Koleksi 49 Produk Hukum Resmi 2026
  * File: src/lib/data/mock-documents.ts
  *
- * Data kanonikal dari 5 buku register Biro Administrasi & Legislasi:
+ * Data kanonikal dari 5 buku register Departemen Legislasi:
  * - 2 UU (Undang-Undang)
  * - 3 TAP (Ketetapan BLM)
  * - 39 SK (Surat Keputusan: 17 Internal A, 22 Eksternal B)
@@ -12,7 +12,7 @@
  * Seluruh data telah dinormalisasi:
  * - SK selalu 4 digit (0100 - 0170), nomor 3 digit lama dicatat di legacyNumber.
  * - Typo tahun 2926 pada UU No. 02 dikoreksi ke 2026.
- * - Kode unik Biro Administrasi (seperti SKTPEMBERHENTIANANGGOTA) dipertahankan.
+ * - Kode unik Departemen Legislasi (seperti SKTPEMBERHENTIANANGGOTA) dipertahankan.
  * =============================================================================
  */
 
