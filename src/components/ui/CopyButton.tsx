@@ -32,7 +32,7 @@ export function CopyButton({
     <button
       type="button"
       onClick={handleCopy}
-      className={`inline-flex items-center justify-center gap-1.5 rounded-md border border-[#E8DEC4] bg-white px-2.5 py-1.5 text-xs font-medium text-[#3E2C1C] transition-colors hover:bg-[#F7F1E3] hover:text-[#80691d] focus-visible:outline-2 focus-visible:outline-[#80691d] cursor-pointer ${className}`}
+      className={`inline-flex items-center justify-center gap-1.5 rounded-md border border-[#A3D0EE] bg-white px-2.5 py-1.5 text-xs font-medium text-[#1A1A1A] transition-colors hover:bg-[#C6E8F7]/50 hover:text-[#1B67BC] hover:border-[#1B67BC] focus-visible:outline-2 focus-visible:outline-[#1B67BC] cursor-pointer ${className}`}
       title={copied ? "Tersalin ke papan klip!" : `Salin: ${textToCopy}`}
       aria-label={copied ? "Tersalin" : label}
     >
@@ -43,7 +43,7 @@ export function CopyButton({
         </>
       ) : (
         <>
-          <Copy className="w-3.5 h-3.5 text-[#6B5A48]" />
+          <Copy className="w-3.5 h-3.5 text-[#4A5568]" />
           {!showIconOnly && <span>{label}</span>}
         </>
       )}

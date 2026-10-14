@@ -98,42 +98,42 @@ export default async function TopikPage({ params }: PageProps) {
     <>
       <SiteHeader />
 
-      <main id="main-content" className="flex-1 py-8 sm:py-12 bg-[#FFFDF7]">
+      <main id="main-content" className="flex-1 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {/* Breadcrumb Navigasi */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#6B5A48]">
-            <Link href="/" className="hover:text-[#3E2C1C] transition-colors">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-stone-600">
+            <Link href="/" className="hover:text-[#1B67BC] transition-colors">
               Beranda
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#80691d]" />
-            <Link href="/produk-hukum" className="hover:text-[#3E2C1C] transition-colors">
+            <ChevronRight className="w-3.5 h-3.5 text-[#3885CC]" />
+            <Link href="/produk-hukum" className="hover:text-[#1B67BC] transition-colors">
               Produk Hukum
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#80691d]" />
-            <span className="font-semibold text-[#3E2C1C]">{config.title}</span>
+            <ChevronRight className="w-3.5 h-3.5 text-[#3885CC]" />
+            <span className="font-semibold text-[#1A1A1A]">{config.title}</span>
           </nav>
 
           {/* Header Topik */}
-          <div className="rounded-2xl border border-[#E8DEC4] bg-white p-6 sm:p-8 shadow-2xs space-y-3">
+          <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-2xs space-y-3">
             <div className="flex items-center gap-2">
-              <span className="w-9 h-9 rounded-lg bg-[#F7F1E3] flex items-center justify-center text-[#80691d]">
+              <span className="w-9 h-9 rounded-lg bg-[#C6E8F7]/30 flex items-center justify-center text-[#1B67BC]">
                 <Tag className="w-5 h-5" />
               </span>
               <div>
-                <span className="text-xs font-bold text-[#80691d] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#1B67BC] uppercase tracking-wider">
                   Klaster Regulasi Terpadu
                 </span>
-                <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#3E2C1C]">
+                <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#1A1A1A]">
                   {config.title}
                 </h1>
               </div>
             </div>
-            <p className="text-xs sm:text-sm text-[#6B5A48] max-w-3xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-600 max-w-3xl leading-relaxed">
               {config.description}
             </p>
-            <div className="pt-2 text-xs text-[#6B5A48] flex items-center gap-2">
+            <div className="pt-2 text-xs text-stone-600 flex items-center gap-2">
               <span>Menemukan</span>
-              <strong className="text-[#3E2C1C]">{matchedDocs.length} dokumen hukum</strong>
+              <strong className="text-[#1A1A1A]">{matchedDocs.length} dokumen hukum</strong>
               <span>terkait topik ini.</span>
             </div>
           </div>

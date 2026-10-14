@@ -101,66 +101,66 @@ export default async function JenisProdukHukumPage({ params }: PageProps) {
     <>
       <SiteHeader />
 
-      <main id="main-content" className="flex-1 py-8 sm:py-12 bg-[#FFFDF7]">
+      <main id="main-content" className="flex-1 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {/* Breadcrumb Navigasi */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#6B5A48]">
-            <Link href="/" className="hover:text-[#3E2C1C] transition-colors">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#4A5568]">
+            <Link href="/" className="hover:text-[#1B67BC] transition-colors">
               Beranda
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#80691d]" />
-            <Link href="/produk-hukum" className="hover:text-[#3E2C1C] transition-colors">
+            <ChevronRight className="w-3.5 h-3.5 text-[#1B67BC]" />
+            <Link href="/produk-hukum" className="hover:text-[#1B67BC] transition-colors">
               Produk Hukum
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#80691d]" />
-            <span className="font-semibold text-[#3E2C1C]">{config.name}</span>
+            <ChevronRight className="w-3.5 h-3.5 text-[#1B67BC]" />
+            <span className="font-semibold text-[#1A1A1A]">{config.name}</span>
           </nav>
 
           {/* Banner Informasi Jenis */}
-          <div className="rounded-2xl border border-[#E8DEC4] bg-white p-6 sm:p-8 shadow-2xs space-y-4">
+          <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-xs space-y-4">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div className="flex items-start gap-4">
-                <div className="w-14 h-14 rounded-xl bg-[#3E2C1C] flex items-center justify-center text-[#d4af38] shadow-md shrink-0">
+                <div className="w-14 h-14 rounded-xl bg-[#1B67BC] flex items-center justify-center text-white shadow-md shrink-0">
                   <IconComp className="w-7 h-7" />
                 </div>
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-xs font-bold text-[#80691d] uppercase tracking-wider">
+                    <span className="text-xs font-bold text-[#1B67BC] uppercase tracking-wider">
                       {config.hierarchyText}
                     </span>
-                    <span className="text-xs bg-[#F7F1E3] text-[#3E2C1C] px-2 py-0.5 rounded-full font-semibold">
+                    <span className="text-xs bg-[#C6E8F7]/50 text-[#1A1A1A] px-2 py-0.5 rounded-full font-semibold border border-[#A3D0EE]">
                       {documents.length} Dokumen Terdaftar
                     </span>
                   </div>
-                  <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#3E2C1C]">
+                  <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#1A1A1A]">
                     {config.name} ({config.code})
                   </h1>
                 </div>
               </div>
 
-              <div className="rounded-xl bg-[#FFFDF7] border border-[#E8DEC4] p-3 text-xs space-y-1 w-full md:w-auto">
-                <span className="font-bold text-[#80691d] block">Format Template Penomoran:</span>
-                <code className="font-mono text-xs text-[#3E2C1C] block bg-white px-2 py-1 rounded border border-[#E8DEC4]">
+              <div className="rounded-xl bg-[#C6E8F7]/20 border border-[#A3D0EE] p-3 text-xs space-y-1 w-full md:w-auto">
+                <span className="font-bold text-[#1B67BC] block">Format Template Penomoran:</span>
+                <code className="font-mono text-xs text-[#1A1A1A] block bg-white px-2 py-1 rounded border border-[#A3D0EE]">
                   {config.pattern}
                 </code>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-[#6B5A48] leading-relaxed pt-2 border-t border-[#F2EBDA]">
+            <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed pt-2 border-t border-[#A3D0EE]/40">
               {config.description}
             </p>
           </div>
 
           {/* Pengelompokan Berdasarkan Tahun (Accordion Tahun 2026) */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between border-b border-[#E8DEC4] pb-3">
+            <div className="flex items-center justify-between border-b border-[#A3D0EE]/40 pb-3">
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-[#80691d]" />
-                <h2 className="font-serif font-bold text-lg text-[#3E2C1C]">
+                <Calendar className="w-4 h-4 text-[#1B67BC]" />
+                <h2 className="font-serif font-bold text-lg text-[#1A1A1A]">
                   Tahun Penetapan 2026 ({documents.length} Dokumen)
                 </h2>
               </div>
-              <span className="text-xs text-[#6B5A48]">Register Resmi Terverifikasi</span>
+              <span className="text-xs text-[#4A5568]">Register Resmi Terverifikasi</span>
             </div>
 
             {/* Grid Dokumen untuk Tahun Ini */}

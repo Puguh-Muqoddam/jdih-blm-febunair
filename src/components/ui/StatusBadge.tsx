@@ -23,10 +23,10 @@ export function StatusBadge({
   if (publicationState === "ARCHIVED") {
     return (
       <span
-        className={`inline-flex items-center gap-1.5 rounded-full border border-[#D5C9B1] bg-[#F4EDE0] text-[#554331] ${sizeClasses} ${className}`}
+        className={`inline-flex items-center gap-1.5 rounded-full border border-[#A3D0EE] bg-[#C6E8F7]/30 text-[#1A1A1A] ${sizeClasses} ${className}`}
         title="Dokumen berstatus arsip digital resmi"
       >
-        <Archive className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5 text-[#80691d]"} />
+        <Archive className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5 text-[#1B67BC]"} />
         <span>Diarsipkan</span>
       </span>
     );

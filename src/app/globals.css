@@ -2,32 +2,42 @@
 
 /*
  * Design Tokens JDIH BLM FEB UNAIR
- * Brand Identity & Color Palette:
- *  - Primary: #d4af38 (Emas - khusus tombol berlatar gelap/aksen/border)
- *  - Secondary: #b96d41 (Terakota hangat)
- *  - Dark: #3E2C1C (Cokelat tua pekat - teks utama & latar hero/header)
- *  - Background: #FFFDF7 (Krem terang hangat - latar halaman utama)
- *  - Accent: #80691d (Emas zaitun gelap - link & teks aksen kontras AA)
+ * Rekomendasi: Biru + Terracotta (Modern Warmth)
+ *  - Primary: #1B67BC (Deep Blue - Header, tombol utama)
+ *  - Secondary: #3885CC (Medium Blue - Hover, border)
+ *  - Light: #A3D0EE (Light Blue - Background section)
+ *  - Lightest: #C6E8F7 (Ice Blue - Background halaman)
+ *  - Accent: #b96d41 (Terracotta - Tombol CTA, badge, highlight)
+ *  - Dark: #1A1A1A (Charcoal - Teks utama)
  */
-@theme {
-  --color-primary: #d4af38;
-  --color-secondary: #b96d41;
-  --color-dark: #3E2C1C;
-  --color-background: #FFFDF7;
-  --color-accent: #80691d;
+:root {
+  --color-primary: #1B67BC;
+  --color-secondary: #3885CC;
+  --color-light: #A3D0EE;
+  --color-lightest: #C6E8F7;
+  --color-accent: #b96d41;
+  --color-dark: #1A1A1A;
+}
 
-  /* Turunan Kontras Tinggi (WCAG AA >= 4.5:1 pada latar #FFFDF7) */
-  --color-secondary-strong: #96552f;
-  --color-muted: #6B5A48;
+@theme {
+  --color-primary: #1B67BC;
+  --color-secondary: #3885CC;
+  --color-light: #A3D0EE;
+  --color-lightest: #C6E8F7;
+  --color-accent: #b96d41;
+  --color-dark: #1A1A1A;
+
+  --color-background: #C6E8F7;
   --color-surface: #FFFFFF;
-  --color-surface-muted: #F7F1E3;
-  --color-border: #E8DEC4;
+  --color-surface-muted: #EBF6FC;
+  --color-border: #A3D0EE;
+  --color-muted: #4A5568;
 
   /* Semantik Status Hukum */
-  --color-status-berlaku: #2E6B3F;
-  --color-status-diubah: #96552f;
-  --color-status-dicabut: #A23B2A;
-  --color-status-tidak-berlaku: #6B5A48;
+  --color-status-berlaku: #1B7A43;
+  --color-status-diubah: #b96d41;
+  --color-status-dicabut: #C53030;
+  --color-status-tidak-berlaku: #718096;
 
   --font-serif: var(--font-source-serif), "Times New Roman", serif;
   --font-sans: var(--font-plus-jakarta), system-ui, sans-serif;
@@ -42,14 +52,14 @@ html {
 }
 
 body {
-  background-color: var(--color-background);
+  background-color: var(--color-lightest);
   color: var(--color-dark);
   font-family: var(--font-sans);
   min-height: 100vh;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-secondary);
   outline-offset: 2px;
 }
 

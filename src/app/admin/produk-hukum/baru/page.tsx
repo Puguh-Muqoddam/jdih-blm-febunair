@@ -143,24 +143,24 @@ export default function TambahProdukHukumBaruPage() {
       {/* Header & Breadcrumb */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs text-[#735D45] mb-2">
-            <Link href="/admin" className="hover:text-[#3E2C1C]">Dasbor</Link>
+          <div className="flex items-center gap-2 text-xs text-stone-600 mb-2">
+            <Link href="/admin" className="hover:text-[#1B67BC]">Dasbor</Link>
             <span>/</span>
-            <Link href="/admin/produk-hukum" className="hover:text-[#3E2C1C]">Produk Hukum</Link>
+            <Link href="/admin/produk-hukum" className="hover:text-[#1B67BC]">Produk Hukum</Link>
             <span>/</span>
-            <span className="text-[#3E2C1C] font-semibold">Tambah Baru</span>
+            <span className="text-[#1A1A1A] font-semibold">Tambah Baru</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#3E2C1C]">
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
             Pencatatan Produk Hukum Baru
           </h1>
-          <p className="text-sm text-[#735D45] mt-1">
+          <p className="text-sm text-stone-600 mt-1">
             Penomoran otomatis mematuhi konvensi 4-digit SK dan format baku Biro Administrasi & Legislasi.
           </p>
         </div>
 
         <Link
           href="/admin/produk-hukum"
-          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-[#E8DEC4] text-xs font-semibold text-[#3E2C1C] hover:bg-[#F7F1E3] transition-colors"
+          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-[#A3D0EE] text-xs font-semibold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Kembali ke Daftar
@@ -195,59 +195,59 @@ export default function TambahProdukHukumBaruPage() {
       )}
 
       {/* Live Preview Panel (Sticky Top on Desktop) */}
-      <div className="bg-[#3E2C1C] text-[#FFFDF7] rounded-2xl p-6 border border-[#2B1E13] shadow-md relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#d4af38]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-[#1B67BC] text-white rounded-2xl p-6 border border-[#3885CC] shadow-md relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#C6E8F7]/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="flex items-center justify-between gap-4 mb-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d4af38]/20 border border-[#d4af38]/40 text-xs font-semibold text-[#d4af38]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#b96d41] border border-[#b96d41] text-xs font-semibold text-white">
             <Sparkles className="w-3.5 h-3.5" />
             Mesin Penomoran Kanonikal Aktif
           </div>
-          <span className="text-xs text-[#FFFDF7]/60">Pratinjau Real-Time</span>
+          <span className="text-xs text-white/70">Pratinjau Real-Time</span>
         </div>
 
         <div className="space-y-4">
           <div>
-            <div className="text-xs text-[#FFFDF7]/70 uppercase tracking-wider font-medium mb-1">
+            <div className="text-xs text-white/80 uppercase tracking-wider font-medium mb-1">
               Nomor Resmi yang Dihasilkan:
             </div>
-            <div className="font-mono text-lg sm:text-xl font-bold text-[#d4af38] break-all bg-black/20 p-3 rounded-xl border border-white/10">
+            <div className="font-mono text-lg sm:text-xl font-bold text-[#C6E8F7] break-all bg-black/20 p-3 rounded-xl border border-white/15">
               {liveOfficialNumber}
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-            <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-              <span className="text-[#FFFDF7]/60 block mb-0.5">Slug URL Ramah Mesin:</span>
-              <code className="font-mono text-[#FFFDF7] font-semibold">{liveSlug}</code>
+            <div className="bg-white/10 p-3 rounded-xl border border-white/15">
+              <span className="text-white/70 block mb-0.5">Slug URL Ramah Mesin:</span>
+              <code className="font-mono text-white font-semibold">{liveSlug}</code>
             </div>
-            <div className="bg-white/5 p-3 rounded-xl border border-white/10">
-              <span className="text-[#FFFDF7]/60 block mb-0.5">Bulan Romawi / Tahun:</span>
-              <span className="font-semibold text-[#FFFDF7]">
+            <div className="bg-white/10 p-3 rounded-xl border border-white/15">
+              <span className="text-white/70 block mb-0.5">Bulan Romawi / Tahun:</span>
+              <span className="font-semibold text-white">
                 Bulan {romanMonth} ({month}) • Tahun {year}
               </span>
             </div>
           </div>
 
-          <div className="bg-white/5 p-3 rounded-xl border border-white/10 text-xs">
-            <span className="text-[#FFFDF7]/60 block mb-1">Format Sitasi Standar Hukum:</span>
-            <p className="italic text-[#FFFDF7]/90">{liveCitation}</p>
+          <div className="bg-white/10 p-3 rounded-xl border border-white/15 text-xs">
+            <span className="text-white/70 block mb-1">Format Sitasi Standar Hukum:</span>
+            <p className="italic text-white/90">{liveCitation}</p>
           </div>
         </div>
       </div>
 
       {/* Main Input Form */}
       <form onSubmit={handleSubmit} className="space-y-8">
-        <div className="bg-white rounded-2xl border border-[#E8DEC4] p-6 sm:p-8 shadow-sm space-y-6">
-          <h2 className="text-lg font-serif font-bold text-[#3E2C1C] border-b border-[#E8DEC4] pb-3 flex items-center gap-2">
-            <Scale className="w-5 h-5 text-[#80691d]" />
+        <div className="bg-white rounded-2xl border border-[#A3D0EE] p-6 sm:p-8 shadow-sm space-y-6">
+          <h2 className="text-lg font-serif font-bold text-[#1A1A1A] border-b border-[#A3D0EE]/50 pb-3 flex items-center gap-2">
+            <Scale className="w-5 h-5 text-[#1B67BC]" />
             1. Klasifikasi & Parameter Penomoran
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Jenis Dokumen */}
             <div>
-              <label htmlFor={`${formId}-docType`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+              <label htmlFor={`${formId}-docType`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
                 Jenis Dokumen <span className="text-rose-600">*</span>
               </label>
               <select
@@ -261,7 +261,7 @@ export default function TambahProdukHukumBaruPage() {
                   if (val === "TAP") setSequenceNumber(4);
                   if (val === "LP") setSequenceNumber(6);
                 }}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm text-[#3E2C1C] font-semibold focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm text-[#1A1A1A] font-semibold focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
               >
                 <option value="SK">SK (Surat Keputusan)</option>
                 <option value="UU">UU (Undang-Undang)</option>
@@ -273,39 +273,39 @@ export default function TambahProdukHukumBaruPage() {
             {/* Sifat SK (Hanya jika SK) */}
             {docType === "SK" ? (
               <div>
-                <label htmlFor={`${formId}-nature`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+                <label htmlFor={`${formId}-nature`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
                   Sifat SK <span className="text-rose-600">*</span>
                 </label>
                 <select
                   id={`${formId}-nature`}
                   value={nature}
                   onChange={(e) => setNature(e.target.value as SkNatureCode)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm text-[#3E2C1C] font-semibold focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm text-[#1A1A1A] font-semibold focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
                 >
                   <option value="A">Sifat A (Internal Kelembagaan)</option>
                   <option value="B">Sifat B (Eksternal / Kepengurusan Organisasi)</option>
                 </select>
-                <span className="text-[11px] text-[#735D45] mt-1 block">
+                <span className="text-[11px] text-stone-600 mt-1 block">
                   {nature === "A" ? "Untuk ketetapan struktural internal BLM" : "Untuk penetapan struktur BEM / UKM / Panitia"}
                 </span>
               </div>
             ) : (
               <div>
-                <label className="block text-xs font-bold text-[#735D45] uppercase tracking-wider mb-2">
+                <label className="block text-xs font-bold text-stone-600 uppercase tracking-wider mb-2">
                   Sifat Dokumen
                 </label>
                 <input
                   type="text"
                   disabled
                   value="Tidak Berlaku untuk Jenis Ini"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-stone-100 text-xs text-stone-500 cursor-not-allowed"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-stone-100 text-xs text-stone-500 cursor-not-allowed"
                 />
               </div>
             )}
 
             {/* Nomor Urut */}
             <div>
-              <label htmlFor={`${formId}-seq`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+              <label htmlFor={`${formId}-seq`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
                 Nomor Urut Buku Register <span className="text-rose-600">*</span>
               </label>
               <input
@@ -315,9 +315,9 @@ export default function TambahProdukHukumBaruPage() {
                 max="9999"
                 value={sequenceNumber}
                 onChange={(e) => setSequenceNumber(parseInt(e.target.value) || 1)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm font-mono font-bold text-[#3E2C1C] focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm font-mono font-bold text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
               />
-              <span className="text-[11px] text-[#735D45] mt-1 block font-mono">
+              <span className="text-[11px] text-stone-600 mt-1 block font-mono">
                 Diformat: {padSequence(sequenceNumber, docType === "SK" ? 4 : 2)}
               </span>
             </div>
@@ -325,15 +325,15 @@ export default function TambahProdukHukumBaruPage() {
 
           {/* Baris SK Abbreviation Code (Khusus SK) */}
           {docType === "SK" && (
-            <div className="p-4 rounded-xl bg-[#F7F1E3]/60 border border-[#E8DEC4] space-y-3">
+            <div className="p-4 rounded-xl bg-[#C6E8F7]/20 border border-[#A3D0EE] space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <label htmlFor={`${formId}-code`} className="text-xs font-bold text-[#3E2C1C] uppercase tracking-wider">
+                <label htmlFor={`${formId}-code`} className="text-xs font-bold text-[#1A1A1A] uppercase tracking-wider">
                   Kode Singkatan SK (Biro Administrasi) <span className="text-rose-600">*</span>
                 </label>
                 <button
                   type="button"
                   onClick={handleAutoSuggestCode}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#80691d] hover:text-[#3E2C1C] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1B67BC] hover:text-[#3885CC] transition-colors"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   Rekomendasikan Otomatis dari Judul
@@ -346,10 +346,10 @@ export default function TambahProdukHukumBaruPage() {
                 value={abbreviationCode}
                 onChange={(e) => setAbbreviationCode(e.target.value.toUpperCase())}
                 placeholder="Contoh: SKTPENGURUS, SKPLENOI, SKAGENDAACARAPLENO3"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-white font-mono font-bold text-sm text-[#3E2C1C] focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white font-mono font-bold text-sm text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
               />
-              <p className="text-[11px] text-[#735D45] leading-relaxed">
-                <Info className="w-3.5 h-3.5 inline mr-1 text-[#80691d]" />
+              <p className="text-[11px] text-stone-600 leading-relaxed">
+                <Info className="w-3.5 h-3.5 inline mr-1 text-[#1B67BC]" />
                 Aturan format: Harus huruf kapital, boleh memuat angka untuk pleno (mis. <code className="font-mono">PLENO3</code>). Awalan <code className="font-mono">SKT</code> untuk Sifat A atau <code className="font-mono">SK</code> untuk Sifat B dipertahankan sesuai register fisik.
               </p>
             </div>
@@ -358,7 +358,7 @@ export default function TambahProdukHukumBaruPage() {
           {/* Tanggal Penetapan & Tempat */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label htmlFor={`${formId}-date`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+              <label htmlFor={`${formId}-date`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
                 Tanggal Penetapan / Pengesahan <span className="text-rose-600">*</span>
               </label>
               <div className="relative">
@@ -367,16 +367,16 @@ export default function TambahProdukHukumBaruPage() {
                   type="date"
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm text-[#3E2C1C] font-semibold focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm text-[#1A1A1A] font-semibold focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
                 />
               </div>
-              <span className="text-[11px] text-[#735D45] mt-1 block">
-                Bulan penetapan otomatis dikonversi ke angka Romawi: <strong className="font-mono text-[#3E2C1C]">{romanMonth}</strong>
+              <span className="text-[11px] text-stone-600 mt-1 block">
+                Bulan penetapan otomatis dikonversi ke angka Romawi: <strong className="font-mono text-[#1A1A1A]">{romanMonth}</strong>
               </span>
             </div>
 
             <div>
-              <label htmlFor={`${formId}-place`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+              <label htmlFor={`${formId}-place`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
                 Tempat Penetapan
               </label>
               <input
@@ -385,21 +385,21 @@ export default function TambahProdukHukumBaruPage() {
                 value={place}
                 onChange={(e) => setPlace(e.target.value)}
                 placeholder="Surabaya"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm text-[#3E2C1C] focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
               />
             </div>
           </div>
         </div>
 
         {/* 2. Isi & Metadata JDIHN */}
-        <div className="bg-white rounded-2xl border border-[#E8DEC4] p-6 sm:p-8 shadow-sm space-y-6">
-          <h2 className="text-lg font-serif font-bold text-[#3E2C1C] border-b border-[#E8DEC4] pb-3 flex items-center gap-2">
-            <FileText className="w-5 h-5 text-[#80691d]" />
+        <div className="bg-white rounded-2xl border border-[#A3D0EE] p-6 sm:p-8 shadow-sm space-y-6">
+          <h2 className="text-lg font-serif font-bold text-[#1A1A1A] border-b border-[#A3D0EE]/50 pb-3 flex items-center gap-2">
+            <FileText className="w-5 h-5 text-[#1B67BC]" />
             2. Metadata Dokumen & Standar JDIHN
           </h2>
 
           <div>
-            <label htmlFor={`${formId}-title`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+            <label htmlFor={`${formId}-title`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
               Judul / Perihal Lengkap Produk Hukum <span className="text-rose-600">*</span>
             </label>
             <textarea
@@ -408,12 +408,12 @@ export default function TambahProdukHukumBaruPage() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Masukkan judul resmi produk hukum sebagaimana tercantum dalam naskah fisik..."
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm text-[#3E2C1C] font-medium leading-relaxed focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm text-[#1A1A1A] font-medium leading-relaxed focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
             />
           </div>
 
           <div>
-            <label htmlFor={`${formId}-summary`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+            <label htmlFor={`${formId}-summary`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
               Abstrak / Ringkasan Pokok Pikiran
             </label>
             <textarea
@@ -422,20 +422,20 @@ export default function TambahProdukHukumBaruPage() {
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
               placeholder="Ringkasan pertimbangan (Menimbang) dan materi pokok yang diatur..."
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm text-[#3E2C1C] leading-relaxed focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm text-[#1A1A1A] leading-relaxed focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div>
-              <label htmlFor={`${formId}-forum`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+              <label htmlFor={`${formId}-forum`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
                 Forum Penetapan
               </label>
               <select
                 id={`${formId}-forum`}
                 value={forum}
                 onChange={(e) => setForum(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm text-[#3E2C1C] focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
               >
                 <option value="Sidang Pleno BLM">Sidang Pleno BLM</option>
                 <option value="Sidang Umum BLM">Sidang Umum BLM</option>
@@ -446,14 +446,14 @@ export default function TambahProdukHukumBaruPage() {
             </div>
 
             <div>
-              <label htmlFor={`${formId}-status`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+              <label htmlFor={`${formId}-status`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
                 Status Keberlakuan Hukum <span className="text-rose-600">*</span>
               </label>
               <select
                 id={`${formId}-status`}
                 value={legalStatus}
                 onChange={(e) => setLegalStatus(e.target.value as any)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm text-[#3E2C1C] font-semibold focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm text-[#1A1A1A] font-semibold focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
               >
                 <option value="BERLAKU">BERLAKU</option>
                 <option value="DIUBAH">DIUBAH</option>
@@ -463,14 +463,14 @@ export default function TambahProdukHukumBaruPage() {
             </div>
 
             <div>
-              <label htmlFor={`${formId}-publish`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+              <label htmlFor={`${formId}-publish`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
                 Status Publikasi Portal <span className="text-rose-600">*</span>
               </label>
               <select
                 id={`${formId}-publish`}
                 value={publicationState}
                 onChange={(e) => setPublicationState(e.target.value as any)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm text-[#3E2C1C] font-semibold focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm text-[#1A1A1A] font-semibold focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
               >
                 <option value="PUBLISHED">PUBLIK (Tampil di Katalog)</option>
                 <option value="DRAFT">DRAFT (Hanya Admin)</option>
@@ -479,7 +479,7 @@ export default function TambahProdukHukumBaruPage() {
           </div>
 
           <div>
-            <label htmlFor={`${formId}-tags`} className="block text-xs font-bold text-[#3E2C1C] uppercase tracking-wider mb-2">
+            <label htmlFor={`${formId}-tags`} className="block text-xs font-bold text-[#1A1A1A] uppercase tracking-wider mb-2">
               Kata Kunci / Tag Pencarian (Pisahkan dengan koma)
             </label>
             <input
@@ -488,25 +488,25 @@ export default function TambahProdukHukumBaruPage() {
               value={tagsInput}
               onChange={(e) => setTagsInput(e.target.value)}
               placeholder="Contoh: Pengurus, Komisi Legislasi, Anggaran"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] text-sm text-[#3E2C1C] focus:outline-none focus:ring-2 focus:ring-[#80691d]/20 focus:border-[#80691d]"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#A3D0EE] bg-white text-sm text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#1B67BC]/20 focus:border-[#1B67BC]"
             />
           </div>
         </div>
 
         {/* 3. Unggah Berkas Fisik PDF (Client-Side Safe) */}
-        <div className="bg-white rounded-2xl border border-[#E8DEC4] p-6 sm:p-8 shadow-sm space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#E8DEC4] pb-3">
-            <h2 className="text-lg font-serif font-bold text-[#3E2C1C] flex items-center gap-2">
-              <UploadCloud className="w-5 h-5 text-[#80691d]" />
+        <div className="bg-white rounded-2xl border border-[#A3D0EE] p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#A3D0EE]/50 pb-3">
+            <h2 className="text-lg font-serif font-bold text-[#1A1A1A] flex items-center gap-2">
+              <UploadCloud className="w-5 h-5 text-[#1B67BC]" />
               3. Berkas Digital Naskah (PDF)
             </h2>
-            <span className="text-xs text-[#735D45] flex items-center gap-1 font-medium">
+            <span className="text-xs text-stone-600 flex items-center gap-1 font-medium">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
               Sesuai Arsitektur Cloudflare Workers (&lt; 3 MiB Bundle)
             </span>
           </div>
 
-          <div className="border-2 border-dashed border-[#E8DEC4] hover:border-[#80691d] transition-colors rounded-2xl p-6 sm:p-8 text-center bg-[#FFFDF7]/50">
+          <div className="border-2 border-dashed border-[#A3D0EE] hover:border-[#1B67BC] transition-colors rounded-2xl p-6 sm:p-8 text-center bg-[#C6E8F7]/15">
             <input
               type="file"
               id={`${formId}-pdf`}
@@ -518,15 +518,15 @@ export default function TambahProdukHukumBaruPage() {
               htmlFor={`${formId}-pdf`}
               className="cursor-pointer flex flex-col items-center justify-center gap-3"
             >
-              <div className="w-14 h-14 rounded-2xl bg-[#d4af38]/10 text-[#80691d] flex items-center justify-center">
+              <div className="w-14 h-14 rounded-2xl bg-[#C6E8F7]/40 text-[#1B67BC] flex items-center justify-center">
                 <File className="w-7 h-7" />
               </div>
               <div>
-                <span className="font-semibold text-sm text-[#3E2C1C]">
+                <span className="font-semibold text-sm text-[#1A1A1A]">
                   Klik untuk memilih naskah PDF
                 </span>{" "}
-                <span className="text-xs text-[#735D45]">atau seret ke area ini</span>
-                <p className="text-[11px] text-[#735D45] mt-1">
+                <span className="text-xs text-stone-600">atau seret ke area ini</span>
+                <p className="text-[11px] text-stone-500 mt-1">
                   Maksimal ukuran berkas: 15 MB • Ekstraksi teks & hashing dilakukan di peramban klien
                 </p>
               </div>
@@ -566,8 +566,8 @@ export default function TambahProdukHukumBaruPage() {
 
         {/* Action Buttons Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
-          <div className="text-xs text-[#735D45]">
-            Penanggung Jawab: <span className="font-semibold text-[#3E2C1C]">puguhmuqoddam151@gmail.com</span>
+          <div className="text-xs text-stone-600">
+            Penanggung Jawab: <span className="font-semibold text-[#1A1A1A]">puguhmuqoddam151@gmail.com</span>
           </div>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
@@ -577,14 +577,14 @@ export default function TambahProdukHukumBaruPage() {
                 setPublicationState("DRAFT");
                 handleSubmit({ preventDefault: () => {} } as any);
               }}
-              className="flex-1 sm:flex-none px-5 py-3 rounded-xl border border-[#E8DEC4] bg-white hover:bg-[#F7F1E3] font-semibold text-xs text-[#3E2C1C] transition-colors"
+              className="flex-1 sm:flex-none px-5 py-3 rounded-xl border border-[#A3D0EE] bg-white hover:bg-[#C6E8F7]/30 font-semibold text-xs text-[#1A1A1A] transition-colors"
             >
               Simpan sebagai Draf
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#d4af38] hover:bg-[#c29f2f] font-bold text-xs text-[#3E2C1C] shadow-sm transition-all disabled:opacity-50"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#1B67BC] hover:bg-[#3885CC] font-bold text-xs text-white shadow-sm transition-all disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
               {isSubmitting ? "Menyimpan ke Basis Data..." : "Publikasikan Produk Hukum"}

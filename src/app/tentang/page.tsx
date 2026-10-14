@@ -177,24 +177,24 @@ export default function TentangPage() {
     <>
       <SiteHeader />
 
-      <main id="main-content" className="flex-1 py-8 sm:py-12 bg-[#FFFDF7]">
+      <main id="main-content" className="flex-1 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Breadcrumb Navigasi */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#6B5A48]">
-            <Link href="/" className="hover:text-[#3E2C1C] transition-colors">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#4A5568]">
+            <Link href="/" className="hover:text-[#1B67BC] transition-colors">
               Beranda
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#80691d]" />
-            <span className="font-semibold text-[#3E2C1C]">Tentang BLM & JDIH</span>
+            <ChevronRight className="w-3.5 h-3.5 text-[#1B67BC]" />
+            <span className="font-semibold text-[#1A1A1A]">Tentang BLM & JDIH</span>
           </nav>
 
           {/* ===================================================================
               1. HERO PROFIL & LOGO DUAL
              =================================================================== */}
-          <section className="rounded-3xl border border-[#E8DEC4] bg-white p-6 sm:p-10 lg:p-12 shadow-sm space-y-8">
+          <section className="rounded-3xl border border-[#A3D0EE] bg-white p-6 sm:p-10 lg:p-12 shadow-sm space-y-8">
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
               <div className="flex items-center gap-4 shrink-0">
-                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-[#FFFDF7] p-2 shadow-md border-2 border-[#d4af38] overflow-hidden flex items-center justify-center">
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white p-2 shadow-md border-2 border-[#1B67BC] overflow-hidden flex items-center justify-center">
                   <Image
                     src="/images/blm_logo.png"
                     alt="Logo Resmi BLM FEB UNAIR"
@@ -204,7 +204,7 @@ export default function TentangPage() {
                     priority
                   />
                 </div>
-                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-[#FFFDF7] p-2 shadow-md border-2 border-[#80691d] overflow-hidden flex items-center justify-center">
+                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white p-2 shadow-md border-2 border-[#3885CC] overflow-hidden flex items-center justify-center">
                   <Image
                     src="/images/parliament_logo.png"
                     alt="Logo Kabinet Cakrasena"
@@ -217,24 +217,24 @@ export default function TentangPage() {
               </div>
 
               <div className="space-y-3 text-center md:text-left flex-1">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#d4af38]/40 bg-[#d4af38]/10 px-3.5 py-1 text-xs font-bold text-[#80691d]">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#A3D0EE] bg-[#C6E8F7]/50 px-3.5 py-1 text-xs font-bold text-[#1B67BC]">
                   <Landmark className="w-3.5 h-3.5" />
                   <span>Kabinet Cakrasena • Periode 2026</span>
                 </div>
-                <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#3E2C1C] leading-tight">
+                <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#1A1A1A] leading-tight">
                   Badan Legislatif Mahasiswa FEB UNAIR
                 </h1>
-                <p className="text-sm sm:text-base text-[#80691d] font-serif italic font-semibold">
+                <p className="text-sm sm:text-base text-[#b96d41] font-serif italic font-semibold">
                   &quot;Menyatukan Aspirasi, Menegakkan Demokrasi&quot;
                 </p>
-                <p className="text-xs sm:text-sm text-[#6B5A48] leading-relaxed max-w-3xl">
+                <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed max-w-3xl">
                   Badan Legislatif Mahasiswa (BLM) adalah lembaga legislatif representasi tertinggi mahasiswa di tingkat Fakultas Ekonomi dan Bisnis Universitas Airlangga yang memegang teguh amanah penegakan konstitusi, pengawasan eksekutif, dan advokasi hak-hak mahasiswa.
                 </p>
               </div>
             </div>
 
             {/* Quote Komitmen */}
-            <div className="rounded-2xl border-l-4 border-[#d4af38] bg-[#FFFDF7] p-5 sm:p-6 text-xs sm:text-sm text-[#3E2C1C] leading-relaxed">
+            <div className="rounded-2xl border-l-4 border-[#1B67BC] bg-[#C6E8F7]/25 p-5 sm:p-6 text-xs sm:text-sm text-[#1A1A1A] leading-relaxed">
               <p className="font-medium italic">
                 &quot;BLM FEB UNAIR hadir sebagai ruang representasi mahasiswa yang berkomitmen untuk menampung partisipasi aktif dalam pengawasan, penyaluran aspirasi, serta advokasi yang sungguh-sungguh berpihak pada kebutuhan mahasiswa FEB UNAIR dengan menjunjung tinggi nilai humanis, profesional, dan berwibawa.&quot;
               </p>
@@ -246,13 +246,13 @@ export default function TentangPage() {
              =================================================================== */}
           <section className="space-y-6">
             <div className="text-center max-w-2xl mx-auto space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#80691d]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1B67BC]">
                 Landasan Kerja Parlemen
               </span>
-              <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#3E2C1C]">
+              <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#1A1A1A]">
                 Tri-Fungsi Pokok BLM FEB UNAIR
               </h2>
-              <p className="text-xs sm:text-sm text-[#6B5A48]">
+              <p className="text-xs sm:text-sm text-[#4A5568]">
                 Tiga pilar utama dalam menjalankan kedaulatan mahasiswa di lingkungan Fakultas Ekonomi dan Bisnis Universitas Airlangga.
               </p>
             </div>
@@ -263,21 +263,21 @@ export default function TentangPage() {
                 return (
                   <div
                     key={fn.title}
-                    className="rounded-2xl border border-[#E8DEC4] bg-white p-6 shadow-sm hover:shadow-md transition-shadow space-y-4 flex flex-col justify-between"
+                    className="rounded-2xl border border-[#A3D0EE] bg-white p-6 shadow-xs hover:shadow-md transition-shadow space-y-4 flex flex-col justify-between"
                   >
                     <div className="space-y-3">
-                      <div className="w-12 h-12 rounded-xl bg-[#FFFDF7] border border-[#d4af38] flex items-center justify-center text-[#80691d] shadow-xs">
-                        <IconComponent className="w-6 h-6 text-[#80691d]" />
+                      <div className="w-12 h-12 rounded-xl bg-[#C6E8F7]/40 border border-[#A3D0EE] flex items-center justify-center text-[#1B67BC] shadow-xs">
+                        <IconComponent className="w-6 h-6 text-[#1B67BC]" />
                       </div>
                       <div className="flex items-center justify-between">
-                        <h3 className="font-serif font-bold text-lg text-[#3E2C1C]">
+                        <h3 className="font-serif font-bold text-lg text-[#1A1A1A]">
                           {fn.title}
                         </h3>
-                        <span className="text-[11px] font-bold bg-[#d4af38]/20 text-[#80691d] px-2 py-0.5 rounded border border-[#d4af38]/30">
+                        <span className="text-[11px] font-bold bg-[#b96d41] text-white px-2 py-0.5 rounded shadow-xs">
                           {fn.code}
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm text-[#6B5A48] leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed">
                         {fn.desc}
                       </p>
                     </div>
@@ -291,34 +291,34 @@ export default function TentangPage() {
               3. VISI & MISI KABINET CAKRASENA
              =================================================================== */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            <div className="rounded-2xl bg-[#3E2C1C] text-[#FFFDF7] p-6 sm:p-8 shadow-md space-y-4 border border-[#80691d]/30 flex flex-col justify-between">
+            <div className="rounded-2xl bg-gradient-to-br from-[#1B67BC] to-[#124b8a] text-white p-6 sm:p-8 shadow-md space-y-4 border border-[#3885CC] flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#d4af38]">
+                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#C6E8F7]">
                   <Compass className="w-4 h-4" />
                   <span>Visi Kabinet Cakrasena 2026</span>
                 </div>
-                <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#FFFDF7] leading-snug">
+                <h3 className="font-serif font-bold text-xl sm:text-2xl text-white leading-snug">
                   Terwujudnya Lembaga Representasi Mahasiswa yang Profesional, Transparan, dan Berintegritas
                 </h3>
-                <p className="text-xs sm:text-sm text-[#FFFDF7]/85 leading-relaxed font-light">
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed font-light">
                   &quot;Terwujudnya Badan Legislatif Mahasiswa Fakultas Ekonomi dan Bisnis Universitas Airlangga yang profesional, transparan, dan berintegritas sebagai lembaga representasi mahasiswa dalam menjalankan fungsi legislasi, pengawasan, aspirasi, dan advokasi.&quot;
                 </p>
               </div>
-              <div className="pt-4 border-t border-[#FFFDF7]/15 text-xs text-[#d4af38] font-medium flex items-center gap-2">
-                <Sparkles className="w-4 h-4" />
+              <div className="pt-4 border-t border-white/20 text-xs text-[#C6E8F7] font-medium flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-[#A3D0EE]" />
                 <span>Poros Keadilan & Demokrasi Kampus FEB UNAIR</span>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-[#E8DEC4] bg-white p-6 sm:p-8 shadow-sm space-y-4">
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#80691d]">
+            <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-sm space-y-4">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1B67BC]">
                 <Award className="w-4 h-4" />
                 <span>Misi Kabinet Cakrasena 2026</span>
               </div>
-              <h3 className="font-serif font-bold text-xl text-[#3E2C1C]">
+              <h3 className="font-serif font-bold text-xl text-[#1A1A1A]">
                 Empat Pilar Strategis Pelaksanaan
               </h3>
-              <ul className="space-y-3 text-xs sm:text-sm text-[#6B5A48] leading-relaxed">
+              <ul className="space-y-3 text-xs sm:text-sm text-[#4A5568] leading-relaxed">
                 <li className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
                   <span>
@@ -350,15 +350,15 @@ export default function TentangPage() {
           {/* ===================================================================
               4. FILOSOFI NAMA & ELEMEN LOGO CAKRASENA
              =================================================================== */}
-          <section className="rounded-3xl border border-[#E8DEC4] bg-white p-6 sm:p-10 shadow-sm space-y-10">
+          <section className="rounded-3xl border border-[#A3D0EE] bg-white p-6 sm:p-10 shadow-sm space-y-10">
             <div className="max-w-3xl mx-auto text-center space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#80691d]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1B67BC]">
                 Makna Lambang & Identitas
               </span>
-              <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#3E2C1C]">
+              <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#1A1A1A]">
                 Filosofi Lambang Cakrasena
               </h2>
-              <p className="text-xs sm:text-sm text-[#6B5A48] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#4A5568] leading-relaxed">
                 Nama <strong>Cakrasena</strong> berasal dari kata <em>Cakra</em> (pusat kendali, keadilan, dan keseimbangan) serta <em>Sena</em> (barisan penjaga atau kekuatan terorganisir). Cakrasena dimaknai sebagai barisan legislatif yang menjadi poros keadilan demokrasi kampus.
               </p>
             </div>
@@ -368,18 +368,18 @@ export default function TentangPage() {
               {logoElements.map((el) => (
                 <div
                   key={el.name}
-                  className="rounded-2xl border border-[#E8DEC4] bg-[#FFFDF7] p-5 space-y-2 text-center hover:border-[#80691d] hover:-translate-y-1 transition-all"
+                  className="rounded-2xl border border-[#A3D0EE] bg-[#C6E8F7]/20 p-5 space-y-2 text-center hover:border-[#1B67BC] hover:-translate-y-1 transition-all"
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#d4af38]/20 border border-[#d4af38]/40 mx-auto flex items-center justify-center text-[#80691d] font-bold text-sm">
+                  <div className="w-10 h-10 rounded-full bg-[#1B67BC] text-white mx-auto flex items-center justify-center font-bold text-sm shadow-xs">
                     {el.name.charAt(0)}
                   </div>
-                  <h3 className="font-serif font-bold text-base text-[#3E2C1C]">
+                  <h3 className="font-serif font-bold text-base text-[#1A1A1A]">
                     {el.name}
                   </h3>
-                  <span className="text-[11px] font-bold text-[#80691d] block">
+                  <span className="text-[11px] font-bold text-[#1B67BC] block">
                     {el.meaning}
                   </span>
-                  <p className="text-xs text-[#6B5A48] leading-relaxed">
+                  <p className="text-xs text-[#4A5568] leading-relaxed">
                     {el.desc}
                   </p>
                 </div>
@@ -387,28 +387,28 @@ export default function TentangPage() {
             </div>
 
             {/* 3 Warna Logo */}
-            <div className="pt-6 border-t border-[#F2EBDA] space-y-4">
-              <h3 className="font-serif font-bold text-lg text-[#3E2C1C] text-center">
+            <div className="pt-6 border-t border-[#A3D0EE]/40 space-y-4">
+              <h3 className="font-serif font-bold text-lg text-[#1A1A1A] text-center">
                 Makna Tri-Warna Lambang
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {logoColors.map((color) => (
                   <div
                     key={color.name}
-                    className="flex rounded-xl border border-[#E8DEC4] bg-white overflow-hidden shadow-2xs"
+                    className="flex rounded-xl border border-[#A3D0EE] bg-white overflow-hidden shadow-xs"
                   >
                     <div
                       className="w-4 shrink-0"
                       style={{ backgroundColor: color.hex }}
                     ></div>
                     <div className="p-4 space-y-1">
-                      <h4 className="font-serif font-bold text-sm text-[#3E2C1C]">
+                      <h4 className="font-serif font-bold text-sm text-[#1A1A1A]">
                         {color.name}
                       </h4>
-                      <p className="text-[11px] font-bold text-[#80691d]">
+                      <p className="text-[11px] font-bold text-[#1B67BC]">
                         {color.title}
                       </p>
-                      <p className="text-xs text-[#6B5A48] leading-relaxed">
+                      <p className="text-xs text-[#4A5568] leading-relaxed">
                         {color.desc}
                       </p>
                     </div>
@@ -421,15 +421,15 @@ export default function TentangPage() {
           {/* ===================================================================
               5. STRUKTUR PARLEMEN & KOMISI
              =================================================================== */}
-          <section className="rounded-3xl border border-[#E8DEC4] bg-white p-6 sm:p-10 shadow-sm space-y-8">
+          <section className="rounded-3xl border border-[#A3D0EE] bg-white p-6 sm:p-10 shadow-sm space-y-8">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-[#80691d]" />
-                <h2 className="font-serif font-bold text-2xl text-[#3E2C1C]">
+                <Users className="w-5 h-5 text-[#1B67BC]" />
+                <h2 className="font-serif font-bold text-2xl text-[#1A1A1A]">
                   Struktur Organisasi & Komisi Parlemen
                 </h2>
               </div>
-              <p className="text-xs sm:text-sm text-[#6B5A48] max-w-3xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#4A5568] max-w-3xl leading-relaxed">
                 Struktur parlemen BLM FEB UNAIR terdiri dari Pimpinan (Ketua Umum, Sekretaris Jenderal, Bendahara Umum), 3 Komisi fungsional, 2 Biro pendukung, dan departemen teknis dengan total representasi 15 Anggota Parlemen (7 Independen PEMIRA + 8 Delegasi HIMA Prodi).
               </p>
             </div>
@@ -438,24 +438,24 @@ export default function TentangPage() {
               {commissions.map((comm) => (
                 <div
                   key={comm.code}
-                  className="rounded-2xl border border-[#E8DEC4] bg-[#FFFDF7] p-5 space-y-2.5 flex flex-col justify-between"
+                  className="rounded-2xl border border-[#A3D0EE] bg-[#C6E8F7]/15 p-5 space-y-2.5 flex flex-col justify-between"
                 >
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-xs font-bold text-[#80691d] bg-[#d4af38]/20 px-2 py-0.5 rounded border border-[#d4af38]/40">
+                      <span className="font-mono text-xs font-bold text-white bg-[#1B67BC] px-2 py-0.5 rounded shadow-xs">
                         {comm.code}
                       </span>
-                      <span className="text-[11px] text-[#6B5A48] font-medium">
+                      <span className="text-[11px] text-[#4A5568] font-medium">
                         BLM 2026
                       </span>
                     </div>
-                    <h3 className="font-serif font-bold text-base text-[#3E2C1C]">
+                    <h3 className="font-serif font-bold text-base text-[#1A1A1A]">
                       {comm.name}
                     </h3>
-                    <p className="text-[11px] font-bold text-[#80691d]">
+                    <p className="text-[11px] font-bold text-[#b96d41]">
                       {comm.role}
                     </p>
-                    <p className="text-xs text-[#6B5A48] leading-relaxed">
+                    <p className="text-xs text-[#4A5568] leading-relaxed">
                       {comm.desc}
                     </p>
                   </div>
@@ -464,22 +464,22 @@ export default function TentangPage() {
             </div>
 
             {/* Info Komposisi Keanggotaan */}
-            <div className="rounded-2xl bg-[#F7F1E3]/50 border border-[#E8DEC4] p-5 sm:p-6 space-y-3">
-              <h4 className="font-serif font-bold text-sm text-[#3E2C1C] flex items-center gap-2">
-                <Award className="w-4 h-4 text-[#80691d]" />
+            <div className="rounded-2xl bg-[#C6E8F7]/30 border border-[#A3D0EE] p-5 sm:p-6 space-y-3">
+              <h4 className="font-serif font-bold text-sm text-[#1A1A1A] flex items-center gap-2">
+                <Award className="w-4 h-4 text-[#1B67BC]" />
                 <span>Mekanisme Keterwakilan Anggota Parlemen</span>
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-[#6B5A48]">
-                <div className="bg-white p-3.5 rounded-xl border border-[#E8DEC4]">
-                  <strong className="text-[#3E2C1C] block mb-1">7 Anggota Independen</strong>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-[#4A5568]">
+                <div className="bg-white p-3.5 rounded-xl border border-[#A3D0EE]">
+                  <strong className="text-[#1A1A1A] block mb-1">7 Anggota Independen</strong>
                   Terpilih secara demokratis melalui Pemilihan Raya Mahasiswa (PEMIRA) tingkat fakultas.
                 </div>
-                <div className="bg-white p-3.5 rounded-xl border border-[#E8DEC4]">
-                  <strong className="text-[#3E2C1C] block mb-1">8 Anggota Delegasi</strong>
+                <div className="bg-white p-3.5 rounded-xl border border-[#A3D0EE]">
+                  <strong className="text-[#1A1A1A] block mb-1">8 Anggota Delegasi</strong>
                   Perwakilan delegasi resmi dari 4 HIMA Departemen (Manajemen, Akuntansi, Ekonomi Pembangunan, Ekonomi Islam).
                 </div>
-                <div className="bg-white p-3.5 rounded-xl border border-[#E8DEC4]">
-                  <strong className="text-[#3E2C1C] block mb-1">Staf Ahli Parlemen</strong>
+                <div className="bg-white p-3.5 rounded-xl border border-[#A3D0EE]">
+                  <strong className="text-[#1A1A1A] block mb-1">Staf Ahli Parlemen</strong>
                   Hasil seleksi terbuka (Open Recruitment) mahasiswa FEB UNAIR untuk memperkuat fungsi teknis komisi.
                 </div>
               </div>
@@ -489,15 +489,15 @@ export default function TentangPage() {
           {/* ===================================================================
               6. FASILITAS & TEMPAT PERSIDANGAN
              =================================================================== */}
-          <section className="rounded-3xl border border-[#E8DEC4] bg-white p-6 sm:p-10 shadow-sm space-y-6">
+          <section className="rounded-3xl border border-[#A3D0EE] bg-white p-6 sm:p-10 shadow-sm space-y-6">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <Building2 className="w-5 h-5 text-[#80691d]" />
-                <h2 className="font-serif font-bold text-2xl text-[#3E2C1C]">
+                <Building2 className="w-5 h-5 text-[#1B67BC]" />
+                <h2 className="font-serif font-bold text-2xl text-[#1A1A1A]">
                   Sekretariat & Tempat Penyelenggaraan
                 </h2>
               </div>
-              <p className="text-xs sm:text-sm text-[#6B5A48] max-w-3xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#4A5568] max-w-3xl leading-relaxed">
                 Fasilitas dan tempat persidangan resmi yang digunakan dalam seluruh rangkaian kegiatan legislasi, pengawasan, dan advokasi BLM FEB UNAIR.
               </p>
             </div>
@@ -506,20 +506,20 @@ export default function TentangPage() {
               {venues.map((venue) => (
                 <div
                   key={venue.name}
-                  className="rounded-2xl border border-[#E8DEC4] bg-[#FFFDF7] p-5 space-y-2.5 flex flex-col justify-between"
+                  className="rounded-2xl border border-[#A3D0EE] bg-[#C6E8F7]/15 p-5 space-y-2.5 flex flex-col justify-between"
                 >
                   <div className="space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#80691d] bg-[#d4af38]/20 px-2 py-0.5 rounded border border-[#d4af38]/30 inline-block">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-white bg-[#b96d41] px-2 py-0.5 rounded shadow-xs inline-block">
                       {venue.badge}
                     </span>
-                    <h3 className="font-serif font-bold text-sm text-[#3E2C1C]">
+                    <h3 className="font-serif font-bold text-sm text-[#1A1A1A]">
                       {venue.name}
                     </h3>
-                    <p className="text-[11px] font-semibold text-[#80691d] flex items-start gap-1">
-                      <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                    <p className="text-[11px] font-semibold text-[#1B67BC] flex items-start gap-1">
+                      <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5 text-[#1B67BC]" />
                       <span>{venue.location}</span>
                     </p>
-                    <p className="text-xs text-[#6B5A48] leading-relaxed">
+                    <p className="text-xs text-[#4A5568] leading-relaxed">
                       {venue.desc}
                     </p>
                   </div>
@@ -531,45 +531,45 @@ export default function TentangPage() {
           {/* ===================================================================
               7. KONTAK & NARAHUBUNG RESMI
              =================================================================== */}
-          <section className="rounded-3xl border border-[#E8DEC4] bg-[#3E2C1C] text-[#FFFDF7] p-6 sm:p-10 shadow-md space-y-6">
+          <section className="rounded-3xl border border-[#A3D0EE]/30 bg-[#1A1A1A] text-white p-6 sm:p-10 shadow-md space-y-6">
             <div className="space-y-2 text-center sm:text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#d4af38]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#A3D0EE]">
                 Komunikasi Resmi
               </span>
-              <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#FFFDF7]">
+              <h2 className="font-serif font-bold text-2xl sm:text-3xl text-white">
                 Hubungi Sekretariat & Narahubung Parlemen
               </h2>
-              <p className="text-xs sm:text-sm text-[#FFFDF7]/80 max-w-2xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#C6E8F7]/85 max-w-2xl leading-relaxed">
                 Mahasiswa, ormawa, atau instansi yang memerlukan koordinasi resmi, salinan fisik berkas, atau audiensi persidangan dapat menghubungi kami melalui saluran resmi berikut.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-              <div className="rounded-xl bg-[#FFFDF7]/10 p-4 border border-[#FFFDF7]/15 space-y-1">
-                <span className="text-[11px] font-bold text-[#d4af38] flex items-center gap-1.5">
+              <div className="rounded-xl bg-white/10 p-4 border border-white/15 space-y-1">
+                <span className="text-[11px] font-bold text-[#A3D0EE] flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5" />
                   <span>Sekretariat Fisik</span>
                 </span>
-                <p className="text-xs text-[#FFFDF7]/90 leading-relaxed">
+                <p className="text-xs text-white/90 leading-relaxed">
                   Graha Krida Mahasiswa (GKM) Lt. 1, FEB UNAIR, Kampus B, Jl. Airlangga 4-6 Surabaya.
                 </p>
               </div>
 
-              <div className="rounded-xl bg-[#FFFDF7]/10 p-4 border border-[#FFFDF7]/15 space-y-1">
-                <span className="text-[11px] font-bold text-[#d4af38] flex items-center gap-1.5">
+              <div className="rounded-xl bg-white/10 p-4 border border-white/15 space-y-1">
+                <span className="text-[11px] font-bold text-[#A3D0EE] flex items-center gap-1.5">
                   <Mail className="w-3.5 h-3.5" />
                   <span>Surel Resmi</span>
                 </span>
                 <a
                   href="mailto:blmfebunair2026@gmail.com"
-                  className="text-xs text-[#FFFDF7] hover:text-[#d4af38] transition-colors block underline"
+                  className="text-xs text-[#C6E8F7] hover:text-white transition-colors block underline"
                 >
                   blmfebunair2026@gmail.com
                 </a>
               </div>
 
-              <div className="rounded-xl bg-[#FFFDF7]/10 p-4 border border-[#FFFDF7]/15 space-y-1">
-                <span className="text-[11px] font-bold text-[#d4af38] flex items-center gap-1.5">
+              <div className="rounded-xl bg-white/10 p-4 border border-white/15 space-y-1">
+                <span className="text-[11px] font-bold text-[#A3D0EE] flex items-center gap-1.5">
                   <InstagramIcon className="w-3.5 h-3.5" />
                   <span>Instagram</span>
                 </span>
@@ -577,14 +577,14 @@ export default function TentangPage() {
                   href="https://www.instagram.com/blmfebunair"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-[#FFFDF7] hover:text-[#d4af38] transition-colors block underline"
+                  className="text-xs text-[#C6E8F7] hover:text-white transition-colors block underline"
                 >
                   @blmfebunair
                 </a>
               </div>
 
-              <div className="rounded-xl bg-[#FFFDF7]/10 p-4 border border-[#FFFDF7]/15 space-y-1">
-                <span className="text-[11px] font-bold text-[#d4af38] flex items-center gap-1.5">
+              <div className="rounded-xl bg-white/10 p-4 border border-white/15 space-y-1">
+                <span className="text-[11px] font-bold text-[#A3D0EE] flex items-center gap-1.5">
                   <Phone className="w-3.5 h-3.5" />
                   <span>WhatsApp Narahubung</span>
                 </span>
@@ -595,7 +595,7 @@ export default function TentangPage() {
                       href="https://wa.me/6281333185886"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#d4af38] hover:underline font-semibold"
+                      className="text-[#b96d41] hover:underline font-semibold"
                     >
                       0813-3318-5886
                     </a>
@@ -606,7 +606,7 @@ export default function TentangPage() {
                       href="https://wa.me/628155010561"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#d4af38] hover:underline font-semibold"
+                      className="text-[#b96d41] hover:underline font-semibold"
                     >
                       0815-5010-561
                     </a>

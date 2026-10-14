@@ -99,26 +99,26 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
     <>
       <SiteHeader />
 
-      <main id="main-content" className="flex-1 py-8 sm:py-12 bg-[#FFFDF7]">
+      <main id="main-content" className="flex-1 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {/* Breadcrumb Navigasi */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#6B5A48] flex-wrap">
-            <Link href="/" className="hover:text-[#3E2C1C] transition-colors">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-stone-600 flex-wrap">
+            <Link href="/" className="hover:text-[#1B67BC] transition-colors">
               Beranda
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#80691d]" />
-            <Link href="/produk-hukum" className="hover:text-[#3E2C1C] transition-colors">
+            <ChevronRight className="w-3.5 h-3.5 text-[#3885CC]" />
+            <Link href="/produk-hukum" className="hover:text-[#1B67BC] transition-colors">
               Produk Hukum
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#80691d]" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#3885CC]" />
             <Link
               href={`/produk-hukum/jenis/${doc.typeSlug}`}
-              className="hover:text-[#3E2C1C] transition-colors"
+              className="hover:text-[#1B67BC] transition-colors"
             >
               {doc.typeName}
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#80691d]" />
-            <span className="font-mono font-semibold text-[#80691d] truncate max-w-[200px]">
+            <ChevronRight className="w-3.5 h-3.5 text-[#3885CC]" />
+            <span className="font-mono font-semibold text-[#1B67BC] truncate max-w-[200px]">
               {doc.officialNumber}
             </span>
           </nav>
@@ -162,7 +162,7 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
           )}
 
           {/* Header Dokumen */}
-          <div className="rounded-2xl border border-[#E8DEC4] bg-white p-6 sm:p-8 shadow-2xs space-y-4">
+          <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-2xs space-y-4">
             <div className="flex items-center gap-2 flex-wrap">
               <TypeBadge type={doc.type} />
               <StatusBadge
@@ -170,30 +170,30 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                 publicationState={doc.publicationState}
               />
               {doc.nature && (
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-stone-100 text-[#6B5A48] border border-stone-200">
+                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#C6E8F7]/30 text-[#1B67BC] border border-[#A3D0EE]">
                   {doc.nature === "A_INTERNAL" ? "Sifat Internal (A)" : "Sifat Eksternal (B)"}
                 </span>
               )}
             </div>
 
-            <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#3E2C1C] leading-snug">
+            <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#1A1A1A] leading-snug">
               {doc.title}
             </h1>
 
             {/* Nomor Resmi Monospace Bar */}
-            <div className="flex items-center justify-between gap-3 pt-3 border-t border-[#F2EBDA] flex-wrap">
+            <div className="flex items-center justify-between gap-3 pt-3 border-t border-[#A3D0EE]/50 flex-wrap">
               <div className="flex items-center gap-2">
-                <span className="text-xs text-[#6B5A48] font-medium">Nomor Resmi:</span>
-                <span className="font-mono text-xs sm:text-sm font-bold text-[#80691d] bg-[#FFFDF7] px-3 py-1 rounded-md border border-[#E8DEC4]">
+                <span className="text-xs text-stone-600 font-medium">Nomor Resmi:</span>
+                <span className="font-mono text-xs sm:text-sm font-bold text-[#1B67BC] bg-[#C6E8F7]/30 px-3 py-1 rounded-md border border-[#A3D0EE]">
                   {doc.officialNumber}
                 </span>
                 <CopyButton textToCopy={doc.officialNumber} label="Salin Nomor" />
               </div>
 
               {doc.legacyNumber && (
-                <div className="text-xs text-[#6B5A48]">
+                <div className="text-xs text-stone-600">
                   <span>Nomor Register Asli: </span>
-                  <span className="font-mono font-medium text-[#3E2C1C]">{doc.legacyNumber}</span>
+                  <span className="font-mono font-medium text-[#1A1A1A]">{doc.legacyNumber}</span>
                 </div>
               )}
             </div>
@@ -204,21 +204,21 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
             {/* Kolom Utama (8 Kolom) */}
             <div className="lg:col-span-8 space-y-8">
               {/* Ringkasan Dokumen */}
-              <section className="rounded-2xl border border-[#E8DEC4] bg-white p-6 sm:p-8 shadow-2xs space-y-3">
-                <h2 className="font-serif font-bold text-lg text-[#3E2C1C] border-b border-[#F2EBDA] pb-2 flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-[#80691d]" />
+              <section className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-2xs space-y-3">
+                <h2 className="font-serif font-bold text-lg text-[#1A1A1A] border-b border-[#A3D0EE]/50 pb-2 flex items-center gap-2">
+                  <FileText className="w-5 h-5 text-[#1B67BC]" />
                   <span>Ringkasan / Abstrak Peraturan</span>
                 </h2>
-                <p className="text-sm text-[#3E2C1C] leading-relaxed">
+                <p className="text-sm text-[#1A1A1A] leading-relaxed">
                   {doc.summary}
                 </p>
                 {doc.tags.length > 0 && (
                   <div className="pt-3 flex items-center gap-2 flex-wrap">
-                    <span className="text-xs font-semibold text-[#6B5A48]">Subjek / Tag:</span>
+                    <span className="text-xs font-semibold text-stone-600">Subjek / Tag:</span>
                     {doc.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-md bg-[#F7F1E3] px-2 py-0.5 text-xs text-[#80691d] font-medium border border-[#E8DEC4]"
+                        className="rounded-md bg-[#C6E8F7]/30 px-2 py-0.5 text-xs text-[#1B67BC] font-medium border border-[#A3D0EE]"
                       >
                         #{tag}
                       </span>
@@ -231,28 +231,28 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
               <CitationBox citation={citationText} />
 
               {/* Viewer PDF Placeholder */}
-              <section className="rounded-2xl border border-[#E8DEC4] bg-white p-6 sm:p-8 shadow-2xs space-y-4">
-                <div className="flex items-center justify-between border-b border-[#F2EBDA] pb-3">
-                  <h2 className="font-serif font-bold text-lg text-[#3E2C1C] flex items-center gap-2">
-                    <BookOpen className="w-5 h-5 text-[#80691d]" />
+              <section className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-2xs space-y-4">
+                <div className="flex items-center justify-between border-b border-[#A3D0EE]/50 pb-3">
+                  <h2 className="font-serif font-bold text-lg text-[#1A1A1A] flex items-center gap-2">
+                    <BookOpen className="w-5 h-5 text-[#1B67BC]" />
                     <span>Naskah Dokumen Digital</span>
                   </h2>
-                  <span className="text-xs text-[#6B5A48] flex items-center gap-1 font-mono">
-                    <ShieldCheck className="w-4 h-4 text-emerald-700" />
+                  <span className="text-xs text-stone-600 flex items-center gap-1 font-mono">
+                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
                     <span>SHA-256 Terverifikasi</span>
                   </span>
                 </div>
 
                 {/* PDF Display Container */}
-                <div className="rounded-xl border-2 border-dashed border-[#E8DEC4] bg-[#FFFDF7] p-8 sm:p-12 text-center space-y-4">
-                  <div className="mx-auto w-16 h-16 rounded-2xl bg-[#F7F1E3] flex items-center justify-center text-[#80691d] shadow-2xs">
+                <div className="rounded-xl border-2 border-dashed border-[#A3D0EE] bg-[#C6E8F7]/15 p-8 sm:p-12 text-center space-y-4">
+                  <div className="mx-auto w-16 h-16 rounded-2xl bg-white border border-[#A3D0EE] flex items-center justify-center text-[#1B67BC] shadow-2xs">
                     <FileText className="w-8 h-8" />
                   </div>
                   <div className="space-y-1">
-                    <h3 className="font-serif font-bold text-base text-[#3E2C1C]">
+                    <h3 className="font-serif font-bold text-base text-[#1A1A1A]">
                       Salinan Resmi Berkas Produk Hukum
                     </h3>
-                    <p className="text-xs text-[#6B5A48] max-w-md mx-auto leading-relaxed">
+                    <p className="text-xs text-stone-600 max-w-md mx-auto leading-relaxed">
                       Dokumen digital resmi bertanda tangan dari Biro Administrasi & Sekretariat Badan Legislatif Mahasiswa FEB UNAIR.
                     </p>
                   </div>
@@ -260,7 +260,7 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                   <div className="pt-2 flex items-center justify-center gap-3 flex-wrap">
                     <a
                       href={`/dokumen/${doc.slug}/unduh`}
-                      className="inline-flex items-center gap-2 rounded-xl bg-[#3E2C1C] px-5 py-2.5 text-xs font-bold text-[#d4af38] shadow-md hover:bg-[#2e2014] transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 rounded-xl bg-[#1B67BC] px-5 py-2.5 text-xs font-bold text-white shadow-md hover:bg-[#3885CC] transition-all cursor-pointer"
                     >
                       <Download className="w-4 h-4" />
                       <span>Unduh Berkas PDF Resmi</span>
@@ -269,14 +269,14 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                       href={`/dokumen/${doc.slug}/lihat`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-[#E8DEC4] bg-white px-5 py-2.5 text-xs font-bold text-[#3E2C1C] hover:bg-[#F7F1E3] transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 rounded-xl border border-[#A3D0EE] bg-white px-5 py-2.5 text-xs font-bold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 transition-all cursor-pointer"
                     >
                       <span>Buka di Tab Baru</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-[#80691d]" />
+                      <ExternalLink className="w-3.5 h-3.5 text-[#1B67BC]" />
                     </a>
                   </div>
 
-                  <div className="pt-4 text-[11px] text-[#6B5A48] flex items-center justify-center gap-4 flex-wrap border-t border-[#F2EBDA]/80">
+                  <div className="pt-4 text-[11px] text-stone-500 flex items-center justify-center gap-4 flex-wrap border-t border-[#A3D0EE]/40">
                     <span>Format: Dokumen PDF</span>
                     <span>•</span>
                     <span>Tersimpan di Cloudflare R2 Privat</span>
@@ -289,71 +289,71 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
 
             {/* Kolom Samping: Tabel Metadata Standar JDIHN (4 Kolom) */}
             <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
-              <div className="rounded-2xl border border-[#E8DEC4] bg-white p-6 shadow-2xs space-y-4">
-                <h3 className="font-serif font-bold text-base text-[#3E2C1C] border-b border-[#F2EBDA] pb-2">
+              <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 shadow-2xs space-y-4">
+                <h3 className="font-serif font-bold text-base text-[#1A1A1A] border-b border-[#A3D0EE]/50 pb-2">
                   Tabel Metadata JDIHN
                 </h3>
 
-                <dl className="text-xs divide-y divide-[#F2EBDA] space-y-0">
+                <dl className="text-xs divide-y divide-[#A3D0EE]/40 space-y-0">
                   <div className="py-2.5 flex justify-between gap-3">
-                    <dt className="text-[#6B5A48] font-medium shrink-0">Jenis Produk</dt>
-                    <dd className="font-bold text-[#3E2C1C] text-right">{doc.typeName}</dd>
+                    <dt className="text-stone-600 font-medium shrink-0">Jenis Produk</dt>
+                    <dd className="font-bold text-[#1A1A1A] text-right">{doc.typeName}</dd>
                   </div>
                   <div className="py-2.5 flex justify-between gap-3">
-                    <dt className="text-[#6B5A48] font-medium shrink-0">Nomor Resmi</dt>
-                    <dd className="font-mono font-bold text-[#80691d] text-right">{doc.officialNumber}</dd>
+                    <dt className="text-stone-600 font-medium shrink-0">Nomor Resmi</dt>
+                    <dd className="font-mono font-bold text-[#1B67BC] text-right">{doc.officialNumber}</dd>
                   </div>
                   <div className="py-2.5 flex justify-between gap-3">
-                    <dt className="text-[#6B5A48] font-medium shrink-0">Tahun</dt>
-                    <dd className="font-bold text-[#3E2C1C] text-right">{doc.year}</dd>
+                    <dt className="text-stone-600 font-medium shrink-0">Tahun</dt>
+                    <dd className="font-bold text-[#1A1A1A] text-right">{doc.year}</dd>
                   </div>
                   {doc.nature && (
                     <div className="py-2.5 flex justify-between gap-3">
-                      <dt className="text-[#6B5A48] font-medium shrink-0">Sifat Surat</dt>
-                      <dd className="font-bold text-[#3E2C1C] text-right">
+                      <dt className="text-stone-600 font-medium shrink-0">Sifat Surat</dt>
+                      <dd className="font-bold text-[#1A1A1A] text-right">
                         {doc.nature === "A_INTERNAL" ? "Internal (A)" : "Eksternal (B)"}
                       </dd>
                     </div>
                   )}
                   {doc.abbreviationCode && (
                     <div className="py-2.5 flex justify-between gap-3">
-                      <dt className="text-[#6B5A48] font-medium shrink-0">Kode Singkatan</dt>
-                      <dd className="font-mono font-bold text-[#3E2C1C] text-right">{doc.abbreviationCode}</dd>
+                      <dt className="text-stone-600 font-medium shrink-0">Kode Singkatan</dt>
+                      <dd className="font-mono font-bold text-[#1A1A1A] text-right">{doc.abbreviationCode}</dd>
                     </div>
                   )}
                   <div className="py-2.5 flex justify-between gap-3">
-                    <dt className="text-[#6B5A48] font-medium shrink-0">Forum Penetapan</dt>
-                    <dd className="font-bold text-[#3E2C1C] text-right">{doc.forum}</dd>
+                    <dt className="text-stone-600 font-medium shrink-0">Forum Penetapan</dt>
+                    <dd className="font-bold text-[#1A1A1A] text-right">{doc.forum}</dd>
                   </div>
                   <div className="py-2.5 flex justify-between gap-3">
-                    <dt className="text-[#6B5A48] font-medium shrink-0">Tempat Penetapan</dt>
-                    <dd className="font-bold text-[#3E2C1C] text-right">{doc.placeOfEnactment}</dd>
+                    <dt className="text-stone-600 font-medium shrink-0">Tempat Penetapan</dt>
+                    <dd className="font-bold text-[#1A1A1A] text-right">{doc.placeOfEnactment}</dd>
                   </div>
                   <div className="py-2.5 flex justify-between gap-3">
-                    <dt className="text-[#6B5A48] font-medium shrink-0">Tanggal Penetapan</dt>
-                    <dd className="font-bold text-[#3E2C1C] text-right">{doc.enactedDateFormatted}</dd>
+                    <dt className="text-stone-600 font-medium shrink-0">Tanggal Penetapan</dt>
+                    <dd className="font-bold text-[#1A1A1A] text-right">{doc.enactedDateFormatted}</dd>
                   </div>
                   <div className="py-2.5 flex justify-between gap-3">
-                    <dt className="text-[#6B5A48] font-medium shrink-0">Status Keberlakuan</dt>
-                    <dd className="font-bold text-[#3E2C1C] text-right">
+                    <dt className="text-stone-600 font-medium shrink-0">Status Keberlakuan</dt>
+                    <dd className="font-bold text-[#1A1A1A] text-right">
                       <StatusBadge status={doc.legalStatus} size="sm" />
                     </dd>
                   </div>
                   <div className="py-2.5 flex justify-between gap-3">
-                    <dt className="text-[#6B5A48] font-medium shrink-0">Bahasa</dt>
-                    <dd className="font-bold text-[#3E2C1C] text-right">Bahasa Indonesia</dd>
+                    <dt className="text-stone-600 font-medium shrink-0">Bahasa</dt>
+                    <dd className="font-bold text-[#1A1A1A] text-right">Bahasa Indonesia</dd>
                   </div>
                   <div className="py-2.5 flex justify-between gap-3">
-                    <dt className="text-[#6B5A48] font-medium shrink-0">Lokasi Penerbit</dt>
-                    <dd className="font-bold text-[#3E2C1C] text-right">BLM FEB UNAIR</dd>
+                    <dt className="text-stone-600 font-medium shrink-0">Lokasi Penerbit</dt>
+                    <dd className="font-bold text-[#1A1A1A] text-right">BLM FEB UNAIR</dd>
                   </div>
                 </dl>
 
                 {/* Tombol Aksi Tambahan */}
-                <div className="pt-3 border-t border-[#F2EBDA] space-y-2">
+                <div className="pt-3 border-t border-[#A3D0EE]/50 space-y-2">
                   <a
                     href={`/dokumen/${doc.slug}/unduh`}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#3E2C1C] py-2.5 text-xs font-bold text-[#d4af38] shadow-xs hover:bg-[#2e2014] transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#1B67BC] py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#3885CC] transition-all cursor-pointer"
                   >
                     <Download className="w-4 h-4" />
                     <span>Unduh PDF Dokumen</span>
@@ -361,7 +361,7 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
 
                   <Link
                     href="/permohonan"
-                    className="w-full flex items-center justify-center gap-2 rounded-xl border border-[#E8DEC4] bg-white py-2.5 text-xs font-semibold text-[#3E2C1C] hover:bg-[#F7F1E3] transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl border border-[#A3D0EE] bg-white py-2.5 text-xs font-semibold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 transition-all cursor-pointer"
                   >
                     <span>Permohonan Informasi Terkait</span>
                   </Link>

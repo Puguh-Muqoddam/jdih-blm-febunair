@@ -11,13 +11,13 @@ interface TypeBadgeProps {
 export function TypeBadge({ type, className = "", size = "md" }: TypeBadgeProps) {
   const sizeClasses = size === "sm" ? "px-2 py-0.5 text-xs font-semibold" : "px-2.5 py-1 text-xs font-bold tracking-wider";
 
-  // Aturan warna jenis selaras §11.3:
-  // UU = dark, TAP = accent, SK = secondary-strong, LP = muted
+  // Aturan warna jenis selaras palet Biru + Terracotta:
+  // UU = Dark Charcoal (#1A1A1A), TAP = Terracotta (#b96d41), SK = Deep Blue (#1B67BC), LP = Medium Blue (#3885CC)
   switch (type) {
     case "UU":
       return (
         <span
-          className={`inline-flex items-center rounded-md bg-[#3E2C1C] text-[#FFFDF7] shadow-xs ${sizeClasses} ${className}`}
+          className={`inline-flex items-center rounded-md bg-[#1A1A1A] text-white shadow-xs ${sizeClasses} ${className}`}
           title="Undang-Undang"
         >
           UU
@@ -27,7 +27,7 @@ export function TypeBadge({ type, className = "", size = "md" }: TypeBadgeProps)
     case "TAP":
       return (
         <span
-          className={`inline-flex items-center rounded-md bg-[#80691d] text-[#FFFDF7] shadow-xs ${sizeClasses} ${className}`}
+          className={`inline-flex items-center rounded-md bg-[#b96d41] text-white shadow-xs ${sizeClasses} ${className}`}
           title="Ketetapan BLM"
         >
           TAP
@@ -37,7 +37,7 @@ export function TypeBadge({ type, className = "", size = "md" }: TypeBadgeProps)
     case "SK":
       return (
         <span
-          className={`inline-flex items-center rounded-md bg-[#96552f] text-[#FFFDF7] shadow-xs ${sizeClasses} ${className}`}
+          className={`inline-flex items-center rounded-md bg-[#1B67BC] text-white shadow-xs ${sizeClasses} ${className}`}
           title="Surat Keputusan"
         >
           SK
@@ -47,7 +47,7 @@ export function TypeBadge({ type, className = "", size = "md" }: TypeBadgeProps)
     case "LP":
       return (
         <span
-          className={`inline-flex items-center rounded-md bg-[#6B5A48] text-[#FFFDF7] shadow-xs ${sizeClasses} ${className}`}
+          className={`inline-flex items-center rounded-md bg-[#3885CC] text-white shadow-xs ${sizeClasses} ${className}`}
           title="Surat Laporan"
         >
           LP

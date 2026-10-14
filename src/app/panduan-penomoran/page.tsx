@@ -41,53 +41,53 @@ export default function PanduanPenomoranPage() {
     <>
       <SiteHeader />
 
-      <main id="main-content" className="flex-1 py-8 sm:py-12 bg-[#FFFDF7]">
+      <main id="main-content" className="flex-1 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           {/* Breadcrumb Navigasi */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#6B5A48]">
-            <Link href="/" className="hover:text-[#3E2C1C] transition-colors">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#4A5568]">
+            <Link href="/" className="hover:text-[#1B67BC] transition-colors">
               Beranda
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#80691d]" />
-            <span className="font-semibold text-[#3E2C1C]">Panduan Penomoran</span>
+            <ChevronRight className="w-3.5 h-3.5 text-[#1B67BC]" />
+            <span className="font-semibold text-[#1A1A1A]">Panduan Penomoran</span>
           </nav>
 
           {/* Header Halaman */}
           <div className="space-y-1">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#80691d] flex items-center gap-1.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#1B67BC] flex items-center gap-1.5">
               <Hash className="w-3.5 h-3.5" />
               <span>Standarisasi Biro Administrasi</span>
             </span>
-            <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#3E2C1C]">
+            <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#1A1A1A]">
               Pedoman & Format Penomoran Resmi
             </h1>
-            <p className="text-xs sm:text-sm text-[#6B5A48] max-w-2xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#4A5568] max-w-2xl leading-relaxed">
               Panduan lengkap tata cara penomoran produk hukum legislatif mahasiswa FEB Universitas Airlangga berdasarkan Buku Panduan & Kode Biro Administrasi (BIRAD).
             </p>
           </div>
 
           {/* Bagian 1: 4 Format Utama Produk Hukum */}
           <section className="space-y-4">
-            <h2 className="font-serif font-bold text-xl text-[#3E2C1C]">
+            <h2 className="font-serif font-bold text-xl text-[#1A1A1A]">
               Format Penomoran Berdasarkan Jenis
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Kartu UU */}
-              <div className="rounded-2xl border border-[#E8DEC4] bg-white p-6 shadow-2xs space-y-3">
+              <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 shadow-xs space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs bg-[#3E2C1C] text-white px-2.5 py-0.5 rounded">
+                  <span className="font-bold text-xs bg-[#1A1A1A] text-white px-2.5 py-0.5 rounded shadow-xs">
                     Undang-Undang (UU)
                   </span>
-                  <span className="text-xs text-[#6B5A48] font-mono">Padding: 2 Digit</span>
+                  <span className="text-xs text-[#4A5568] font-mono">Padding: 2 Digit</span>
                 </div>
-                <div className="rounded-lg bg-[#FFFDF7] border border-[#E8DEC4] p-3 font-mono text-xs font-bold text-[#80691d]">
+                <div className="rounded-lg bg-[#C6E8F7]/30 border border-[#A3D0EE] p-3 font-mono text-xs font-bold text-[#1B67BC]">
                   [2 digit]/UU/BLMFEBUNAIR/[Bulan Romawi]/[Tahun]
                 </div>
-                <div className="text-xs text-[#6B5A48] space-y-1">
+                <div className="text-xs text-[#4A5568] space-y-1">
                   <p>
                     <strong>Contoh:</strong>{" "}
-                    <code className="text-[#3E2C1C] font-mono">01/UU/BLMFEBUNAIR/VIII/2026</code>
+                    <code className="text-[#1A1A1A] font-mono">01/UU/BLMFEBUNAIR/VIII/2026</code>
                   </p>
                   <p className="text-[11px] leading-relaxed">
                     Klausul penomoran UU ditulis tanpa tanda titik atau spasi di antara kode institusi <code>BLMFEBUNAIR</code>.
@@ -96,20 +96,20 @@ export default function PanduanPenomoranPage() {
               </div>
 
               {/* Kartu TAP */}
-              <div className="rounded-2xl border border-[#E8DEC4] bg-white p-6 shadow-2xs space-y-3">
+              <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 shadow-xs space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs bg-[#80691d] text-white px-2.5 py-0.5 rounded">
+                  <span className="font-bold text-xs bg-[#b96d41] text-white px-2.5 py-0.5 rounded shadow-xs">
                     Ketetapan BLM (TAP)
                   </span>
-                  <span className="text-xs text-[#6B5A48] font-mono">Padding: 3 Digit</span>
+                  <span className="text-xs text-[#4A5568] font-mono">Padding: 3 Digit</span>
                 </div>
-                <div className="rounded-lg bg-[#FFFDF7] border border-[#E8DEC4] p-3 font-mono text-xs font-bold text-[#80691d]">
+                <div className="rounded-lg bg-[#C6E8F7]/30 border border-[#A3D0EE] p-3 font-mono text-xs font-bold text-[#1B67BC]">
                   [3 digit]/TAP/BLM/[Bulan Romawi]/[Tahun]
                 </div>
-                <div className="text-xs text-[#6B5A48] space-y-1">
+                <div className="text-xs text-[#4A5568] space-y-1">
                   <p>
                     <strong>Contoh:</strong>{" "}
-                    <code className="text-[#3E2C1C] font-mono">002/TAP/BLM/VII/2026</code>
+                    <code className="text-[#1A1A1A] font-mono">002/TAP/BLM/VII/2026</code>
                   </p>
                   <p className="text-[11px] leading-relaxed">
                     Ditetapkan pada Sidang Pleno BLM atau Sidang Protap dengan nomor urut berurutan tiga angka.
@@ -118,22 +118,22 @@ export default function PanduanPenomoranPage() {
               </div>
 
               {/* Kartu SK */}
-              <div className="rounded-2xl border border-[#E8DEC4] bg-white p-6 shadow-2xs space-y-3">
+              <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 shadow-xs space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs bg-[#96552f] text-white px-2.5 py-0.5 rounded">
+                  <span className="font-bold text-xs bg-[#1B67BC] text-white px-2.5 py-0.5 rounded shadow-xs">
                     Surat Keputusan (SK)
                   </span>
-                  <span className="text-xs text-[#96552f] font-mono font-bold">
+                  <span className="text-xs text-[#1B67BC] font-mono font-bold">
                     Wajib 4 Digit (0000)
                   </span>
                 </div>
-                <div className="rounded-lg bg-[#FFFDF7] border border-[#E8DEC4] p-3 font-mono text-xs font-bold text-[#80691d] break-all">
+                <div className="rounded-lg bg-[#C6E8F7]/30 border border-[#A3D0EE] p-3 font-mono text-xs font-bold text-[#1B67BC] break-all">
                   [4 digit]/UN.3.1.4/[A|B]/[Kode Singkatan]/BLM/[Bulan Romawi]/[Tahun]
                 </div>
-                <div className="text-xs text-[#6B5A48] space-y-1">
+                <div className="text-xs text-[#4A5568] space-y-1">
                   <p>
                     <strong>Contoh:</strong>{" "}
-                    <code className="text-[#3E2C1C] font-mono">
+                    <code className="text-[#1A1A1A] font-mono">
                       0148/UN.3.1.4/B/SKKEPENGURUSANSEMENTARA/BLM/IX/2026
                     </code>
                   </p>
@@ -144,20 +144,20 @@ export default function PanduanPenomoranPage() {
               </div>
 
               {/* Kartu LP */}
-              <div className="rounded-2xl border border-[#E8DEC4] bg-white p-6 shadow-2xs space-y-3">
+              <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 shadow-xs space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs bg-[#6B5A48] text-white px-2.5 py-0.5 rounded">
+                  <span className="font-bold text-xs bg-[#3885CC] text-white px-2.5 py-0.5 rounded shadow-xs">
                     Surat Laporan (LP)
                   </span>
-                  <span className="text-xs text-[#6B5A48] font-mono">Padding: 3 Digit</span>
+                  <span className="text-xs text-[#4A5568] font-mono">Padding: 3 Digit</span>
                 </div>
-                <div className="rounded-lg bg-[#FFFDF7] border border-[#E8DEC4] p-3 font-mono text-xs font-bold text-[#80691d]">
+                <div className="rounded-lg bg-[#C6E8F7]/30 border border-[#A3D0EE] p-3 font-mono text-xs font-bold text-[#1B67BC]">
                   [3 digit]/LP/BLM/[Bulan Romawi]/[Tahun]
                 </div>
-                <div className="text-xs text-[#6B5A48] space-y-1">
+                <div className="text-xs text-[#4A5568] space-y-1">
                   <p>
                     <strong>Contoh:</strong>{" "}
-                    <code className="text-[#3E2C1C] font-mono">004/LP/BLM/IX/2026</code>
+                    <code className="text-[#1A1A1A] font-mono">004/LP/BLM/IX/2026</code>
                   </p>
                   <p className="text-[11px] leading-relaxed">
                     Lembaran parlemen resmi hasil laporan pemeriksaan, investigasi kepengurusan, dan pengawasan.
@@ -168,21 +168,21 @@ export default function PanduanPenomoranPage() {
           </section>
 
           {/* Bagian 2: Penjelasan Khusus Standarisasi SK 4-Digit */}
-          <section className="rounded-2xl border border-[#E8DEC4] bg-white p-6 sm:p-8 shadow-2xs space-y-4">
+          <section className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-xs space-y-4">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-[#80691d] shrink-0 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-[#1B67BC] shrink-0 mt-0.5" />
               <div className="space-y-2">
-                <h3 className="font-serif font-bold text-base text-[#3E2C1C]">
+                <h3 className="font-serif font-bold text-base text-[#1A1A1A]">
                   Penjelasan Standarisasi SK 4 Digit (0000) & Nomor Lama
                 </h3>
-                <p className="text-xs text-[#6B5A48] leading-relaxed">
+                <p className="text-xs text-[#4A5568] leading-relaxed">
                   Pada buku register lama bulan Juli 2026, nomor SK tercatat menggunakan 3 digit angka (misal: <code>100</code> s/d <code>108</code>). Mulai bulan Agustus dan September 2026, Biro Administrasi menetapkan format 4 digit (misal: <code>0126</code> s/d <code>0170</code>).
                 </p>
-                <div className="rounded-xl bg-[#F7F1E3] p-4 text-xs text-[#3E2C1C] space-y-2 border border-[#E8DEC4]">
-                  <span className="font-bold text-[#80691d] block">
+                <div className="rounded-xl bg-[#C6E8F7]/25 p-4 text-xs text-[#1A1A1A] space-y-2 border border-[#A3D0EE]">
+                  <span className="font-bold text-[#1B67BC] block">
                     Kebijakan Sistem JDIH BLM:
                   </span>
-                  <ul className="list-disc pl-5 space-y-1 text-[#6B5A48] text-[11px]">
+                  <ul className="list-disc pl-5 space-y-1 text-[#4A5568] text-[11px]">
                     <li>
                       Seluruh SK ditampilkan secara standar dalam format 4 digit (contoh: <code>0100/UN.3.1.4/A/SKPLENOI/BLM/VII/2026</code>).
                     </li>
@@ -199,35 +199,35 @@ export default function PanduanPenomoranPage() {
           </section>
 
           {/* Bagian 3: Makna Sifat SK (Kode A dan B) */}
-          <section className="rounded-2xl border border-[#E8DEC4] bg-white p-6 sm:p-8 shadow-2xs space-y-4">
-            <h2 className="font-serif font-bold text-xl text-[#3E2C1C]">
+          <section className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-xs space-y-4">
+            <h2 className="font-serif font-bold text-xl text-[#1A1A1A]">
               Makna Kode Sifat SK (A dan B)
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] p-5 space-y-2">
+              <div className="rounded-xl border border-[#A3D0EE] bg-[#C6E8F7]/15 p-5 space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="w-7 h-7 rounded-lg bg-[#3E2C1C] text-[#FFFDF7] flex items-center justify-center font-bold text-xs">
+                  <span className="w-7 h-7 rounded-lg bg-[#1B67BC] text-white flex items-center justify-center font-bold text-xs shadow-xs">
                     A
                   </span>
-                  <h3 className="font-serif font-bold text-sm text-[#3E2C1C]">
+                  <h3 className="font-serif font-bold text-sm text-[#1A1A1A]">
                     Sifat Internal BLM (Code A)
                   </h3>
                 </div>
-                <p className="text-xs text-[#6B5A48] leading-relaxed">
+                <p className="text-xs text-[#4A5568] leading-relaxed">
                   Mencakup persidangan internal, tata tertib persidangan, susunan agenda acara, pemberian surat peringatan (SP), pengunduran diri personalia, dan pemberhentian anggota.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] p-5 space-y-2">
+              <div className="rounded-xl border border-[#A3D0EE] bg-[#C6E8F7]/15 p-5 space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="w-7 h-7 rounded-lg bg-[#80691d] text-[#FFFDF7] flex items-center justify-center font-bold text-xs">
+                  <span className="w-7 h-7 rounded-lg bg-[#b96d41] text-white flex items-center justify-center font-bold text-xs shadow-xs">
                     B
                   </span>
-                  <h3 className="font-serif font-bold text-sm text-[#3E2C1C]">
+                  <h3 className="font-serif font-bold text-sm text-[#1A1A1A]">
                     Sifat Eksternal Organisasi (Code B)
                   </h3>
                 </div>
-                <p className="text-xs text-[#6B5A48] leading-relaxed">
+                <p className="text-xs text-[#4A5568] leading-relaxed">
                   Mencakup kebijakan kemahasiswaan fakultas, regulasi PEMIRA, pengesahan kepengurusan caretaker LPPM SEKTOR, rekomendasi penyelenggara pemilu, dan peringatan kepada HIMA.
                 </p>
               </div>
@@ -235,21 +235,21 @@ export default function PanduanPenomoranPage() {
           </section>
 
           {/* Bagian 4: Tabel Angka Romawi Bulan */}
-          <section className="rounded-2xl border border-[#E8DEC4] bg-white p-6 sm:p-8 shadow-2xs space-y-4">
-            <h2 className="font-serif font-bold text-xl text-[#3E2C1C]">
+          <section className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-xs space-y-4">
+            <h2 className="font-serif font-bold text-xl text-[#1A1A1A]">
               Daftar Angka Romawi Bulan Penetapan
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
               {romanMonths.map((m) => (
                 <div
                   key={m.num}
-                  className="rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] p-3 text-center space-y-0.5"
+                  className="rounded-xl border border-[#A3D0EE] bg-[#C6E8F7]/15 p-3 text-center space-y-0.5"
                 >
-                  <span className="font-mono text-base font-bold text-[#80691d] block">
+                  <span className="font-mono text-base font-bold text-[#1B67BC] block">
                     {m.roman}
                   </span>
-                  <span className="text-xs font-semibold text-[#3E2C1C] block">{m.name}</span>
-                  <span className="text-[10px] text-[#6B5A48] block">Bulan {m.num}</span>
+                  <span className="text-xs font-semibold text-[#1A1A1A] block">{m.name}</span>
+                  <span className="text-[10px] text-[#4A5568] block">Bulan {m.num}</span>
                 </div>
               ))}
             </div>

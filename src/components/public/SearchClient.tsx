@@ -99,16 +99,16 @@ export function SearchClient() {
   return (
     <div className="space-y-6">
       {/* Box Input Pencarian Utama */}
-      <div className="rounded-2xl border border-[#E8DEC4] bg-white p-5 sm:p-7 shadow-2xs space-y-4">
+      <div className="rounded-2xl border border-[#A3D0EE] bg-white p-5 sm:p-7 shadow-xs space-y-4">
         <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#80691d]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1B67BC]" />
             <input
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Ketik kata kunci, nomor SK, judul, atau topik regulasi..."
-              className="w-full rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] pl-10 pr-4 py-3 text-sm text-[#3E2C1C] placeholder:text-[#6B5A48]/70 focus:border-[#80691d] focus:outline-hidden"
+              className="w-full rounded-xl border border-[#A3D0EE] bg-[#C6E8F7]/20 pl-10 pr-4 py-3 text-sm text-[#1A1A1A] placeholder:text-[#4A5568]/70 focus:border-[#1B67BC] focus:outline-hidden"
             />
           </div>
 
@@ -122,7 +122,7 @@ export function SearchClient() {
                 else params.set("jenis", e.target.value);
                 router.push(`/pencarian?${params.toString()}`);
               }}
-              className="w-full rounded-xl border border-[#E8DEC4] bg-[#FFFDF7] px-3 py-3 text-xs font-semibold text-[#3E2C1C] focus:border-[#80691d] focus:outline-hidden cursor-pointer"
+              className="w-full rounded-xl border border-[#A3D0EE] bg-white px-3 py-3 text-xs font-semibold text-[#1A1A1A] focus:border-[#1B67BC] focus:outline-hidden cursor-pointer"
             >
               <option value="all">Semua Jenis</option>
               <option value="undang-undang">Undang-Undang (UU)</option>
@@ -134,15 +134,15 @@ export function SearchClient() {
 
           <button
             type="submit"
-            className="rounded-xl bg-[#3E2C1C] px-6 py-3 text-xs font-bold text-[#d4af38] shadow-md hover:bg-[#2e2014] transition-all cursor-pointer shrink-0"
+            className="rounded-xl bg-[#1B67BC] px-6 py-3 text-xs font-bold text-white shadow-md hover:bg-[#3885CC] transition-all cursor-pointer shrink-0"
           >
             Cari Dokumen
           </button>
         </form>
 
         {/* Saran Kata Kunci Populer */}
-        <div className="flex items-center gap-2 flex-wrap text-xs text-[#6B5A48] pt-2 border-t border-[#F2EBDA]">
-          <span className="font-semibold text-[#80691d]">Kata Kunci Terkait:</span>
+        <div className="flex items-center gap-2 flex-wrap text-xs text-[#4A5568] pt-2 border-t border-[#A3D0EE]/40">
+          <span className="font-semibold text-[#1B67BC]">Kata Kunci Terkait:</span>
           {quickKeywords.map((kw) => (
             <button
               key={kw}
@@ -151,7 +151,7 @@ export function SearchClient() {
                 setQuery(kw);
                 router.push(`/pencarian?q=${encodeURIComponent(kw)}`);
               }}
-              className="rounded-md bg-[#F7F1E3] px-2 py-0.5 text-xs text-[#3E2C1C] hover:bg-[#80691d] hover:text-white transition-colors cursor-pointer"
+              className="rounded-md bg-[#C6E8F7]/40 px-2 py-0.5 text-xs text-[#1A1A1A] hover:bg-[#b96d41] hover:text-white transition-colors cursor-pointer"
             >
               {kw}
             </button>
@@ -160,27 +160,27 @@ export function SearchClient() {
       </div>
 
       {/* Info Hasil Pencarian */}
-      <div className="flex items-center justify-between text-xs text-[#6B5A48] px-1">
+      <div className="flex items-center justify-between text-xs text-[#4A5568] px-1">
         <div>
           {query.trim() ? (
             <span>
-              Menemukan <strong className="text-[#3E2C1C]">{results.length}</strong> produk hukum
-              untuk kata kunci &ldquo;<strong className="text-[#80691d]">{query}</strong>&rdquo;
+              Menemukan <strong className="text-[#1A1A1A]">{results.length}</strong> produk hukum
+              untuk kata kunci &ldquo;<strong className="text-[#1B67BC]">{query}</strong>&rdquo;
             </span>
           ) : (
             <span>
-              Menampilkan <strong className="text-[#3E2C1C]">{results.length}</strong> produk hukum
+              Menampilkan <strong className="text-[#1A1A1A]">{results.length}</strong> produk hukum
             </span>
           )}
         </div>
 
         {/* Filter Status Sederhana */}
         <div className="flex items-center gap-2">
-          <label className="text-[11px] font-semibold text-[#6B5A48]">Status:</label>
+          <label className="text-[11px] font-semibold text-[#4A5568]">Status:</label>
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="rounded-md border border-[#E8DEC4] bg-white px-2 py-1 text-xs text-[#3E2C1C] focus:outline-hidden"
+            className="rounded-md border border-[#A3D0EE] bg-white px-2 py-1 text-xs text-[#1A1A1A] focus:outline-hidden"
           >
             <option value="all">Semua Status</option>
             <option value="BERLAKU">Berlaku</option>
@@ -192,15 +192,15 @@ export function SearchClient() {
 
       {/* Hasil Pencarian */}
       {results.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-[#E8DEC4] bg-white p-12 text-center space-y-4">
-          <div className="mx-auto w-14 h-14 rounded-full bg-[#F7F1E3] flex items-center justify-center text-[#80691d]">
+        <div className="rounded-2xl border border-dashed border-[#A3D0EE] bg-white p-12 text-center space-y-4">
+          <div className="mx-auto w-14 h-14 rounded-full bg-[#C6E8F7]/50 flex items-center justify-center text-[#1B67BC]">
             <FileQuestion className="w-7 h-7" />
           </div>
           <div className="space-y-1">
-            <h3 className="font-serif font-bold text-lg text-[#3E2C1C]">
+            <h3 className="font-serif font-bold text-lg text-[#1A1A1A]">
               Dokumen Tidak Ditemukan
             </h3>
-            <p className="text-xs text-[#6B5A48] max-w-md mx-auto leading-relaxed">
+            <p className="text-xs text-[#4A5568] max-w-md mx-auto leading-relaxed">
               Tidak ada produk hukum yang cocok dengan kata kunci &ldquo;{query}&rdquo;. Pastikan ejaan nomor atau judul sudah tepat, atau ajukan permohonan salinan naskah kepada sekretariat.
             </p>
           </div>
@@ -214,13 +214,13 @@ export function SearchClient() {
                 setSelectedStatus("all");
                 router.push("/pencarian");
               }}
-              className="rounded-lg border border-[#E8DEC4] bg-white px-4 py-2 text-xs font-semibold text-[#3E2C1C] hover:bg-[#F7F1E3] cursor-pointer"
+              className="rounded-lg border border-[#A3D0EE] bg-white px-4 py-2 text-xs font-semibold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 cursor-pointer"
             >
               Reset Pencarian
             </button>
             <Link
               href="/permohonan"
-              className="rounded-lg bg-[#3E2C1C] px-4 py-2 text-xs font-bold text-[#d4af38] hover:bg-[#2e2014] cursor-pointer inline-flex items-center gap-1.5"
+              className="rounded-lg bg-[#b96d41] px-4 py-2 text-xs font-bold text-white hover:bg-[#a65d34] cursor-pointer inline-flex items-center gap-1.5 shadow-sm"
             >
               <span>Ajukan Permohonan Dokumen</span>
               <ArrowRight className="w-3.5 h-3.5" />
