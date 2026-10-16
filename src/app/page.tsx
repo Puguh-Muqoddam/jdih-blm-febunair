@@ -27,183 +27,74 @@ export default function HomePage() {
   const docTypeCards = [
     {
       code: "UU",
-      name: "Undang-Undang",
+      name: "Undang-Undang (UU)",
       slug: "undang-undang",
       count: 2,
-      renderEmblem: () => (
-        <svg viewBox="0 0 64 64" className="w-12 h-12 sm:w-14 sm:h-14" fill="none">
-          {/* Top Mortarboard / Parliamentary Crown in #1B67BC */}
-          <polygon
-            points="32,10 52,19 32,28 12,19"
-            fill="#1B67BC"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M21 23V33C21 36.5 26 39 32 39C38 39 43 36.5 43 33V23"
-            fill="#3885CC"
-            fillOpacity="0.25"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
-            strokeLinejoin="round"
-          />
-          <path d="M48 21V34" stroke="#1A1A1A" strokeWidth="2.2" strokeLinecap="round" />
-          <circle cx="48" cy="35" r="2" fill="#1B67BC" stroke="#1A1A1A" strokeWidth="1.5" />
-          {/* Ribbon & Laurel Wreath at Bottom */}
-          <path
-            d="M26 39V52L32 48L38 52V39"
-            fill="#FFFFFF"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M15 38C15 45 19 50 23 52M49 38C49 45 45 50 41 52"
-            stroke="#1A1A1A"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-          <circle cx="16" cy="41" r="1.5" fill="#1B67BC" />
-          <circle cx="18" cy="46" r="1.5" fill="#1B67BC" />
-          <circle cx="48" cy="41" r="1.5" fill="#1B67BC" />
-          <circle cx="46" cy="46" r="1.5" fill="#1B67BC" />
+      boxBg: "from-[#1B67BC] via-[#2B78C5] to-[#123B6D] text-white",
+      desc: "Regulasi dasar tertinggi yang disahkan melalui Sidang Pleno BLM FEB UNAIR untuk mengatur tata kelola fundamental ormawa dan pemilihan raya mahasiswa.",
+      renderIcon: () => (
+        <svg viewBox="0 0 64 64" className="w-11 h-11 sm:w-12 sm:h-12" fill="none">
+          <path d="M32 10V52" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
+          <path d="M18 52H46" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
+          <path d="M14 20H50" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
+          <path d="M16 20L10 34H22L16 20Z" fill="#C6E8F7" fillOpacity="0.3" stroke="currentColor" strokeWidth="2.8" strokeLinejoin="round" />
+          <path d="M48 20L42 34H54L48 20Z" fill="#C6E8F7" fillOpacity="0.3" stroke="currentColor" strokeWidth="2.8" strokeLinejoin="round" />
+          <circle cx="32" cy="14" r="3.5" fill="#b96d41" stroke="currentColor" strokeWidth="2.5" />
         </svg>
       ),
     },
     {
       code: "TAP",
-      name: "Ketetapan BLM",
+      name: "Ketetapan BLM (TAP)",
       slug: "ketetapan-blm",
       count: 3,
-      renderEmblem: () => (
-        <svg viewBox="0 0 64 64" className="w-12 h-12 sm:w-14 sm:h-14" fill="none">
-          {/* Top Emblem Cap */}
-          <polygon
-            points="32,8 50,16 32,24 14,16"
+      boxBg: "from-[#FFFFFF] via-[#F0F8FF] to-[#D6ECFA] text-[#1A1A1A]",
+      desc: "Ketetapan musyawarah sidang parlemen yang mengikat secara internal maupun eksternal dalam menetapkan kebijakan strategis dan prosedur tetap.",
+      renderIcon: () => (
+        <svg viewBox="0 0 64 64" className="w-11 h-11 sm:w-12 sm:h-12" fill="none">
+          <path
+            d="M12 18C19 18 26 20 32 24C38 20 45 18 52 18V46C45 46 38 48 32 52C26 48 19 46 12 46V18Z"
             fill="#1B67BC"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
+            fillOpacity="0.15"
+            stroke="currentColor"
+            strokeWidth="3.2"
             strokeLinejoin="round"
           />
-          <path
-            d="M22 20V26C22 28.5 26.5 30.5 32 30.5C37.5 30.5 42 28.5 42 26V20"
-            fill="#3885CC"
-            fillOpacity="0.3"
-            stroke="#1A1A1A"
-            strokeWidth="2"
-          />
-          {/* Open Statute Book Below */}
-          <path
-            d="M14 34C20 34 27 35.5 32 39C37 35.5 44 34 50 34V51C44 51 37 52.5 32 55C27 52.5 20 51 14 51V34Z"
-            fill="#FFFFFF"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
-            strokeLinejoin="round"
-          />
-          <path d="M32 39V55" stroke="#1A1A1A" strokeWidth="2.2" />
-          <path d="M19 40H27M19 45H27M37 40H45M37 45H45" stroke="#1B67BC" strokeWidth="2" strokeLinecap="round" />
+          <path d="M32 24V52" stroke="currentColor" strokeWidth="3.2" />
+          <path d="M18 27H26M18 34H26M38 27H46M38 34H46" stroke="#1B67BC" strokeWidth="2.8" strokeLinecap="round" />
         </svg>
       ),
     },
     {
       code: "SK",
-      name: "Surat Keputusan",
+      name: "Surat Keputusan (SK)",
       slug: "surat-keputusan",
       count: 39,
-      renderEmblem: () => (
-        <svg viewBox="0 0 64 64" className="w-12 h-12 sm:w-14 sm:h-14" fill="none">
-          {/* Top Cap */}
-          <polygon
-            points="32,8 50,16 32,24 14,16"
-            fill="#1B67BC"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
-            strokeLinejoin="round"
-          />
-          {/* Stacked Pages Lines */}
-          <path d="M23 26L32 30L41 26" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" />
-          <path d="M23 30L32 34L41 30" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" />
-          {/* Rolled Decree Scroll at Bottom */}
-          <rect
-            x="14"
-            y="38"
-            width="36"
-            height="11"
-            rx="5.5"
-            fill="#3885CC"
-            fillOpacity="0.35"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
-          />
-          <circle cx="20" cy="43.5" r="3" fill="#FFFFFF" stroke="#1A1A1A" strokeWidth="2" />
-          <rect
-            x="29"
-            y="37"
-            width="6"
-            height="13"
-            rx="1"
-            fill="#1B67BC"
-            stroke="#1A1A1A"
-            strokeWidth="2"
-          />
-          <path d="M30 50L28 56M34 50L36 56" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" />
+      boxBg: "from-[#A3D0EE] via-[#C6E8F7] to-[#74B3E0] text-[#1A1A1A]",
+      desc: "Keputusan administratif dan persidangan legislatif terkait agenda, tata tertib, kepengurusan ormawa, serta kebijakan eksternal berkode A dan B.",
+      renderIcon: () => (
+        <svg viewBox="0 0 64 64" className="w-11 h-11 sm:w-12 sm:h-12" fill="none">
+          <circle cx="32" cy="32" r="18" stroke="currentColor" strokeWidth="4" />
+          <circle cx="32" cy="32" r="11" fill="#1B67BC" fillOpacity="0.2" stroke="#1B67BC" strokeWidth="2.5" />
+          <path d="M26 32L30 36L39 27" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
     },
     {
       code: "LP",
-      name: "Surat Laporan",
+      name: "Surat Laporan (LP)",
       slug: "lembaran-parlemen",
       count: 5,
-      renderEmblem: () => (
-        <svg viewBox="0 0 64 64" className="w-12 h-12 sm:w-14 sm:h-14" fill="none">
-          {/* Official Briefcase / Oversight Dossier */}
-          <path
-            d="M25 16V13C25 11.5 26.5 10 28 10H36C37.5 10 39 11.5 39 13V16"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
-          />
-          <rect
-            x="14"
-            y="16"
-            width="36"
-            height="24"
-            rx="3"
-            fill="#1B67BC"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
-          />
-          <path
-            d="M14 25C22 28 42 28 50 25"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
-          />
-          <rect
-            x="29"
-            y="23"
-            width="6"
-            height="7"
-            rx="1"
-            fill="#FFFFFF"
-            stroke="#1A1A1A"
-            strokeWidth="2"
-          />
-          {/* Oversight Gear & Star Badge */}
-          <circle
-            cx="21"
-            cy="45"
-            r="6"
-            fill="#3885CC"
-            stroke="#1A1A1A"
-            strokeWidth="2.2"
-          />
-          <circle cx="21" cy="45" r="2.2" fill="#FFFFFF" stroke="#1A1A1A" strokeWidth="1.5" />
+      boxBg: "from-[#89C2E8] via-[#B8E0F7] to-[#5CA3D6] text-[#1A1A1A]",
+      desc: "Instrumen akuntabilitas hasil pengawasan berkala, laporan investigasi komisi, serta evaluasi kepatuhan kegiatan organisasi mahasiswa FEB UNAIR.",
+      renderIcon: () => (
+        <svg viewBox="0 0 64 64" className="w-11 h-11 sm:w-12 sm:h-12" fill="none">
           <polygon
-            points="42,37 44,41.5 49,42 45.2,45.2 46.2,50 42,47.5 37.8,50 38.8,45.2 35,42 40,41.5"
-            fill="#FFFFFF"
-            stroke="#1A1A1A"
-            strokeWidth="2"
+            points="32,11 37.8,23.5 51.5,25.2 41.4,34.7 44,48.3 32,41.6 20,48.3 22.6,34.7 12.5,25.2 26.2,23.5"
+            fill="#1B67BC"
+            fillOpacity="0.2"
+            stroke="currentColor"
+            strokeWidth="3.5"
             strokeLinejoin="round"
           />
         </svg>
@@ -248,83 +139,89 @@ export default function HomePage() {
         </section>
 
         {/* ===================================================================
-            2. SECTION KATEGORI PRODUK HUKUM (Tata Desain "COURSES" FEB UNAIR)
+            2. SECTION KATEGORI PRODUK HUKUM (Kolom Kiri Intro + Grid 2x2 Kotak Horizontal)
            =================================================================== */}
         <section className="py-12 sm:py-16 lg:py-20 bg-white w-full">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
               {/* Kolom Kiri: Kartu Feature Deskripsi + Foto Bergradasi di Bawah */}
-              <div className="lg:col-span-5 bg-[#F5F6F8] flex flex-col justify-between overflow-hidden relative min-h-[430px] sm:min-h-[470px]">
-                <div className="p-7 sm:p-10 pb-4 relative z-20 space-y-4">
-                  <h2 className="font-sans font-extrabold text-2xl sm:text-[28px] uppercase tracking-wide text-[#1B67BC]">
+              <div className="lg:col-span-4 bg-[#F5F6F8] rounded-2xl border border-[#A3D0EE]/50 flex flex-col justify-between overflow-hidden relative min-h-[420px]">
+                <div className="p-7 sm:p-8 pb-4 relative z-20 space-y-3.5">
+                  <span className="inline-block text-[11px] font-bold uppercase tracking-widest text-[#b96d41]">
+                    Klasifikasi Regulasi
+                  </span>
+                  <h2 className="font-sans font-extrabold text-2xl sm:text-[26px] uppercase tracking-wide text-[#1B67BC]">
                     PRODUK HUKUM
                   </h2>
-                  <p className="text-sm sm:text-[15px] text-[#1A1A1A] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#1A1A1A]/85 leading-relaxed">
                     Telusuri berbagai instrumen regulasi dan ketetapan hukum resmi yang disusun secara khusus bagi sivitas akademika, mulai dari Undang-Undang hingga Surat Laporan.
                   </p>
                   <div className="pt-1">
                     <Link
                       href="/produk-hukum"
-                      className="inline-flex items-center gap-2.5 text-sm sm:text-[15px] font-bold text-[#1B67BC] hover:text-[#b96d41] transition-colors group"
+                      className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#1B67BC] hover:text-[#b96d41] transition-colors group"
                     >
-                      <span>Telusuri Produk Hukum</span>
+                      <span>Telusuri Semua Produk Hukum</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
 
                 {/* Foto Bawah dengan Efek Gradasi Halus Menyatu ke Latar Kartu */}
-                <div className="relative h-60 sm:h-64 w-full mt-auto select-none pointer-events-none">
+                <div className="relative h-56 sm:h-60 w-full mt-auto select-none pointer-events-none">
                   <Image
                     src="/images/hero-sidang-parlemen.jpg"
                     alt="Suasana Persidangan Badan Legislatif Mahasiswa FEB UNAIR"
                     fill
-                    sizes="(max-width: 1024px) 100vw, 45vw"
+                    sizes="(max-width: 1024px) 100vw, 35vw"
                     className="object-cover object-center"
                   />
-                  {/* Gradasi Atas & Kanan agar Menyatu Halus seperti Referensi */}
-                  <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#F5F6F8] via-[#F5F6F8]/80 to-transparent z-10" />
-                  <div className="absolute inset-y-0 right-0 w-28 bg-gradient-to-l from-[#F5F6F8] via-[#F5F6F8]/50 to-transparent z-10" />
+                  <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#F5F6F8] via-[#F5F6F8]/80 to-transparent z-10" />
+                  <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#F5F6F8] via-[#F5F6F8]/40 to-transparent z-10" />
                 </div>
               </div>
 
-              {/* Kolom Kanan: 4 Kartu Vertikal + Baris Link Bawah */}
-              <div className="lg:col-span-7 flex flex-col justify-between">
-                {/* 4 Kartu Vertikal (UU, TAP, SK, LP) */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-4 flex-1">
+              {/* Kolom Kanan: Grid 2x2 Kotak Horizontal (Gaya Referensi 4 Kotak) + Baris Pedoman */}
+              <div className="lg:col-span-8 flex flex-col justify-between gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 flex-1">
                   {docTypeCards.map((card) => (
                     <Link
                       key={card.code}
                       href={`/produk-hukum/jenis/${card.slug}`}
-                      className="group relative flex flex-col justify-between p-5 sm:p-6 min-h-[290px] sm:min-h-[380px] bg-gradient-to-b from-[#F8FBFF] via-[#E8F4FE] to-[#CCE7FD] border-t-[4px] border-[#EAB308] hover:border-[#b96d41] hover:from-[#EFF7FF] hover:to-[#B9DEFB] transition-all duration-300 shadow-2xs hover:shadow-md"
+                      className="group rounded-2xl bg-gradient-to-r from-[#133B6E] via-[#1B67BC] to-[#2B7AC9] p-4 sm:p-5 shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-4 sm:gap-5 border border-[#3885CC]/40"
                     >
-                      {/* Lingkaran Emblem Ikon di Kanan Atas */}
-                      <div className="w-20 h-20 sm:w-24 sm:h-24 ml-auto rounded-full border-[3.5px] border-[#1B67BC] bg-[#DCEFFE] group-hover:scale-105 group-hover:border-[#0F294A] transition-all flex items-center justify-center shadow-xs">
-                        {card.renderEmblem()}
-                      </div>
-
-                      {/* Judul & Jumlah di Kiri Bawah */}
-                      <div className="mt-auto pt-8 space-y-1 text-left">
-                        <span className="block text-[11px] font-bold uppercase tracking-wider text-[#3885CC]">
+                      {/* Kotak Persegi di Sisi Kiri (Gaya Referensi) */}
+                      <div
+                        className={`w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-xl border-2 border-[#1A1A1A] bg-gradient-to-br ${card.boxBg} shadow-[0_4px_10px_rgba(0,0,0,0.3)] flex flex-col items-center justify-center p-2 group-hover:scale-105 transition-transform`}
+                      >
+                        {card.renderIcon()}
+                        <span className="mt-1 text-[10px] font-extrabold tracking-wider uppercase px-2 py-0.5 rounded bg-black/15">
                           {card.count} Dokumen
                         </span>
-                        <h3 className="font-sans font-bold text-base sm:text-[18px] text-[#1B67BC] group-hover:text-[#0F294A] leading-snug transition-colors">
+                      </div>
+
+                      {/* Teks Judul & Deskripsi Rata Kanan-Kiri di Sisi Kanan */}
+                      <div className="flex-1 min-w-0 space-y-1.5 text-left">
+                        <h3 className="font-sans font-extrabold text-base sm:text-lg text-white group-hover:text-[#C6E8F7] transition-colors leading-snug">
                           {card.name}
                         </h3>
+                        <p className="text-xs sm:text-[13px] text-white/90 leading-relaxed font-medium text-justify sm:text-left">
+                          {card.desc}
+                        </p>
                       </div>
                     </Link>
                   ))}
                 </div>
 
-                {/* Baris Link Horizontal di Bawah 4 Kartu (Gaya "IUP : International Undergraduate Programme") */}
+                {/* Baris Link Horizontal di Bawah 4 Kotak */}
                 <Link
                   href="/panduan-penomoran"
-                  className="mt-4 border-y border-slate-200 py-3.5 px-2 flex items-center justify-between group hover:bg-[#F5FAFF] transition-colors"
+                  className="rounded-xl border border-[#A3D0EE] bg-[#C6E8F7]/20 py-3.5 px-5 flex items-center justify-between group hover:bg-[#1B67BC] hover:border-[#1B67BC] transition-all"
                 >
-                  <span className="font-sans font-bold text-sm sm:text-lg text-[#1B67BC] group-hover:text-[#b96d41] transition-colors">
+                  <span className="font-sans font-bold text-xs sm:text-base text-[#1B67BC] group-hover:text-white transition-colors">
                     PEDOMAN : Standarisasi & Format Penomoran Resmi Departemen Legislasi (49 Produk Hukum)
                   </span>
-                  <ArrowRight className="w-5 h-5 text-[#1B67BC] group-hover:text-[#b96d41] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+                  <ArrowRight className="w-5 h-5 text-[#b96d41] group-hover:text-white group-hover:translate-x-1 transition-all shrink-0 ml-3" />
                 </Link>
               </div>
             </div>
