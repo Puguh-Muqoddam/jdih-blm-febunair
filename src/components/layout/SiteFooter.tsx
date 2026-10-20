@@ -24,7 +24,7 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-[#A3D0EE]/30 bg-[#1A1A1A] text-stone-200 text-sm">
+    <footer className="mt-auto border-t border-[#A3D0EE]/30 bg-[#0F294A] text-stone-200 text-sm">
       {/* Decorative Blue-Terracotta Gradient Border */}
       <div className="h-1 bg-gradient-to-r from-[#1B67BC] via-[#3885CC] to-[#b96d41]"></div>
 

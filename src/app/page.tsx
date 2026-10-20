@@ -25,8 +25,8 @@ export default function HomePage() {
       name: "Undang-Undang (UU)",
       slug: "undang-undang",
       count: 2,
-      boxStyle: "bg-[#1A1A1A] text-white border-[#1A1A1A]",
-      countStyle: "bg-white text-[#1A1A1A]",
+      boxStyle: "bg-white text-[#1B67BC] border-[#A3D0EE]",
+      countStyle: "bg-[#1B67BC] text-white",
       desc: "Regulasi dasar tertinggi yang disahkan melalui Sidang Pleno BLM FEB UNAIR untuk mengatur tata kelola fundamental ormawa dan pemilihan raya mahasiswa.",
     },
     {
@@ -34,8 +34,8 @@ export default function HomePage() {
       name: "Ketetapan BLM (TAP)",
       slug: "ketetapan-blm",
       count: 3,
-      boxStyle: "bg-white text-[#1A1A1A] border-[#1A1A1A]",
-      countStyle: "bg-[#1A1A1A] text-white",
+      boxStyle: "bg-[#b96d41] text-white border-[#b96d41]",
+      countStyle: "bg-white text-[#b96d41]",
       desc: "Ketetapan musyawarah sidang parlemen yang mengikat secara internal maupun eksternal dalam menetapkan kebijakan strategis dan prosedur tetap.",
     },
     {
@@ -43,8 +43,8 @@ export default function HomePage() {
       name: "Surat Keputusan (SK)",
       slug: "surat-keputusan",
       count: 39,
-      boxStyle: "bg-[#C6E8F7] text-[#1A1A1A] border-[#1A1A1A]",
-      countStyle: "bg-[#1A1A1A] text-white",
+      boxStyle: "bg-[#C6E8F7] text-[#1B67BC] border-[#A3D0EE]",
+      countStyle: "bg-[#1B67BC] text-white",
       desc: "Keputusan administratif dan persidangan legislatif terkait agenda, tata tertib, kepengurusan ormawa, serta kebijakan eksternal berkode A dan B.",
     },
     {
@@ -52,8 +52,8 @@ export default function HomePage() {
       name: "Surat Laporan (LP)",
       slug: "lembaran-parlemen",
       count: 5,
-      boxStyle: "bg-[#b96d41] text-white border-[#1A1A1A]",
-      countStyle: "bg-[#1A1A1A] text-white",
+      boxStyle: "bg-[#3885CC] text-white border-[#A3D0EE]",
+      countStyle: "bg-white text-[#1B67BC]",
       desc: "Instrumen akuntabilitas hasil pengawasan berkala, laporan investigasi komisi, serta evaluasi kepatuhan kegiatan organisasi mahasiswa FEB UNAIR.",
     },
   ];
@@ -73,7 +73,7 @@ export default function HomePage() {
           {/* Left-Aligned Hero Content Container */}
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div className="max-w-2xl space-y-4 text-left">
-              <div className="inline-block rounded bg-[#1A1A1A] text-white px-3.5 py-1.5 text-xs font-bold tracking-wide">
+              <div className="inline-block rounded bg-[#b96d41] text-white px-3.5 py-1.5 text-xs font-bold tracking-wide shadow-xs">
                 Portal Resmi JDIH • Parlemen Cakrasena 2026
               </div>
 
@@ -102,7 +102,7 @@ export default function HomePage() {
               {/* Kolom Kiri: Kartu Feature Deskripsi + Foto di Bawah */}
               <div className="lg:col-span-4 bg-[#F5F6F8] rounded-lg border border-stone-200 flex flex-col justify-between overflow-hidden relative min-h-[420px]">
                 <div className="p-7 sm:p-8 pb-4 relative z-20 space-y-3.5">
-                  <span className="inline-block rounded bg-[#1A1A1A] text-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider">
+                  <span className="inline-block rounded bg-[#1B67BC] text-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider">
                     Klasifikasi Regulasi
                   </span>
                   <h2 className="font-sans font-extrabold text-2xl sm:text-[26px] uppercase tracking-wide text-[#1A1A1A]">
@@ -114,7 +114,7 @@ export default function HomePage() {
                   <div className="pt-2">
                     <Link
                       href="/produk-hukum"
-                      className="inline-block rounded-md bg-[#1A1A1A] text-white hover:bg-[#1B67BC] px-5 py-2.5 text-xs sm:text-sm font-bold transition-colors"
+                      className="inline-block rounded-md bg-[#b96d41] hover:bg-[#a35c33] text-white px-5 py-2.5 text-xs sm:text-sm font-bold transition-colors shadow-xs"
                     >
                       Telusuri Produk Hukum
                     </Link>
@@ -142,7 +142,7 @@ export default function HomePage() {
                     <Link
                       key={card.code}
                       href={`/produk-hukum/jenis/${card.slug}`}
-                      className="group rounded-lg bg-[#1B67BC] hover:bg-[#0F294A] p-4 sm:p-5 shadow-xs hover:shadow-md transition-colors flex items-center gap-4 sm:gap-5 border border-[#1A1A1A]/15"
+                      className="group rounded-lg bg-[#1B67BC] hover:bg-[#0F294A] p-4 sm:p-5 shadow-xs hover:shadow-md transition-colors flex items-center gap-4 sm:gap-5 border border-[#A3D0EE]/30"
                     >
                       {/* Kotak Persegi Solid di Sisi Kiri (Tanpa Ikon AI, Tipografi Tegas) */}
                       <div
@@ -172,13 +172,13 @@ export default function HomePage() {
                 </div>
 
                 {/* Baris Link Horizontal Solid di Bawah 4 Kotak */}
-                <div className="rounded-lg bg-[#1A1A1A] p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <span className="font-sans font-bold text-xs sm:text-sm text-white">
+                <div className="rounded-lg bg-[#C6E8F7] border border-[#A3D0EE] p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <span className="font-sans font-bold text-xs sm:text-sm text-[#1B67BC]">
                     PEDOMAN : Standarisasi & Format Penomoran Resmi Departemen Legislasi (49 Produk Hukum)
                   </span>
                   <Link
                     href="/panduan-penomoran"
-                    className="inline-block shrink-0 rounded bg-white text-[#1A1A1A] hover:bg-[#C6E8F7] px-4 py-2 text-xs font-bold transition-colors text-center"
+                    className="inline-block shrink-0 rounded bg-[#1B67BC] hover:bg-[#3885CC] text-white px-4 py-2 text-xs font-bold transition-colors text-center"
                   >
                     Buka Pedoman
                   </Link>
@@ -207,7 +207,7 @@ export default function HomePage() {
               </div>
               <Link
                 href="/produk-hukum"
-                className="inline-block px-5 py-2.5 rounded-md bg-[#1A1A1A] text-white text-xs font-bold hover:bg-[#1B67BC] transition-colors"
+                className="inline-block px-5 py-2.5 rounded-md bg-[#1B67BC] text-white text-xs font-bold hover:bg-[#3885CC] transition-colors"
               >
                 Buka Katalog Lengkap
               </Link>
@@ -228,7 +228,7 @@ export default function HomePage() {
           <div className="rounded-lg border border-stone-200 bg-white p-6 sm:p-10 shadow-xs space-y-8">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-b border-stone-200 pb-6">
               <div className="space-y-1.5">
-                <span className="inline-block rounded bg-[#1A1A1A] text-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider">
+                <span className="inline-block rounded bg-[#1B67BC] text-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider">
                   Struktur & Tugas Pokok Parlemen
                 </span>
                 <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#1A1A1A]">
@@ -241,7 +241,7 @@ export default function HomePage() {
 
               <Link
                 href="/tentang"
-                className="inline-block px-5 py-2.5 rounded-md bg-[#1A1A1A] text-white text-xs font-bold hover:bg-[#1B67BC] transition-colors shrink-0"
+                className="inline-block px-5 py-2.5 rounded-md bg-[#1B67BC] text-white text-xs font-bold hover:bg-[#3885CC] transition-colors shrink-0"
               >
                 Pelajari Profil Parlemen
               </Link>
@@ -253,7 +253,7 @@ export default function HomePage() {
                   <span className="text-xs font-bold bg-[#b96d41] text-white px-2.5 py-1 rounded">
                     Komisi B
                   </span>
-                  <span className="text-[11px] font-bold bg-[#1A1A1A] text-white px-2.5 py-1 rounded">
+                  <span className="text-[11px] font-bold bg-[#C6E8F7] text-[#1B67BC] px-2.5 py-1 rounded">
                     Pengampu JDIH
                   </span>
                 </div>
@@ -270,7 +270,7 @@ export default function HomePage() {
                   <span className="text-xs font-bold bg-[#1B67BC] text-white px-2.5 py-1 rounded">
                     Komisi A
                   </span>
-                  <span className="text-[11px] font-bold bg-[#1A1A1A] text-white px-2.5 py-1 rounded">
+                  <span className="text-[11px] font-bold bg-[#C6E8F7] text-[#1B67BC] px-2.5 py-1 rounded">
                     Pengawasan Ormawa
                   </span>
                 </div>
@@ -287,7 +287,7 @@ export default function HomePage() {
                   <span className="text-xs font-bold bg-[#3885CC] text-white px-2.5 py-1 rounded">
                     Komisi C
                   </span>
-                  <span className="text-[11px] font-bold bg-[#1A1A1A] text-white px-2.5 py-1 rounded">
+                  <span className="text-[11px] font-bold bg-[#C6E8F7] text-[#1B67BC] px-2.5 py-1 rounded">
                     Suara Mahasiswa
                   </span>
                 </div>
@@ -312,7 +312,7 @@ export default function HomePage() {
               </div>
               <Link
                 href="/permohonan"
-                className="inline-block rounded-md bg-[#1A1A1A] text-white hover:bg-[#b96d41] px-4 py-2 text-xs font-bold transition-colors shrink-0"
+                className="inline-block rounded-md bg-[#b96d41] hover:bg-[#a35c33] text-white px-4 py-2 text-xs font-bold transition-colors shrink-0 shadow-xs"
               >
                 Ajukan Permohonan Informasi
               </Link>
@@ -339,7 +339,7 @@ export default function HomePage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="rounded-md border border-stone-200 bg-[#F5F6F8] p-5 space-y-3">
-                <span className="inline-block text-xs font-mono font-bold text-white bg-[#1A1A1A] px-2.5 py-1 rounded">
+                <span className="inline-block text-xs font-mono font-bold text-white bg-[#0F294A] px-2.5 py-1 rounded">
                   TINGKAT 1 (Tertinggi)
                 </span>
                 <h3 className="font-serif font-bold text-base text-[#1A1A1A]">
@@ -390,7 +390,7 @@ export default function HomePage() {
             <div className="text-center pt-2">
               <Link
                 href="/panduan-penomoran"
-                className="inline-block rounded-md bg-[#1A1A1A] text-white hover:bg-[#1B67BC] px-5 py-2.5 text-xs font-bold transition-colors"
+                className="inline-block rounded-md bg-[#1B67BC] hover:bg-[#3885CC] text-white px-5 py-2.5 text-xs font-bold transition-colors"
               >
                 Pelajari Panduan Penomoran & Kode Sifat A/B
               </Link>

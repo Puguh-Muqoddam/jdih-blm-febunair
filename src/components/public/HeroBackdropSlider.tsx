@@ -59,7 +59,7 @@ export function HeroBackdropSlider() {
       </div>
 
       {/* Solid Boxy Slide Controls at Bottom Right */}
-      <div className="absolute bottom-5 right-4 sm:right-8 z-20 hidden sm:flex items-center gap-3 bg-[#1A1A1A] px-3.5 py-2 rounded-md">
+      <div className="absolute bottom-5 right-4 sm:right-8 z-20 hidden sm:flex items-center gap-3 bg-[#0F294A]/90 border border-white/20 px-3.5 py-2 rounded-md backdrop-blur-xs">
         <span className="text-[11px] font-bold text-white">
           {HERO_SLIDES[activeIndex].caption}
         </span>

@@ -76,7 +76,7 @@ export default function PanduanPenomoranPage() {
               {/* Kartu UU */}
               <div className="rounded-2xl border border-[#A3D0EE] bg-white p-6 shadow-xs space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs bg-[#1A1A1A] text-white px-2.5 py-0.5 rounded shadow-xs">
+                  <span className="font-bold text-xs bg-[#0F294A] text-white px-2.5 py-0.5 rounded shadow-xs">
                     Undang-Undang (UU)
                   </span>
                   <span className="text-xs text-[#4A5568] font-mono">Padding: 2 Digit</span>

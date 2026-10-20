@@ -87,7 +87,7 @@ export function SiteHeader() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Baris 1: Logo & Nama Institusi (Kiri) + Tombol Solid (Kanan) */}
+          {/* Baris 1: Logo & Nama Institusi (Kiri) + Aksi Warna Palet Resmi (Kanan) */}
           <div className="flex items-center justify-between gap-4">
             <Link
               href="/"
@@ -95,7 +95,7 @@ export function SiteHeader() {
               aria-label="Kembali ke Beranda JDIH BLM FEB UNAIR"
             >
               <div className="flex items-center -space-x-1.5 shrink-0">
-                <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-white p-1 shadow-sm border border-stone-200 overflow-hidden flex items-center justify-center z-10">
+                <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-white p-1 shadow-sm border border-[#A3D0EE] overflow-hidden flex items-center justify-center z-10">
                   <Image
                     src="/images/blm_logo.png"
                     alt="Logo BLM FEB UNAIR"
@@ -105,7 +105,7 @@ export function SiteHeader() {
                     priority
                   />
                 </div>
-                <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-white p-1 shadow-sm border border-stone-200 overflow-hidden flex items-center justify-center">
+                <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-white p-1 shadow-sm border border-[#A3D0EE] overflow-hidden flex items-center justify-center">
                   <Image
                     src="/images/parliament_logo.png"
                     alt="Logo Parlemen Cakrasena"
@@ -127,11 +127,11 @@ export function SiteHeader() {
               </div>
             </Link>
 
-            {/* Aksi Kanan: Solid Color, Tanpa Ikon, Sedikit Kotak & Organik */}
+            {/* Aksi Kanan: Warna Sesuai Palet Resmi (Deep Blue & Terracotta), Sedikit Kotak */}
             <div className="flex items-center gap-2 sm:gap-2.5">
               <Link
                 href="/pencarian"
-                className="rounded-md bg-white text-[#1A1A1A] hover:bg-[#C6E8F7] px-3.5 sm:px-4 py-2 text-xs font-bold transition-colors cursor-pointer"
+                className="rounded-md bg-white text-[#1B67BC] hover:bg-[#C6E8F7] px-3.5 sm:px-4 py-2 text-xs font-bold transition-colors cursor-pointer"
                 title="Cari produk hukum"
               >
                 Cari Regulasi
@@ -139,7 +139,7 @@ export function SiteHeader() {
 
               <Link
                 href="/admin/login"
-                className="hidden sm:inline-block rounded-md bg-[#1A1A1A] text-white hover:bg-[#b96d41] px-4 py-2 text-xs font-bold transition-colors"
+                className="hidden sm:inline-block rounded-md bg-[#b96d41] text-white hover:bg-[#a35c33] px-4 py-2 text-xs font-bold transition-colors"
               >
                 Portal Pengurus
               </Link>
@@ -148,7 +148,7 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 rounded-md bg-[#1A1A1A] text-white hover:bg-[#b96d41] focus-visible:outline-2 focus-visible:outline-white"
+                className="lg:hidden p-2 rounded-md bg-white/10 text-white hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-white"
                 aria-label={mobileMenuOpen ? "Tutup menu" : "Buka menu navigasi"}
               >
                 {mobileMenuOpen ? (
@@ -195,13 +195,13 @@ export function SiteHeader() {
                     {/* Dropdown Menu */}
                     {docDropdownOpen && (
                       <div className="absolute left-0 top-full pt-2 w-64 z-50">
-                        <div className="bg-white rounded-md shadow-xl border border-stone-200 p-2 space-y-1">
+                        <div className="bg-white rounded-md shadow-xl border border-[#A3D0EE] p-2 space-y-1">
                           <Link
                             href="/produk-hukum"
-                            className="flex items-center justify-between p-2.5 rounded bg-[#1A1A1A] text-white hover:bg-[#1B67BC] text-xs font-bold mb-1 transition-colors"
+                            className="flex items-center justify-between p-2.5 rounded bg-[#1B67BC] text-white hover:bg-[#3885CC] text-xs font-bold mb-1 transition-colors"
                           >
                             <span>Semua Produk Hukum</span>
-                            <span className="bg-white text-[#1A1A1A] px-2 py-0.5 rounded-xs text-[10px] font-bold">
+                            <span className="bg-white text-[#1B67BC] px-2 py-0.5 rounded-xs text-[10px] font-bold">
                               49
                             </span>
                           </Link>
@@ -269,10 +269,10 @@ export function SiteHeader() {
                   <Link
                     key={dt.slug}
                     href={`/produk-hukum/jenis/${dt.slug}`}
-                    className="flex items-center justify-between p-2 rounded bg-[#1A1A1A] text-xs font-medium text-white hover:bg-[#1B67BC]"
+                    className="flex items-center justify-between p-2 rounded bg-[#1B67BC] text-xs font-medium text-white hover:bg-[#3885CC]"
                   >
                     <span>{dt.name}</span>
-                    <span className="text-[10px] bg-white text-[#1A1A1A] px-1.5 py-0.5 rounded-xs font-bold">
+                    <span className="text-[10px] bg-white text-[#1B67BC] px-1.5 py-0.5 rounded-xs font-bold">
                       {dt.count}
                     </span>
                   </Link>

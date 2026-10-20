@@ -36,7 +36,7 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
               size="sm"
             />
             {doc.nature && (
-              <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-[#C6E8F7] text-[#1A1A1A]">
+              <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-[#C6E8F7] text-[#1B67BC]">
                 {doc.nature === "A_INTERNAL" ? "Internal (A)" : "Eksternal (B)"}
               </span>
             )}
@@ -48,7 +48,7 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
         <div className="mb-2.5 min-w-0">
           <span
             title={doc.officialNumber}
-            className="font-mono text-xs font-bold text-[#1A1A1A] tracking-tight bg-[#F1F5F9] px-2.5 py-1 rounded inline-block max-w-full truncate align-bottom"
+            className="font-mono text-xs font-bold text-[#1B67BC] tracking-tight bg-[#C6E8F7]/40 border border-[#A3D0EE]/50 px-2.5 py-1 rounded inline-block max-w-full truncate align-bottom"
           >
             {displayNumber}
           </span>
@@ -78,7 +78,7 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
           <span className="shrink-0">{doc.enactedDateFormatted}</span>
         </div>
 
-        <span className="shrink-0 rounded bg-[#1A1A1A] text-white group-hover:bg-[#1B67BC] px-2.5 py-1 text-[11px] font-bold transition-colors">
+        <span className="shrink-0 rounded bg-[#1B67BC] text-white group-hover:bg-[#3885CC] px-2.5 py-1 text-[11px] font-bold transition-colors">
           Buka Dokumen
         </span>
       </div>

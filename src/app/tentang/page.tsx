@@ -531,7 +531,7 @@ export default function TentangPage() {
           {/* ===================================================================
               7. KONTAK & NARAHUBUNG RESMI
              =================================================================== */}
-          <section className="rounded-3xl border border-[#A3D0EE]/30 bg-[#1A1A1A] text-white p-6 sm:p-10 shadow-md space-y-6">
+          <section className="rounded-3xl border border-[#A3D0EE]/30 bg-[#0F294A] text-white p-6 sm:p-10 shadow-md space-y-6">
             <div className="space-y-2 text-center sm:text-left">
               <span className="text-xs font-bold uppercase tracking-wider text-[#A3D0EE]">
                 Komunikasi Resmi

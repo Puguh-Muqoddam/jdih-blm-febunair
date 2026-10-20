@@ -116,7 +116,7 @@ export function DocumentTable({ documents }: DocumentTableProps) {
                 <td className="py-3 px-3 text-center">
                   <Link
                     href={detailHref}
-                    className="inline-block px-2.5 py-1 rounded bg-[#1A1A1A] text-white hover:bg-[#1B67BC] text-[11px] font-bold transition-colors"
+                    className="inline-block px-2.5 py-1 rounded bg-[#1B67BC] text-white hover:bg-[#3885CC] text-[11px] font-bold transition-colors"
                   >
                     Buka
                   </Link>

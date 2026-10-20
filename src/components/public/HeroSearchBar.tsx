@@ -56,10 +56,10 @@ export function HeroSearchBar() {
           />
         </div>
 
-        {/* Submit Button: Solid Dark seperti referensi "Learn More" */}
+        {/* Submit Button: Solid Deep Blue */}
         <button
           type="submit"
-          className="shrink-0 rounded bg-[#1A1A1A] px-6 py-2.5 text-xs sm:text-sm font-bold text-white hover:bg-[#1B67BC] focus-visible:outline-2 focus-visible:outline-[#1B67BC] transition-colors cursor-pointer"
+          className="shrink-0 rounded bg-[#1B67BC] px-6 py-2.5 text-xs sm:text-sm font-bold text-white hover:bg-[#3885CC] focus-visible:outline-2 focus-visible:outline-[#1B67BC] transition-colors cursor-pointer"
         >
           Cari Regulasi
         </button>
@@ -79,7 +79,7 @@ export function HeroSearchBar() {
             key={tag}
             type="button"
             onClick={() => handleQuickTag(tag)}
-            className="rounded bg-[#1A1A1A] text-white px-3 py-1 hover:bg-white hover:text-[#1A1A1A] transition-colors text-[11px] font-bold cursor-pointer"
+            className="rounded bg-[#1B67BC] hover:bg-[#b96d41] text-white px-3 py-1 transition-colors text-[11px] font-bold cursor-pointer"
           >
             {tag}
           </button>

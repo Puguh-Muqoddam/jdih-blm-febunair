@@ -26,7 +26,7 @@ export default function StatistikPage() {
     { name: "Surat Keputusan (SK)", count: 39, pct: 79.6, color: "bg-[#1B67BC]" },
     { name: "Surat Laporan (LP)", count: 5, pct: 10.2, color: "bg-[#3885CC]" },
     { name: "Ketetapan BLM (TAP)", count: 3, pct: 6.1, color: "bg-[#b96d41]" },
-    { name: "Undang-Undang (UU)", count: 2, pct: 4.1, color: "bg-[#1A1A1A]" },
+    { name: "Undang-Undang (UU)", count: 2, pct: 4.1, color: "bg-[#0F294A]" },
   ];
 
   const monthStats = [
