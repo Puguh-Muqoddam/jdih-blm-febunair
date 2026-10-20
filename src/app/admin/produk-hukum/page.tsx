@@ -94,7 +94,7 @@ export default function AdminProdukHukumPage() {
             Kelola Produk Hukum Resmi
           </h1>
           <p className="text-sm text-stone-600 mt-1">
-            Daftar lengkap 49 produk hukum hasil kodifikasi register Departemen Legislasi periode 2026.
+            Daftar lengkap {LEGAL_DOCUMENTS.length} produk hukum hasil kodifikasi register dan repositori Google Drive Departemen Legislasi periode 2026.
           </p>
         </div>
 

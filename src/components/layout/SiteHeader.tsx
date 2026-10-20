@@ -44,9 +44,9 @@ export function SiteHeader() {
 
   const docTypes = [
     {
-      name: "Undang-Undang (UU)",
+      name: "Undang-Undang & Konstitusi (UU)",
       slug: "undang-undang",
-      count: 2,
+      count: 4,
     },
     {
       name: "Ketetapan BLM (TAP)",
@@ -56,12 +56,12 @@ export function SiteHeader() {
     {
       name: "Surat Keputusan (SK)",
       slug: "surat-keputusan",
-      count: 39,
+      count: 57,
     },
     {
       name: "Surat Laporan (LP)",
       slug: "lembaran-parlemen",
-      count: 5,
+      count: 6,
     },
   ];
 
@@ -202,7 +202,7 @@ export function SiteHeader() {
                           >
                             <span>Semua Produk Hukum</span>
                             <span className="bg-white text-[#1B67BC] px-2 py-0.5 rounded-xs text-[10px] font-bold">
-                              49
+                              70
                             </span>
                           </Link>
                           {docTypes.map((dt) => (

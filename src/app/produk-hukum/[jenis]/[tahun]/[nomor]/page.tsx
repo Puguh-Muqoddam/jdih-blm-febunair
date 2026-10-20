@@ -233,59 +233,142 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
               {/* Kotak Sitasi Hukum Standar */}
               <CitationBox citation={citationText} />
 
-              {/* Viewer PDF Placeholder */}
-              <section className="rounded-2xl border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-2xs space-y-4">
-                <div className="flex items-center justify-between border-b border-[#A3D0EE]/50 pb-3">
+              {/* Viewer PDF Resmi (Google Drive Terintegrasi) */}
+              <section className="rounded-lg border border-[#A3D0EE] bg-white p-6 sm:p-8 shadow-2xs space-y-5">
+                <div className="flex items-center justify-between border-b border-[#A3D0EE]/50 pb-3 flex-wrap gap-2">
                   <h2 className="font-serif font-bold text-lg text-[#1A1A1A] flex items-center gap-2">
                     <BookOpen className="w-5 h-5 text-[#1B67BC]" />
-                    <span>Naskah Dokumen Digital</span>
+                    <span>Naskah Dokumen Digital Resmi</span>
                   </h2>
-                  <span className="text-xs text-stone-600 flex items-center gap-1 font-mono">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                    <span>SHA-256 Terverifikasi</span>
+                  <span className="text-xs text-[#1B67BC] bg-[#C6E8F7]/40 border border-[#A3D0EE] px-2.5 py-1 rounded font-mono font-semibold flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-[#1B67BC]" />
+                    <span>Arsip Resmi Terverifikasi</span>
                   </span>
                 </div>
 
-                {/* PDF Display Container */}
-                <div className="rounded-xl border-2 border-dashed border-[#A3D0EE] bg-[#C6E8F7]/15 p-8 sm:p-12 text-center space-y-4">
-                  <div className="mx-auto w-16 h-16 rounded-2xl bg-white border border-[#A3D0EE] flex items-center justify-center text-[#1B67BC] shadow-2xs">
-                    <FileText className="w-8 h-8" />
-                  </div>
-                  <div className="space-y-1">
-                    <h3 className="font-serif font-bold text-base text-[#1A1A1A]">
-                      Salinan Resmi Berkas Produk Hukum
-                    </h3>
-                    <p className="text-xs text-stone-600 max-w-md mx-auto leading-relaxed">
-                      Dokumen digital resmi bertanda tangan dari Departemen Legislasi Badan Legislatif Mahasiswa FEB UNAIR.
-                    </p>
-                  </div>
+                {doc.drivePreviewUrl ? (
+                  <div className="space-y-4">
+                    <div className="rounded-md overflow-hidden border border-[#A3D0EE] bg-[#F5F6F8] shadow-inner">
+                      <iframe
+                        src={doc.drivePreviewUrl}
+                        title={`Pratinjau PDF ${doc.officialNumber} - ${doc.title}`}
+                        className="w-full h-[560px] sm:h-[720px] border-0"
+                        allow="autoplay"
+                      />
+                    </div>
 
-                  <div className="pt-2 flex items-center justify-center gap-3 flex-wrap">
+                    {doc.pdfFileName && (
+                      <div className="flex items-center justify-between gap-2 bg-[#F5F6F8] border border-stone-200 px-3.5 py-2.5 rounded-md text-xs">
+                        <span className="text-[#4A5568] font-medium truncate">
+                          Nama Berkas:{" "}
+                          <strong className="font-mono text-[#1A1A1A]">{doc.pdfFileName}</strong>
+                        </span>
+                        <span className="shrink-0 text-[11px] font-bold text-[#1B67BC] bg-[#C6E8F7] px-2 py-0.5 rounded">
+                          PDF Resmi
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="rounded-md border border-[#A3D0EE] bg-[#C6E8F7]/15 p-8 sm:p-10 text-center space-y-3">
+                    <div className="space-y-1">
+                      <h3 className="font-serif font-bold text-base text-[#1A1A1A]">
+                        Berkas Arsip Tersedia di Folder Repositori
+                      </h3>
+                      <p className="text-xs text-stone-600 max-w-md mx-auto leading-relaxed">
+                        Dokumen ini terdaftar dalam Buku Register Departemen Legislasi BLM FEB UNAIR. Silakan buka folder repositori Google Drive untuk melihat salinan arsip terkait.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Tombol Aksi Unduh & Buka Google Drive */}
+                <div className="pt-1 flex items-center justify-start gap-3 flex-wrap">
+                  <a
+                    href={doc.driveDownloadUrl || `/dokumen/${doc.slug}/unduh`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-md bg-[#1B67BC] px-4 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#3885CC] transition-colors cursor-pointer"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Unduh Berkas PDF Resmi</span>
+                  </a>
+
+                  {doc.driveViewUrl && (
                     <a
-                      href={`/dokumen/${doc.slug}/unduh`}
-                      className="inline-flex items-center gap-2 rounded-xl bg-[#1B67BC] px-5 py-2.5 text-xs font-bold text-white shadow-md hover:bg-[#3885CC] transition-all cursor-pointer"
-                    >
-                      <Download className="w-4 h-4" />
-                      <span>Unduh Berkas PDF Resmi</span>
-                    </a>
-                    <a
-                      href={`/dokumen/${doc.slug}/lihat`}
+                      href={doc.driveViewUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-[#A3D0EE] bg-white px-5 py-2.5 text-xs font-bold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 rounded-md bg-[#b96d41] px-4 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#a35c33] transition-colors cursor-pointer"
                     >
-                      <span>Buka di Tab Baru</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-[#1B67BC]" />
+                      <span>Buka di Google Drive</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </a>
-                  </div>
+                  )}
 
-                  <div className="pt-4 text-[11px] text-stone-500 flex items-center justify-center gap-4 flex-wrap border-t border-[#A3D0EE]/40">
-                    <span>Format: Dokumen PDF</span>
-                    <span>•</span>
-                    <span>Tersimpan di Cloudflare R2 Privat</span>
-                    <span>•</span>
-                    <span>{doc.downloadCount} Kali Diunduh</span>
+                  {doc.driveFolderUrl && (
+                    <a
+                      href={doc.driveFolderUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-md border border-[#A3D0EE] bg-white px-4 py-2.5 text-xs font-bold text-[#1B67BC] hover:bg-[#C6E8F7]/40 transition-colors cursor-pointer"
+                    >
+                      <Archive className="w-3.5 h-3.5" />
+                      <span>Buka Folder Arsip Jenis Ini</span>
+                    </a>
+                  )}
+                </div>
+
+                {/* Daftar Lampiran / Dokumen Pendukung (Jika Ada) */}
+                {doc.attachments && doc.attachments.length > 0 && (
+                  <div className="pt-4 border-t border-[#A3D0EE]/50 space-y-2.5">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-[#1B67BC]">
+                      Lampiran & Dokumen Pendukung Resmi ({doc.attachments.length})
+                    </h3>
+                    <div className="grid grid-cols-1 gap-2">
+                      {doc.attachments.map((att) => (
+                        <div
+                          key={att.driveFileId}
+                          className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-md border border-[#A3D0EE] bg-[#F5F6F8] p-3 text-xs"
+                        >
+                          <div className="flex items-center gap-2 min-w-0">
+                            <FileText className="w-4 h-4 text-[#1B67BC] shrink-0" />
+                            <span className="font-semibold text-[#1A1A1A] truncate">
+                              {att.title}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2 shrink-0">
+                            <a
+                              href={att.driveViewUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-2.5 py-1 rounded bg-white border border-[#A3D0EE] text-[#1B67BC] font-bold hover:bg-[#C6E8F7]/40 transition-colors inline-flex items-center gap-1"
+                            >
+                              <span>Lihat</span>
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                            <a
+                              href={att.driveDownloadUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-2.5 py-1 rounded bg-[#1B67BC] text-white font-bold hover:bg-[#3885CC] transition-colors inline-flex items-center gap-1"
+                            >
+                              <Download className="w-3 h-3" />
+                              <span>Unduh</span>
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+                )}
+
+                <div className="pt-3 text-[11px] text-stone-500 flex items-center justify-between gap-4 flex-wrap border-t border-[#A3D0EE]/40">
+                  <span>Format: Dokumen PDF (application/pdf)</span>
+                  <span>•</span>
+                  <span>Sumber: Repositori Resmi Google Drive & Database JDIH BLM</span>
+                  <span>•</span>
+                  <span>{doc.downloadCount} Kali Diakses</span>
                 </div>
               </section>
             </div>
@@ -369,16 +452,30 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                 {/* Tombol Aksi Tambahan */}
                 <div className="pt-3 border-t border-[#A3D0EE]/50 space-y-2">
                   <a
-                    href={`/dokumen/${doc.slug}/unduh`}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#1B67BC] py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#3885CC] transition-all cursor-pointer"
+                    href={doc.driveDownloadUrl || `/dokumen/${doc.slug}/unduh`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center gap-2 rounded-md bg-[#1B67BC] py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#3885CC] transition-all cursor-pointer"
                   >
                     <Download className="w-4 h-4" />
                     <span>Unduh PDF Dokumen</span>
                   </a>
 
+                  {doc.driveViewUrl && (
+                    <a
+                      href={doc.driveViewUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex items-center justify-center gap-2 rounded-md bg-[#b96d41] py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#a35c33] transition-all cursor-pointer"
+                    >
+                      <span>Buka di Google Drive</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+
                   <Link
                     href="/permohonan"
-                    className="w-full flex items-center justify-center gap-2 rounded-xl border border-[#A3D0EE] bg-white py-2.5 text-xs font-semibold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 rounded-md border border-[#A3D0EE] bg-white py-2.5 text-xs font-semibold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 transition-all cursor-pointer"
                   >
                     <span>Permohonan Informasi Terkait</span>
                   </Link>

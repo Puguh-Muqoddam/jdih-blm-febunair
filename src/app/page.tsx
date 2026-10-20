@@ -22,12 +22,12 @@ export default function HomePage() {
   const docTypeCards = [
     {
       code: "UU",
-      name: "Undang-Undang (UU)",
+      name: "Undang-Undang & Konstitusi (UU)",
       slug: "undang-undang",
-      count: 2,
+      count: 4,
       boxStyle: "bg-white text-[#1B67BC] border-[#A3D0EE]",
       countStyle: "bg-[#1B67BC] text-white",
-      desc: "Regulasi dasar tertinggi yang disahkan melalui Sidang Pleno BLM FEB UNAIR untuk mengatur tata kelola fundamental ormawa dan pemilihan raya mahasiswa.",
+      desc: "Regulasi dasar tertinggi meliputi AD/ART BLM, Konstitusi Ormawa, dan Undang-Undang yang disahkan melalui Sidang Pleno BLM FEB UNAIR.",
     },
     {
       code: "TAP",
@@ -42,19 +42,19 @@ export default function HomePage() {
       code: "SK",
       name: "Surat Keputusan (SK)",
       slug: "surat-keputusan",
-      count: 39,
+      count: 57,
       boxStyle: "bg-[#C6E8F7] text-[#1B67BC] border-[#A3D0EE]",
       countStyle: "bg-[#1B67BC] text-white",
       desc: "Keputusan administratif dan persidangan legislatif terkait agenda, tata tertib, kepengurusan ormawa, serta kebijakan eksternal berkode A dan B.",
     },
     {
       code: "LP",
-      name: "Surat Laporan (LP)",
+      name: "Surat Laporan & BA (LP)",
       slug: "lembaran-parlemen",
-      count: 5,
+      count: 6,
       boxStyle: "bg-[#3885CC] text-white border-[#A3D0EE]",
       countStyle: "bg-white text-[#1B67BC]",
-      desc: "Instrumen akuntabilitas hasil pengawasan berkala, laporan investigasi komisi, serta evaluasi kepatuhan kegiatan organisasi mahasiswa FEB UNAIR.",
+      desc: "Instrumen akuntabilitas hasil pengawasan berkala, laporan investigasi komisi, rekomendasi DKPP, serta evaluasi kegiatan ormawa FEB UNAIR.",
     },
   ];
 
@@ -174,14 +174,24 @@ export default function HomePage() {
                 {/* Baris Link Horizontal Solid di Bawah 4 Kotak */}
                 <div className="rounded-lg bg-[#C6E8F7] border border-[#A3D0EE] p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <span className="font-sans font-bold text-xs sm:text-sm text-[#1B67BC]">
-                    PEDOMAN : Standarisasi & Format Penomoran Resmi Departemen Legislasi (49 Produk Hukum)
+                    ARSIP & PEDOMAN : Standarisasi Penomoran & Repositori PDF Resmi (70 Produk Hukum)
                   </span>
-                  <Link
-                    href="/panduan-penomoran"
-                    className="inline-block shrink-0 rounded bg-[#1B67BC] hover:bg-[#3885CC] text-white px-4 py-2 text-xs font-bold transition-colors text-center"
-                  >
-                    Buka Pedoman
-                  </Link>
+                  <div className="flex items-center gap-2 shrink-0 flex-wrap">
+                    <a
+                      href="https://drive.google.com/drive/folders/1f4iTq6ABdHVRXfEVd6fAZRfLmiWdeH2U?usp=drive_link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block rounded bg-[#b96d41] hover:bg-[#a35c33] text-white px-3.5 py-2 text-xs font-bold transition-colors text-center"
+                    >
+                      Folder Google Drive
+                    </a>
+                    <Link
+                      href="/panduan-penomoran"
+                      className="inline-block rounded bg-[#1B67BC] hover:bg-[#3885CC] text-white px-3.5 py-2 text-xs font-bold transition-colors text-center"
+                    >
+                      Buka Pedoman
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

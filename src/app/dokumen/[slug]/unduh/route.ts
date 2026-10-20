@@ -127,7 +127,25 @@ export async function GET(
     });
   }
 
-  // Fallback dev/sandbox: Hasilkan representasi naskah resmi jika belum diunggah ke R2
+  const mockDoc = LEGAL_DOCUMENTS.find((d) => d.slug === slug);
+
+  // Jika mock memiliki driveDownloadUrl atau r2Key di DB menunjuk ke Google Drive, arahkan ke unduhan resmi Google Drive
+  let driveDownloadTarget = mockDoc?.driveDownloadUrl;
+  if (!driveDownloadTarget && docData.r2Key?.startsWith("https://drive.google.com/file/d/")) {
+    const match = docData.r2Key.match(/\/file\/d\/([^/]+)/);
+    if (match?.[1]) {
+      driveDownloadTarget = `https://drive.google.com/uc?export=download&id=${match[1]}`;
+    }
+  }
+
+  if (driveDownloadTarget || mockDoc?.driveFolderUrl) {
+    return NextResponse.redirect(
+      driveDownloadTarget || mockDoc!.driveFolderUrl!,
+      302
+    );
+  }
+
+  // Fallback dev/sandbox: Hasilkan representasi naskah resmi jika belum diunggah ke R2 maupun Drive
   const fallbackPdf = `%PDF-1.4
 1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj
 2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj

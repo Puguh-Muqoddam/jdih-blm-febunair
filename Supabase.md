@@ -90,22 +90,21 @@ Ikuti **4 tahapan berurutan** berikut agar database terisi dengan skema, aturan 
    - Mengaktifkan **Row Level Security (RLS) Zero-Trust** dan mencabut akses langsung (`REVOKE ALL`) dari role publik `anon` serta `authenticated`.
    - Mengisi **Data Master Awal**: 4 Jenis Produk Hukum (`UU`, `TAP`, `SK`, `LP`), 5 Forum Persidangan, Counter Tahun 2026, serta akun Super Admin utama (`puguhmuqoddam151@gmail.com`).
 
-### Tahap 2: Impor 49 Produk Hukum Faktual dari Buku Register CSV
-Agar website menampilkan ke-49 produk hukum resmi Parlemen Cakrasena 2026 (bukan data dummy/AI), jalankan skrip *seeder* yang membaca langsung 5 berkas CSV asli di folder `Nomor Produk Hukum/`:
+### Tahap 2: Impor 70 Produk Hukum Faktual & Tautan PDF Google Drive
+Seluruh **70 produk hukum resmi** dari [Folder Google Drive JDIH BLM FEB UNAIR](https://drive.google.com/drive/folders/1f4iTq6ABdHVRXfEVd6fAZRfLmiWdeH2U?usp=drive_link) telah dikodifikasi ke dalam skrip SQL siap pakai.
 
-```powershell
-# 1. Uji coba (dry-run) terlebih dahulu untuk memverifikasi pembacaan 49 dokumen CSV
-npx tsx prisma/seed/import-register.ts --dry-run
-
-# 2. Jalankan impor faktual ke database Supabase (pastikan DATABASE_URL di .env sudah aktif)
-npx tsx prisma/seed/import-register.ts
-```
-**Hasil Impor Faktual:**
-- **2 Undang-Undang (UU):** Otomatis menormalisasi salah ketik tahun `2926` pada arsip CSV menjadi `2026` dengan tetap menyimpan nomor asli di kolom `legacyNumber`.
-- **3 Ketetapan BLM (TAP):** Termasuk TAP Prosedur Tetap, Kebijakan Ospek, dan Kepengurusan Sementara LPPM SEKTOR.
-- **39 Surat Keputusan (SK):** Otomatis menormalisasi nomor urut 3 digit (`100`–`170`) menjadi **4 digit wajib (`0100`–`0170`)** sesuai standar Buku Departemen Legislasi, lengkap dengan pemisahan sifat Internal (`A`) dan Eksternal (`B`).
-- **5 Surat Laporan (LP):** Laporan pengawasan dan klempok kerja komisi.
-- **3 Reservasi Nomor (`NumberReservation`):** Nomor urut `171`, `172`, dan `173` tercatat sebagai nomor dipesan.
+1. Di **SQL Editor** Dashboard Supabase, buat query baru (**New query**).
+2. Buka file [`prisma/manual/01-seed-produk-hukum-drive.sql`](./prisma/manual/01-seed-produk-hukum-drive.sql), salin seluruh isinya, tempelkan ke SQL Editor, lalu klik **Run**.
+3. *(Alternatif via Terminal Lokal)* Anda juga dapat menjalankan seeder berbasis TypeScript:
+   ```powershell
+   npx tsx prisma/seed/import-register.ts --dry-run
+   npx tsx prisma/seed/import-register.ts
+   ```
+4. **Rincian 70 Dokumen Faktual & Berkas PDF Google Drive yang Masuk ke Database (`LegalDocument` & `DocumentFile`):**
+   - **4 Dokumen Konstitusi & Undang-Undang (`UU`):** Termasuk `AD-ART BLM FEB UNAIR 2026.pdf`, `KONSTITUSI ORMAWA BLM FEB UNAIR 2026.pdf`, `UU No. 01 Tahun 2026 (PEMIRA)`, dan `UU No. 02 Tahun 2026 (Perubahan UU PEMIRA)`.
+   - **3 Ketetapan BLM (`TAP`):** `TAP 001 (Prosedur Tetap Persidangan)`, `TAP 002 (Kebijakan Ospek FEB)`, dan `TAP 003 (Kepengurusan Sementara LPPM SEKTOR)`.
+   - **57 Surat Keputusan (`SK`):** Mencakup SK Awal Tahun (`0005`–`0009`, `0019`), SK Komisi & Pleno II (`0042`–`0048`), SK Pleno I (`0100`–`0108` beserta lampiran & notulensi ringkas), SK PEMIRA (`0126`–`0130`), SK Pleno III & SEKTOR (`0141`–`0152`), hingga SK Rekomendasi & Sanksi Ospek (`0158`–`0175`).
+   - **6 Surat Laporan & Berita Acara (`LP`):** `LP 001` s.d. `LP 005` serta `Surat Rekomendasi DKPP PEMIRA FEB UNAIR 2026.pdf`.
 
 ### Tahap 3: Konfigurasi Autentikasi Pengurus (`Supabase Auth`)
 1. Di Dashboard Supabase, buka menu **Authentication > Providers > Email**.

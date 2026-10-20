@@ -18,38 +18,38 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 export const metadata: Metadata = {
   title: "Statistik Produk Hukum | JDIH BLM FEB UNAIR",
   description:
-    "Data analitik dan visualisasi statistik 49 produk hukum BLM FEB Universitas Airlangga (distribusi jenis, tren bulanan, sifat SK A/B, dan status hukum).",
+    "Data analitik dan visualisasi statistik 70 produk hukum BLM FEB Universitas Airlangga (distribusi jenis, tren bulanan, sifat SK A/B, dan status hukum).",
 };
 
 export default function StatistikPage() {
   const typeStats = [
-    { name: "Surat Keputusan (SK)", count: 39, pct: 79.6, color: "bg-[#1B67BC]" },
-    { name: "Surat Laporan (LP)", count: 5, pct: 10.2, color: "bg-[#3885CC]" },
-    { name: "Ketetapan BLM (TAP)", count: 3, pct: 6.1, color: "bg-[#b96d41]" },
-    { name: "Undang-Undang (UU)", count: 2, pct: 4.1, color: "bg-[#0F294A]" },
+    { name: "Surat Keputusan (SK)", count: 57, pct: 81.4, color: "bg-[#1B67BC]" },
+    { name: "Surat Laporan & BA (LP)", count: 6, pct: 8.6, color: "bg-[#3885CC]" },
+    { name: "Undang-Undang & Konstitusi (UU)", count: 4, pct: 5.7, color: "bg-[#0F294A]" },
+    { name: "Ketetapan BLM (TAP)", count: 3, pct: 4.3, color: "bg-[#b96d41]" },
   ];
 
   const monthStats = [
-    { month: "April 2026", count: 1, pct: 3.4, note: "TAP 001" },
-    { month: "Juli 2026", count: 12, pct: 41.4, note: "TAP 002, SK 100-108, LP 001-002" },
-    { month: "Agustus 2026", count: 7, pct: 24.1, note: "UU 01-02, SK 126-130 (PEMIRA)" },
-    { month: "September 2026", count: 29, pct: 100, note: "TAP 003, LP 003-005, SK 141-170" },
+    { month: "Januari — April 2026", count: 9, pct: 23.7, note: "AD/ART, Konstitusi Ormawa, TAP 001, SK 0005-0019" },
+    { month: "Mei — Juli 2026", count: 19, pct: 50.0, note: "TAP 002, SK 0042-0048, SK 0100-0108, LP 001-002" },
+    { month: "Agustus 2026", count: 7, pct: 18.4, note: "UU 01-02, SK 0126-0130 (PEMIRA)" },
+    { month: "September — Oktober 2026", count: 35, pct: 100, note: "TAP 003, LP 003-006, SK 0141-0175" },
   ];
 
   const natureStats = [
     {
+      nature: "Kode A (Internal)",
+      desc: "Sidang pleno, tata tertib, agenda acara, SP, personalia legislatif",
+      count: 35,
+      pct: 61.4,
+      color: "bg-[#1B67BC]",
+    },
+    {
       nature: "Kode B (Eksternal)",
       desc: "Kebijakan kemahasiswaan, regulasi PEMIRA, rekomendasi, ormawa",
       count: 22,
-      pct: 56.4,
+      pct: 38.6,
       color: "bg-[#b96d41]",
-    },
-    {
-      nature: "Kode A (Internal)",
-      desc: "Sidang pleno, tata tertib, agenda acara, SP, personalia legislatif",
-      count: 17,
-      pct: 43.6,
-      color: "bg-[#1B67BC]",
     },
   ];
 
@@ -78,7 +78,7 @@ export default function StatistikPage() {
               Statistik Produk Hukum BLM 2026
             </h1>
             <p className="text-xs sm:text-sm text-[#4A5568] max-w-2xl leading-relaxed">
-              Ringkasan data persebaran, komposisi jenis, sifat penetapan, dan linimasa penerbitan 49 produk hukum legislatif mahasiswa FEB Universitas Airlangga.
+              Ringkasan data persebaran, komposisi jenis, sifat penetapan, dan linimasa penerbitan 70 produk hukum legislatif mahasiswa FEB Universitas Airlangga.
             </p>
           </div>
 
@@ -87,10 +87,10 @@ export default function StatistikPage() {
             <div className="rounded-2xl border border-[#A3D0EE] bg-white p-5 shadow-xs space-y-1">
               <span className="text-xs text-[#4A5568] font-medium block">Total Produk Hukum</span>
               <div className="flex items-baseline gap-2">
-                <span className="font-serif text-3xl font-bold text-[#1B67BC]">49</span>
+                <span className="font-serif text-3xl font-bold text-[#1B67BC]">70</span>
                 <span className="text-xs text-[#1B67BC] font-semibold">Dokumen</span>
               </div>
-              <span className="text-[11px] text-[#4A5568] block">Register 2026 Aktif</span>
+              <span className="text-[11px] text-[#4A5568] block">Register & Arsip Drive 2026</span>
             </div>
 
             <div className="rounded-2xl border border-[#A3D0EE] bg-white p-5 shadow-xs space-y-1">
@@ -105,8 +105,8 @@ export default function StatistikPage() {
             <div className="rounded-2xl border border-[#A3D0EE] bg-white p-5 shadow-xs space-y-1">
               <span className="text-xs text-[#4A5568] font-medium block">Status Berlaku</span>
               <div className="flex items-baseline gap-2">
-                <span className="font-serif text-3xl font-bold text-emerald-800">48</span>
-                <span className="text-xs text-[#4A5568]">/ 49 Dokumen</span>
+                <span className="font-serif text-3xl font-bold text-emerald-800">69</span>
+                <span className="text-xs text-[#4A5568]">/ 70 Dokumen</span>
               </div>
               <span className="text-[11px] text-[#4A5568] block">1 Diubah (UU 01)</span>
             </div>
@@ -114,10 +114,10 @@ export default function StatistikPage() {
             <div className="rounded-2xl border border-[#A3D0EE] bg-white p-5 shadow-xs space-y-1">
               <span className="text-xs text-[#4A5568] font-medium block">Puncak Aktivitas</span>
               <div className="flex items-baseline gap-2">
-                <span className="font-serif text-3xl font-bold text-[#b96d41]">29</span>
+                <span className="font-serif text-3xl font-bold text-[#b96d41]">35</span>
                 <span className="text-xs text-[#4A5568]">Dokumen</span>
               </div>
-              <span className="text-[11px] text-[#4A5568] block">Bulan September 2026</span>
+              <span className="text-[11px] text-[#4A5568] block">September — Oktober 2026</span>
             </div>
           </div>
 
@@ -169,7 +169,7 @@ export default function StatistikPage() {
                     Komposisi Sifat Surat Keputusan (SK)
                   </h2>
                 </div>
-                <span className="text-xs text-[#4A5568]">39 SK</span>
+                <span className="text-xs text-[#4A5568]">57 SK</span>
               </div>
 
               {/* Perbandingan Bar Ganda */}
@@ -196,7 +196,7 @@ export default function StatistikPage() {
               <div className="rounded-xl bg-[#C6E8F7]/25 p-4 text-xs text-[#1A1A1A] space-y-1 border border-[#A3D0EE]">
                 <span className="font-bold text-[#1B67BC] block">Keputusan Transparansi Penuh:</span>
                 <p className="text-[11px] leading-relaxed text-[#4A5568]">
-                  Meskipun 17 SK berkode A berfokus pada dinamika internal lembaga, seluruhnya dipublikasikan secara terbuka di portal JDIH untuk mewujudkan akuntabilitas ormawa kepada seluruh mahasiswa.
+                  Meskipun 35 SK berkode A berfokus pada dinamika internal lembaga, seluruhnya dipublikasikan secara terbuka di portal JDIH untuk mewujudkan akuntabilitas ormawa kepada seluruh mahasiswa.
                 </p>
               </div>
             </section>

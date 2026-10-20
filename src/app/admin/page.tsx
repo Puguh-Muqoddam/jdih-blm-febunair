@@ -60,7 +60,7 @@ export default function AdminDashboardPage() {
             Dasbor Kendali Hukum
           </h1>
           <p className="text-sm text-stone-600 mt-1 max-w-2xl">
-            Selamat datang, <span className="font-semibold text-[#1A1A1A]">puguhmuqoddam151@gmail.com</span>. Seluruh 49 produk hukum resmi periode 2026 tersinkronisasi dan siap dikelola.
+            Selamat datang, <span className="font-semibold text-[#1A1A1A]">puguhmuqoddam151@gmail.com</span>. Seluruh {totalDocs} produk hukum resmi periode 2026 beserta berkas PDF Google Drive tersinkronisasi dan siap dikelola.
           </p>
         </div>
 
@@ -94,10 +94,10 @@ export default function AdminDashboardPage() {
           </div>
           <div className="text-3xl font-bold font-serif text-[#1A1A1A]">{totalDocs}</div>
           <div className="text-xs text-stone-600 mt-2 flex items-center gap-1.5">
-            <span className="font-semibold text-[#1A1A1A]">2 UU</span> •{" "}
+            <span className="font-semibold text-[#1A1A1A]">4 UU</span> •{" "}
             <span className="font-semibold text-[#1A1A1A]">3 TAP</span> •{" "}
-            <span className="font-semibold text-[#1A1A1A]">39 SK</span> •{" "}
-            <span className="font-semibold text-[#1A1A1A]">5 LP</span>
+            <span className="font-semibold text-[#1A1A1A]">57 SK</span> •{" "}
+            <span className="font-semibold text-[#1A1A1A]">6 LP</span>
           </div>
         </div>
 
@@ -123,7 +123,7 @@ export default function AdminDashboardPage() {
               <FileCode2 className="w-4 h-4" />
             </div>
           </div>
-          <div className="text-3xl font-bold font-serif text-[#1A1A1A]">39</div>
+          <div className="text-3xl font-bold font-serif text-[#1A1A1A]">57</div>
           <div className="text-xs text-stone-600 mt-2 flex items-center gap-2">
             <span className="text-[#1B67BC] font-semibold">{totalSkA} Sifat A (Internal)</span>
             <span>•</span>
@@ -231,7 +231,7 @@ export default function AdminDashboardPage() {
             href="/admin/produk-hukum"
             className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1B67BC] hover:text-[#3885CC] transition-colors"
           >
-            Lihat Semua 49 Dokumen <ArrowUpRight className="w-4 h-4" />
+            Lihat Semua {totalDocs} Dokumen <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
 
