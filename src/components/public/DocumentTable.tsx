@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, Calendar, Building2 } from "lucide-react";
 import { LegalDocumentItem } from "@/lib/data/mock-documents";
 import { TypeBadge } from "../ui/TypeBadge";
 import { StatusBadge } from "../ui/StatusBadge";
@@ -11,9 +10,16 @@ interface DocumentTableProps {
   documents: LegalDocumentItem[];
 }
 
+const MAX_NUMBER_CHARS = 30;
+
+function formatShortOfficialNumber(num: string): string {
+  if (num.length <= MAX_NUMBER_CHARS) return num;
+  return `${num.slice(0, MAX_NUMBER_CHARS)}...`;
+}
+
 export function DocumentTable({ documents }: DocumentTableProps) {
   return (
-    <div className="w-full overflow-x-auto rounded-xl border border-[#A3D0EE] bg-white shadow-xs">
+    <div className="w-full overflow-x-auto rounded-md border border-[#A3D0EE] bg-white shadow-xs">
       <table className="w-full text-left text-xs border-collapse">
         <thead className="bg-[#C6E8F7]/50 text-[#1A1A1A] border-b border-[#A3D0EE] font-serif font-bold text-xs uppercase tracking-wider">
           <tr>
@@ -32,7 +38,7 @@ export function DocumentTable({ documents }: DocumentTableProps) {
             <th scope="col" className="py-3.5 px-3 w-[120px]">
               Status
             </th>
-            <th scope="col" className="py-3.5 px-3 w-[80px] text-center">
+            <th scope="col" className="py-3.5 px-3 w-[90px] text-center">
               Aksi
             </th>
           </tr>
@@ -49,14 +55,22 @@ export function DocumentTable({ documents }: DocumentTableProps) {
                 className="hover:bg-[#C6E8F7]/20 transition-colors group"
               >
                 {/* Nomor Resmi */}
-                <td className="py-3 px-4 font-mono text-[11px] font-semibold text-[#1B67BC]">
-                  <div className="flex items-center gap-1.5">
+                <td className="py-3 px-4 font-mono text-[11px] font-semibold text-[#1B67BC] max-w-[240px]">
+                  <div className="flex items-center gap-1.5 min-w-0">
                     <CopyButton textToCopy={doc.officialNumber} showIconOnly />
-                    <span className="truncate">{doc.officialNumber}</span>
+                    <span
+                      title={doc.officialNumber}
+                      className="truncate max-w-[190px]"
+                    >
+                      {formatShortOfficialNumber(doc.officialNumber)}
+                    </span>
                   </div>
                   {doc.legacyNumber && (
-                    <div className="text-[10px] text-[#4A5568] mt-0.5">
-                      Asli: {doc.legacyNumber}
+                    <div
+                      title={doc.legacyNumber}
+                      className="text-[10px] text-[#4A5568] mt-0.5 truncate max-w-[210px]"
+                    >
+                      Asli: {formatShortOfficialNumber(doc.legacyNumber)}
                     </div>
                   )}
                 </td>
@@ -81,13 +95,11 @@ export function DocumentTable({ documents }: DocumentTableProps) {
 
                 {/* Penetapan */}
                 <td className="py-3 px-4 text-[11px] text-[#4A5568]">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-3 h-3 text-[#1B67BC]" />
-                    <span>{doc.enactedDateFormatted}</span>
+                  <div className="font-semibold text-[#1A1A1A]">
+                    {doc.enactedDateFormatted}
                   </div>
-                  <div className="flex items-center gap-1 text-[10px] text-[#4A5568] mt-0.5">
-                    <Building2 className="w-3 h-3 text-[#1B67BC]" />
-                    <span className="truncate max-w-[120px]">{doc.forum}</span>
+                  <div className="text-[10px] text-[#4A5568] mt-0.5 truncate max-w-[130px]">
+                    {doc.forum}
                   </div>
                 </td>
 
@@ -104,10 +116,9 @@ export function DocumentTable({ documents }: DocumentTableProps) {
                 <td className="py-3 px-3 text-center">
                   <Link
                     href={detailHref}
-                    className="inline-flex items-center justify-center p-1.5 rounded-md text-[#1B67BC] hover:bg-[#C6E8F7]/40 hover:text-[#3885CC] transition-colors"
-                    title="Buka Lembar Dokumen"
+                    className="inline-block px-2.5 py-1 rounded bg-[#1A1A1A] text-white hover:bg-[#1B67BC] text-[11px] font-bold transition-colors"
                   >
-                    <ArrowUpRight className="w-4 h-4" />
+                    Buka
                   </Link>
                 </td>
               </tr>

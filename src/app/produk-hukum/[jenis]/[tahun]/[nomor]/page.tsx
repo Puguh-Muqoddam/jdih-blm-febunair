@@ -170,7 +170,7 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                 publicationState={doc.publicationState}
               />
               {doc.nature && (
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#C6E8F7]/30 text-[#1B67BC] border border-[#A3D0EE]">
+                <span className="text-xs font-bold px-2.5 py-0.5 rounded bg-[#C6E8F7] text-[#1A1A1A]">
                   {doc.nature === "A_INTERNAL" ? "Sifat Internal (A)" : "Sifat Eksternal (B)"}
                 </span>
               )}
@@ -181,10 +181,13 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
             </h1>
 
             {/* Nomor Resmi Monospace Bar */}
-            <div className="flex items-center justify-between gap-3 pt-3 border-t border-[#A3D0EE]/50 flex-wrap">
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-stone-600 font-medium">Nomor Resmi:</span>
-                <span className="font-mono text-xs sm:text-sm font-bold text-[#1B67BC] bg-[#C6E8F7]/30 px-3 py-1 rounded-md border border-[#A3D0EE]">
+            <div className="flex items-center justify-between gap-3 pt-3 border-t border-[#A3D0EE]/50 flex-wrap min-w-0">
+              <div className="flex items-center gap-2 flex-wrap min-w-0 max-w-full">
+                <span className="text-xs text-stone-600 font-medium shrink-0">Nomor Resmi:</span>
+                <span
+                  title={doc.officialNumber}
+                  className="font-mono text-xs sm:text-sm font-bold text-[#1A1A1A] bg-[#F1F5F9] px-3 py-1 rounded max-w-full truncate"
+                >
                   {doc.officialNumber}
                 </span>
                 <CopyButton textToCopy={doc.officialNumber} label="Salin Nomor" />
@@ -299,9 +302,16 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                     <dt className="text-stone-600 font-medium shrink-0">Jenis Produk</dt>
                     <dd className="font-bold text-[#1A1A1A] text-right">{doc.typeName}</dd>
                   </div>
-                  <div className="py-2.5 flex justify-between gap-3">
+                  <div className="py-2.5 flex justify-between gap-3 min-w-0">
                     <dt className="text-stone-600 font-medium shrink-0">Nomor Resmi</dt>
-                    <dd className="font-mono font-bold text-[#1B67BC] text-right">{doc.officialNumber}</dd>
+                    <dd
+                      title={doc.officialNumber}
+                      className="font-mono font-bold text-[#1B67BC] text-right truncate max-w-[180px]"
+                    >
+                      {doc.officialNumber.length > 26
+                        ? `${doc.officialNumber.slice(0, 26)}...`
+                        : doc.officialNumber}
+                    </dd>
                   </div>
                   <div className="py-2.5 flex justify-between gap-3">
                     <dt className="text-stone-600 font-medium shrink-0">Tahun</dt>
@@ -316,9 +326,16 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                     </div>
                   )}
                   {doc.abbreviationCode && (
-                    <div className="py-2.5 flex justify-between gap-3">
+                    <div className="py-2.5 flex justify-between gap-3 min-w-0">
                       <dt className="text-stone-600 font-medium shrink-0">Kode Singkatan</dt>
-                      <dd className="font-mono font-bold text-[#1A1A1A] text-right">{doc.abbreviationCode}</dd>
+                      <dd
+                        title={doc.abbreviationCode}
+                        className="font-mono font-bold text-[#1A1A1A] text-right truncate max-w-[180px]"
+                      >
+                        {doc.abbreviationCode.length > 22
+                          ? `${doc.abbreviationCode.slice(0, 22)}...`
+                          : doc.abbreviationCode}
+                      </dd>
                     </div>
                   )}
                   <div className="py-2.5 flex justify-between gap-3">

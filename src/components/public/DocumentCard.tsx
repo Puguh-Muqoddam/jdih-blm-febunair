@@ -10,14 +10,22 @@ interface DocumentCardProps {
   document: LegalDocumentItem;
 }
 
+const MAX_NUMBER_CHARS = 30;
+
+function formatShortOfficialNumber(num: string): string {
+  if (num.length <= MAX_NUMBER_CHARS) return num;
+  return `${num.slice(0, MAX_NUMBER_CHARS)}...`;
+}
+
 export function DocumentCard({ document: doc }: DocumentCardProps) {
   const padding = doc.type === "SK" ? 4 : doc.type === "UU" ? 2 : 3;
   const paddedSeq = padSequence(doc.sequenceNumber, padding);
   const detailHref = `/produk-hukum/${doc.typeSlug}/${doc.year}/${paddedSeq}`;
+  const displayNumber = formatShortOfficialNumber(doc.officialNumber);
 
   return (
-    <article className="group relative flex flex-col justify-between rounded-md border border-[#A3D0EE] bg-white p-5 shadow-xs hover:shadow-md hover:border-[#1B67BC] transition-all">
-      <div>
+    <article className="group relative flex flex-col justify-between min-w-0 overflow-hidden rounded-md border border-[#A3D0EE] bg-white p-5 shadow-xs hover:shadow-md hover:border-[#1B67BC] transition-all">
+      <div className="min-w-0">
         {/* Header Kartu: Badges Solid & Copy Button */}
         <div className="flex items-center justify-between gap-2 mb-3">
           <div className="flex items-center gap-1.5 flex-wrap">
@@ -36,10 +44,13 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
           <CopyButton textToCopy={doc.officialNumber} showIconOnly />
         </div>
 
-        {/* Nomor Resmi Monospace */}
-        <div className="mb-2.5">
-          <span className="font-mono text-xs font-bold text-[#1A1A1A] tracking-tight bg-[#F1F5F9] px-2.5 py-1 rounded inline-block">
-            {doc.officialNumber}
+        {/* Nomor Resmi Monospace (Dipotong ... jika melebihi batas karakter / lebar kotak) */}
+        <div className="mb-2.5 min-w-0">
+          <span
+            title={doc.officialNumber}
+            className="font-mono text-xs font-bold text-[#1A1A1A] tracking-tight bg-[#F1F5F9] px-2.5 py-1 rounded inline-block max-w-full truncate align-bottom"
+          >
+            {displayNumber}
           </span>
         </div>
 
@@ -58,16 +69,16 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
       </div>
 
       {/* Footer Kartu: Metadata Forum & Tanggal & Tombol Solid */}
-      <div className="pt-3 border-t border-stone-200 flex items-center justify-between text-[11px] text-[#4A5568]">
-        <div className="flex items-center gap-2 font-medium">
-          <span className="truncate max-w-[130px] sm:max-w-[160px] text-[#1A1A1A]">
+      <div className="pt-3 border-t border-stone-200 flex items-center justify-between gap-2 text-[11px] text-[#4A5568]">
+        <div className="flex items-center gap-2 font-medium min-w-0">
+          <span className="truncate max-w-[120px] sm:max-w-[150px] text-[#1A1A1A]">
             {doc.forum}
           </span>
           <span>•</span>
-          <span>{doc.enactedDateFormatted}</span>
+          <span className="shrink-0">{doc.enactedDateFormatted}</span>
         </div>
 
-        <span className="rounded bg-[#1A1A1A] text-white group-hover:bg-[#1B67BC] px-2.5 py-1 text-[11px] font-bold transition-colors">
+        <span className="shrink-0 rounded bg-[#1A1A1A] text-white group-hover:bg-[#1B67BC] px-2.5 py-1 text-[11px] font-bold transition-colors">
           Buka Dokumen
         </span>
       </div>
