@@ -118,15 +118,24 @@ Seluruh **70 produk hukum resmi** dari [Folder Google Drive JDIH BLM FEB UNAIR](
    - **Redirect URLs:** Tambahkan `https://jdih-blm-febunair.puguhmuqoddam151.workers.dev/**` dan `http://localhost:3000/**`.
 5. **Keamanan Berlapis:** Meskipun seseorang mencoba membuat akun tanpa izin, modul [`src/lib/auth.ts`](./src/lib/auth.ts) dan tabel `AdminUser` menerapkan sistem **Allowlist Ketat** — hanya email yang terdaftar dengan `isActive = true` di tabel `AdminUser` yang diizinkan mengakses `/admin`.
 
-### Tahap 4: Konfigurasi Penyimpanan Berkas PDF (Storage)
-Sistem mendukung dua opsi penyimpanan objek untuk berkas PDF produk hukum:
-1. **Cloudflare R2 Bucket (`jdih-blm-docs` / binding `DOCS_BUCKET`)** — penyimpanan utama terintegrasi di jaringan Cloudflare Workers.
-2. **Supabase Storage Bucket (`produk-hukum`)** — jika Anda ingin menyimpan salinan berkas PDF langsung di dalam ekosistem Supabase:
-   - Buka menu **Storage** di Dashboard Supabase $\rightarrow$ klik **New bucket**.
-   - Nama bucket: `produk-hukum`
-   - Status bucket: **Private** (*Matikan opsi Public bucket* agar file draf tidak dapat diakses tanpa melewati pemeriksaan status publikasi server).
-   - Batas ukuran file (*File size limit*): `15MB`.
-   - Tipe MIME yang diizinkan (*Allowed MIME types*): `application/pdf`.
+### Tahap 4: Konfigurasi Supabase Storage & Sinkronisasi Berkas PDF
+Agar seluruh 70 produk hukum tersimpan dan disajikan langsung dari **Supabase Storage** (sehingga akses ke Google Drive tertutup rapat bagi publik):
+
+1. **Jalankan Skrip SQL Setup Storage:**
+   - Di **SQL Editor** Supabase, jalankan file [`prisma/manual/02-setup-storage-supabase.sql`](./prisma/manual/02-setup-storage-supabase.sql).
+   - Skrip ini akan membuat bucket `produk-hukum` (Public read, batas 50 MB, format khusus PDF) beserta RLS policy-nya secara otomatis.
+
+2. **Jalankan Skrip Sinkronisasi Otomatis:**
+   ```powershell
+   npx tsx scripts/sync-drive-to-supabase.ts
+   ```
+   - Skrip ini akan mengunduh ke-70 berkas PDF resmi dari Google Drive secara internal (menggunakan ID berkas privat), lalu mengunggahnya langsung ke Supabase Storage.
+   - Hasil publikasi tiap dokumen dapat diakses langsung melalui:
+     `https://sfobevvfofvckkhshzlx.supabase.co/storage/v1/object/public/produk-hukum/{slug}.pdf`
+
+3. **Keamanan & Pembatasan Akses Google Drive:**
+   - Folder Google Drive kini **100% terlindung dan tidak dapat dijelajahi oleh publik**, karena website tidak lagi menyediakan tautan atau tombol yang mengarah ke folder Google Drive.
+   - Pengunjung hanya dapat membaca pratinjau dan mengunduh berkas PDF dokumen terkait melalui portal JDIH.
 
 ---
 

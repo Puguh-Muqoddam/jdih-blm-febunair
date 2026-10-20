@@ -129,17 +129,27 @@ export async function GET(
 
   const mockDoc = LEGAL_DOCUMENTS.find((d) => d.slug === slug);
 
-  // Jika r2Key berupa URL Google Drive atau mock memiliki driveViewUrl, arahkan langsung ke Google Drive Resmi
-  const driveTargetUrl =
-    (docData.r2Key && docData.r2Key.startsWith("https://drive.google.com")
+  // 1. Prioritaskan berkas dari Supabase Storage jika telah diunggah
+  const supabaseStorageUrl =
+    mockDoc?.supabaseStorageUrl ||
+    (docData.r2Key?.startsWith("https://sfobevvfofvckkhshzlx.supabase.co")
+      ? docData.r2Key
+      : undefined);
+
+  if (supabaseStorageUrl) {
+    return NextResponse.redirect(supabaseStorageUrl, 302);
+  }
+
+  // 2. Berkas langsung file ID (bukan folder) jika tersimpan di Google Drive
+  const directFileTargetUrl =
+    (docData.r2Key && docData.r2Key.startsWith("https://drive.google.com/file/d/")
       ? docData.r2Key
       : undefined) ||
     mockDoc?.driveViewUrl ||
-    mockDoc?.drivePreviewUrl ||
-    mockDoc?.driveFolderUrl;
+    mockDoc?.drivePreviewUrl;
 
-  if (driveTargetUrl) {
-    return NextResponse.redirect(driveTargetUrl, 302);
+  if (directFileTargetUrl) {
+    return NextResponse.redirect(directFileTargetUrl, 302);
   }
 
   // Fallback dev/sandbox: Hasilkan representasi naskah resmi jika belum diunggah ke R2 maupun Drive

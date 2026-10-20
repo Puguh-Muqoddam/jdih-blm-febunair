@@ -47,6 +47,7 @@ export interface LegalDocumentItem {
   downloadCount: number;
   tags: string[];
   pdfFileName?: string;
+  supabaseStorageUrl?: string;
   driveFileId?: string;
   driveViewUrl?: string;
   drivePreviewUrl?: string;
@@ -55,65 +56,63 @@ export interface LegalDocumentItem {
   attachments?: DocumentAttachment[];
 }
 
-export const GOOGLE_DRIVE_ROOT_URL =
-  "https://drive.google.com/drive/folders/1f4iTq6ABdHVRXfEVd6fAZRfLmiWdeH2U?usp=drive_link";
-
-export const GOOGLE_DRIVE_FOLDERS = [
+export const REGULATION_CATEGORIES = [
   {
-    id: "folder-ad-art",
+    id: "cat-ad-art",
     code: "AD-ART",
     name: "AD/ART BLM FEB UNAIR",
     description: "Anggaran Dasar & Anggaran Rumah Tangga BLM 2026",
     count: 1,
-    folderId: "1aU4STmCtxay0MapJ403jx2JdadOPDbOG",
-    url: "https://drive.google.com/drive/folders/1aU4STmCtxay0MapJ403jx2JdadOPDbOG",
+    href: "/produk-hukum/undang-undang/2026/03",
   },
   {
-    id: "folder-konstitusi",
+    id: "cat-konstitusi",
     code: "KONSTITUSI",
     name: "Konstitusi Ormawa",
     description: "Konstitusi Dasar Organisasi Mahasiswa FEB UNAIR 2026",
     count: 1,
-    folderId: "1wTC6OAMMGp6fTUK9cEMBn9MRvN8Rl9Z1",
-    url: "https://drive.google.com/drive/folders/1wTC6OAMMGp6fTUK9cEMBn9MRvN8Rl9Z1",
+    href: "/produk-hukum/undang-undang/2026/04",
   },
   {
-    id: "folder-uu",
+    id: "cat-uu",
     code: "UU",
     name: "Undang-Undang (UU)",
     description: "UU PEMIRA & Perubahan UU PEMIRA BLM FEB UNAIR",
     count: 2,
-    folderId: "1I-FCc5MmXqEWKW9NuJTSn_47yDyrmdVM",
-    url: "https://drive.google.com/drive/folders/1I-FCc5MmXqEWKW9NuJTSn_47yDyrmdVM",
+    href: "/produk-hukum/jenis/undang-undang",
   },
   {
-    id: "folder-tap",
+    id: "cat-tap",
     code: "TAP",
     name: "Ketetapan (TAP) BLM",
     description: "TAP Prosedur Tetap, Ospek FEB, & LPPM SEKTOR",
     count: 3,
-    folderId: "10KKB1BvnfD8XZzTKL36DsRM3NIP9C5aW",
-    url: "https://drive.google.com/drive/folders/10KKB1BvnfD8XZzTKL36DsRM3NIP9C5aW",
+    href: "/produk-hukum/jenis/ketetapan-blm",
   },
   {
-    id: "folder-sk",
+    id: "cat-sk",
     code: "SK",
     name: "Surat Keputusan (SK) BLM",
     description: "57 SK Pleno, Komisi, PEMIRA, Ormawa + Lampiran",
     count: 57,
-    folderId: "1TeaDlFAuSCUTWcvhRLO8RgZiP_rGn0Oe",
-    url: "https://drive.google.com/drive/folders/1TeaDlFAuSCUTWcvhRLO8RgZiP_rGn0Oe",
+    href: "/produk-hukum/jenis/surat-keputusan",
   },
   {
-    id: "folder-lp",
+    id: "cat-lp",
     code: "LP",
     name: "Surat Laporan (LP) & Berita Acara",
     description: "5 Surat Laporan Pengawasan & Rekomendasi DKPP",
     count: 6,
-    folderId: "1G4gQL9sJ3uJNBdSAcjiyxCCkdt5TnqFJ",
-    url: "https://drive.google.com/drive/folders/1G4gQL9sJ3uJNBdSAcjiyxCCkdt5TnqFJ",
+    href: "/produk-hukum/jenis/lembaran-parlemen",
   },
 ];
+
+// Alias kompatibilitas
+export const GOOGLE_DRIVE_FOLDERS = REGULATION_CATEGORIES.map((c) => ({
+  ...c,
+  url: c.href,
+}));
+export const GOOGLE_DRIVE_ROOT_URL = "/produk-hukum";
 
 export const LEGAL_DOCUMENTS: LegalDocumentItem[] = [
   {

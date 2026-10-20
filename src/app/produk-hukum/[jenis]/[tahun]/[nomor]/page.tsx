@@ -282,10 +282,10 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                   </div>
                 )}
 
-                {/* Tombol Aksi Unduh & Buka Google Drive */}
+                {/* Tombol Aksi Unduh & Buka Tab Baru */}
                 <div className="pt-1 flex items-center justify-start gap-3 flex-wrap">
                   <a
-                    href={doc.driveDownloadUrl || `/dokumen/${doc.slug}/unduh`}
+                    href={`/dokumen/${doc.slug}/unduh`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-md bg-[#1B67BC] px-4 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#3885CC] transition-colors cursor-pointer"
@@ -294,29 +294,15 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                     <span>Unduh Berkas PDF Resmi</span>
                   </a>
 
-                  {doc.driveViewUrl && (
-                    <a
-                      href={doc.driveViewUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-md bg-[#b96d41] px-4 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#a35c33] transition-colors cursor-pointer"
-                    >
-                      <span>Buka di Google Drive</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-
-                  {doc.driveFolderUrl && (
-                    <a
-                      href={doc.driveFolderUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-md border border-[#A3D0EE] bg-white px-4 py-2.5 text-xs font-bold text-[#1B67BC] hover:bg-[#C6E8F7]/40 transition-colors cursor-pointer"
-                    >
-                      <Archive className="w-3.5 h-3.5" />
-                      <span>Buka Folder Arsip Jenis Ini</span>
-                    </a>
-                  )}
+                  <a
+                    href={`/dokumen/${doc.slug}/lihat`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-md bg-[#b96d41] px-4 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#a35c33] transition-colors cursor-pointer"
+                  >
+                    <span>Buka Naskah di Tab Baru</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                 </div>
 
                 {/* Daftar Lampiran / Dokumen Pendukung (Jika Ada) */}
@@ -366,7 +352,7 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                 <div className="pt-3 text-[11px] text-stone-500 flex items-center justify-between gap-4 flex-wrap border-t border-[#A3D0EE]/40">
                   <span>Format: Dokumen PDF (application/pdf)</span>
                   <span>•</span>
-                  <span>Sumber: Repositori Resmi Google Drive & Database JDIH BLM</span>
+                  <span>Sumber: Basis Data Terverifikasi JDIH BLM FEB UNAIR</span>
                   <span>•</span>
                   <span>{doc.downloadCount} Kali Diakses</span>
                 </div>
@@ -452,7 +438,7 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                 {/* Tombol Aksi Tambahan */}
                 <div className="pt-3 border-t border-[#A3D0EE]/50 space-y-2">
                   <a
-                    href={doc.driveDownloadUrl || `/dokumen/${doc.slug}/unduh`}
+                    href={`/dokumen/${doc.slug}/unduh`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 rounded-md bg-[#1B67BC] py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#3885CC] transition-all cursor-pointer"
@@ -461,17 +447,15 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                     <span>Unduh PDF Dokumen</span>
                   </a>
 
-                  {doc.driveViewUrl && (
-                    <a
-                      href={doc.driveViewUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center gap-2 rounded-md bg-[#b96d41] py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#a35c33] transition-all cursor-pointer"
-                    >
-                      <span>Buka di Google Drive</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  )}
+                  <a
+                    href={`/dokumen/${doc.slug}/lihat`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center gap-2 rounded-md bg-[#b96d41] py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#a35c33] transition-all cursor-pointer"
+                  >
+                    <span>Buka Naskah di Tab Baru</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
 
                   <Link
                     href="/permohonan"

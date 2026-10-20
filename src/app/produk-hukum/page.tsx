@@ -7,8 +7,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { CatalogClient } from "@/components/public/CatalogClient";
 import {
   LEGAL_DOCUMENTS,
-  GOOGLE_DRIVE_FOLDERS,
-  GOOGLE_DRIVE_ROOT_URL,
+  REGULATION_CATEGORIES,
 } from "@/lib/data/mock-documents";
 
 export const metadata: Metadata = {
@@ -38,60 +37,56 @@ export default function ProdukHukumPage() {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="space-y-2">
                 <div className="inline-block rounded bg-[#1B67BC] text-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider">
-                  Arsip Digital Terbuka • Terhubung Google Drive Resmi
+                  Arsip Digital Terbuka • Basis Data Resmi Parlemen
                 </div>
                 <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#1A1A1A]">
                   Katalog Produk Hukum BLM FEB UNAIR
                 </h1>
                 <p className="text-xs sm:text-sm text-[#4A5568] max-w-3xl leading-relaxed">
-                  Menyajikan seluruh inventaris {LEGAL_DOCUMENTS.length} dokumen produk hukum resmi (AD/ART, Konstitusi Ormawa, UU, TAP, SK, dan Surat Laporan). Setiap dokumen dilengkapi pratinjau langsung berkas PDF asli dari repositori Departemen Legislasi.
+                  Menyajikan seluruh inventaris {LEGAL_DOCUMENTS.length} dokumen produk hukum resmi periode 2026 (AD/ART, Konstitusi Ormawa, UU, TAP, SK, dan Surat Laporan). Seluruh dokumen tersimpan secara faktual dalam basis data dengan pratinjau naskah resmi dan akses unduh langsung.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end justify-between gap-2 text-left lg:text-right text-xs text-[#4A5568] shrink-0">
                 <div>
                   <span className="font-mono text-xl font-bold text-[#1B67BC] block">
-                    {LEGAL_DOCUMENTS.length} Dokumen PDF
+                    {LEGAL_DOCUMENTS.length} Dokumen Resmi
                   </span>
-                  <span>Tersinkronisasi di Arsip 2026</span>
+                  <span>Tercatat di Basis Data 2026</span>
                 </div>
-                <a
-                  href={GOOGLE_DRIVE_ROOT_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block rounded bg-[#b96d41] hover:bg-[#a35c33] text-white px-3.5 py-2 text-xs font-bold transition-colors"
+                <Link
+                  href="/panduan-penomoran"
+                  className="inline-block rounded bg-[#1B67BC] hover:bg-[#3885CC] text-white px-3.5 py-2 text-xs font-bold transition-colors"
                 >
-                  Buka Drive Utama JDIH
-                </a>
+                  Panduan Penomoran
+                </Link>
               </div>
             </div>
 
-            {/* Pintasan 6 Folder Google Drive Resmi */}
+            {/* Pintasan 6 Kategori Produk Hukum (Navigasi Internal Situs) */}
             <div className="pt-4 border-t border-[#A3D0EE]/50 space-y-2.5">
               <span className="text-[11px] font-bold uppercase tracking-wider text-[#1B67BC] block">
-                Pintasan Folder Google Drive Per Kategori Berkas:
+                Klasifikasi Regulasi Berdasarkan Kategori:
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-                {GOOGLE_DRIVE_FOLDERS.map((folder) => (
-                  <a
-                    key={folder.id}
-                    href={folder.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {REGULATION_CATEGORIES.map((cat) => (
+                  <Link
+                    key={cat.id}
+                    href={cat.href}
                     className="group rounded-md border border-[#A3D0EE] bg-[#F5F6F8] hover:bg-[#1B67BC] p-3 transition-colors flex items-center justify-between gap-3"
                   >
                     <div className="min-w-0">
                       <span className="text-xs font-bold text-[#1A1A1A] group-hover:text-white block truncate">
-                        {folder.name}
+                        {cat.name}
                       </span>
                       <span className="text-[11px] text-[#4A5568] group-hover:text-white/85 block truncate">
-                        {folder.description}
+                        {cat.description}
                       </span>
                     </div>
                     <span className="shrink-0 rounded bg-[#1B67BC] group-hover:bg-white text-white group-hover:text-[#1B67BC] px-2 py-0.5 text-[10px] font-bold">
-                      {folder.count} PDF
+                      {cat.count} Dokumen
                     </span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

@@ -174,24 +174,14 @@ export default function HomePage() {
                 {/* Baris Link Horizontal Solid di Bawah 4 Kotak */}
                 <div className="rounded-lg bg-[#C6E8F7] border border-[#A3D0EE] p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <span className="font-sans font-bold text-xs sm:text-sm text-[#1B67BC]">
-                    ARSIP & PEDOMAN : Standarisasi Penomoran & Repositori PDF Resmi (70 Produk Hukum)
+                    PEDOMAN : Standarisasi & Format Penomoran Resmi Departemen Legislasi (70 Produk Hukum)
                   </span>
-                  <div className="flex items-center gap-2 shrink-0 flex-wrap">
-                    <a
-                      href="https://drive.google.com/drive/folders/1f4iTq6ABdHVRXfEVd6fAZRfLmiWdeH2U?usp=drive_link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block rounded bg-[#b96d41] hover:bg-[#a35c33] text-white px-3.5 py-2 text-xs font-bold transition-colors text-center"
-                    >
-                      Folder Google Drive
-                    </a>
-                    <Link
-                      href="/panduan-penomoran"
-                      className="inline-block rounded bg-[#1B67BC] hover:bg-[#3885CC] text-white px-3.5 py-2 text-xs font-bold transition-colors text-center"
-                    >
-                      Buka Pedoman
-                    </Link>
-                  </div>
+                  <Link
+                    href="/panduan-penomoran"
+                    className="inline-block shrink-0 rounded bg-[#1B67BC] hover:bg-[#3885CC] text-white px-4 py-2 text-xs font-bold transition-colors text-center"
+                  >
+                    Buka Pedoman
+                  </Link>
                 </div>
               </div>
             </div>
