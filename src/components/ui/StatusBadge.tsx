@@ -1,5 +1,4 @@
 import React from "react";
-import { CheckCircle2, AlertTriangle, XCircle, Clock, Archive } from "lucide-react";
 
 export type LegalStatusType = "BERLAKU" | "DIUBAH" | "DICABUT" | "TIDAK_BERLAKU";
 export type PublicationStateType = "PUBLISHED" | "ARCHIVED" | "DRAFT";
@@ -17,17 +16,16 @@ export function StatusBadge({
   className = "",
   size = "md",
 }: StatusBadgeProps) {
-  const sizeClasses = size === "sm" ? "px-2 py-0.5 text-xs" : "px-2.5 py-1 text-xs font-medium";
+  const sizeClasses = size === "sm" ? "px-2 py-0.5 text-[11px] font-bold" : "px-2.5 py-1 text-xs font-bold";
 
-  // Jika dokumen diarsipkan, tampilkan label diarsipkan
+  // Jika dokumen diarsipkan, tampilkan label diarsipkan solid
   if (publicationState === "ARCHIVED") {
     return (
       <span
-        className={`inline-flex items-center gap-1.5 rounded-full border border-[#A3D0EE] bg-[#C6E8F7]/30 text-[#1A1A1A] ${sizeClasses} ${className}`}
+        className={`inline-flex items-center rounded bg-[#3885CC] text-white ${sizeClasses} ${className}`}
         title="Dokumen berstatus arsip digital resmi"
       >
-        <Archive className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5 text-[#1B67BC]"} />
-        <span>Diarsipkan</span>
+        Diarsipkan
       </span>
     );
   }
@@ -36,30 +34,27 @@ export function StatusBadge({
     case "BERLAKU":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 rounded-full border border-emerald-300 bg-emerald-50 text-emerald-900 ${sizeClasses} ${className}`}
+          className={`inline-flex items-center rounded bg-emerald-700 text-white ${sizeClasses} ${className}`}
         >
-          <CheckCircle2 className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5 text-emerald-700"} />
-          <span>Berlaku</span>
+          Berlaku
         </span>
       );
 
     case "DIUBAH":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 text-amber-950 ${sizeClasses} ${className}`}
+          className={`inline-flex items-center rounded bg-amber-600 text-white ${sizeClasses} ${className}`}
         >
-          <AlertTriangle className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5 text-amber-700"} />
-          <span>Diubah</span>
+          Diubah
         </span>
       );
 
     case "DICABUT":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 rounded-full border border-rose-300 bg-rose-50 text-rose-950 ${sizeClasses} ${className}`}
+          className={`inline-flex items-center rounded bg-rose-700 text-white ${sizeClasses} ${className}`}
         >
-          <XCircle className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5 text-rose-700"} />
-          <span>Dicabut</span>
+          Dicabut
         </span>
       );
 
@@ -67,10 +62,9 @@ export function StatusBadge({
     default:
       return (
         <span
-          className={`inline-flex items-center gap-1.5 rounded-full border border-stone-300 bg-stone-100 text-stone-800 ${sizeClasses} ${className}`}
+          className={`inline-flex items-center rounded bg-stone-700 text-white ${sizeClasses} ${className}`}
         >
-          <Clock className={size === "sm" ? "w-3 h-3" : "w-3.5 h-3.5 text-stone-600"} />
-          <span>Tidak Berlaku</span>
+          Tidak Berlaku
         </span>
       );
   }

@@ -7,17 +7,17 @@ const HERO_SLIDES = [
   {
     src: "/images/hero-legavis-dpr.jpg",
     alt: "Kunjungan Studi Legislatif (LEGAVIS) Parlemen Cakrasena BLM FEB UNAIR di Gedung DPR/MPR RI",
-    caption: "LEGAVIS • Kunjungan Studi Legislatif DPR/MPR RI",
+    caption: "LEGAVIS • DPR/MPR RI",
   },
   {
     src: "/images/hero-sidang-parlemen.jpg",
     alt: "Suasana Ruang Sidang Parlemen Badan Legislatif Mahasiswa FEB UNAIR",
-    caption: "Persidangan & Kunjungan Kelembagaan Parlemen",
+    caption: "Sidang Parlemen",
   },
   {
     src: "/images/hero-gedung-institusi.jpg",
     alt: "Kunjungan Studi Kelembagaan dan Regulasi Nasional BLM FEB UNAIR",
-    caption: "Studi Regulasi & Kelembagaan Nasional",
+    caption: "Kunjungan Kelembagaan",
   },
 ];
 
@@ -58,9 +58,9 @@ export function HeroBackdropSlider() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/70" />
       </div>
 
-      {/* Subtle Slide Controls at Bottom Right */}
-      <div className="absolute bottom-5 right-4 sm:right-8 z-20 hidden sm:flex items-center gap-3 bg-black/35 backdrop-blur-xs px-3.5 py-1.5 rounded-full border border-white/20">
-        <span className="text-[11px] font-medium text-white/85">
+      {/* Solid Boxy Slide Controls at Bottom Right */}
+      <div className="absolute bottom-5 right-4 sm:right-8 z-20 hidden sm:flex items-center gap-3 bg-[#1A1A1A] px-3.5 py-2 rounded-md">
+        <span className="text-[11px] font-bold text-white">
           {HERO_SLIDES[activeIndex].caption}
         </span>
         <div className="flex items-center gap-1.5">
@@ -70,10 +70,10 @@ export function HeroBackdropSlider() {
               type="button"
               onClick={() => setActiveIndex(index)}
               aria-label={`Tampilkan foto ${index + 1}: ${slide.caption}`}
-              className={`h-2 rounded-full transition-all cursor-pointer ${
+              className={`h-2 rounded-xs transition-all cursor-pointer ${
                 index === activeIndex
                   ? "w-6 bg-[#b96d41]"
-                  : "w-2 bg-white/50 hover:bg-white/80"
+                  : "w-2 bg-white/40 hover:bg-white"
               }`}
             />
           ))}

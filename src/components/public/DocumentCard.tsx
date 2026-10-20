@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { Calendar, Eye, Download, Building2, ArrowRight } from "lucide-react";
 import { LegalDocumentItem } from "@/lib/data/mock-documents";
 import { TypeBadge } from "../ui/TypeBadge";
 import { StatusBadge } from "../ui/StatusBadge";
@@ -17,9 +16,9 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
   const detailHref = `/produk-hukum/${doc.typeSlug}/${doc.year}/${paddedSeq}`;
 
   return (
-    <article className="group relative flex flex-col justify-between rounded-xl border border-[#A3D0EE] bg-white p-5 shadow-xs hover:shadow-md hover:border-[#1B67BC] transition-all">
+    <article className="group relative flex flex-col justify-between rounded-md border border-[#A3D0EE] bg-white p-5 shadow-xs hover:shadow-md hover:border-[#1B67BC] transition-all">
       <div>
-        {/* Header Kartu: Badges & Copy Button */}
+        {/* Header Kartu: Badges Solid & Copy Button */}
         <div className="flex items-center justify-between gap-2 mb-3">
           <div className="flex items-center gap-1.5 flex-wrap">
             <TypeBadge type={doc.type} size="sm" />
@@ -29,7 +28,7 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
               size="sm"
             />
             {doc.nature && (
-              <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#C6E8F7]/50 text-[#1B67BC] border border-[#A3D0EE]">
+              <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-[#C6E8F7] text-[#1A1A1A]">
                 {doc.nature === "A_INTERNAL" ? "Internal (A)" : "Eksternal (B)"}
               </span>
             )}
@@ -38,14 +37,14 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
         </div>
 
         {/* Nomor Resmi Monospace */}
-        <div className="mb-2">
-          <span className="font-mono text-xs font-semibold text-[#1B67BC] tracking-tight bg-[#C6E8F7]/30 px-2 py-0.5 rounded border border-[#A3D0EE] inline-block">
+        <div className="mb-2.5">
+          <span className="font-mono text-xs font-bold text-[#1A1A1A] tracking-tight bg-[#F1F5F9] px-2.5 py-1 rounded inline-block">
             {doc.officialNumber}
           </span>
         </div>
 
         {/* Judul Dokumen */}
-        <h3 className="font-serif font-bold text-base text-[#1A1A1A] leading-snug group-hover:text-[#1B67BC] transition-colors mb-2.5">
+        <h3 className="font-serif font-bold text-base text-[#1A1A1A] leading-snug group-hover:text-[#1B67BC] transition-colors mb-2">
           <Link href={detailHref} className="focus:outline-hidden">
             <span className="absolute inset-0" aria-hidden="true" />
             {doc.title}
@@ -58,22 +57,18 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
         </p>
       </div>
 
-      {/* Footer Kartu: Metadata Forum & Tanggal & Action */}
-      <div className="pt-3 border-t border-[#A3D0EE]/40 flex items-center justify-between text-[11px] text-[#4A5568]">
-        <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1" title="Forum Penetapan">
-            <Building2 className="w-3.5 h-3.5 text-[#1B67BC]" />
-            <span className="truncate max-w-[120px] sm:max-w-[150px]">{doc.forum}</span>
+      {/* Footer Kartu: Metadata Forum & Tanggal & Tombol Solid */}
+      <div className="pt-3 border-t border-stone-200 flex items-center justify-between text-[11px] text-[#4A5568]">
+        <div className="flex items-center gap-2 font-medium">
+          <span className="truncate max-w-[130px] sm:max-w-[160px] text-[#1A1A1A]">
+            {doc.forum}
           </span>
-          <span className="flex items-center gap-1" title="Tanggal Penetapan">
-            <Calendar className="w-3.5 h-3.5 text-[#1B67BC]" />
-            <span>{doc.enactedDateFormatted}</span>
-          </span>
+          <span>•</span>
+          <span>{doc.enactedDateFormatted}</span>
         </div>
 
-        <span className="inline-flex items-center gap-1 text-[#b96d41] font-semibold group-hover:translate-x-0.5 transition-transform">
-          <span>Detail</span>
-          <ArrowRight className="w-3.5 h-3.5" />
+        <span className="rounded bg-[#1A1A1A] text-white group-hover:bg-[#1B67BC] px-2.5 py-1 text-[11px] font-bold transition-colors">
+          Buka Dokumen
         </span>
       </div>
     </article>
