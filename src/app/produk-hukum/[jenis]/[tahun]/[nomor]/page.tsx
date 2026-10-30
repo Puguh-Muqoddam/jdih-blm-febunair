@@ -253,7 +253,8 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                         src={doc.drivePreviewUrl}
                         title={`Pratinjau PDF ${doc.officialNumber} - ${doc.title}`}
                         className="w-full h-[560px] sm:h-[720px] border-0"
-                        allow="autoplay"
+                        allow="autoplay; encrypted-media; fullscreen"
+                        loading="lazy"
                       />
                     </div>
 
@@ -268,6 +269,10 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
                         </span>
                       </div>
                     )}
+
+                    <p className="text-[11px] text-[#4A5568] leading-relaxed">
+                      💡 <em>Pratinjau disinkronisasikan dari repositori naskah digital resmi. Apabila peramban mengaktifkan pemblokir konten pihak ketiga, gunakan tombol <strong>Buka Naskah di Tab Baru</strong> atau <strong>Unduh Berkas PDF Resmi</strong> di bawah.</em>
+                    </p>
                   </div>
                 ) : (
                   <div className="rounded-md border border-[#A3D0EE] bg-[#C6E8F7]/15 p-8 sm:p-10 text-center space-y-3">
