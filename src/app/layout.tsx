@@ -56,6 +56,18 @@ export const metadata: Metadata = {
       "application/rss+xml": `${baseUrl}/feed.xml`,
     },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/images/blm_logo.png", sizes: "200x200", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "id_ID",
@@ -64,12 +76,21 @@ export const metadata: Metadata = {
     title: "JDIH BLM FEB UNAIR | Jaringan Dokumentasi & Informasi Hukum",
     description:
       "Portal resmi keterbukaan dan pangkalan data produk hukum Badan Legislatif Mahasiswa Fakultas Ekonomi dan Bisnis Universitas Airlangga.",
+    images: [
+      {
+        url: `${baseUrl}/images/blm_logo.png`,
+        width: 200,
+        height: 200,
+        alt: "Logo Resmi BLM FEB UNAIR",
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "JDIH BLM FEB UNAIR",
     description:
       "Portal resmi keterbukaan dan pangkalan data produk hukum Badan Legislatif Mahasiswa FEB Universitas Airlangga.",
+    images: [`${baseUrl}/images/blm_logo.png`],
   },
   robots: {
     index: true,
@@ -100,6 +121,9 @@ export default function RootLayout({
         description:
           "Pangkalan data naskah resmi produk hukum parlemen Badan Legislatif Mahasiswa Fakultas Ekonomi dan Bisnis Universitas Airlangga.",
         inLanguage: "id-ID",
+        publisher: {
+          "@id": `${baseUrl}/#organization`,
+        },
         potentialAction: {
           "@type": "SearchAction",
           target: {
@@ -115,6 +139,8 @@ export default function RootLayout({
         name: "Badan Legislatif Mahasiswa FEB UNAIR",
         alternateName: "BLM FEB UNAIR",
         url: baseUrl,
+        logo: `${baseUrl}/images/blm_logo.png`,
+        image: `${baseUrl}/images/blm_logo.png`,
         parentOrganization: {
           "@type": "CollegeOrUniversity",
           name: "Fakultas Ekonomi dan Bisnis Universitas Airlangga",
@@ -138,6 +164,10 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${sourceSerif.variable} ${jetbrainsMono.variable}`}
     >
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/icon-48.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

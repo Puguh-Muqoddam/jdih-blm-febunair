@@ -23,8 +23,12 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: "Googlebot-Image",
-        allow: ["/", "/icon.png"],
+        allow: "/",
         disallow: ["/admin", "/admin/"],
+      },
+      {
+        userAgent: "Google-Favicon",
+        allow: "/",
       },
     ],
     sitemap: `${base}/sitemap.xml`,
