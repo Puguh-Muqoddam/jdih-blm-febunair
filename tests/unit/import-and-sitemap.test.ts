@@ -92,16 +92,19 @@ describe("Langkah 9: Migrasi Register 49 Dokumen & Permohonan Pengunjung", () =>
 
       const home = urls.find((u) => u.url.endsWith("/"));
       expect(home).toBeDefined();
+      expect(home?.url).toBe("https://jdih-blm-febunair.my.id/");
       expect(home?.priority).toBe(1.0);
 
       const uu01 = urls.find((u) => u.url.includes("/produk-hukum/undang-undang/2026/01"));
       expect(uu01).toBeDefined();
+      expect(uu01?.url).toBe("https://jdih-blm-febunair.my.id/produk-hukum/undang-undang/2026/01");
       expect(uu01?.priority).toBe(0.9);
     });
 
     it("harus melarang perayapan direktori admin dalam robots.txt", () => {
       const r = robots();
-      expect(r.sitemap).toContain("/sitemap.xml");
+      expect(r.host).toBe("https://jdih-blm-febunair.my.id");
+      expect(r.sitemap).toBe("https://jdih-blm-febunair.my.id/sitemap.xml");
       const generalRule = (r.rules as any[]).find((rule) => rule.userAgent === "*");
       expect(generalRule).toBeDefined();
       expect(generalRule?.disallow).toContain("/admin");

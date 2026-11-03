@@ -8,7 +8,7 @@ export function getBaseUrl(): string {
   const url =
     process.env.SITE_URL ||
     process.env.NEXT_PUBLIC_SITE_URL ||
-    "https://jdih-blm-febunair.puguhmuqoddam151.workers.dev";
+    "https://jdih-blm-febunair.my.id";
   return url.replace(/\/+$/, "");
 }
 
