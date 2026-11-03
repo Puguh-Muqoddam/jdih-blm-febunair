@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { LEGAL_DOCUMENTS } from "@/lib/data/mock-documents";
+import { getBaseUrl, getDocumentUrl } from "@/lib/seo";
 
 // =============================================================================
 // JDIH BLM FEB UNAIR - RSS 2.0 Feed Produk Hukum Resmi
@@ -8,7 +9,7 @@ import { LEGAL_DOCUMENTS } from "@/lib/data/mock-documents";
 // =============================================================================
 
 export async function GET() {
-  const baseUrl = process.env.SITE_URL || "https://jdih-blm.febunair.ac.id";
+  const baseUrl = getBaseUrl();
 
   const sortedDocs = [...LEGAL_DOCUMENTS].sort(
     (a, b) => new Date(b.enactedDate).getTime() - new Date(a.enactedDate).getTime()
@@ -16,7 +17,7 @@ export async function GET() {
 
   const itemsXml = sortedDocs
     .map((doc) => {
-      const docUrl = `${baseUrl}/produk-hukum/${doc.typeSlug}/${doc.year}/${doc.sequenceNumber}`;
+      const docUrl = getDocumentUrl(doc.type, doc.typeSlug, doc.year, doc.sequenceNumber);
       const pubDate = new Date(doc.enactedDate).toUTCString();
 
       return `    <item>

@@ -2,6 +2,8 @@ import { describe, it, expect } from "vitest";
 import path from "path";
 import { parseAllRegisterFiles } from "../../prisma/seed/import-register";
 import { documentRequestSchema, submitDocumentRequestAction } from "../../src/lib/actions/request";
+import sitemap from "../../src/app/sitemap";
+import robots from "../../src/app/robots";
 
 describe("Langkah 9: Migrasi Register 49 Dokumen & Permohonan Pengunjung", () => {
   describe("1. CSV Parser & Normalisasi Register", () => {
@@ -80,6 +82,29 @@ describe("Langkah 9: Migrasi Register 49 Dokumen & Permohonan Pengunjung", () =>
       });
 
       expect(res.ticketNumber).toBe("REQ-2026-SPAM");
+    });
+  });
+
+  describe("3. Sitemap & Robots Indexing Configuration", () => {
+    it("harus menyertakan seluruh halaman publik utama dan 70 dokumen dalam sitemap", () => {
+      const urls = sitemap();
+      expect(urls.length).toBeGreaterThanOrEqual(70 + 7 + 4 + 5);
+
+      const home = urls.find((u) => u.url.endsWith("/"));
+      expect(home).toBeDefined();
+      expect(home?.priority).toBe(1.0);
+
+      const uu01 = urls.find((u) => u.url.includes("/produk-hukum/undang-undang/2026/01"));
+      expect(uu01).toBeDefined();
+      expect(uu01?.priority).toBe(0.9);
+    });
+
+    it("harus melarang perayapan direktori admin dalam robots.txt", () => {
+      const r = robots();
+      expect(r.sitemap).toContain("/sitemap.xml");
+      const generalRule = (r.rules as any[]).find((rule) => rule.userAgent === "*");
+      expect(generalRule).toBeDefined();
+      expect(generalRule?.disallow).toContain("/admin");
     });
   });
 });
