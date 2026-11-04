@@ -4,15 +4,24 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
-  // Binding database Hyperdrive -> Supabase Session Pooler (port 5432)
-  // Aktifkan setelah Hyperdrive dibuat di Cloudflare: npx wrangler hyperdrive create ...
-  // "hyperdrive": [
-  //   { "binding": "HYPERDRIVE", "id": "<ID_HYPERDRIVE_CLOUDFLARE>" }
-  // ],
+  // Domain kustom
+  "routes": [
+    { "pattern": "jdih-blm-febunair.my.id", "custom_domain": true },
+    { "pattern": "www.jdih-blm-febunair.my.id", "custom_domain": true }
+  ],
+  // Binding database Hyperdrive -> Supabase
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "80dfc667eaa84b4dae9b979ab999ce9e",
+      "localConnectionString": "postgresql://postgres:legisbisasemua@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres"
+    }
+  ],
   // Penyimpanan file PDF produk hukum di Cloudflare R2
   // Aktifkan setelah bucket dibuat di Cloudflare: npx wrangler r2 bucket create jdih-blm-docs
   // "r2_buckets": [
