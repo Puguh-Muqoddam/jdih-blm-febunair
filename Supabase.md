@@ -69,7 +69,7 @@ npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
 # Masukkan service role key rahasia dari Project Settings > API
 
 npx wrangler secret put DATABASE_URL
-# Masukkan: postgresql://postgres:legisbisasemua@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres
+# Masukkan: postgresql://postgres:[YOUR-PASSWORD]@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres
 
 npx wrangler secret put SUPER_ADMIN_EMAILS
 # Masukkan: puguhmuqoddam151@gmail.com

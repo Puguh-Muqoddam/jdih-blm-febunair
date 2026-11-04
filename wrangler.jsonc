@@ -18,8 +18,9 @@
   "hyperdrive": [
     {
       "binding": "HYPERDRIVE",
-      "id": "80dfc667eaa84b4dae9b979ab999ce9e",
-      "localConnectionString": "postgresql://postgres:legisbisasemua@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres"
+      "id": "80dfc667eaa84b4dae9b979ab999ce9e"
+      // Untuk dev lokal, JANGAN tulis connection string di sini. Setel di .env:
+      // CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE=postgresql://...
     }
   ],
   // Penyimpanan file PDF produk hukum di Cloudflare R2

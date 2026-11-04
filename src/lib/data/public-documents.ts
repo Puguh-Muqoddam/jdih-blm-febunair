@@ -1,5 +1,6 @@
 import { cache } from "react";
 import { getDb, isDbConfigured } from "@/lib/db";
+import { requireAdmin } from "@/lib/auth";
 import {
   LEGAL_DOCUMENTS,
   type LegalDocumentItem,
@@ -130,9 +131,12 @@ export const publicVisibleDocuments = cache(
 
 /**
  * Mengambil seluruh dokumen untuk keperluan panel Admin (termasuk DRAFT).
+ * Wajib sesi admin: jangan hanya mengandalkan pengecekan di admin/layout.tsx,
+ * karena layout tidak selalu dirender ulang pada request navigasi (RSC).
  */
 export const getAllAdminDocuments = cache(
   async (): Promise<LegalDocumentItem[]> => {
+    await requireAdmin();
     if (await isDbConfigured()) {
       try {
         const db = await getDb();

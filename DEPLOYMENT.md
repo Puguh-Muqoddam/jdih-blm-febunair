@@ -37,11 +37,12 @@ Hyperdrive resmi telah dibuat dan aktif terhubung ke Supabase PostgreSQL:
 "hyperdrive": [
   {
     "binding": "HYPERDRIVE",
-    "id": "80dfc667eaa84b4dae9b979ab999ce9e",
-    "localConnectionString": "postgresql://postgres:legisbisasemua@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres"
+    "id": "80dfc667eaa84b4dae9b979ab999ce9e"
   }
 ]
 ```
+Untuk pengembangan lokal, setel connection string di `.env` (tidak di-commit), **bukan** di `wrangler.jsonc`:
+`CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE=postgresql://postgres:[YOUR-PASSWORD]@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres`
 Jika perlu membuat ulang di kemudian hari:
 ```bash
 npx wrangler hyperdrive create jdih-postgres --connection-string="postgresql://postgres:PASSWORD@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres"

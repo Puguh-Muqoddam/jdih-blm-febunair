@@ -43,3 +43,24 @@ TO jdih_app;
 -- AuditLog HANYA boleh SELECT dan INSERT (Append-Only, dilarang UPDATE/DELETE)
 GRANT SELECT, INSERT ON TABLE public."AuditLog" TO jdih_app;
 REVOKE UPDATE, DELETE, TRUNCATE ON TABLE public."AuditLog" FROM jdih_app;
+
+-- Seluruh tabel memakai RLS tanpa policy (lihat 0002_hardening), dan jdih_app
+-- tidak memiliki BYPASSRLS. Tanpa policy berikut, semua query jdih_app akan
+-- mengembalikan 0 baris. Hak per-operasi tetap dibatasi oleh GRANT di atas.
+DO $$
+DECLARE
+  t text;
+BEGIN
+  FOREACH t IN ARRAY ARRAY[
+    'DocumentType','Forum','Tag','LegalDocument','DocumentFile','DocumentRelation',
+    'DocumentTag','NumberCounter','NumberReservation','AdminUser','DocumentRequest',
+    'RateLimit','AuditLog'
+  ] LOOP
+    EXECUTE format('DROP POLICY IF EXISTS jdih_app_access ON public.%I', t);
+    EXECUTE format(
+      'CREATE POLICY jdih_app_access ON public.%I FOR ALL TO jdih_app USING (true) WITH CHECK (true)',
+      t
+    );
+  END LOOP;
+END
+$$;

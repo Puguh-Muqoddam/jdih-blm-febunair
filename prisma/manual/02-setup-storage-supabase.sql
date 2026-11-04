@@ -19,6 +19,7 @@ ON CONFLICT (id) DO UPDATE SET
   allowed_mime_types = ARRAY['application/pdf'];
 
 -- 2. Hapus Policy Lama (termasuk yang belum membatasi role ke service_role)
+DROP POLICY IF EXISTS "Public Read Produk Hukum" ON storage.objects; -- nama policy versi lama
 DROP POLICY IF EXISTS "Allow Public Read Produk Hukum" ON storage.objects;
 DROP POLICY IF EXISTS "Allow Upload Produk Hukum" ON storage.objects;
 DROP POLICY IF EXISTS "Allow Update Produk Hukum" ON storage.objects;
