@@ -50,8 +50,9 @@ SUPER_ADMIN_EMAILS="puguhmuqoddam151@gmail.com"
 ADMIN_EMAILS="puguhmuqoddam151@gmail.com"
 
 # 4. Konfigurasi Situs & Keamanan Anti-Spam
-NEXT_PUBLIC_SITE_URL="https://jdih-blm-febunair.puguhmuqoddam151.workers.dev"
-IP_HASH_SALT="jdih_blm_feb_unair_parlemen_cakrasena_2026_salt_resmi"
+NEXT_PUBLIC_SITE_URL="https://jdih-blm-febunair.my.id"
+IP_HASH_SALT="sisilainlegisituadapuguhdearindaavendafadlandannabil"
+TURNSTILE_SECRET_KEY="0x4AAAAAA..."
 ```
 
 ### Menyetel Variabel di Produksi (Cloudflare Workers)
@@ -64,11 +65,20 @@ npx wrangler secret put NEXT_PUBLIC_SUPABASE_URL
 npx wrangler secret put NEXT_PUBLIC_SUPABASE_ANON_KEY
 # Masukkan: sb_publishable_KV66XFWixhFydC9c89J3dA_DXny5uw6
 
+npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+# Masukkan service role key rahasia dari Project Settings > API
+
 npx wrangler secret put DATABASE_URL
-# Masukkan: postgresql://postgres:[YOUR-PASSWORD]@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres
+# Masukkan: postgresql://postgres:legisbisasemua@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres
 
 npx wrangler secret put SUPER_ADMIN_EMAILS
 # Masukkan: puguhmuqoddam151@gmail.com
+
+npx wrangler secret put IP_HASH_SALT
+# Masukkan salt rahasia
+
+npx wrangler secret put TURNSTILE_SECRET_KEY
+# Masukkan Cloudflare Turnstile Secret Key
 ```
 
 ---
@@ -107,35 +117,50 @@ Seluruh **70 produk hukum resmi** dari [Folder Google Drive JDIH BLM FEB UNAIR](
    - **6 Surat Laporan & Berita Acara (`LP`):** `LP 001` s.d. `LP 005` serta `Surat Rekomendasi DKPP PEMIRA FEB UNAIR 2026.pdf`.
 
 ### Tahap 3: Konfigurasi Autentikasi Pengurus (`Supabase Auth`)
-1. Di Dashboard Supabase, buka menu **Authentication > Providers > Email**.
-2. Pastikan provider **Email** aktif (*Enabled*).
-3. Buka menu **Authentication > Users**, lalu klik **Add user > Create new user**:
+1. Di Dashboard Supabase, buka menu **Authentication > Providers > Email**:
+   - Pastikan provider **Email** aktif (*Enabled*).
+   - **Confirm email**: Wajib diposisikan ke **ON (Enabled)**.
+   - **Allow new users to sign up**: Wajib diposisikan ke **OFF (Disabled)** agar orang luar tidak bisa mendaftarkan akun sembarangan.
+   - Klik **Save**.
+2. Buka menu **Authentication > Users**, lalu klik **Add user > Create new user**:
    - **Email:** `puguhmuqoddam151@gmail.com`
    - **Password:** *(Buat password login panel admin Anda)*
-   - Centang **Auto Confirm User**, lalu klik **Create user**.
-4. Buka menu **Authentication > URL Configuration**:
-   - **Site URL:** `https://jdih-blm-febunair.puguhmuqoddam151.workers.dev`
-   - **Redirect URLs:** Tambahkan `https://jdih-blm-febunair.puguhmuqoddam151.workers.dev/**` dan `http://localhost:3000/**`.
-5. **Keamanan Berlapis:** Meskipun seseorang mencoba membuat akun tanpa izin, modul [`src/lib/auth.ts`](./src/lib/auth.ts) dan tabel `AdminUser` menerapkan sistem **Allowlist Ketat** — hanya email yang terdaftar dengan `isActive = true` di tabel `AdminUser` yang diizinkan mengakses `/admin`.
+   - Centang **Auto Confirm User** (Pastikan kolom *Confirmed At* terisi tanggal valid).
+   - Klik **Create user**.
+3. Buka menu **Authentication > URL Configuration**:
+   - **Site URL:** `https://jdih-blm-febunair.my.id`
+   - **Redirect URLs:** Tambahkan `https://jdih-blm-febunair.my.id/**`, `https://jdih-blm-febunair.puguhmuqoddam151.workers.dev/**`, dan `http://localhost:3000/**`.
+4. **Keamanan Otorisasi Berlapis (`evaluateAdminAuthorization`):**
+   Modul [`src/lib/auth.ts`](./src/lib/auth.ts) memvalidasi:
+   - Pengguna memiliki `email_confirmed_at` valid (menolak akun yang belum terverifikasi).
+   - Email terdaftar di allowlist kanonikal dan tabel `AdminUser` dengan status `isActive: true`.
 
-### Tahap 4: Konfigurasi Supabase Storage & Sinkronisasi Berkas PDF
-Agar seluruh 70 produk hukum tersimpan dan disajikan langsung dari **Supabase Storage** (sehingga akses ke Google Drive tertutup rapat bagi publik):
+### Tahap 4: Hardening Supabase Storage & Pembatasan Role `service_role`
+Bucket `produk-hukum` digunakan untuk melayani pembacaan PDF publik, namun operasi penulisan (*write/overwrite*) **dikunci ketat**:
 
-1. **Jalankan Skrip SQL Setup Storage:**
+1. **Jalankan Skrip SQL Hardening Storage:**
    - Di **SQL Editor** Supabase, jalankan file [`prisma/manual/02-setup-storage-supabase.sql`](./prisma/manual/02-setup-storage-supabase.sql).
-   - Skrip ini akan membuat bucket `produk-hukum` (Public read, batas 50 MB, format khusus PDF) beserta RLS policy-nya secara otomatis.
+   - Skrip ini menghapus policy permisif lama dan membatasi operasi `INSERT`, `UPDATE`, dan `DELETE` hanya kepada **`TO service_role`**. Anon key publik tidak dapat menimpa naskah hukum resmi.
 
-2. **Jalankan Skrip Sinkronisasi Otomatis:**
+2. **Jalankan Skrip Sinkronisasi Dokumen Resmi:**
+   Pastikan variabel `SUPABASE_SERVICE_ROLE_KEY` telah disetel:
    ```powershell
    npx tsx scripts/sync-drive-to-supabase.ts
    ```
-   - Skrip ini akan mengunduh ke-70 berkas PDF resmi dari Google Drive secara internal (menggunakan ID berkas privat), lalu mengunggahnya langsung ke Supabase Storage.
+   - Skrip ini mengunduh ke-70 berkas PDF dari Google Drive secara internal dan mengunggahnya langsung ke Supabase Storage via `service_role`.
    - Hasil publikasi tiap dokumen dapat diakses langsung melalui:
      `https://sfobevvfofvckkhshzlx.supabase.co/storage/v1/object/public/produk-hukum/{slug}.pdf`
 
 3. **Keamanan & Pembatasan Akses Google Drive:**
    - Folder Google Drive kini **100% terlindung dan tidak dapat dijelajahi oleh publik**, karena website tidak lagi menyediakan tautan atau tombol yang mengarah ke folder Google Drive.
    - Pengunjung hanya dapat membaca pratinjau dan mengunduh berkas PDF dokumen terkait melalui portal JDIH.
+
+### Tahap 5: (Opsional - Best Practice) Role Database Hak Minimum (`jdih_app`)
+Secara default, aplikasi dapat terhubung menggunakan akun `postgres`. Namun untuk kepatuhan keamanan *least-privilege*:
+1. Buka file [`prisma/manual/03-least-privilege-role.sql`](./prisma/manual/03-least-privilege-role.sql).
+2. Tentukan password kuat untuk role `jdih_app`, lalu jalankan query di **SQL Editor** Supabase.
+3. Skrip ini memberikan hak `SELECT`, `INSERT`, `UPDATE` hanya pada tabel operasional, membatasi `DELETE` hanya pada tabel relasi, dan mengunci `AuditLog` agar bersifat mutlak *append-only* (dilarang `UPDATE`/`DELETE`).
+4. Ubah `DATABASE_URL` untuk menggunakan user `jdih_app`.
 
 ---
 

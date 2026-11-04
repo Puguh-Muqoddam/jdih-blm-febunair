@@ -28,16 +28,23 @@ Jalankan di terminal:
 npx wrangler r2 bucket create jdih-blm-docs
 ```
 
-#### B. Buat Cloudflare Hyperdrive untuk Koneksi Cepat Supabase
-Jalankan di terminal (ganti nilai dengan connection string Supabase Anda):
-```bash
-npx wrangler hyperdrive create jdih-hyperdrive --connection-string="postgres://postgres.<PROJECT_REF>:<PASSWORD>@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"
-```
-Setelah dibuat, salin ID Hyperdrive yang dihasilkan (misal `7a1b...`), lalu buka file [`wrangler.jsonc`](file:///c:/Users/ThinkPad/OneDrive/Dokumen/AG/JDIH%20BLM/wrangler.jsonc) dan perbarui:
+#### B. Cloudflare Hyperdrive untuk Akselerasi Basis Data Supabase
+Hyperdrive resmi telah dibuat dan aktif terhubung ke Supabase PostgreSQL:
+- **Nama Hyperdrive:** `jdih-postgres`
+- **ID Konfigurasi:** `80dfc667eaa84b4dae9b979ab999ce9e`
+- **Binding di [`wrangler.jsonc`](file:///c:/Users/ThinkPad/OneDrive/Dokumen/AG/JDIH%20BLM/wrangler.jsonc):**
 ```jsonc
 "hyperdrive": [
-  { "binding": "HYPERDRIVE", "id": "<ID_HYPERDRIVE_DARI_TERMINAL>" }
+  {
+    "binding": "HYPERDRIVE",
+    "id": "80dfc667eaa84b4dae9b979ab999ce9e",
+    "localConnectionString": "postgresql://postgres:legisbisasemua@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres"
+  }
 ]
+```
+Jika perlu membuat ulang di kemudian hari:
+```bash
+npx wrangler hyperdrive create jdih-postgres --connection-string="postgresql://postgres:PASSWORD@db.sfobevvfofvckkhshzlx.supabase.co:5432/postgres"
 ```
 
 ---
@@ -80,6 +87,9 @@ npx wrangler secret put DATABASE_URL
 
 # Salt Keamanan IP Hashing untuk Anti-Spam Permohonan
 npx wrangler secret put IP_HASH_SALT
+
+# Cloudflare Turnstile CAPTCHA (Site & Secret Key)
+npx wrangler secret put TURNSTILE_SECRET_KEY
 ```
 
 ---
@@ -94,7 +104,7 @@ npm run deploy
 
 Atau secara bertahap:
 ```powershell
-# 1. Jalankan unit test (50 pengujian)
+# 1. Jalankan unit test (52 pengujian)
 npm test
 
 # 2. Periksa tipe TypeScript
@@ -116,8 +126,8 @@ https://jdih-blm-febunair.my.id
 ```
 *(URL pekerja Cloudflare alternatif: `https://jdih-blm-febunair.puguhmuqoddam151.workers.dev`)*.
 - **Status Produksi:** Aktif & Online (HTTP 200 OK)
-- **Deployment Version ID Terkini:** `691df4c6-64e1-4035-8d2a-f65c77ed0f85`
-- **Fitur Baru Terpasang:** Aset logo resmi BLM & Cakrasena, struktur komisi A/B/C, filosofi lambang, favicon, dan sekretariat GKM Lt. 1 FEB UNAIR
+- **Deployment Version ID Terkini:** `d988caea-d2c1-4fad-980c-8d3bb983740e`
+- **Fitur Baru Terpasang:** Akselerasi Hyperdrive Postgres, Edge firewall pemblokir scraper liar, proteksi login berbasis verifikasi email `email_confirmed_at`, form permohonan rate-limited + Turnstile, dan kompatibilitas sitasi AI (ChatGPT, Claude, Perplexity, Gemini).
 
 ---
 
@@ -130,6 +140,19 @@ https://jdih-blm-febunair.my.id
    - Kunjungi `/permohonan` (Uji form permohonan informasi pengunjung).
    - Kunjungi `/feed.xml` dan `/sitemap.xml` (Verifikasi format XML).
 2. **Panel Admin:**
-   - Kunjungi `/admin/login` dan masuk menggunakan email `puguhmuqoddam151@gmail.com`.
-   - Buka `/admin` (Dasbor KPI dan peringatan rekonsiliasi data §10).
-   - Buka `/admin/produk-hukum/baru` (Uji mesin penomoran otomatis 4-digit live preview).
+   - Kunjungi `/admin/login` dan masuk menggunakan akun pengurus resmi (`puguhmuqoddam151@gmail.com`).
+   - Buka `/admin` (Dasbor KPI dan status dokumen live).
+   - Buka `/admin/produk-hukum/baru` (Uji mesin penomoran otomatis 4-digit live preview dan penerbitan produk hukum baru).
+
+---
+
+### 7. Kebijakan Perayapan Web & Bot AI (Crawlers Policy)
+
+Portal JDIH BLM FEB UNAIR mengadopsi kebijakan visibilitas hukum modern:
+- **DIIZINKAN (Allow):**
+  - **Mesin Pencari:** Googlebot, Googlebot-Image, Google-Favicon, Bingbot.
+  - **Pencarian AI & Apple:** Applebot, Applebot-Extended.
+  - **AI Chatbot & Discovery:** GPTBot, ChatGPT-User, ClaudeBot, Claude-Web, anthropic-ai, PerplexityBot, Google-Extended (Gemini & AI Overviews).
+  - *Catatan:* Seluruh bot dibatasi dari URL dinamis `/pencarian*` agar tidak membombardir database dengan kata kunci acak.
+- **DIBLOKIR DI EDGE (403 Forbidden):**
+  - Bot scraper komersial non-pencari yang rakus bandwidth dan tidak memberikan manfaat sitasi: `Bytespider` (ByteDance/TikTok), `CCBot`, `DataForSeoBot`, `ImagesiftBot`, `Omgilibot`. Ditolak dalam <0.1 ms di level Edge Middleware tanpa membebani kuota Worker.

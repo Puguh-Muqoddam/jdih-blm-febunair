@@ -7,12 +7,14 @@
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-blue?style=for-the-badge&logo=react)](https://react.dev/)
-[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-Deployed-F38020?style=for-the-badge&logo=cloudflare)](https://jdih-blm-febunair.puguhmuqoddam151.workers.dev)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-Deployed-F38020?style=for-the-badge&logo=cloudflare)](https://jdih-blm-febunair.my.id)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![Vitest](https://img.shields.io/badge/Vitest-41_Passed-6E9F18?style=for-the-badge&logo=vitest)](https://vitest.dev/)
+[![Vitest](https://img.shields.io/badge/Vitest-52_Passed-6E9F18?style=for-the-badge&logo=vitest)](https://vitest.dev/)
+[![ESLint](https://img.shields.io/badge/ESLint-0_Errors-4B32C3?style=for-the-badge&logo=eslint)](https://eslint.org/)
 
-🌐 **Live Deployment:** [https://jdih-blm-febunair.puguhmuqoddam151.workers.dev](https://jdih-blm-febunair.puguhmuqoddam151.workers.dev)  
+🌐 **Domain Utama Resmi:** [https://jdih-blm-febunair.my.id](https://jdih-blm-febunair.my.id)  
+⚡ **Alternatif Worker:** [https://jdih-blm-febunair.puguhmuqoddam151.workers.dev](https://jdih-blm-febunair.puguhmuqoddam151.workers.dev)  
 📦 **Repository:** [https://github.com/Puguh-Muqoddam/jdih-blm-febunair](https://github.com/Puguh-Muqoddam/jdih-blm-febunair)
 
 </div>
@@ -85,13 +87,15 @@ Desain antarmuka memadukan wibawa lembaga legislatif formal dengan nuansa hangat
 
 ## 🛠️ Tech Stack & Arsitektur
 
-- **Frontend & App Framework:** [Next.js 16](https://nextjs.org/) (App Router, Turbopack, React 19)
-- **Deployment Platform:** [Cloudflare Workers](https://workers.cloudflare.com/) via `@opennextjs/cloudflare` & `@opennextjs/aws`
-- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) & PostCSS
-- **Icons & Ilustrasi:** [Lucide React](https://lucide.dev/)
-- **Database & ORM:** [Prisma ORM 7](https://www.prisma.io/) & PostgreSQL / Supabase
-- **Pengujian Unit:** [Vitest 3](https://vitest.dev/) (41 unit tests lulus)
-- **Type Safety:** TypeScript 5 (Strict Mode)
+- **Frontend & App Framework:** [Next.js 16](https://nextjs.org/) (App Router, Turbopack, React 19) dengan Incremental Static Regeneration (ISR).
+- **Deployment Platform:** [Cloudflare Workers](https://workers.cloudflare.com/) via `@opennextjs/cloudflare` & `@opennextjs/aws`.
+- **Database & Pooling:** [Prisma ORM 7](https://www.prisma.io/) + PostgreSQL di Supabase yang diakselerasi via [Cloudflare Hyperdrive](https://developers.cloudflare.com/hyperdrive/).
+- **Keamanan & Autentikasi:** Supabase SSR Auth (berbasis verifikasi email `email_confirmed_at` + cek `AdminUser`), RLS Zero-Trust, role database *least-privilege* (`jdih_app`).
+- **Proteksi Bot & Edge Firewall:** Cloudflare Turnstile CAPTCHA, rate-limiting salt IP hash, edge filtering di middleware untuk scraper agresif non-pencari (sambil mengizinkan Googlebot, Bingbot, Applebot, GPTBot, ClaudeBot, dan PerplexityBot).
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) & PostCSS.
+- **Icons & Ilustrasi:** [Lucide React](https://lucide.dev/).
+- **Pengujian Unit & CI/CD:** [Vitest 3](https://vitest.dev/) (52 unit tests lulus), ESLint 9 Flat Config, dan GitHub Actions CI otomatis.
+- **Type Safety:** TypeScript 5 (Strict Mode).
 
 ---
 
