@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { LEGAL_DOCUMENTS } from "@/lib/data/mock-documents";
+import { publicVisibleDocuments } from "@/lib/data/public-documents";
 import { getBaseUrl, getDocumentUrl } from "@/lib/seo";
 
 // =============================================================================
@@ -8,10 +8,13 @@ import { getBaseUrl, getDocumentUrl } from "@/lib/seo";
 // Referensi: IMPLEMENTATION_PLAN.md §13 (SEO & Sindikasi)
 // =============================================================================
 
+export const revalidate = 3600;
+
 export async function GET() {
   const baseUrl = getBaseUrl();
+  const visibleDocs = await publicVisibleDocuments();
 
-  const sortedDocs = [...LEGAL_DOCUMENTS].sort(
+  const sortedDocs = [...visibleDocs].sort(
     (a, b) => new Date(b.enactedDate).getTime() - new Date(a.enactedDate).getTime()
   );
 

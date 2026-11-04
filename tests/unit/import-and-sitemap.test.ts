@@ -81,13 +81,16 @@ describe("Langkah 9: Migrasi Register 49 Dokumen & Permohonan Pengunjung", () =>
         honeypot: "http://malicious.com",
       });
 
-      expect(res.ticketNumber).toBe("REQ-2026-SPAM");
+      expect(res.success).toBe(true);
+      if (res.success) {
+        expect(res.ticketNumber).toBe("REQ-2026-SPAM");
+      }
     });
   });
 
   describe("3. Sitemap & Robots Indexing Configuration", () => {
-    it("harus menyertakan seluruh halaman publik utama dan 70 dokumen dalam sitemap", () => {
-      const urls = sitemap();
+    it("harus menyertakan seluruh halaman publik utama dan 70 dokumen dalam sitemap", async () => {
+      const urls = await sitemap();
       expect(urls.length).toBeGreaterThanOrEqual(70 + 7 + 4 + 5);
 
       const home = urls.find((u) => u.url.endsWith("/"));

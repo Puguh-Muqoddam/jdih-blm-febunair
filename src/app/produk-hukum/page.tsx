@@ -1,22 +1,28 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, Scale, ShieldCheck } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { CatalogClient } from "@/components/public/CatalogClient";
+import { REGULATION_CATEGORIES } from "@/lib/data/mock-documents";
 import {
-  LEGAL_DOCUMENTS,
-  REGULATION_CATEGORIES,
-} from "@/lib/data/mock-documents";
+  publicVisibleDocuments,
+  toClientDocumentList,
+} from "@/lib/data/public-documents";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Katalog Produk Hukum | JDIH BLM FEB UNAIR",
   description:
-    "Daftar lengkap 70 produk hukum resmi Badan Legislatif Mahasiswa FEB Universitas Airlangga (AD/ART, Konstitusi Ormawa, Undang-Undang, Ketetapan, Surat Keputusan, Surat Laporan).",
+    "Daftar lengkap produk hukum resmi Badan Legislatif Mahasiswa FEB Universitas Airlangga (AD/ART, Konstitusi Ormawa, Undang-Undang, Ketetapan, Surat Keputusan, Surat Laporan).",
 };
 
-export default function ProdukHukumPage() {
+export default async function ProdukHukumPage() {
+  const visibleDocs = await publicVisibleDocuments();
+  const clientDocs = toClientDocumentList(visibleDocs);
+
   return (
     <>
       <SiteHeader />
@@ -43,14 +49,14 @@ export default function ProdukHukumPage() {
                   Katalog Produk Hukum BLM FEB UNAIR
                 </h1>
                 <p className="text-xs sm:text-sm text-[#4A5568] max-w-3xl leading-relaxed">
-                  Menyajikan seluruh inventaris {LEGAL_DOCUMENTS.length} dokumen produk hukum resmi periode 2026 (AD/ART, Konstitusi Ormawa, UU, TAP, SK, dan Surat Laporan). Seluruh dokumen tersimpan secara faktual dalam basis data dengan pratinjau naskah resmi dan akses unduh langsung.
+                  Menyajikan seluruh inventaris {visibleDocs.length} dokumen produk hukum resmi periode 2026 (AD/ART, Konstitusi Ormawa, UU, TAP, SK, dan Surat Laporan). Seluruh dokumen tersimpan secara faktual dalam basis data dengan pratinjau naskah resmi dan akses unduh langsung.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end justify-between gap-2 text-left lg:text-right text-xs text-[#4A5568] shrink-0">
                 <div>
                   <span className="font-mono text-xl font-bold text-[#1B67BC] block">
-                    {LEGAL_DOCUMENTS.length} Dokumen Resmi
+                    {visibleDocs.length} Dokumen Resmi
                   </span>
                   <span>Tercatat di Basis Data 2026</span>
                 </div>
@@ -93,7 +99,7 @@ export default function ProdukHukumPage() {
           </div>
 
           {/* Komponen Interaktif Katalog (Grid/Table Toggle + Live Filter) */}
-          <CatalogClient initialDocuments={LEGAL_DOCUMENTS} />
+          <CatalogClient initialDocuments={clientDocs} />
         </div>
       </main>
 

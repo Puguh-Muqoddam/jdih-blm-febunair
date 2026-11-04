@@ -5,6 +5,12 @@ import { ChevronRight, Search } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SearchClient } from "@/components/public/SearchClient";
+import {
+  searchPublicDocumentsServer,
+  toClientDocumentList,
+} from "@/lib/data/public-documents";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Pencarian Produk Hukum | JDIH BLM FEB UNAIR",
@@ -12,7 +18,27 @@ export const metadata: Metadata = {
     "Cari dan temukan peraturan, ketetapan, surat keputusan, dan laporan parlemen BLM FEB UNAIR dengan cepat dan presisi.",
 };
 
-export default function PencarianPage() {
+interface PencarianPageProps {
+  searchParams?: Promise<{
+    q?: string;
+    jenis?: string;
+    status?: string;
+  }>;
+}
+
+export default async function PencarianPage({ searchParams }: PencarianPageProps) {
+  const resolvedParams = searchParams ? await searchParams : {};
+  const docs = await searchPublicDocumentsServer({
+    query: resolvedParams.q,
+    type: resolvedParams.jenis,
+    status: resolvedParams.status,
+  });
+  // Jika ada query spesifik dari server, sertakan juga daftar dokumen publik ringan agar filter interaktif tetap responsif
+  const allPublicDocs = resolvedParams.q
+    ? await searchPublicDocumentsServer({})
+    : docs;
+  const clientDocs = toClientDocumentList(allPublicDocs);
+
   return (
     <>
       <SiteHeader />
@@ -50,7 +76,7 @@ export default function PencarianPage() {
               </div>
             }
           >
-            <SearchClient />
+            <SearchClient initialDocuments={clientDocs} />
           </Suspense>
         </div>
       </main>

@@ -22,12 +22,18 @@ dotenv.config();
 
 const SUPABASE_URL =
   process.env.NEXT_PUBLIC_SUPABASE_URL || "https://sfobevvfofvckkhshzlx.supabase.co";
-const SUPABASE_KEY =
-  process.env.SUPABASE_SERVICE_ROLE_KEY ||
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-  "sb_publishable_KV66XFWixhFydC9c89J3dA_DXny5uw6";
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+if (!SUPABASE_KEY) {
+  console.error(
+    "❌ ERROR KEAMANAN: Variabel lingkungan SUPABASE_SERVICE_ROLE_KEY wajib disetel untuk mengunggah berkas PDF resmi ke bucket produk-hukum (anon key tidak diizinkan)."
+  );
+  process.exit(1);
+}
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: { persistSession: false, autoRefreshToken: false },
+});
 
 async function downloadFileFromGoogleDrive(fileId: string): Promise<Buffer | null> {
   const directUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;

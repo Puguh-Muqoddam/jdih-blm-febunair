@@ -2,45 +2,52 @@ import { NextResponse, type NextRequest } from "next/server";
 
 // =============================================================================
 // JDIH BLM FEB UNAIR - Route Middleware
-// Proteksi rute administrasi internal di level edge
+// Proteksi lapis pertama rute administrasi di level edge + penerusan x-pathname
+// (Verifikasi kriptografi penuh JWT + email_confirmed_at dilakukan di layout.tsx)
 // =============================================================================
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Lewatkan halaman login admin
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", pathname);
+
+  // Lewatkan halaman login admin tanpa redirect
   if (pathname === "/admin/login") {
-    return NextResponse.next();
+    return NextResponse.next({
+      request: { headers: requestHeaders },
+    });
   }
 
-  // Proteksi semua rute /admin/*
+  // Proteksi awal rute /admin/*
   if (pathname.startsWith("/admin")) {
-    // Periksa cookie auth Supabase (awalan "sb-" atau cookie sesi kustom)
     const allCookies = request.cookies.getAll();
     const hasSupabaseAuth = allCookies.some(
       (c: { name: string }) => c.name.startsWith("sb-") && c.name.includes("-auth-token")
     );
 
-    // Di mode pengembangan atau jika token auth tidak ditemukan, arahkan ke login jika tidak ada bypass
     const isDev = process.env.NODE_ENV === "development";
     const allowDevBypass = process.env.DEV_BYPASS_ADMIN === "true";
 
     if (!hasSupabaseAuth && !(isDev && allowDevBypass)) {
-      // Izinkan akses login
       const loginUrl = new URL("/admin/login", request.url);
       loginUrl.searchParams.set("redirect", pathname);
-      // Untuk kemudahan pratinjau lokal tanpa DB/Supabase aktif, lewati jika belum disetel
-      const hasSupabaseConfig =
-        Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL) &&
-        Boolean(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
-      if (hasSupabaseConfig) {
+      const hasSupabaseConfig =
+        Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL) &&
+        Boolean(
+          process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY
+        );
+
+      if (hasSupabaseConfig || process.env.NODE_ENV === "production") {
         return NextResponse.redirect(loginUrl);
       }
     }
   }
 
-  return NextResponse.next();
+  return NextResponse.next({
+    request: { headers: requestHeaders },
+  });
 }
 
 export const config = {

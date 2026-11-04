@@ -1,15 +1,19 @@
 import type { MetadataRoute } from "next";
-import { LEGAL_DOCUMENTS } from "@/lib/data/mock-documents";
+import { publicVisibleDocuments } from "@/lib/data/public-documents";
 import { getBaseUrl, getDocumentUrl } from "@/lib/seo";
 
 // =============================================================================
 // JDIH BLM FEB UNAIR - Sitemap XML Resmi untuk Mesin Pencari (Google Search)
 // File konvensi App Router: /sitemap.xml
+// Hanya memuat dokumen publik (PUBLISHED / ARCHIVED), tidak pernah DRAFT.
 // =============================================================================
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getBaseUrl();
   const now = new Date();
+  const visibleDocuments = await publicVisibleDocuments();
 
   // 1. Halaman Publik Utama
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -119,8 +123,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // 4. Seluruh 70 Dokumen Produk Hukum Faktual
-  const documentRoutes: MetadataRoute.Sitemap = LEGAL_DOCUMENTS.map((doc) => {
+  // 4. Seluruh Dokumen Produk Hukum Publik (Tanpa DRAFT)
+  const documentRoutes: MetadataRoute.Sitemap = visibleDocuments.map((doc) => {
     let date = now;
     if (doc.enactedDate) {
       const parsed = new Date(doc.enactedDate);

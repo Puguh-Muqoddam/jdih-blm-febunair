@@ -18,7 +18,7 @@ import {
   Check,
   Scale,
 } from "lucide-react";
-import { LEGAL_DOCUMENTS } from "@/lib/data/mock-documents";
+import { getAllAdminDocuments } from "@/lib/data/public-documents";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { TypeBadge } from "@/components/ui/TypeBadge";
 
@@ -27,23 +27,25 @@ export const metadata = {
   description: "Pusat kendali dan audit kualitas metadata produk hukum BLM FEB UNAIR.",
 };
 
-export default function AdminDashboardPage() {
+export default async function AdminDashboardPage() {
+  const documents = await getAllAdminDocuments();
+
   // Metrik Statistik
-  const totalDocs = LEGAL_DOCUMENTS.length;
-  const totalBerlaku = LEGAL_DOCUMENTS.filter((d) => d.legalStatus === "BERLAKU").length;
-  const totalDiubah = LEGAL_DOCUMENTS.filter((d) => d.legalStatus === "DIUBAH").length;
-  const totalDicabut = LEGAL_DOCUMENTS.filter((d) => d.legalStatus === "DICABUT").length;
-  const totalSkA = LEGAL_DOCUMENTS.filter((d) => d.type === "SK" && d.nature === "A_INTERNAL").length;
-  const totalSkB = LEGAL_DOCUMENTS.filter((d) => d.type === "SK" && d.nature === "B_EXTERNAL").length;
-  const totalViews = LEGAL_DOCUMENTS.reduce((acc, d) => acc + d.viewCount, 0);
-  const totalDownloads = LEGAL_DOCUMENTS.reduce((acc, d) => acc + d.downloadCount, 0);
+  const totalDocs = documents.length;
+  const totalBerlaku = documents.filter((d) => d.legalStatus === "BERLAKU").length;
+  const totalDiubah = documents.filter((d) => d.legalStatus === "DIUBAH").length;
+  const totalDicabut = documents.filter((d) => d.legalStatus === "DICABUT").length;
+  const totalSkA = documents.filter((d) => d.type === "SK" && d.nature === "A_INTERNAL").length;
+  const totalSkB = documents.filter((d) => d.type === "SK" && d.nature === "B_EXTERNAL").length;
+  const totalViews = documents.reduce((acc, d) => acc + d.viewCount, 0);
+  const totalDownloads = documents.reduce((acc, d) => acc + d.downloadCount, 0);
 
   // Anomali & Peringatan Kualitas Data (§10)
-  const legacyNumberedDocs = LEGAL_DOCUMENTS.filter((d) => d.legacyNumber);
-  const correctedYearDocs = LEGAL_DOCUMENTS.filter((d) => d.id === "uu-02");
+  const legacyNumberedDocs = documents.filter((d) => d.legacyNumber);
+  const correctedYearDocs = documents.filter((d) => d.id === "uu-02");
 
   // 10 Dokumen Terbaru
-  const recentDocs = [...LEGAL_DOCUMENTS]
+  const recentDocs = [...documents]
     .sort((a, b) => new Date(b.enactedDate).getTime() - new Date(a.enactedDate).getTime())
     .slice(0, 10);
 

@@ -64,42 +64,57 @@ Sebelum deploy, inisialisasi tabel dan masukkan seluruh 49 dokumen register ke S
 
 ### 4. Konfigurasi Rahasia (Secrets) di Cloudflare Workers
 
-Tambahkan variabel rahasia ke Cloudflare Workers agar server dapat memvalidasi login admin:
+Tambahkan variabel rahasia ke Cloudflare Workers agar server dapat memvalidasi login admin, koneksi Supabase, dan keamanan rate limiting:
 ```bash
-npx wrangler secret put SUPABASE_URL
-npx wrangler secret put SUPABASE_ANON_KEY
+# URL & Kunci API Supabase Resmi (Project sfobevvfofvckkhshzlx)
+npx wrangler secret put NEXT_PUBLIC_SUPABASE_URL
+npx wrangler secret put NEXT_PUBLIC_SUPABASE_ANON_KEY
+npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+
+# Daftar Email Otorisasi Super Admin
 npx wrangler secret put SUPER_ADMIN_EMAILS
+# (Masukkan: puguhmuqoddam151@gmail.com)
+
+# Koneksi Database PostgreSQL Supabase
+npx wrangler secret put DATABASE_URL
+
+# Salt Keamanan IP Hashing untuk Anti-Spam Permohonan
+npx wrangler secret put IP_HASH_SALT
 ```
-*(Saat diminta nilai `SUPER_ADMIN_EMAILS`, masukkan: `puguhmuqoddam151@gmail.com`)*.
 
 ---
 
 ### 5. Kompilasi & Deploy ke Cloudflare Workers
 
-Jalankan perintah build dan deploy:
-```bash
+Jalankan perintah build dan deploy (gunakan awalan DNS IPv4 pada Windows):
+```powershell
+$env:NODE_OPTIONS="--dns-result-order=ipv4first"
 npm run deploy
 ```
 
 Atau secara bertahap:
-```bash
-# 1. Jalankan unit test
+```powershell
+# 1. Jalankan unit test (50 pengujian)
 npm test
 
 # 2. Periksa tipe TypeScript
 npm run typecheck
 
-# 3. Kompilasi untuk Cloudflare Workers
+# 3. Lakukan linting kode
+npm run lint
+
+# 4. Kompilasi untuk Cloudflare Workers
 npx opennextjs-cloudflare build
 
-# 4. Deploy langsung ke Cloudflare
+# 5. Deploy langsung ke Cloudflare
 npx wrangler deploy
 ```
 
-Setelah proses selesai, Cloudflare memberikan URL publik portal hukum:
+Setelah proses selesai, situs aktif pada domain kustom kanonikal:
 ```
-https://jdih-blm-febunair.puguhmuqoddam151.workers.dev
+https://jdih-blm-febunair.my.id
 ```
+*(URL pekerja Cloudflare alternatif: `https://jdih-blm-febunair.puguhmuqoddam151.workers.dev`)*.
 - **Status Produksi:** Aktif & Online (HTTP 200 OK)
 - **Deployment Version ID Terkini:** `691df4c6-64e1-4035-8d2a-f65c77ed0f85`
 - **Fitur Baru Terpasang:** Aset logo resmi BLM & Cakrasena, struktur komisi A/B/C, filosofi lambang, favicon, dan sekretariat GKM Lt. 1 FEB UNAIR

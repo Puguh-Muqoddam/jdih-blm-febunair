@@ -29,6 +29,7 @@ import {
   toRoman,
   padSequence,
 } from "@/lib/numbering";
+import { createDocumentAction } from "@/lib/actions/document";
 
 export default function TambahProdukHukumBaruPage() {
   const formId = useId();
@@ -58,6 +59,7 @@ export default function TambahProdukHukumBaruPage() {
     lastModified: number;
   } | null>(null);
   const [fileError, setFileError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitSuccess, setSubmitSuccess] = useState<boolean>(false);
 
@@ -127,15 +129,56 @@ export default function TambahProdukHukumBaruPage() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (
+    e: React.FormEvent,
+    overrideState?: "PUBLISHED" | "DRAFT"
+  ) => {
     e.preventDefault();
+    setSubmitError(null);
+    setSubmitSuccess(false);
     setIsSubmitting(true);
 
-    // Simulasi penyimpanan lokal (akan dihubungkan ke Server Action di Langkah 8)
-    setTimeout(() => {
+    try {
+      const targetPubState = overrideState || publicationState;
+      const tags = tagsInput
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
+
+      const res = await createDocumentAction({
+        type: docType,
+        sequenceNumber,
+        year,
+        month,
+        nature:
+          docType === "SK"
+            ? nature === "A"
+              ? "A_INTERNAL"
+              : "B_EXTERNAL"
+            : undefined,
+        abbreviationCode: docType === "SK" ? abbreviationCode : undefined,
+        title,
+        summary,
+        forumName: forum,
+        enactedDate: selectedDate,
+        placeOfEnactment: place,
+        legalStatus,
+        publicationState: targetPubState,
+        tags,
+      });
+
+      if (!res.success) {
+        setSubmitError("Gagal menyimpan dokumen ke basis data.");
+      } else {
+        setSubmitSuccess(true);
+      }
+    } catch (err: any) {
+      setSubmitError(
+        err?.message || "Terjadi kesalahan saat memanggil Server Action."
+      );
+    } finally {
       setIsSubmitting(false);
-      setSubmitSuccess(true);
-    }, 600);
+    }
   };
 
   return (
@@ -166,6 +209,13 @@ export default function TambahProdukHukumBaruPage() {
           Kembali ke Daftar
         </Link>
       </div>
+
+      {submitError && (
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-900 text-xs flex items-center gap-2.5">
+          <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
+          <span>{submitError}</span>
+        </div>
+      )}
 
       {submitSuccess && (
         <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-950 flex items-start gap-3.5">
@@ -575,7 +625,7 @@ export default function TambahProdukHukumBaruPage() {
               type="button"
               onClick={() => {
                 setPublicationState("DRAFT");
-                handleSubmit({ preventDefault: () => {} } as any);
+                handleSubmit({ preventDefault: () => {} } as any, "DRAFT");
               }}
               className="flex-1 sm:flex-none px-5 py-3 rounded-xl border border-[#A3D0EE] bg-white hover:bg-[#C6E8F7]/30 font-semibold text-xs text-[#1A1A1A] transition-colors"
             >

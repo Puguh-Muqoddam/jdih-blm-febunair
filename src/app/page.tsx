@@ -6,25 +6,38 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { HeroSearchBar } from "@/components/public/HeroSearchBar";
 import { HeroBackdropSlider } from "@/components/public/HeroBackdropSlider";
 import { DocumentCard } from "@/components/public/DocumentCard";
-import { LEGAL_DOCUMENTS } from "@/lib/data/mock-documents";
+import { publicVisibleDocuments } from "@/lib/data/public-documents";
 
-export default function HomePage() {
-  // Ambil 6 dokumen unggulan / terbaru (mis. UU PEMIRA, TAP Ospek, SK LPPM SEKTOR, SK Rekomendasi PEMIRA)
-  const featuredDocuments = [
-    LEGAL_DOCUMENTS[1], // UU 02 (Perubahan UU PEMIRA)
-    LEGAL_DOCUMENTS[3], // TAP 002 (Kebijakan Ospek)
-    LEGAL_DOCUMENTS[4], // TAP 003 (Kepengurusan Sementara LPPM SEKTOR)
-    LEGAL_DOCUMENTS[31], // SK 0163 (Rekomendasi Penyelenggara PEMIRA)
-    LEGAL_DOCUMENTS[33], // SK 0165 (Peringatan Ospek Jurusan)
-    LEGAL_DOCUMENTS[8], // LP 004 (Laporan Pengawasan Ospek)
+export const revalidate = 3600;
+
+export default async function HomePage() {
+  const visibleDocs = await publicVisibleDocuments();
+  const uuCount = visibleDocs.filter((d) => d.type === "UU").length || 4;
+  const tapCount = visibleDocs.filter((d) => d.type === "TAP").length || 3;
+  const skCount = visibleDocs.filter((d) => d.type === "SK").length || 57;
+  const lpCount = visibleDocs.filter((d) => d.type === "LP").length || 6;
+
+  // Ambil 6 dokumen unggulan / terbaru
+  const preferredSlugs = [
+    "uu-2026-02",
+    "tap-2026-002",
+    "tap-2026-003",
+    "sk-2026-0163",
+    "sk-2026-0165",
+    "lp-2026-004",
   ];
+  const featuredDocuments = preferredSlugs
+    .map((slug) => visibleDocs.find((d) => d.slug === slug))
+    .filter((d): d is NonNullable<typeof d> => Boolean(d));
+  const finalFeatured =
+    featuredDocuments.length >= 6 ? featuredDocuments : visibleDocs.slice(0, 6);
 
   const docTypeCards = [
     {
       code: "UU",
       name: "Undang-Undang & Konstitusi (UU)",
       slug: "undang-undang",
-      count: 4,
+      count: uuCount,
       boxStyle: "bg-white text-[#1B67BC] border-[#A3D0EE]",
       countStyle: "bg-[#1B67BC] text-white",
       desc: "Regulasi dasar tertinggi meliputi AD/ART BLM, Konstitusi Ormawa, dan Undang-Undang yang disahkan melalui Sidang Pleno BLM FEB UNAIR.",
@@ -33,7 +46,7 @@ export default function HomePage() {
       code: "TAP",
       name: "Ketetapan BLM (TAP)",
       slug: "ketetapan-blm",
-      count: 3,
+      count: tapCount,
       boxStyle: "bg-[#b96d41] text-white border-[#b96d41]",
       countStyle: "bg-white text-[#b96d41]",
       desc: "Ketetapan musyawarah sidang parlemen yang mengikat secara internal maupun eksternal dalam menetapkan kebijakan strategis dan prosedur tetap.",
@@ -42,7 +55,7 @@ export default function HomePage() {
       code: "SK",
       name: "Surat Keputusan (SK)",
       slug: "surat-keputusan",
-      count: 57,
+      count: skCount,
       boxStyle: "bg-[#C6E8F7] text-[#1B67BC] border-[#A3D0EE]",
       countStyle: "bg-[#1B67BC] text-white",
       desc: "Keputusan administratif dan persidangan legislatif terkait agenda, tata tertib, kepengurusan ormawa, serta kebijakan eksternal berkode A dan B.",
@@ -51,7 +64,7 @@ export default function HomePage() {
       code: "LP",
       name: "Surat Laporan & BA (LP)",
       slug: "lembaran-parlemen",
-      count: 6,
+      count: lpCount,
       boxStyle: "bg-[#3885CC] text-white border-[#A3D0EE]",
       countStyle: "bg-white text-[#1B67BC]",
       desc: "Instrumen akuntabilitas hasil pengawasan berkala, laporan investigasi komisi, rekomendasi DKPP, serta evaluasi kegiatan ormawa FEB UNAIR.",
@@ -214,7 +227,7 @@ export default function HomePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {featuredDocuments.map((doc) => (
+              {finalFeatured.map((doc) => (
                 <DocumentCard key={doc.id} document={doc} />
               ))}
             </div>

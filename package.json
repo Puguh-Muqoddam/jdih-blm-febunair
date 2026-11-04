@@ -7,7 +7,7 @@
     "build": "opennextjs-cloudflare build",
     "build:next": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint src/",
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc --noEmit",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",

@@ -31,10 +31,15 @@ export default function PermohonanDokumenPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
   const [submittedTicket, setSubmittedTicket] = useState<{
     ticketNumber: string;
     email: string;
   } | null>(null);
+
+  const visibleDocuments = LEGAL_DOCUMENTS.filter(
+    (d) => d.publicationState !== "DRAFT"
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,6 +59,7 @@ export default function PermohonanDokumenPage() {
         relatedDocumentSlug: selectedDocSlug,
         message,
         honeypot,
+        turnstileToken: turnstileToken || undefined,
       });
 
       if (res.success) {
@@ -61,6 +67,10 @@ export default function PermohonanDokumenPage() {
           ticketNumber: res.ticketNumber,
           email,
         });
+      } else {
+        setErrorMessage(
+          res.error || "Terjadi kendala saat menyimpan permohonan Anda."
+        );
       }
     } catch (err: any) {
       setErrorMessage(err.message || "Terjadi kendala saat mengirim permohonan.");
@@ -294,21 +304,21 @@ export default function PermohonanDokumenPage() {
                 >
                   <option value="OTHER">Dokumen Lainnya / Naskah Rancangan / Risalah Sidang</option>
                   <optgroup label="Undang-Undang (UU)">
-                    {LEGAL_DOCUMENTS.filter((d) => d.type === "UU").map((d) => (
+                    {visibleDocuments.filter((d) => d.type === "UU").map((d) => (
                       <option key={d.slug} value={d.slug}>
                         {d.officialNumber} - {d.title.slice(0, 50)}...
                       </option>
                     ))}
                   </optgroup>
                   <optgroup label="Ketetapan BLM (TAP)">
-                    {LEGAL_DOCUMENTS.filter((d) => d.type === "TAP").map((d) => (
+                    {visibleDocuments.filter((d) => d.type === "TAP").map((d) => (
                       <option key={d.slug} value={d.slug}>
                         {d.officialNumber} - {d.title.slice(0, 50)}...
                       </option>
                     ))}
                   </optgroup>
                   <optgroup label="Surat Keputusan (SK)">
-                    {LEGAL_DOCUMENTS.filter((d) => d.type === "SK").slice(0, 15).map((d) => (
+                    {visibleDocuments.filter((d) => d.type === "SK").slice(0, 15).map((d) => (
                       <option key={d.slug} value={d.slug}>
                         {d.officialNumber} - {d.title.slice(0, 50)}...
                       </option>

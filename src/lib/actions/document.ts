@@ -240,10 +240,14 @@ export async function createDocumentAction(input: CreateDocumentInput) {
     return newDoc;
   });
 
-  // Revalidasi cache halaman publik
+  // Revalidasi cache halaman publik & feed sindikasi
   revalidatePath("/");
   revalidatePath("/produk-hukum");
   revalidatePath(`/produk-hukum/${createdDocument.slug}`);
+  revalidatePath("/pencarian");
+  revalidatePath("/statistik");
+  revalidatePath("/sitemap.xml");
+  revalidatePath("/feed.xml");
   revalidatePath("/admin/produk-hukum");
   revalidatePath("/admin");
 
@@ -354,7 +358,12 @@ export async function updatePublicationStateAction(input: z.infer<typeof updateP
   revalidatePath("/");
   revalidatePath("/produk-hukum");
   revalidatePath(`/produk-hukum/${updated.slug}`);
+  revalidatePath("/pencarian");
+  revalidatePath("/statistik");
+  revalidatePath("/sitemap.xml");
+  revalidatePath("/feed.xml");
   revalidatePath("/admin/produk-hukum");
+  revalidatePath("/admin");
 
   return { success: true, document: updated };
 }

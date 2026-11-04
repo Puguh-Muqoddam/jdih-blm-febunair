@@ -22,11 +22,11 @@ import { TypeBadge } from "@/components/ui/TypeBadge";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { CopyButton } from "@/components/ui/CopyButton";
 import { CitationBox } from "@/components/ui/CitationBox";
-import {
-  LEGAL_DOCUMENTS,
-  LegalDocumentItem,
-} from "@/lib/data/mock-documents";
+import { LEGAL_DOCUMENTS } from "@/lib/data/mock-documents";
+import { getPublicDocumentByRoute } from "@/lib/data/public-documents";
 import { padSequence, formatCitation } from "@/lib/numbering";
+
+export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{
@@ -37,7 +37,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return LEGAL_DOCUMENTS.map((doc) => {
+  return LEGAL_DOCUMENTS.filter((d) => d.publicationState !== "DRAFT").map((doc) => {
     const padding = doc.type === "SK" ? 4 : doc.type === "UU" ? 2 : 3;
     const paddedSeq = padSequence(doc.sequenceNumber, padding);
     return {
@@ -53,12 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const seqNum = parseInt(nomor, 10);
   const yearNum = parseInt(tahun, 10);
 
-  const doc = LEGAL_DOCUMENTS.find(
-    (d) =>
-      d.typeSlug.toLowerCase() === jenis.toLowerCase() &&
-      d.year === yearNum &&
-      d.sequenceNumber === seqNum
-  );
+  const doc = await getPublicDocumentByRoute(jenis, yearNum, seqNum);
 
   if (!doc) {
     return { title: "Dokumen Tidak Ditemukan | JDIH BLM" };
@@ -75,12 +70,7 @@ export default async function DetailProdukHukumPage({ params }: PageProps) {
   const seqNum = parseInt(nomor, 10);
   const yearNum = parseInt(tahun, 10);
 
-  const doc = LEGAL_DOCUMENTS.find(
-    (d) =>
-      d.typeSlug.toLowerCase() === jenis.toLowerCase() &&
-      d.year === yearNum &&
-      d.sequenceNumber === seqNum
-  );
+  const doc = await getPublicDocumentByRoute(jenis, yearNum, seqNum);
 
   if (!doc) {
     notFound();

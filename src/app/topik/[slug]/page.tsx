@@ -6,7 +6,9 @@ import { ChevronRight, Tag, ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { DocumentCard } from "@/components/public/DocumentCard";
-import { LEGAL_DOCUMENTS, LegalDocumentItem } from "@/lib/data/mock-documents";
+import { publicVisibleDocuments } from "@/lib/data/public-documents";
+
+export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{
@@ -83,8 +85,9 @@ export default async function TopikPage({ params }: PageProps) {
     notFound();
   }
 
+  const visibleDocs = await publicVisibleDocuments();
   // Filter dokumen yang memiliki keterkaitan dengan keywords topik
-  const matchedDocs = LEGAL_DOCUMENTS.filter((doc) => {
+  const matchedDocs = visibleDocs.filter((doc) => {
     return config.keywords.some((kw) => {
       const q = kw.toLowerCase();
       const inTags = doc.tags.some((t) => t.toLowerCase().includes(q));

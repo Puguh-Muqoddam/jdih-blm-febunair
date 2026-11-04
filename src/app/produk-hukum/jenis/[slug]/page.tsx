@@ -6,10 +6,9 @@ import { ChevronRight, Calendar, Scale, BookOpen, Scroll, FileCheck, Layers } fr
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { DocumentCard } from "@/components/public/DocumentCard";
-import {
-  LEGAL_DOCUMENTS,
-  getLegalDocumentsByType,
-} from "@/lib/data/mock-documents";
+import { publicVisibleDocuments } from "@/lib/data/public-documents";
+
+export const revalidate = 3600;
 
 interface PageProps {
   params: Promise<{
@@ -94,7 +93,10 @@ export default async function JenisProdukHukumPage({ params }: PageProps) {
     notFound();
   }
 
-  const documents = getLegalDocumentsByType(slug);
+  const allPublic = await publicVisibleDocuments();
+  const documents = allPublic.filter(
+    (d) => d.typeSlug === slug || d.type === config.code
+  );
   const IconComp = config.icon;
 
   return (

@@ -1,9 +1,21 @@
 import { describe, it, expect } from "vitest";
-import { isAllowedAdminEmail, CANONICAL_SUPER_ADMIN_EMAIL } from "../../src/lib/auth";
-import { createDocumentSchema, updateDocumentStatusSchema } from "../../src/lib/actions/document";
+import {
+  isAllowedAdminEmail,
+  CANONICAL_SUPER_ADMIN_EMAIL,
+  evaluateAdminAuthorization,
+} from "../../src/lib/auth";
+import {
+  createDocumentSchema,
+  updateDocumentStatusSchema,
+} from "../../src/lib/actions/document";
+import {
+  documentRequestSchema,
+  submitDocumentRequestAction,
+} from "../../src/lib/actions/request";
+import { hashClientIp } from "../../src/lib/security";
 import { generateR2Key, sanitizeDownloadFileName } from "../../src/lib/r2";
 
-describe("Langkah 8: Backend Security, Auth Guard & R2 Streaming", () => {
+describe("Langkah 8 & Audit Keamanan: Backend Security, Auth Guard & R2 Streaming", () => {
   describe("1. Auth Guard & Allowlist Verification", () => {
     it("harus mengizinkan email Super Admin kanonikal (case-insensitive)", () => {
       expect(isAllowedAdminEmail("puguhmuqoddam151@gmail.com")).toBe(true);
@@ -25,7 +37,114 @@ describe("Langkah 8: Backend Security, Auth Guard & R2 Streaming", () => {
     });
   });
 
-  describe("2. Validasi Input Mutasi (Zod Schema)", () => {
+  describe("2. Evaluasi Otorisasi Admin & email_confirmed_at Gate", () => {
+    it("harus MENOLAK pengguna jika email belum terkonfirmasi (email_confirmed_at null/kosong)", () => {
+      const unverifiedUser = {
+        id: "usr-unverified",
+        email: "puguhmuqoddam151@gmail.com",
+        email_confirmed_at: null,
+      };
+
+      const result = evaluateAdminAuthorization(unverifiedUser);
+      expect(result).toBeNull();
+    });
+
+    it("harus MENERIMA pengguna jika email cocok dan email_confirmed_at ada", () => {
+      const verifiedUser = {
+        id: "usr-verified",
+        email: "puguhmuqoddam151@gmail.com",
+        email_confirmed_at: "2026-10-01T10:00:00Z",
+      };
+
+      const result = evaluateAdminAuthorization(verifiedUser);
+      expect(result).not.toBeNull();
+      expect(result?.role).toBe("SUPER_ADMIN");
+      expect(result?.email).toBe("puguhmuqoddam151@gmail.com");
+    });
+
+    it("harus MENOLAK jika record AdminUser di database memiliki isActive = false", () => {
+      const disabledAdmin = {
+        id: "usr-disabled",
+        email: "puguhmuqoddam151@gmail.com",
+        email_confirmed_at: "2026-10-01T10:00:00Z",
+      };
+
+      const dbRecord = {
+        id: "db-1",
+        email: "puguhmuqoddam151@gmail.com",
+        name: "Puguh Muqoddam",
+        role: "SUPER_ADMIN" as const,
+        isActive: false, // Dinonaktifkan
+      };
+
+      const result = evaluateAdminAuthorization(disabledAdmin, dbRecord);
+      expect(result).toBeNull();
+    });
+
+    it("harus mematuhi role dari tabel AdminUser ketika aktif", () => {
+      const editorUser = {
+        id: "usr-editor",
+        email: "staff.legislasi@feb.unair.ac.id",
+        email_confirmed_at: "2026-10-01T10:00:00Z",
+      };
+
+      const dbRecord = {
+        id: "db-2",
+        email: "staff.legislasi@feb.unair.ac.id",
+        name: "Staf Legislasi",
+        role: "EDITOR" as const,
+        isActive: true,
+      };
+
+      const result = evaluateAdminAuthorization(editorUser, dbRecord);
+      expect(result).not.toBeNull();
+      expect(result?.role).toBe("EDITOR");
+      expect(result?.name).toBe("Staf Legislasi");
+    });
+  });
+
+  describe("3. Validasi Permohonan Dokumen & Rate Limit Hashing", () => {
+    it("harus menghasilkan SHA-256 IP hash sepanjang 64 karakter heksadesimal", () => {
+      const hash1 = hashClientIp("192.168.1.1", "test-salt");
+      const hash2 = hashClientIp("192.168.1.1", "test-salt");
+      const hash3 = hashClientIp("192.168.1.2", "test-salt");
+
+      expect(hash1).toHaveLength(64);
+      expect(hash1).toBe(hash2); // Deterministik
+      expect(hash1).not.toBe(hash3); // Unik per IP
+    });
+
+    it("harus menjebak bot jika honeypot terisi (deteksi bot)", async () => {
+      const botPayload = {
+        name: "Bot Spammer",
+        email: "bot@spam.com",
+        affiliation: "Robot",
+        message: "Saya ingin memohon seluruh dokumen ini segera.",
+        honeypot: "http://spam-link.com",
+      };
+
+      const res = await submitDocumentRequestAction(botPayload);
+      expect(res.success).toBe(true);
+      if (res.success) {
+        expect(res.ticketNumber).toBe("REQ-2026-SPAM");
+      }
+    });
+
+    it("harus menerima isian permohonan yang sah", () => {
+      const validPayload = {
+        name: "Muhammad Haidar",
+        email: "haidar@mhs.unair.ac.id",
+        affiliation: "HIMA Manajemen FEB UNAIR",
+        relatedDocumentSlug: "uu-2026-01",
+        message: "Permohonan salinan resmi naskah fisik UU PEMIRA untuk arsip.",
+      };
+
+      const parsed = documentRequestSchema.safeParse(validPayload);
+      expect(parsed.success).toBe(true);
+    });
+  });
+
+  describe("4. Validasi Input Mutasi (Zod Schema)", () => {
     it("harus meloloskan payload dokumen yang valid", () => {
       const validPayload = {
         type: "SK" as const,

@@ -4,20 +4,20 @@ import React, { useState, useMemo, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import {
   Search,
-  Filter,
-  X,
-  RotateCcw,
-  BookOpen,
   ArrowRight,
-  HelpCircle,
   FileQuestion,
 } from "lucide-react";
 import Link from "next/link";
-import { LEGAL_DOCUMENTS, LegalDocumentItem } from "@/lib/data/mock-documents";
+import type { LegalDocumentItem } from "@/lib/data/mock-documents";
 import { DocumentCard } from "./DocumentCard";
-import { DocumentTable } from "./DocumentTable";
 
-export function SearchClient() {
+interface SearchClientProps {
+  initialDocuments: LegalDocumentItem[];
+}
+
+const PAGE_SIZE = 18;
+
+export function SearchClient({ initialDocuments }: SearchClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -27,27 +27,30 @@ export function SearchClient() {
   const [query, setQuery] = useState(initialQ);
   const [selectedType, setSelectedType] = useState(initialJenis);
   const [selectedStatus, setSelectedStatus] = useState("all");
-  const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Sinkronkan state jika searchParams URL berubah
   useEffect(() => {
     setQuery(searchParams.get("q") || "");
     setSelectedType(searchParams.get("jenis") || "all");
+    setCurrentPage(1);
   }, [searchParams]);
 
-  // Handle submit form pencarian
+  // Handle submit form pencarian ke server
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const params = new URLSearchParams();
     if (query.trim()) params.set("q", query.trim());
     if (selectedType !== "all") params.set("jenis", selectedType);
+    setCurrentPage(1);
     router.push(`/pencarian?${params.toString()}`);
   };
 
   // Filter dokumen sesuai kueri
   const results = useMemo(() => {
-    return LEGAL_DOCUMENTS.filter((doc) => {
-      // 1. Text Search (title, officialNumber, summary, legacyNumber, tags, forum)
+    return initialDocuments.filter((doc) => {
+      if (doc.publicationState === "DRAFT") return false;
+
       if (query.trim()) {
         const q = query.toLowerCase().trim();
         const matchTitle = doc.title.toLowerCase().includes(q);
@@ -71,19 +74,23 @@ export function SearchClient() {
         }
       }
 
-      // 2. Type Filter
       if (selectedType !== "all" && doc.typeSlug !== selectedType && doc.type !== selectedType) {
         return false;
       }
 
-      // 3. Status Filter
       if (selectedStatus !== "all" && doc.legalStatus !== selectedStatus) {
         return false;
       }
 
       return true;
     });
-  }, [query, selectedType, selectedStatus]);
+  }, [initialDocuments, query, selectedType, selectedStatus]);
+
+  const totalPages = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
+  const paginatedResults = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return results.slice(start, start + PAGE_SIZE);
+  }, [results, currentPage]);
 
   const quickKeywords = [
     "PEMIRA",
@@ -106,7 +113,10 @@ export function SearchClient() {
             <input
               type="search"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setCurrentPage(1);
+              }}
               placeholder="Ketik kata kunci, nomor SK, judul, atau topik regulasi..."
               className="w-full rounded-xl border border-[#A3D0EE] bg-[#C6E8F7]/20 pl-10 pr-4 py-3 text-sm text-[#1A1A1A] placeholder:text-[#4A5568]/70 focus:border-[#1B67BC] focus:outline-hidden"
             />
@@ -117,6 +127,7 @@ export function SearchClient() {
               value={selectedType}
               onChange={(e) => {
                 setSelectedType(e.target.value);
+                setCurrentPage(1);
                 const params = new URLSearchParams(searchParams.toString());
                 if (e.target.value === "all") params.delete("jenis");
                 else params.set("jenis", e.target.value);
@@ -149,6 +160,7 @@ export function SearchClient() {
               type="button"
               onClick={() => {
                 setQuery(kw);
+                setCurrentPage(1);
                 router.push(`/pencarian?q=${encodeURIComponent(kw)}`);
               }}
               className="rounded-md bg-[#C6E8F7]/40 px-2 py-0.5 text-xs text-[#1A1A1A] hover:bg-[#b96d41] hover:text-white transition-colors cursor-pointer"
@@ -179,7 +191,10 @@ export function SearchClient() {
           <label className="text-[11px] font-semibold text-[#4A5568]">Status:</label>
           <select
             value={selectedStatus}
-            onChange={(e) => setSelectedStatus(e.target.value)}
+            onChange={(e) => {
+              setSelectedStatus(e.target.value);
+              setCurrentPage(1);
+            }}
             className="rounded-md border border-[#A3D0EE] bg-white px-2 py-1 text-xs text-[#1A1A1A] focus:outline-hidden"
           >
             <option value="all">Semua Status</option>
@@ -212,6 +227,7 @@ export function SearchClient() {
                 setQuery("");
                 setSelectedType("all");
                 setSelectedStatus("all");
+                setCurrentPage(1);
                 router.push("/pencarian");
               }}
               className="rounded-lg border border-[#A3D0EE] bg-white px-4 py-2 text-xs font-semibold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 cursor-pointer"
@@ -228,11 +244,40 @@ export function SearchClient() {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {results.map((doc) => (
-            <DocumentCard key={doc.id} document={doc} />
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {paginatedResults.map((doc) => (
+              <DocumentCard key={doc.id} document={doc} />
+            ))}
+          </div>
+
+          {totalPages > 1 && (
+            <div className="flex items-center justify-between border-t border-[#A3D0EE]/50 pt-4 text-xs text-[#4A5568]">
+              <span>
+                Halaman <strong className="text-[#1A1A1A]">{currentPage}</strong> dari{" "}
+                <strong className="text-[#1A1A1A]">{totalPages}</strong>
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  disabled={currentPage <= 1}
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  className="px-3 py-1.5 rounded-lg border border-[#A3D0EE] bg-white font-semibold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 disabled:opacity-40 cursor-pointer"
+                >
+                  Sebelumnya
+                </button>
+                <button
+                  type="button"
+                  disabled={currentPage >= totalPages}
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  className="px-3 py-1.5 rounded-lg border border-[#A3D0EE] bg-white font-semibold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 disabled:opacity-40 cursor-pointer"
+                >
+                  Berikutnya
+                </button>
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
