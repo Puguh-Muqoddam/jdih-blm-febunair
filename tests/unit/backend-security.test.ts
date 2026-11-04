@@ -1,4 +1,6 @@
 import { describe, it, expect } from "vitest";
+import { NextRequest } from "next/server";
+import { middleware } from "../../src/middleware";
 import {
   isAllowedAdminEmail,
   CANONICAL_SUPER_ADMIN_EMAIL,
@@ -229,6 +231,42 @@ describe("Langkah 8 & Audit Keamanan: Backend Security, Auth Guard & R2 Streamin
       expect(fileName).toBe("TAP-2-2026-kebijakan-orientasi-studi-dan-pengenalan-kampus-di.pdf");
       expect(fileName.endsWith(".pdf")).toBe(true);
       expect(fileName).not.toContain(" ");
+    });
+  });
+
+  describe("4. Proteksi Edge & Pemblokiran AI Bot Scrapers", () => {
+    it("harus memblokir AI scraper (Bytespider, GPTBot, ClaudeBot, CCBot) dengan status 403", () => {
+      const bots = [
+        "Mozilla/5.0 (compatible; Bytespider; spider-feedback@bytedance.com)",
+        "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)",
+        "ClaudeBot/1.0; +claudebot@anthropic.com",
+        "CCBot/2.0 (https://commoncrawl.org/faq/)",
+        "PerplexityBot/1.0",
+      ];
+
+      for (const bot of bots) {
+        const req = new NextRequest("https://jdih-blm-febunair.my.id/produk-hukum", {
+          headers: { "user-agent": bot },
+        });
+        const res = middleware(req);
+        expect(res.status).toBe(403);
+      }
+    });
+
+    it("harus mengizinkan peramban normal dan Googlebot mesin pencari", () => {
+      const goodAgents = [
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15",
+      ];
+
+      for (const agent of goodAgents) {
+        const req = new NextRequest("https://jdih-blm-febunair.my.id/produk-hukum", {
+          headers: { "user-agent": agent },
+        });
+        const res = middleware(req);
+        expect(res.status).toBe(200);
+      }
     });
   });
 });
