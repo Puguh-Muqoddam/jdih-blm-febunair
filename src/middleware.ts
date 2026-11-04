@@ -2,22 +2,23 @@ import { NextResponse, type NextRequest } from "next/server";
 
 // =============================================================================
 // JDIH BLM FEB UNAIR - Route Middleware
-// 1. Blokir agresif AI bot & LLM scraper di level Edge (hemat kuota & CPU Worker)
+// 1. Blokir bot scraper liar & agresif (Bytespider, spam crawler) di level Edge
+//    (Bot mesin pencari Google/Bing & AI Discovery ChatGPT, Claude, Perplexity TETAP DIIZINKAN)
 // 2. Proteksi lapis pertama rute administrasi di level edge + penerusan x-pathname
 // (Verifikasi kriptografi penuh JWT + email_confirmed_at dilakukan di layout.tsx)
 // =============================================================================
 
-// Pola bot AI, scraper tanpa izin, dan perayap agresif yang menghabiskan limit Worker
-const BLOCKED_AI_BOT_REGEX =
-  /\b(bytespider|gptbot|chatgpt-user|claudebot|anthropic-ai|claude-web|ccbot|cohere-ai|diffbot|facebookbot|meta-externalagent|google-extended|perplexitybot|amazonbot|applebot-extended|omgilibot|imagesiftbot|youbot|dataforseobot)\b/i;
+// Pola bot scraper agresif komersial non-pencari yang sering menghabiskan kuota Worker
+const BLOCKED_AGGRESSIVE_SCRAPER_REGEX =
+  /\b(bytespider|dataforseobot|imagesiftbot|omgilibot|omgili)\b/i;
 
 export function middleware(request: NextRequest) {
   const userAgent = request.headers.get("user-agent") || "";
 
-  // Blokir bot AI segera di level Edge tanpa menyentuh komputasi Next.js / database
-  if (BLOCKED_AI_BOT_REGEX.test(userAgent)) {
+  // Blokir bot scraper agresif non-pencari di level Edge tanpa menyentuh komputasi
+  if (BLOCKED_AGGRESSIVE_SCRAPER_REGEX.test(userAgent)) {
     return new Response(
-      "Forbidden: AI training crawlers and automated scraping bots are not permitted on this portal.",
+      "Forbidden: Aggressive bulk scraping bots are not permitted on this portal.",
       {
         status: 403,
         headers: {

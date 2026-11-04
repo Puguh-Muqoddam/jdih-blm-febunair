@@ -234,17 +234,16 @@ describe("Langkah 8 & Audit Keamanan: Backend Security, Auth Guard & R2 Streamin
     });
   });
 
-  describe("4. Proteksi Edge & Pemblokiran AI Bot Scrapers", () => {
-    it("harus memblokir AI scraper (Bytespider, GPTBot, ClaudeBot, CCBot) dengan status 403", () => {
-      const bots = [
+  describe("4. Proteksi Edge & Pemblokiran Scraper Agresif vs Izin Bot AI Discovery", () => {
+    it("harus memblokir scraper agresif non-pencari (Bytespider, DataForSeoBot, Omgilibot) dengan status 403", () => {
+      const aggressiveBots = [
         "Mozilla/5.0 (compatible; Bytespider; spider-feedback@bytedance.com)",
-        "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)",
-        "ClaudeBot/1.0; +claudebot@anthropic.com",
-        "CCBot/2.0 (https://commoncrawl.org/faq/)",
-        "PerplexityBot/1.0",
+        "DataForSeoBot/1.0",
+        "Mozilla/5.0 (compatible; ImagesiftBot; +http://imagesift.com)",
+        "Omgilibot/0.4",
       ];
 
-      for (const bot of bots) {
+      for (const bot of aggressiveBots) {
         const req = new NextRequest("https://jdih-blm-febunair.my.id/produk-hukum", {
           headers: { "user-agent": bot },
         });
@@ -253,14 +252,20 @@ describe("Langkah 8 & Audit Keamanan: Backend Security, Auth Guard & R2 Streamin
       }
     });
 
-    it("harus mengizinkan peramban normal dan Googlebot mesin pencari", () => {
-      const goodAgents = [
+    it("harus MENGIZINKAN mesin pencari dan bot AI Discovery (Googlebot, Bingbot, Applebot, GPTBot, ChatGPT-User, ClaudeBot, PerplexityBot)", () => {
+      const allowedAgents = [
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
         "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-        "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15",
+        "Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15 (Applebot/0.1)",
+        "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)",
+        "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot",
+        "ClaudeBot/1.0; +claudebot@anthropic.com",
+        "PerplexityBot/1.0",
+        "Google-Extended",
       ];
 
-      for (const agent of goodAgents) {
+      for (const agent of allowedAgents) {
         const req = new NextRequest("https://jdih-blm-febunair.my.id/produk-hukum", {
           headers: { "user-agent": agent },
         });

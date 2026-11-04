@@ -6,36 +6,43 @@ import { getBaseUrl } from "@/lib/seo";
 // File konvensi App Router: /robots.txt
 // =============================================================================
 
-// Daftar bot AI scrapers & LLM crawlers yang dilarang merayapi portal
-const BLOCKED_AI_BOTS = [
-  "GPTBot",
-  "ChatGPT-User",
-  "ClaudeBot",
-  "Claude-Web",
-  "anthropic-ai",
+// Bot scraper agresif / commercial bulk scrapers yang dilarang merayapi portal
+const BLOCKED_SCRAPER_BOTS = [
   "Bytespider",
   "CCBot",
-  "cohere-ai",
-  "Diffbot",
-  "FacebookBot",
-  "Meta-ExternalAgent",
-  "Google-Extended",
-  "PerplexityBot",
-  "Amazonbot",
-  "Applebot-Extended",
+  "DataForSeoBot",
+  "ImagesiftBot",
   "Omgilibot",
   "Omgili",
-  "ImagesiftBot",
-  "YouBot",
-  "DataForSeoBot",
+];
+
+// Bot mesin pencari & bot AI penemuan (AI Discovery / Chatbot Citations) yang DIIZINKAN
+const ALLOWED_SEARCH_AND_AI_BOTS = [
+  "Googlebot",
+  "Google-Extended", // Pelatihan Gemini & Google AI Overviews
+  "Bingbot",
+  "Applebot",
+  "Applebot-Extended", // Siri & Spotlight AI Search
+  "GPTBot", // OpenAI crawler
+  "ChatGPT-User", // Penjelajahan web real-time pengguna ChatGPT
+  "ClaudeBot", // Anthropic Claude crawler
+  "Claude-Web",
+  "anthropic-ai",
+  "PerplexityBot", // Perplexity AI search & citation engine
 ];
 
 export default function robots(): MetadataRoute.Robots {
   const base = getBaseUrl();
 
-  const aiRules = BLOCKED_AI_BOTS.map((bot) => ({
+  const scraperDisallows = BLOCKED_SCRAPER_BOTS.map((bot) => ({
     userAgent: bot,
     disallow: "/",
+  }));
+
+  const allowedBotRules = ALLOWED_SEARCH_AND_AI_BOTS.map((bot) => ({
+    userAgent: bot,
+    allow: "/",
+    disallow: ["/admin", "/admin/", "/pencarian*"],
   }));
 
   return {
@@ -45,12 +52,8 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/admin", "/admin/", "/pencarian*"],
       },
-      ...aiRules,
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-        disallow: ["/admin", "/admin/", "/pencarian*"],
-      },
+      ...scraperDisallows,
+      ...allowedBotRules,
       {
         userAgent: "Googlebot-Image",
         allow: "/",
@@ -59,11 +62,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "Google-Favicon",
         allow: "/",
-      },
-      {
-        userAgent: "Bingbot",
-        allow: "/",
-        disallow: ["/admin", "/admin/", "/pencarian*"],
       },
     ],
     sitemap: `${base}/sitemap.xml`,
