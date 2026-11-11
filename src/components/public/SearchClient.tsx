@@ -10,8 +10,11 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import type { LegalDocumentItem } from "@/lib/data/mock-documents";
+import {
+  sortLegalDocuments,
+  type CatalogSortOption,
+} from "@/lib/data/catalog-filters";
 import { DocumentCard } from "./DocumentCard";
-import type { CatalogSortOption } from "./CatalogClient";
 
 interface SearchClientProps {
   initialDocuments: LegalDocumentItem[];
@@ -94,40 +97,7 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
       return true;
     });
 
-    return [...filtered].sort((a, b) => {
-      switch (sortBy) {
-        case "newest": {
-          const dateDiff =
-            new Date(b.enactedDate).getTime() -
-            new Date(a.enactedDate).getTime();
-          if (dateDiff !== 0) return dateDiff;
-          return b.sequenceNumber - a.sequenceNumber;
-        }
-        case "oldest": {
-          const dateDiff =
-            new Date(a.enactedDate).getTime() -
-            new Date(b.enactedDate).getTime();
-          if (dateDiff !== 0) return dateDiff;
-          return a.sequenceNumber - b.sequenceNumber;
-        }
-        case "number_desc": {
-          if (b.year !== a.year) return b.year - a.year;
-          return b.sequenceNumber - a.sequenceNumber;
-        }
-        case "number_asc": {
-          if (a.year !== b.year) return a.year - b.year;
-          return a.sequenceNumber - b.sequenceNumber;
-        }
-        case "popular": {
-          const popB = b.viewCount + b.downloadCount * 2;
-          const popA = a.viewCount + a.downloadCount * 2;
-          if (popB !== popA) return popB - popA;
-          return b.sequenceNumber - a.sequenceNumber;
-        }
-        default:
-          return 0;
-      }
-    });
+    return sortLegalDocuments(filtered, sortBy);
   }, [initialDocuments, query, selectedType, selectedStatus, sortBy]);
 
   const totalPages = Math.max(1, Math.ceil(results.length / PAGE_SIZE));

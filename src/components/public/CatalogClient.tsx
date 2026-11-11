@@ -12,88 +12,17 @@ import {
   Calendar,
 } from "lucide-react";
 import { LegalDocumentItem } from "@/lib/data/mock-documents";
+import {
+  AGENDA_OPTIONS,
+  matchesAgendaFilter,
+  sortLegalDocuments,
+  type AgendaFilterOption,
+  type CatalogSortOption,
+} from "@/lib/data/catalog-filters";
 import { DocumentCard } from "./DocumentCard";
 import { DocumentTable } from "./DocumentTable";
 
-export type CatalogSortOption =
-  | "newest"
-  | "oldest"
-  | "number_desc"
-  | "number_asc"
-  | "popular";
-
-export type AgendaFilterOption =
-  | "all"
-  | "pleno-4"
-  | "rdp-osjur"
-  | "pleno-3"
-  | "pleno-2"
-  | "pemira"
-  | "pleno-1";
-
-const AGENDA_OPTIONS: {
-  id: AgendaFilterOption;
-  label: string;
-  shortLabel: string;
-  isLatest?: boolean;
-}[] = [
-  { id: "all", label: "Semua Agenda Sidang", shortLabel: "Semua Agenda" },
-  {
-    id: "pleno-4",
-    label: "Sidang Pleno Jilid 4 (9 Nov 2026)",
-    shortLabel: "Sidang Pleno Jilid 4 (Nov 2026)",
-    isLatest: true,
-  },
-  {
-    id: "rdp-osjur",
-    label: "RDP & Evaluasi Ospek HIMA (16 Sep 2026)",
-    shortLabel: "RDP Ospek HIMA (16 Sep)",
-  },
-  {
-    id: "pleno-3",
-    label: "Sidang Pleno Jilid 3 (12 Sep 2026)",
-    shortLabel: "Sidang Pleno Jilid 3 (12 Sep)",
-  },
-  {
-    id: "pleno-2",
-    label: "Sidang Pleno Jilid 2 & SEKTOR (5 Sep 2026)",
-    shortLabel: "Sidang Pleno Jilid 2 (5 Sep)",
-  },
-  {
-    id: "pemira",
-    label: "Sidang UU PEMIRA (Agu 2026)",
-    shortLabel: "Sidang UU PEMIRA (Agu)",
-  },
-  {
-    id: "pleno-1",
-    label: "Sidang Pleno I & Awal Periode (Feb–Jul 2026)",
-    shortLabel: "Sidang Pleno I (Feb–Jul)",
-  },
-];
-
-function matchesAgendaFilter(
-  doc: LegalDocumentItem,
-  agenda: AgendaFilterOption
-): boolean {
-  if (agenda === "all") return true;
-  const d = doc.enactedDate;
-  switch (agenda) {
-    case "pleno-4":
-      return d >= "2026-11-01";
-    case "rdp-osjur":
-      return d === "2026-09-16";
-    case "pleno-3":
-      return d === "2026-09-12";
-    case "pleno-2":
-      return d === "2026-09-05";
-    case "pemira":
-      return d >= "2026-08-01" && d < "2026-09-01";
-    case "pleno-1":
-      return d < "2026-08-01";
-    default:
-      return true;
-  }
-}
+export type { CatalogSortOption, AgendaFilterOption };
 
 interface CatalogClientProps {
   initialDocuments: LegalDocumentItem[];
@@ -116,6 +45,14 @@ export function CatalogClient({
     useState<AgendaFilterOption>("all");
   const [sortBy, setSortBy] = useState<CatalogSortOption>("newest");
   const [showMobileFilter, setShowMobileFilter] = useState(false);
+
+  const availableAgendas = useMemo(() => {
+    return AGENDA_OPTIONS.filter(
+      (ag) =>
+        ag.id === "all" ||
+        initialDocuments.some((doc) => matchesAgendaFilter(doc, ag.id))
+    );
+  }, [initialDocuments]);
 
   // Filter & Sort logika
   const filteredDocuments = useMemo(() => {
@@ -178,41 +115,7 @@ export function CatalogClient({
       return true;
     });
 
-    // Pengurutan (Sorting)
-    return [...filtered].sort((a, b) => {
-      switch (sortBy) {
-        case "newest": {
-          const dateDiff =
-            new Date(b.enactedDate).getTime() -
-            new Date(a.enactedDate).getTime();
-          if (dateDiff !== 0) return dateDiff;
-          return b.sequenceNumber - a.sequenceNumber;
-        }
-        case "oldest": {
-          const dateDiff =
-            new Date(a.enactedDate).getTime() -
-            new Date(b.enactedDate).getTime();
-          if (dateDiff !== 0) return dateDiff;
-          return a.sequenceNumber - b.sequenceNumber;
-        }
-        case "number_desc": {
-          if (b.year !== a.year) return b.year - a.year;
-          return b.sequenceNumber - a.sequenceNumber;
-        }
-        case "number_asc": {
-          if (a.year !== b.year) return a.year - b.year;
-          return a.sequenceNumber - b.sequenceNumber;
-        }
-        case "popular": {
-          const popB = b.viewCount + b.downloadCount * 2;
-          const popA = a.viewCount + a.downloadCount * 2;
-          if (popB !== popA) return popB - popA;
-          return b.sequenceNumber - a.sequenceNumber;
-        }
-        default:
-          return 0;
-      }
-    });
+    return sortLegalDocuments(filtered, sortBy);
   }, [
     initialDocuments,
     searchQuery,
@@ -351,7 +254,7 @@ export function CatalogClient({
             <Calendar className="w-3.5 h-3.5" />
             <span>Agenda Sidang:</span>
           </span>
-          {AGENDA_OPTIONS.map((ag) => {
+          {availableAgendas.map((ag) => {
             const active = selectedAgenda === ag.id;
             return (
               <button
@@ -366,13 +269,7 @@ export function CatalogClient({
               >
                 <span>{ag.shortLabel}</span>
                 {ag.isLatest && (
-                  <span
-                    className={`text-[10px] font-extrabold uppercase px-1.5 py-0.2 rounded ${
-                      active
-                        ? "bg-[#b96d41] text-white"
-                        : "bg-[#b96d41] text-white"
-                    }`}
-                  >
+                  <span className="text-[10px] font-extrabold uppercase px-1.5 py-0.2 rounded bg-[#b96d41] text-white">
                     Terbaru
                   </span>
                 )}
@@ -454,10 +351,9 @@ export function CatalogClient({
             >
               <option value="all">Semua Forum</option>
               <option value="Pleno">Sidang Pleno BLM</option>
-              <option value="Protap">Sidang Protap</option>
-              <option value="Rapat Dengar Pendapat">
-                Rapat Dengar Pendapat (RDP)
-              </option>
+              <option value="Protap">Sidang Prosedur Tetap (Protap)</option>
+              <option value="Komisi">Sidang Komisi / RDP BLM</option>
+              <option value="Rapat Kerja">Rapat Kerja BLM</option>
             </select>
           </div>
         </div>
