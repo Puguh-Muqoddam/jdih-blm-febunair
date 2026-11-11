@@ -1,6 +1,6 @@
 /**
  * =============================================================================
- * JDIH BLM FEB UNAIR - Data Koleksi 80 Produk Hukum Faktual 2026 (Terintegrasi Google Drive)
+ * JDIH BLM FEB UNAIR - Data Koleksi 79 Produk Hukum Faktual 2026 (Terintegrasi Google Drive)
  * File: src/lib/data/mock-documents.ts
  *
  * Sumber Faktual:
@@ -10,7 +10,7 @@
  * 2. Buku Register Penomoran Produk Hukum Departemen Legislasi BLM 2026:
  *    - 4 UU & Konstitusi Dasar (UU PEMIRA, Amandemen UU PEMIRA, Konstitusi Ormawa, AD/ART BLM)
  *    - 3 TAP (Ketetapan BLM)
- *    - 67 SK (Surat Keputusan Sidang Konstitusi, AD/ART, Raker BEM, Pleno I-IV, & RDP HIMA)
+ *    - 66 SK (Surat Keputusan Sidang Konstitusi, AD/ART, Raker BEM, Pleno I-IV, & RDP HIMA)
  *    - 6 LP (Surat Laporan & Rekomendasi DKPP)
  * =============================================================================
  */
@@ -94,8 +94,8 @@ export const REGULATION_CATEGORIES = [
     id: "cat-sk",
     code: "SK",
     name: "Surat Keputusan (SK) BLM",
-    description: "67 SK Pleno, Komisi, PEMIRA, Ormawa + Lampiran",
-    count: 67,
+    description: "66 SK Pleno, Komisi, PEMIRA, Ormawa + Lampiran",
+    count: 66,
     href: "/produk-hukum/jenis/surat-keputusan",
   },
   {
@@ -2926,57 +2926,6 @@ export const LEGAL_DOCUMENTS: LegalDocumentItem[] = [
     "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1yOqe_edeQ5OYDR9QJIzsApnrJDt4DOIM",
     "driveFolderUrl": "https://drive.google.com/drive/folders/1-XjYI95IJT5VY7UdMBXruM4QcP0ts_Iw"
   },
-  {
-    "id": "sk-216",
-    "slug": "sk-2026-0216",
-    "type": "SK",
-    "typeName": "Surat Keputusan",
-    "typeSlug": "surat-keputusan",
-    "sequenceNumber": 216,
-    "year": 2026,
-    "officialNumber": "0216/UN.3.1.4/B/SURATPENGANTARPLENO4/BLM/XI/2026",
-    "legacyNumber": "0216/UN/3.1.4/B/SURATPENGANTARKETUM/BLM/XI/2026",
-    "abbreviationCode": "SURATPENGANTARPLENO4",
-    "nature": "B_EXTERNAL",
-    "title": "Surat Pengantar Hasil Sidang Pleno Jilid 4 (Lampiran Pleno 3.a & 3.b)",
-    "summary": "Surat Pengantar dan Pemberitahuan Resmi penyerahan berkas Hasil Sidang Pleno III (Sidang Pleno Jilid 4) tentang Penetapan Ketua Umum Definitif BLM FEB UNAIR Periode 2026 kepada Wakil Dekan I FEB Universitas Airlangga.",
-    "forum": "Sidang Pleno BLM",
-    "enactedDate": "2026-11-09",
-    "enactedDateFormatted": "9 November 2026",
-    "romanMonth": "XI",
-    "placeOfEnactment": "Surabaya",
-    "legalStatus": "BERLAKU",
-    "publicationState": "PUBLISHED",
-    "viewCount": 105,
-    "downloadCount": 36,
-    "tags": [
-      "Sidang Pleno Jilid 4",
-      "Surat Pengantar",
-      "Ketua Umum Definitif"
-    ],
-    "pdfFileName": "0216_UN.3.1.4_B_SURATPENGANTARPLENO4_BLM_XI_2026 - Surat Pengantar & Pemberitahuan Resmi Hasil Sidang Pleno Jilid 4 BLM FEB UNAIR kepada Wakil Dekan I.docx",
-    "driveFileId": "1MM2mTCnEkgb2OjwgH81PM1eYywBT0qje",
-    "driveViewUrl": "https://docs.google.com/document/d/1MM2mTCnEkgb2OjwgH81PM1eYywBT0qje/edit",
-    "drivePreviewUrl": "https://docs.google.com/document/d/1MM2mTCnEkgb2OjwgH81PM1eYywBT0qje/preview",
-    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1MM2mTCnEkgb2OjwgH81PM1eYywBT0qje",
-    "driveFolderUrl": "https://drive.google.com/drive/folders/1Znn6WfjrMGGQ1RU0VhpcbG2FqySuenql",
-    "attachments": [
-      {
-        "title": "Pleno 3.a Berita Acara dan Mekanisme Penetapan Ketua Umum Definitif Baru BLM FEB UNAIR 2026.pdf",
-        "driveFileId": "1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx",
-        "driveViewUrl": "https://drive.google.com/file/d/1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx/view?usp=sharing",
-        "drivePreviewUrl": "https://drive.google.com/file/d/1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx/preview",
-        "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx"
-      },
-      {
-        "title": "Pleno 3.b SK Penetapan Ketua Umum Definitif Baru BLM FEB UNAIR 2026.pdf",
-        "driveFileId": "1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB",
-        "driveViewUrl": "https://drive.google.com/file/d/1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB/view?usp=sharing",
-        "drivePreviewUrl": "https://drive.google.com/file/d/1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB/preview",
-        "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB"
-      }
-    ]
-  }
 ];
 
 /**

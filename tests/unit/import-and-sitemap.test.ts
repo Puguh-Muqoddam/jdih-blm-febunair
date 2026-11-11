@@ -5,13 +5,13 @@ import { documentRequestSchema, submitDocumentRequestAction } from "../../src/li
 import sitemap from "../../src/app/sitemap";
 import robots from "../../src/app/robots";
 
-describe("Langkah 9: Migrasi Register 59 Dokumen & Permohonan Pengunjung", () => {
+describe("Langkah 9: Migrasi Register 58 Dokumen & Permohonan Pengunjung", () => {
   describe("1. CSV Parser & Normalisasi Register", () => {
     const baseDir = path.resolve(__dirname, "../../Nomor Produk Hukum");
     const { documents, reservations } = parseAllRegisterFiles(baseDir);
 
-    it("harus mengekstrak tepat 59 produk hukum dari 5 file CSV", () => {
-      expect(documents.length).toBe(59);
+    it("harus mengekstrak tepat 58 produk hukum dari 5 file CSV", () => {
+      expect(documents.length).toBe(58);
     });
 
     it("harus memiliki rincian jumlah jenis yang sesuai inventaris", () => {
@@ -22,7 +22,7 @@ describe("Langkah 9: Migrasi Register 59 Dokumen & Permohonan Pengunjung", () =>
 
       expect(uuCount).toBe(2);
       expect(tapCount).toBe(3);
-      expect(skCount).toBe(49);
+      expect(skCount).toBe(48);
       expect(lpCount).toBe(5);
     });
 
@@ -89,9 +89,9 @@ describe("Langkah 9: Migrasi Register 59 Dokumen & Permohonan Pengunjung", () =>
   });
 
   describe("3. Sitemap & Robots Indexing Configuration", () => {
-    it("harus menyertakan seluruh halaman publik utama dan 80 dokumen dalam sitemap", async () => {
+    it("harus menyertakan seluruh halaman publik utama dan 79 dokumen dalam sitemap", async () => {
       const urls = await sitemap();
-      expect(urls.length).toBeGreaterThanOrEqual(80 + 7 + 4 + 5);
+      expect(urls.length).toBeGreaterThanOrEqual(79 + 7 + 4 + 5);
 
       const home = urls.find((u) => u.url.endsWith("/"));
       expect(home).toBeDefined();

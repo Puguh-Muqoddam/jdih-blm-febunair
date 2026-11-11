@@ -4,7 +4,7 @@
  * File: scripts/sync-drive-to-supabase.ts
  *
  * Fungsi:
- * 1. Mengunduh 80 berkas PDF resmi dari Google Drive secara langsung via ID berkas privat.
+ * 1. Mengunduh 79 berkas PDF resmi dari Google Drive secara langsung via ID berkas privat.
  * 2. Mengunggahnya ke Supabase Storage bucket 'produk-hukum'.
  * 3. Menghasilkan URL Supabase Storage permanen untuk setiap produk hukum:
  *    https://sfobevvfofvckkhshzlx.supabase.co/storage/v1/object/public/produk-hukum/{slug}.pdf

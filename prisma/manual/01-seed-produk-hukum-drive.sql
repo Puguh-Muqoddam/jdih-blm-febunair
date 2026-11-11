@@ -4335,66 +4335,10 @@ INSERT INTO "DocumentFile" (
   "fileName" = EXCLUDED."fileName";
 UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0215_v1' WHERE "id" = 'doc_sk_2026_0215';
 
--- 0216/UN.3.1.4/B/SURATPENGANTARPLENO4/BLM/XI/2026: Surat Pengantar Hasil Sidang Pleno Jilid 4 (Lampiran Pleno 3.a & 3.b)
-INSERT INTO "LegalDocument" (
-  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
-  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
-  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
-  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
-) VALUES (
-  'doc_sk_2026_0216',
-  'sk-2026-0216',
-  'dt_sk',
-  2026,
-  216,
-  '0216/UN.3.1.4/B/SURATPENGANTARPLENO4/BLM/XI/2026',
-  '0216/UN/3.1.4/B/SURATPENGANTARKETUM/BLM/XI/2026',
-  'SURATPENGANTARPLENO4',
-  'B_EXTERNAL',
-  'Surat Pengantar Hasil Sidang Pleno Jilid 4 (Lampiran Pleno 3.a & 3.b)',
-  'Surat Pengantar dan Pemberitahuan Resmi penyerahan berkas Hasil Sidang Pleno III (Sidang Pleno Jilid 4) tentang Penetapan Ketua Umum Definitif BLM FEB UNAIR Periode 2026 kepada Wakil Dekan I FEB Universitas Airlangga.',
-  'forum_pleno',
-  '2026-11-09',
-  'DAY',
-  'XI',
-  'Surabaya',
-  'BERLAKU',
-  'PUBLISHED',
-  105,
-  36,
-  CURRENT_TIMESTAMP,
-  'puguhmuqoddam151@gmail.com',
-  CURRENT_TIMESTAMP
-) ON CONFLICT ("slug") DO UPDATE SET
-  "officialNumber" = EXCLUDED."officialNumber",
-  "legacyNumber" = EXCLUDED."legacyNumber",
-  "title" = EXCLUDED."title",
-  "summary" = EXCLUDED."summary",
-  "legalStatus" = EXCLUDED."legalStatus",
-  "publicationState" = EXCLUDED."publicationState",
-  "updatedAt" = CURRENT_TIMESTAMP;
-INSERT INTO "DocumentFile" (
-  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
-) VALUES (
-  'file_sk_2026_0216_v1',
-  'doc_sk_2026_0216',
-  1,
-  'https://docs.google.com/document/d/1MM2mTCnEkgb2OjwgH81PM1eYywBT0qje/edit',
-  '0216_UN.3.1.4_B_SURATPENGANTARPLENO4_BLM_XI_2026 - Surat Pengantar & Pemberitahuan Resmi Hasil Sidang Pleno Jilid 4 BLM FEB UNAIR kepada Wakil Dekan I.docx',
-  'application/pdf',
-  524288,
-  '1aa20216eaab2aaaa81aa1eaaaba0aae00000000000000000000000000000000',
-  'puguhmuqoddam151@gmail.com',
-  CURRENT_TIMESTAMP
-) ON CONFLICT ("documentId", "version") DO UPDATE SET
-  "r2Key" = EXCLUDED."r2Key",
-  "fileName" = EXCLUDED."fileName";
-UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0216_v1' WHERE "id" = 'doc_sk_2026_0216';
-
 -- Update NumberCounter Tahun 2026 ke angka tertinggi aktual
 UPDATE "NumberCounter" SET "lastNumber" = 4, "updatedAt" = CURRENT_TIMESTAMP WHERE "typeId" = 'dt_uu' AND "year" = 2026;
 UPDATE "NumberCounter" SET "lastNumber" = 3, "updatedAt" = CURRENT_TIMESTAMP WHERE "typeId" = 'dt_tap' AND "year" = 2026;
-UPDATE "NumberCounter" SET "lastNumber" = 216, "updatedAt" = CURRENT_TIMESTAMP WHERE "typeId" = 'dt_sk' AND "year" = 2026;
+UPDATE "NumberCounter" SET "lastNumber" = 215, "updatedAt" = CURRENT_TIMESTAMP WHERE "typeId" = 'dt_sk' AND "year" = 2026;
 UPDATE "NumberCounter" SET "lastNumber" = 6, "updatedAt" = CURRENT_TIMESTAMP WHERE "typeId" = 'dt_lp' AND "year" = 2026;
 
 COMMIT;

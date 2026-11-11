@@ -301,7 +301,7 @@ describe("Mesin Penomoran JDIH BLM FEB UNAIR (src/lib/numbering.ts)", () => {
       }
     });
 
-    it("harus mem-parse 40 nomor SK 4-digit (0126 s/d 0216) dengan presisi", () => {
+    it("harus mem-parse 39 nomor SK 4-digit (0126 s/d 0215) dengan presisi", () => {
       const modernSkRaw = [
         "0126/UN.3.1.4/B/SKAGENDAACARAPEMIRA/BLM/VIII/2026",
         "0127/UN.3.1.4/B/SKTATATERTIBPEMIRA/BLM/VIII/2026",
@@ -344,10 +344,9 @@ describe("Mesin Penomoran JDIH BLM FEB UNAIR (src/lib/numbering.ts)", () => {
         "0213/UN.3.1.4/A/SKPLENOIII/BLM/XI/2026",
         "0214/UN.3.1.4/B/SKPERMINTAANLPJ/BLM/XI/2026",
         "0215/UN.3.1.4/B/SKPLENOIV/BLM/XI/2026",
-        "0216/UN.3.1.4/B/SURATPENGANTARPLENO4/BLM/XI/2026",
       ];
 
-      expect(modernSkRaw.length).toBe(40);
+      expect(modernSkRaw.length).toBe(39);
 
       for (const raw of modernSkRaw) {
         const parsed = parseOfficialNumber(raw);

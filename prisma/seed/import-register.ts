@@ -292,13 +292,13 @@ async function main() {
   console.log(`- Surat Keputusan (SK): ${countSk} entri`);
   console.log(`- Surat Laporan (LP) : ${countLp} entri`);
   console.log(`------------------------------------------------------------------`);
-  console.log(`TOTAL PRODUK HUKUM   : ${documents.length} entri (Target: 59)`);
+  console.log(`TOTAL PRODUK HUKUM   : ${documents.length} entri (Target: 58)`);
   console.log(`NOMOR RESERVASI (SK) : ${reservations.length} entri (BIRAD 171, 172, 173)\n`);
 
-  if (documents.length !== 59) {
-    console.warn(`[PERINGATAN] Jumlah dokumen (${documents.length}) tidak sesuai target kanonikal 59.`);
+  if (documents.length !== 58) {
+    console.warn(`[PERINGATAN] Jumlah dokumen (${documents.length}) tidak sesuai target kanonikal 58.`);
   } else {
-    console.log("[VALIDASI SUKSES] Tepat 59 produk hukum terverifikasi!");
+    console.log("[VALIDASI SUKSES] Tepat 58 produk hukum terverifikasi!");
   }
 
   // Audit Rekonsiliasi
@@ -415,7 +415,7 @@ async function main() {
         },
       });
     }
-    console.log(`✓ 59 Produk Hukum berhasil disimpan ke database.`);
+    console.log(`✓ 58 Produk Hukum berhasil disimpan ke database.`);
 
     // 4. Masukkan Nomor Reservasi
     for (const r of reservations) {
@@ -453,8 +453,8 @@ async function main() {
     });
     await prisma.numberCounter.upsert({
       where: { typeId_year: { typeId: typeIdMap["SK"], year: 2026 } },
-      create: { typeId: typeIdMap["SK"], year: 2026, lastNumber: 216 },
-      update: { lastNumber: 216 },
+      create: { typeId: typeIdMap["SK"], year: 2026, lastNumber: 215 },
+      update: { lastNumber: 215 },
     });
     await prisma.numberCounter.upsert({
       where: { typeId_year: { typeId: typeIdMap["LP"], year: 2026 } },
@@ -470,13 +470,13 @@ async function main() {
         action: "IMPORT",
         entity: "Database",
         entityId: "seed-register-2026",
-        diff: { totalDocuments: 59, totalReservations: 3 },
+        diff: { totalDocuments: 58, totalReservations: 3 },
       },
     });
     console.log("✓ Audit log seeding tersimpan.\n");
 
     console.log("==================================================================");
-    console.log("SELESAI: Seluruh 59 produk hukum register 2026 aktif dalam database!");
+    console.log("SELESAI: Seluruh 58 produk hukum register 2026 aktif dalam database!");
     console.log("==================================================================");
   } finally {
     await prisma.$disconnect();

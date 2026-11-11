@@ -50,7 +50,7 @@ npx wrangler hyperdrive create jdih-postgres --connection-string="postgresql://p
 
 ---
 
-### 3. Eksekusi Migrasi & Seeding 80 Produk Hukum
+### 3. Eksekusi Migrasi & Seeding 79 Produk Hukum
 
 Sebelum deploy, inisialisasi tabel dan masukkan seluruh produk hukum register ke Supabase:
 
@@ -66,7 +66,7 @@ Sebelum deploy, inisialisasi tabel dan masukkan seluruh produk hukum register ke
    ```bash
    npx tsx prisma/seed/import-register.ts
    ```
-   *Output akan mengonfirmasi 59 produk hukum register CSV (2 UU, 3 TAP, 49 SK, 5 LP) + 3 reservasi (BIRAD 171-173) berhasil di-seed, atau jalankan [`prisma/manual/01-seed-produk-hukum-drive.sql`](file:///c:/Users/ThinkPad/OneDrive/Dokumen/AG/JDIH%20BLM/prisma/manual/01-seed-produk-hukum-drive.sql) untuk memuat lengkap 80 produk hukum Google Drive (4 UU, 3 TAP, 67 SK, 6 LP).*
+   *Output akan mengonfirmasi 58 produk hukum register CSV (2 UU, 3 TAP, 48 SK, 5 LP) + 3 reservasi (BIRAD 171-173) berhasil di-seed, atau jalankan [`prisma/manual/01-seed-produk-hukum-drive.sql`](file:///c:/Users/ThinkPad/OneDrive/Dokumen/AG/JDIH%20BLM/prisma/manual/01-seed-produk-hukum-drive.sql) untuk memuat lengkap 79 produk hukum Google Drive (4 UU, 3 TAP, 66 SK, 6 LP).*
 
 ---
 
@@ -136,7 +136,7 @@ https://jdih-blm-febunair.my.id
 
 1. **Portal Publik:**
    - Kunjungi `/` (Beranda dengan hero search & counter statistik).
-   - Kunjungi `/produk-hukum` (Katalog 80 produk hukum dengan filter Grid/Tabel).
+   - Kunjungi `/produk-hukum` (Katalog 79 produk hukum dengan filter Grid/Tabel).
    - Kunjungi `/produk-hukum/undang-undang/2026/01` (Detail UU No. 01 PEMIRA dengan sitasi resmi).
    - Kunjungi `/permohonan` (Uji form permohonan informasi pengunjung).
    - Kunjungi `/feed.xml` dan `/sitemap.xml` (Verifikasi format XML).
