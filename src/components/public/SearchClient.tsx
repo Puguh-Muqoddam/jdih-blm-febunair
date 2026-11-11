@@ -6,10 +6,12 @@ import {
   Search,
   ArrowRight,
   FileQuestion,
+  ArrowUpDown,
 } from "lucide-react";
 import Link from "next/link";
 import type { LegalDocumentItem } from "@/lib/data/mock-documents";
 import { DocumentCard } from "./DocumentCard";
+import type { CatalogSortOption } from "./CatalogClient";
 
 interface SearchClientProps {
   initialDocuments: LegalDocumentItem[];
@@ -27,6 +29,7 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
   const [query, setQuery] = useState(initialQ);
   const [selectedType, setSelectedType] = useState(initialJenis);
   const [selectedStatus, setSelectedStatus] = useState("all");
+  const [sortBy, setSortBy] = useState<CatalogSortOption>("newest");
   const [currentPage, setCurrentPage] = useState(1);
 
   // Sinkronkan state jika searchParams URL berubah
@@ -46,9 +49,9 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
     router.push(`/pencarian?${params.toString()}`);
   };
 
-  // Filter dokumen sesuai kueri
+  // Filter & Sort dokumen sesuai kueri
   const results = useMemo(() => {
-    return initialDocuments.filter((doc) => {
+    const filtered = initialDocuments.filter((doc) => {
       if (doc.publicationState === "DRAFT") return false;
 
       if (query.trim()) {
@@ -56,8 +59,10 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
         const matchTitle = doc.title.toLowerCase().includes(q);
         const matchNumber = doc.officialNumber.toLowerCase().includes(q);
         const matchSummary = doc.summary.toLowerCase().includes(q);
-        const matchLegacy = doc.legacyNumber?.toLowerCase().includes(q) ?? false;
-        const matchCode = doc.abbreviationCode?.toLowerCase().includes(q) ?? false;
+        const matchLegacy =
+          doc.legacyNumber?.toLowerCase().includes(q) ?? false;
+        const matchCode =
+          doc.abbreviationCode?.toLowerCase().includes(q) ?? false;
         const matchForum = doc.forum.toLowerCase().includes(q);
         const matchTags = doc.tags.some((t) => t.toLowerCase().includes(q));
 
@@ -74,7 +79,11 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
         }
       }
 
-      if (selectedType !== "all" && doc.typeSlug !== selectedType && doc.type !== selectedType) {
+      if (
+        selectedType !== "all" &&
+        doc.typeSlug !== selectedType &&
+        doc.type !== selectedType
+      ) {
         return false;
       }
 
@@ -84,7 +93,42 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
 
       return true;
     });
-  }, [initialDocuments, query, selectedType, selectedStatus]);
+
+    return [...filtered].sort((a, b) => {
+      switch (sortBy) {
+        case "newest": {
+          const dateDiff =
+            new Date(b.enactedDate).getTime() -
+            new Date(a.enactedDate).getTime();
+          if (dateDiff !== 0) return dateDiff;
+          return b.sequenceNumber - a.sequenceNumber;
+        }
+        case "oldest": {
+          const dateDiff =
+            new Date(a.enactedDate).getTime() -
+            new Date(b.enactedDate).getTime();
+          if (dateDiff !== 0) return dateDiff;
+          return a.sequenceNumber - b.sequenceNumber;
+        }
+        case "number_desc": {
+          if (b.year !== a.year) return b.year - a.year;
+          return b.sequenceNumber - a.sequenceNumber;
+        }
+        case "number_asc": {
+          if (a.year !== b.year) return a.year - b.year;
+          return a.sequenceNumber - b.sequenceNumber;
+        }
+        case "popular": {
+          const popB = b.viewCount + b.downloadCount * 2;
+          const popA = a.viewCount + a.downloadCount * 2;
+          if (popB !== popA) return popB - popA;
+          return b.sequenceNumber - a.sequenceNumber;
+        }
+        default:
+          return 0;
+      }
+    });
+  }, [initialDocuments, query, selectedType, selectedStatus, sortBy]);
 
   const totalPages = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
   const paginatedResults = useMemo(() => {
@@ -93,11 +137,12 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
   }, [results, currentPage]);
 
   const quickKeywords = [
+    "Sidang Pleno Jilid 4",
+    "Ketua Umum Definitif",
     "PEMIRA",
     "Tata Tertib",
     "Orientasi Studi",
     "LPPM SEKTOR",
-    "Sidang Pleno",
     "SP 1",
     "Pengunduran Diri",
     "Pengawasan BEM",
@@ -107,7 +152,10 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
     <div className="space-y-6">
       {/* Box Input Pencarian Utama */}
       <div className="rounded-2xl border border-[#A3D0EE] bg-white p-5 sm:p-7 shadow-xs space-y-4">
-        <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row gap-3">
+        <form
+          onSubmit={handleSearchSubmit}
+          className="flex flex-col sm:flex-row gap-3"
+        >
           <div className="relative flex-1">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1B67BC]" />
             <input
@@ -153,7 +201,9 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
 
         {/* Saran Kata Kunci Populer */}
         <div className="flex items-center gap-2 flex-wrap text-xs text-[#4A5568] pt-2 border-t border-[#A3D0EE]/40">
-          <span className="font-semibold text-[#1B67BC]">Kata Kunci Terkait:</span>
+          <span className="font-semibold text-[#1B67BC]">
+            Kata Kunci Terkait:
+          </span>
           {quickKeywords.map((kw) => (
             <button
               key={kw}
@@ -171,37 +221,68 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
         </div>
       </div>
 
-      {/* Info Hasil Pencarian */}
-      <div className="flex items-center justify-between text-xs text-[#4A5568] px-1">
+      {/* Info Hasil Pencarian & Pengurutan */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#4A5568] px-1">
         <div>
           {query.trim() ? (
             <span>
-              Menemukan <strong className="text-[#1A1A1A]">{results.length}</strong> produk hukum
-              untuk kata kunci &ldquo;<strong className="text-[#1B67BC]">{query}</strong>&rdquo;
+              Menemukan{" "}
+              <strong className="text-[#1A1A1A]">{results.length}</strong>{" "}
+              produk hukum untuk kata kunci &ldquo;
+              <strong className="text-[#1B67BC]">{query}</strong>&rdquo;
             </span>
           ) : (
             <span>
-              Menampilkan <strong className="text-[#1A1A1A]">{results.length}</strong> produk hukum
+              Menampilkan{" "}
+              <strong className="text-[#1A1A1A]">{results.length}</strong>{" "}
+              produk hukum
             </span>
           )}
         </div>
 
-        {/* Filter Status Sederhana */}
-        <div className="flex items-center gap-2">
-          <label className="text-[11px] font-semibold text-[#4A5568]">Status:</label>
-          <select
-            value={selectedStatus}
-            onChange={(e) => {
-              setSelectedStatus(e.target.value);
-              setCurrentPage(1);
-            }}
-            className="rounded-md border border-[#A3D0EE] bg-white px-2 py-1 text-xs text-[#1A1A1A] focus:outline-hidden"
-          >
-            <option value="all">Semua Status</option>
-            <option value="BERLAKU">Berlaku</option>
-            <option value="DIUBAH">Diubah</option>
-            <option value="DICABUT">Dicabut</option>
-          </select>
+        {/* Filter Status & Pengurutan */}
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-1.5">
+            <ArrowUpDown className="w-3.5 h-3.5 text-[#1B67BC]" />
+            <label className="text-[11px] font-semibold text-[#4A5568]">
+              Urutkan:
+            </label>
+            <select
+              value={sortBy}
+              onChange={(e) => {
+                setSortBy(e.target.value as CatalogSortOption);
+                setCurrentPage(1);
+              }}
+              className="rounded-md border border-[#A3D0EE] bg-white px-2 py-1 text-xs font-semibold text-[#1A1A1A] focus:outline-hidden cursor-pointer"
+            >
+              <option value="newest">
+                Terbaru Ditetapkan (Agenda Terkini)
+              </option>
+              <option value="oldest">Terlama Ditetapkan</option>
+              <option value="number_desc">Nomor Urut Tertinggi</option>
+              <option value="number_asc">Nomor Urut Terendah</option>
+              <option value="popular">Terpopuler</option>
+            </select>
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            <label className="text-[11px] font-semibold text-[#4A5568]">
+              Status:
+            </label>
+            <select
+              value={selectedStatus}
+              onChange={(e) => {
+                setSelectedStatus(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="rounded-md border border-[#A3D0EE] bg-white px-2 py-1 text-xs text-[#1A1A1A] focus:outline-hidden cursor-pointer"
+            >
+              <option value="all">Semua Status</option>
+              <option value="BERLAKU">Berlaku</option>
+              <option value="DIUBAH">Diubah</option>
+              <option value="DICABUT">Dicabut</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -216,7 +297,9 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
               Dokumen Tidak Ditemukan
             </h3>
             <p className="text-xs text-[#4A5568] max-w-md mx-auto leading-relaxed">
-              Tidak ada produk hukum yang cocok dengan kata kunci &ldquo;{query}&rdquo;. Pastikan ejaan nomor atau judul sudah tepat, atau ajukan permohonan salinan naskah kepada sekretariat.
+              Tidak ada produk hukum yang cocok dengan kata kunci &ldquo;{query}
+              &rdquo;. Pastikan ejaan nomor atau judul sudah tepat, atau ajukan
+              permohonan salinan naskah kepada sekretariat.
             </p>
           </div>
 
@@ -227,6 +310,7 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
                 setQuery("");
                 setSelectedType("all");
                 setSelectedStatus("all");
+                setSortBy("newest");
                 setCurrentPage(1);
                 router.push("/pencarian");
               }}
@@ -254,8 +338,8 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
           {totalPages > 1 && (
             <div className="flex items-center justify-between border-t border-[#A3D0EE]/50 pt-4 text-xs text-[#4A5568]">
               <span>
-                Halaman <strong className="text-[#1A1A1A]">{currentPage}</strong> dari{" "}
-                <strong className="text-[#1A1A1A]">{totalPages}</strong>
+                Halaman <strong className="text-[#1A1A1A]">{currentPage}</strong>{" "}
+                dari <strong className="text-[#1A1A1A]">{totalPages}</strong>
               </span>
               <div className="flex items-center gap-2">
                 <button
@@ -269,7 +353,9 @@ export function SearchClient({ initialDocuments }: SearchClientProps) {
                 <button
                   type="button"
                   disabled={currentPage >= totalPages}
-                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  onClick={() =>
+                    setCurrentPage((p) => Math.min(totalPages, p + 1))
+                  }
                   className="px-3 py-1.5 rounded-lg border border-[#A3D0EE] bg-white font-semibold text-[#1A1A1A] hover:bg-[#C6E8F7]/30 disabled:opacity-40 cursor-pointer"
                 >
                   Berikutnya

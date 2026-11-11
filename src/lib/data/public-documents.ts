@@ -37,6 +37,15 @@ function formatDateIndonesian(date: Date, precision: string = "DAY"): string {
   return `${d.getUTCDate()} ${monthName} ${year}`;
 }
 
+function sortByNewestFirst(docs: LegalDocumentItem[]): LegalDocumentItem[] {
+  return [...docs].sort((a, b) => {
+    const dateDiff =
+      new Date(b.enactedDate).getTime() - new Date(a.enactedDate).getTime();
+    if (dateDiff !== 0) return dateDiff;
+    return b.sequenceNumber - a.sequenceNumber;
+  });
+}
+
 /**
  * Mengonversi baris LegalDocument dari Prisma menjadi struktur LegalDocumentItem.
  */
@@ -92,7 +101,8 @@ function mapPrismaToDocumentItem(row: any): LegalDocumentItem {
 }
 
 /**
- * Mengambil seluruh dokumen yang berstatus publik (PUBLISHED atau ARCHIVED).
+ * Mengambil seluruh dokumen yang berstatus publik (PUBLISHED atau ARCHIVED),
+ * diurutkan dari tanggal publikasi / agenda terbaru ke terlama.
  * Dokumen berstatus DRAFT disaring secara ketat agar tidak pernah tampil di publik.
  */
 export const publicVisibleDocuments = cache(
@@ -114,7 +124,7 @@ export const publicVisibleDocuments = cache(
               include: { tag: true },
             },
           },
-          orderBy: [{ year: "desc" }, { sequenceNumber: "asc" }],
+          orderBy: [{ enactedDate: "desc" }, { sequenceNumber: "desc" }],
         });
 
         if (rows.length > 0) {
@@ -125,7 +135,9 @@ export const publicVisibleDocuments = cache(
       }
     }
 
-    return LEGAL_DOCUMENTS.filter((doc) => doc.publicationState !== "DRAFT");
+    return sortByNewestFirst(
+      LEGAL_DOCUMENTS.filter((doc) => doc.publicationState !== "DRAFT")
+    );
   }
 );
 
@@ -149,7 +161,7 @@ export const getAllAdminDocuments = cache(
               include: { tag: true },
             },
           },
-          orderBy: [{ year: "desc" }, { sequenceNumber: "asc" }],
+          orderBy: [{ enactedDate: "desc" }, { sequenceNumber: "desc" }],
         });
 
         if (rows.length > 0) {
@@ -160,7 +172,7 @@ export const getAllAdminDocuments = cache(
       }
     }
 
-    return LEGAL_DOCUMENTS;
+    return sortByNewestFirst(LEGAL_DOCUMENTS);
   }
 );
 

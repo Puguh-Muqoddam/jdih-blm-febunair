@@ -22,6 +22,7 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
   const paddedSeq = padSequence(doc.sequenceNumber, padding);
   const detailHref = `/produk-hukum/${doc.typeSlug}/${doc.year}/${paddedSeq}`;
   const displayNumber = formatShortOfficialNumber(doc.officialNumber);
+  const isLatestAgenda = doc.enactedDate >= "2026-11-01";
 
   return (
     <article className="group relative flex flex-col justify-between min-w-0 overflow-hidden rounded-md border border-[#A3D0EE] bg-white p-5 shadow-xs hover:shadow-md hover:border-[#1B67BC] transition-all">
@@ -38,6 +39,11 @@ export function DocumentCard({ document: doc }: DocumentCardProps) {
             {doc.nature && (
               <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-[#C6E8F7] text-[#1B67BC]">
                 {doc.nature === "A_INTERNAL" ? "Internal (A)" : "Eksternal (B)"}
+              </span>
+            )}
+            {isLatestAgenda && (
+              <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded bg-[#b96d41] text-white">
+                Terbaru
               </span>
             )}
           </div>

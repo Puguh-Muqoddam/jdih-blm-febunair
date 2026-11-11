@@ -2,11 +2,14 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronRight, Calendar, Scale, BookOpen, Scroll, FileCheck, Layers } from "lucide-react";
+import { ChevronRight, Scale, BookOpen, Scroll, FileCheck } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { DocumentCard } from "@/components/public/DocumentCard";
-import { publicVisibleDocuments } from "@/lib/data/public-documents";
+import { CatalogClient } from "@/components/public/CatalogClient";
+import {
+  publicVisibleDocuments,
+  toClientDocumentList,
+} from "@/lib/data/public-documents";
 
 export const revalidate = 3600;
 
@@ -50,7 +53,8 @@ const TYPE_CONFIG: Record<
     name: "Surat Keputusan (SK)",
     description:
       "Keputusan administratif dan persidangan yang menetapkan agenda, tata tertib, ormawa, personalia, serta kebijakan eksternal bernomor Buku Departemen Legislasi.",
-    pattern: "[4 digit (0000)]/UN.3.1.4/[A|B]/[Kode Singkatan]/BLM/[Bulan Romawi]/[Tahun]",
+    pattern:
+      "[4 digit (0000)]/UN.3.1.4/[A|B]/[Kode Singkatan]/BLM/[Bulan Romawi]/[Tahun]",
     icon: Scroll,
     hierarchyText: "Tingkat 3 (Format Nomor Selalu 4 Digit)",
   },
@@ -74,7 +78,9 @@ export async function generateStaticParams() {
   ];
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const config = TYPE_CONFIG[slug];
   if (!config) return { title: "Jenis Produk Hukum | JDIH BLM" };
@@ -97,6 +103,7 @@ export default async function JenisProdukHukumPage({ params }: PageProps) {
   const documents = allPublic.filter(
     (d) => d.typeSlug === slug || d.type === config.code
   );
+  const clientDocs = toClientDocumentList(documents);
   const IconComp = config.icon;
 
   return (
@@ -106,12 +113,18 @@ export default async function JenisProdukHukumPage({ params }: PageProps) {
       <main id="main-content" className="flex-1 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {/* Breadcrumb Navigasi */}
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#4A5568]">
+          <nav
+            aria-label="Breadcrumb"
+            className="flex items-center gap-2 text-xs text-[#4A5568]"
+          >
             <Link href="/" className="hover:text-[#1B67BC] transition-colors">
               Beranda
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-[#1B67BC]" />
-            <Link href="/produk-hukum" className="hover:text-[#1B67BC] transition-colors">
+            <Link
+              href="/produk-hukum"
+              className="hover:text-[#1B67BC] transition-colors"
+            >
               Produk Hukum
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-[#1B67BC]" />
@@ -141,7 +154,9 @@ export default async function JenisProdukHukumPage({ params }: PageProps) {
               </div>
 
               <div className="rounded-xl bg-[#C6E8F7]/20 border border-[#A3D0EE] p-3 text-xs space-y-1 w-full md:w-auto">
-                <span className="font-bold text-[#1B67BC] block">Format Template Penomoran:</span>
+                <span className="font-bold text-[#1B67BC] block">
+                  Format Template Penomoran:
+                </span>
                 <code className="font-mono text-xs text-[#1A1A1A] block bg-white px-2 py-1 rounded border border-[#A3D0EE]">
                   {config.pattern}
                 </code>
@@ -153,25 +168,12 @@ export default async function JenisProdukHukumPage({ params }: PageProps) {
             </p>
           </div>
 
-          {/* Pengelompokan Berdasarkan Tahun (Accordion Tahun 2026) */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-between border-b border-[#A3D0EE]/40 pb-3">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-[#1B67BC]" />
-                <h2 className="font-serif font-bold text-lg text-[#1A1A1A]">
-                  Tahun Penetapan 2026 ({documents.length} Dokumen)
-                </h2>
-              </div>
-              <span className="text-xs text-[#4A5568]">Register Resmi Terverifikasi</span>
-            </div>
-
-            {/* Grid Dokumen untuk Tahun Ini */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {documents.map((doc) => (
-                <DocumentCard key={doc.id} document={doc} />
-              ))}
-            </div>
-          </div>
+          {/* Katalog Interaktif dengan Pengurutan Tanggal Publikasi / Agenda Terbaru */}
+          <CatalogClient
+            initialDocuments={clientDocs}
+            preselectedType={slug}
+            hideTypeFilter
+          />
         </div>
       </main>
 
