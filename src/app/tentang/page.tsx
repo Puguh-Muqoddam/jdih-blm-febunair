@@ -41,7 +41,7 @@ function InstagramIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
 export const metadata: Metadata = {
   title: "Tentang BLM FEB UNAIR | Parlemen Cakrasena 2026",
   description:
-    "Profil lengkap Badan Legislatif Mahasiswa (BLM) FEB Universitas Airlangga Kabinet Cakrasena 2026: Visi & Misi, Tri-Fungsi Pokok, 8 Nilai Organisasi, Filosofi Lambang, Struktur KSB, Biro, Komisi, dan Departemen.",
+    "Profil lengkap Badan Legislatif Mahasiswa (BLM) FEB Universitas Airlangga Parlemen Cakrasena 2026: Visi & Misi, Tri-Fungsi Pokok, 8 Nilai Organisasi, Filosofi Lambang, Struktur KSB, Biro, Komisi, dan Departemen.",
 };
 
 export default function TentangPage() {
@@ -172,7 +172,7 @@ export default function TentangPage() {
       desc: "Biro yang khusus menangani berbagai hal yang berkaitan dengan pelaksanaan dan pengontrolan tata tertib administrasi BLM FEB Unair, surat-menyurat, pembuatan notulensi, pembuatan proposal, memastikan LPJ atau progress report kegiatan masuk tepat waktu, serta mengoordinasi upaya menjadikan sekretariat BLM FEB Unair sebagai pusat kegiatan yang nyaman bagi pengurus dan pusat informasi kegiatan.",
       prokers: [
         { name: "Pengadaan Inventaris", detail: "Memberikan layanan pendataan inventaris." },
-        { name: "Kalender Kabinet BLM", detail: "Menjadi pusat informasi seluruh jadwal kegiatan yang diselenggarakan oleh Kabinet BLM." },
+        { name: "Kalender Parlemen BLM", detail: "Menjadi pusat informasi seluruh jadwal kegiatan yang diselenggarakan oleh Parlemen BLM." },
         { name: "Temu Sekre", detail: "Biro ADM memberikan pendampingan kepada setiap sekretaris biro/komisi dalam menjalankan hal administrasi." },
         { name: "Evaluasi BLM", detail: "Biro Admin membuat laporan evaluasi kinerja seluruh anggota dan staff BLM selama satu periode." },
       ],
@@ -350,7 +350,7 @@ export default function TentangPage() {
               <div className="space-y-2.5 text-center md:text-left flex-1">
                 <div className="inline-flex items-center gap-1.5 rounded bg-[#0F294A] px-3 py-1 text-xs font-bold text-white tracking-wide">
                   <Landmark className="w-3.5 h-3.5 text-[#A3D0EE]" />
-                  <span>KABINET CAKRASENA 2026</span>
+                  <span>PARLEMEN CAKRASENA 2026</span>
                 </div>
                 <h1 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#1A1A1A] leading-tight">
                   Badan Legislatif Mahasiswa FEB UNAIR
@@ -416,14 +416,14 @@ export default function TentangPage() {
           </section>
 
           {/* ===================================================================
-              3. VISI & MISI KABINET CAKRASENA
+              3. VISI & MISI PARLEMEN CAKRASENA
              =================================================================== */}
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             {/* Visi */}
             <div className="lg:col-span-5 rounded-lg bg-[#0F294A] text-white p-6 sm:p-8 shadow-sm flex flex-col justify-between space-y-5 border border-[#3885CC]/30">
               <div className="space-y-3.5">
                 <span className="inline-block rounded bg-[#b96d41] text-white px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider">
-                  Visi Kabinet
+                  Visi Parlemen
                 </span>
                 <h3 className="font-serif font-bold text-xl sm:text-2xl text-white leading-snug">
                   Visi BLM FEB UNAIR 2026
@@ -434,7 +434,7 @@ export default function TentangPage() {
               </div>
               <div className="pt-4 border-t border-white/15 text-xs text-[#A3D0EE] flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#A3D0EE]" />
-                <span>Kabinet Cakrasena • Periode 2026</span>
+                <span>Parlemen Cakrasena • Periode 2026</span>
               </div>
             </div>
 
@@ -511,7 +511,7 @@ export default function TentangPage() {
                 Filosofi Logo Cakrasena
               </h2>
               <p className="text-xs sm:text-sm text-[#4A5568] max-w-3xl leading-relaxed">
-                Logo Kabinet Cakrasena menggabungkan simbolisme warna kelembagaan dan lima elemen lambang yang mencerminkan keteguhan peran legislatif dan pengawasan mahasiswa.
+                Logo Parlemen Cakrasena menggabungkan simbolisme warna kelembagaan dan lima elemen lambang yang mencerminkan keteguhan peran legislatif dan pengawasan mahasiswa.
               </p>
             </div>
 
