@@ -301,7 +301,7 @@ describe("Mesin Penomoran JDIH BLM FEB UNAIR (src/lib/numbering.ts)", () => {
       }
     });
 
-    it("harus mem-parse 30 nomor SK 4-digit (0126 s/d 0170) dengan presisi", () => {
+    it("harus mem-parse 40 nomor SK 4-digit (0126 s/d 0216) dengan presisi", () => {
       const modernSkRaw = [
         "0126/UN.3.1.4/B/SKAGENDAACARAPEMIRA/BLM/VIII/2026",
         "0127/UN.3.1.4/B/SKTATATERTIBPEMIRA/BLM/VIII/2026",
@@ -335,9 +335,19 @@ describe("Mesin Penomoran JDIH BLM FEB UNAIR (src/lib/numbering.ts)", () => {
         "0168/UN.3.1.4/B/SKPERINGATANBAWASHIM/BLM/IX/2026",
         "0169/UN.3.1.4/B/SKPEMANGGILANHIMAMENE/BLM/IX/2026",
         "0170/UN.3.1.4/B/SKPLENOV/BLM/IX/2026",
+        "0207/UN.3.1.4/A/SKAGENDAACARAPLENO4/BLM/XI/2026",
+        "0208/UN.3.1.4/A/SKTATATERTIBPLENO4/BLM/XI/2026",
+        "0209/UN.3.1.4/A/SKPLENOI/BLM/XI/2026",
+        "0210/UN.3.1.4/A/SKPENGUNDURANDIRIBLM/BLM/XI/2026",
+        "0211/UN.3.1.4/A/SKPLENOII/BLM/XI/2026",
+        "0212/UN.3.1.4/A/SKPENETAPANKETUMBLM/BLM/XI/2026",
+        "0213/UN.3.1.4/A/SKPLENOIII/BLM/XI/2026",
+        "0214/UN.3.1.4/B/SKPERMINTAANLPJ/BLM/XI/2026",
+        "0215/UN.3.1.4/B/SKPLENOIV/BLM/XI/2026",
+        "0216/UN.3.1.4/B/SURATPENGANTARPLENO4/BLM/XI/2026",
       ];
 
-      expect(modernSkRaw.length).toBe(30);
+      expect(modernSkRaw.length).toBe(40);
 
       for (const raw of modernSkRaw) {
         const parsed = parseOfficialNumber(raw);

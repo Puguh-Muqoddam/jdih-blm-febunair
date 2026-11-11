@@ -1,12 +1,12 @@
 /**
  * =============================================================================
- * JDIH BLM FEB UNAIR - Skrip Migrasi 49 Produk Hukum Resmi 2026
+ * JDIH BLM FEB UNAIR - Skrip Migrasi 59 Produk Hukum Resmi 2026
  * File: prisma/seed/import-register.ts
  *
  * Mengimpor dan menormalisasi 5 file CSV dari folder 'Nomor Produk Hukum':
  * 1. 2 UU (Undang-Undang) - koreksi typo tahun 2926 -> 2026
  * 2. 3 TAP (Ketetapan BLM)
- * 3. 39 SK (Surat Keputusan) - normalisasi 4 digit 0100-0170 & simpan legacyNumber
+ * 3. 49 SK (Surat Keputusan) - normalisasi 4 digit 0100-0216 & simpan legacyNumber
  * 4. 5 LP (Surat Laporan)
  * 5. 3 Nomor Dipesan (BIRAD 171, 172, 173) -> NumberReservation
  *
@@ -292,13 +292,13 @@ async function main() {
   console.log(`- Surat Keputusan (SK): ${countSk} entri`);
   console.log(`- Surat Laporan (LP) : ${countLp} entri`);
   console.log(`------------------------------------------------------------------`);
-  console.log(`TOTAL PRODUK HUKUM   : ${documents.length} entri (Target: 49)`);
+  console.log(`TOTAL PRODUK HUKUM   : ${documents.length} entri (Target: 59)`);
   console.log(`NOMOR RESERVASI (SK) : ${reservations.length} entri (BIRAD 171, 172, 173)\n`);
 
-  if (documents.length !== 49) {
-    console.warn(`[PERINGATAN] Jumlah dokumen (${documents.length}) tidak sesuai target kanonikal 49.`);
+  if (documents.length !== 59) {
+    console.warn(`[PERINGATAN] Jumlah dokumen (${documents.length}) tidak sesuai target kanonikal 59.`);
   } else {
-    console.log("[VALIDASI SUKSES] Tepat 49 produk hukum terverifikasi!");
+    console.log("[VALIDASI SUKSES] Tepat 59 produk hukum terverifikasi!");
   }
 
   // Audit Rekonsiliasi
@@ -415,7 +415,7 @@ async function main() {
         },
       });
     }
-    console.log(`✓ 49 Produk Hukum berhasil disimpan ke database.`);
+    console.log(`✓ 59 Produk Hukum berhasil disimpan ke database.`);
 
     // 4. Masukkan Nomor Reservasi
     for (const r of reservations) {
@@ -443,8 +443,8 @@ async function main() {
     // 5. Perbarui Counter
     await prisma.numberCounter.upsert({
       where: { typeId_year: { typeId: typeIdMap["UU"], year: 2026 } },
-      create: { typeId: typeIdMap["UU"], year: 2026, lastNumber: 2 },
-      update: { lastNumber: 2 },
+      create: { typeId: typeIdMap["UU"], year: 2026, lastNumber: 4 },
+      update: { lastNumber: 4 },
     });
     await prisma.numberCounter.upsert({
       where: { typeId_year: { typeId: typeIdMap["TAP"], year: 2026 } },
@@ -453,13 +453,13 @@ async function main() {
     });
     await prisma.numberCounter.upsert({
       where: { typeId_year: { typeId: typeIdMap["SK"], year: 2026 } },
-      create: { typeId: typeIdMap["SK"], year: 2026, lastNumber: 170 },
-      update: { lastNumber: 170 },
+      create: { typeId: typeIdMap["SK"], year: 2026, lastNumber: 216 },
+      update: { lastNumber: 216 },
     });
     await prisma.numberCounter.upsert({
       where: { typeId_year: { typeId: typeIdMap["LP"], year: 2026 } },
-      create: { typeId: typeIdMap["LP"], year: 2026, lastNumber: 5 },
-      update: { lastNumber: 5 },
+      create: { typeId: typeIdMap["LP"], year: 2026, lastNumber: 6 },
+      update: { lastNumber: 6 },
     });
     console.log("✓ Counter nomor urut resmi disinkronkan.");
 
@@ -470,13 +470,13 @@ async function main() {
         action: "IMPORT",
         entity: "Database",
         entityId: "seed-register-2026",
-        diff: { totalDocuments: 49, totalReservations: 3 },
+        diff: { totalDocuments: 59, totalReservations: 3 },
       },
     });
     console.log("✓ Audit log seeding tersimpan.\n");
 
     console.log("==================================================================");
-    console.log("SELESAI: Seluruh 49 produk hukum 2026 aktif dalam database!");
+    console.log("SELESAI: Seluruh 59 produk hukum register 2026 aktif dalam database!");
     console.log("==================================================================");
   } finally {
     await prisma.$disconnect();

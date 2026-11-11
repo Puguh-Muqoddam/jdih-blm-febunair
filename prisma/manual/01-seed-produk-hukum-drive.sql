@@ -3840,10 +3840,561 @@ INSERT INTO "DocumentFile" (
   "fileName" = EXCLUDED."fileName";
 UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0175_v1' WHERE "id" = 'doc_sk_2026_0175';
 
+-- 0207/UN.3.1.4/A/SKAGENDAACARAPLENO4/BLM/XI/2026: SK Agenda Acara Sidang Pleno Jilid 4
+INSERT INTO "LegalDocument" (
+  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
+  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
+  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
+  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
+) VALUES (
+  'doc_sk_2026_0207',
+  'sk-2026-0207',
+  'dt_sk',
+  2026,
+  207,
+  '0207/UN.3.1.4/A/SKAGENDAACARAPLENO4/BLM/XI/2026',
+  NULL,
+  'SKAGENDAACARAPLENO4',
+  'A_INTERNAL',
+  'SK Agenda Acara Sidang Pleno Jilid 4',
+  'Surat Keputusan pengesahan 4 (empat) agenda pokok persidangan dalam Sidang Pleno Jilid 4 BLM FEB UNAIR Periode 2026 guna menjaga kepastian hukum dan kesinambungan organisasi menjelang PEMIRA dan MUSMA 2026.',
+  'forum_pleno',
+  '2026-11-09',
+  'DAY',
+  'XI',
+  'Surabaya',
+  'BERLAKU',
+  'PUBLISHED',
+  68,
+  24,
+  CURRENT_TIMESTAMP,
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("slug") DO UPDATE SET
+  "officialNumber" = EXCLUDED."officialNumber",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "legalStatus" = EXCLUDED."legalStatus",
+  "publicationState" = EXCLUDED."publicationState",
+  "updatedAt" = CURRENT_TIMESTAMP;
+INSERT INTO "DocumentFile" (
+  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
+) VALUES (
+  'file_sk_2026_0207_v1',
+  'doc_sk_2026_0207',
+  1,
+  'https://drive.google.com/file/d/1kez0c5RXSoOh2DPngL31PMfUQZ3bEfIm/view?usp=sharing',
+  '0207_UN.3.1.4_A_SKAGENDAACARAPLENO4_BLM_XI_2026 - Pleno 1.b SK_Agenda Acara Pleno BLM.pdf',
+  'application/pdf',
+  524288,
+  '1ae02075aaaa2dbaa31bafaa23befaaa00000000000000000000000000000000',
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("documentId", "version") DO UPDATE SET
+  "r2Key" = EXCLUDED."r2Key",
+  "fileName" = EXCLUDED."fileName";
+UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0207_v1' WHERE "id" = 'doc_sk_2026_0207';
+
+-- 0208/UN.3.1.4/A/SKTATATERTIBPLENO4/BLM/XI/2026: SK Tata Tertib Sidang Pleno Jilid 4
+INSERT INTO "LegalDocument" (
+  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
+  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
+  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
+  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
+) VALUES (
+  'doc_sk_2026_0208',
+  'sk-2026-0208',
+  'dt_sk',
+  2026,
+  208,
+  '0208/UN.3.1.4/A/SKTATATERTIBPLENO4/BLM/XI/2026',
+  NULL,
+  'SKTATATERTIBPLENO4',
+  'A_INTERNAL',
+  'SK Tata Tertib Sidang Pleno Jilid 4',
+  'Surat Keputusan pengesahan Tata Tertib Sidang Pleno Jilid 4 yang mengatur hak bicara dan hak suara Peserta Penuh (14 Pengurus BPI/BPH aktif & Parlemen Legislasi BLM FEB UNAIR), kuorum persidangan, serta mekanisme pengambilan keputusan.',
+  'forum_pleno',
+  '2026-11-09',
+  'DAY',
+  'XI',
+  'Surabaya',
+  'BERLAKU',
+  'PUBLISHED',
+  72,
+  26,
+  CURRENT_TIMESTAMP,
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("slug") DO UPDATE SET
+  "officialNumber" = EXCLUDED."officialNumber",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "legalStatus" = EXCLUDED."legalStatus",
+  "publicationState" = EXCLUDED."publicationState",
+  "updatedAt" = CURRENT_TIMESTAMP;
+INSERT INTO "DocumentFile" (
+  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
+) VALUES (
+  'file_sk_2026_0208_v1',
+  'doc_sk_2026_0208',
+  1,
+  'https://drive.google.com/file/d/1nNNTq41TnADZgvz_RPEZtmnwcDlYvXt4/view?usp=sharing',
+  '0208_UN.3.1.4_A_SKTATATERTIBPLENO4_BLM_XI_2026 - Pleno 1.d SK_Tata Tertib Sidang Pleno BLM.pdf',
+  'application/pdf',
+  524288,
+  '1aaa020841aaadabaabaebaaaaadaaa400000000000000000000000000000000',
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("documentId", "version") DO UPDATE SET
+  "r2Key" = EXCLUDED."r2Key",
+  "fileName" = EXCLUDED."fileName";
+UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0208_v1' WHERE "id" = 'doc_sk_2026_0208';
+
+-- 0209/UN.3.1.4/A/SKPLENOI/BLM/XI/2026: SK Hasil Sidang Pleno I (Sidang Pleno Jilid 4)
+INSERT INTO "LegalDocument" (
+  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
+  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
+  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
+  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
+) VALUES (
+  'doc_sk_2026_0209',
+  'sk-2026-0209',
+  'dt_sk',
+  2026,
+  209,
+  '0209/UN.3.1.4/A/SKPLENOI/BLM/XI/2026',
+  NULL,
+  'SKPLENOI',
+  'A_INTERNAL',
+  'SK Hasil Sidang Pleno I (Sidang Pleno Jilid 4)',
+  'Surat Keputusan pengesahan seluruh ketetapan Hasil Sidang Pleno I tentang Agenda Acara dan Tata Tertib Persidangan pada Sidang Pleno Jilid 4 BLM FEB UNAIR Periode 2026.',
+  'forum_pleno',
+  '2026-11-09',
+  'DAY',
+  'XI',
+  'Surabaya',
+  'BERLAKU',
+  'PUBLISHED',
+  65,
+  21,
+  CURRENT_TIMESTAMP,
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("slug") DO UPDATE SET
+  "officialNumber" = EXCLUDED."officialNumber",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "legalStatus" = EXCLUDED."legalStatus",
+  "publicationState" = EXCLUDED."publicationState",
+  "updatedAt" = CURRENT_TIMESTAMP;
+INSERT INTO "DocumentFile" (
+  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
+) VALUES (
+  'file_sk_2026_0209_v1',
+  'doc_sk_2026_0209',
+  1,
+  'https://drive.google.com/file/d/1jD3WaL8CLBhOdzAH6WeFol-SFIdI7MKj/view?usp=sharing',
+  '0209_UN.3.1.4_A_SKPLENOI_BLM_XI_2026 - Pleno 1.e SK Pleno I BLM FEB UNAIR.pdf',
+  'application/pdf',
+  524288,
+  '1ad302098cabadaa6aefaaafada7aaaa00000000000000000000000000000000',
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("documentId", "version") DO UPDATE SET
+  "r2Key" = EXCLUDED."r2Key",
+  "fileName" = EXCLUDED."fileName";
+UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0209_v1' WHERE "id" = 'doc_sk_2026_0209';
+
+-- 0210/UN.3.1.4/A/SKPENGUNDURANDIRIBLM/BLM/XI/2026: SK Pengunduran Diri Pengurus dan Anggota BLM
+INSERT INTO "LegalDocument" (
+  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
+  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
+  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
+  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
+) VALUES (
+  'doc_sk_2026_0210',
+  'sk-2026-0210',
+  'dt_sk',
+  2026,
+  210,
+  '0210/UN.3.1.4/A/SKPENGUNDURANDIRIBLM/BLM/XI/2026',
+  NULL,
+  'SKPENGUNDURANDIRIBLM',
+  'A_INTERNAL',
+  'SK Pengunduran Diri Pengurus dan Anggota BLM',
+  'Surat Keputusan pengesahan pengunduran diri dan pemberhentian dengan hormat 12 pengurus dan anggota BLM FEB UNAIR Periode 2026 sesuai Pasal 8 huruf d & e serta Pasal 28 ART BLM FEB UNAIR 2026.',
+  'forum_pleno',
+  '2026-11-09',
+  'DAY',
+  'XI',
+  'Surabaya',
+  'BERLAKU',
+  'PUBLISHED',
+  118,
+  44,
+  CURRENT_TIMESTAMP,
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("slug") DO UPDATE SET
+  "officialNumber" = EXCLUDED."officialNumber",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "legalStatus" = EXCLUDED."legalStatus",
+  "publicationState" = EXCLUDED."publicationState",
+  "updatedAt" = CURRENT_TIMESTAMP;
+INSERT INTO "DocumentFile" (
+  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
+) VALUES (
+  'file_sk_2026_0210_v1',
+  'doc_sk_2026_0210',
+  1,
+  'https://drive.google.com/file/d/1uBx8MjkliAWBz3z_d51ZmagZsGvop0rB/view?usp=sharing',
+  '0210_UN.3.1.4_A_SKPENGUNDURANDIRIBLM_BLM_XI_2026 - Pleno 2.b SK Pengunduran Diri Pengurus dan Anggota BLM.pdf',
+  'application/pdf',
+  524288,
+  '1aba0210aaab3aad51aaaaaaaab0abaa00000000000000000000000000000000',
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("documentId", "version") DO UPDATE SET
+  "r2Key" = EXCLUDED."r2Key",
+  "fileName" = EXCLUDED."fileName";
+UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0210_v1' WHERE "id" = 'doc_sk_2026_0210';
+
+-- 0211/UN.3.1.4/A/SKPLENOII/BLM/XI/2026: SK Hasil Sidang Pleno II (Sidang Pleno Jilid 4)
+INSERT INTO "LegalDocument" (
+  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
+  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
+  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
+  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
+) VALUES (
+  'doc_sk_2026_0211',
+  'sk-2026-0211',
+  'dt_sk',
+  2026,
+  211,
+  '0211/UN.3.1.4/A/SKPLENOII/BLM/XI/2026',
+  NULL,
+  'SKPLENOII',
+  'A_INTERNAL',
+  'SK Hasil Sidang Pleno II (Sidang Pleno Jilid 4)',
+  'Surat Keputusan pengesahan hasil pembahasan dan ketetapan Sidang Pleno II terkait pemberhentian dengan hormat pengurus dan anggota yang mengundurkan diri pada Sidang Pleno Jilid 4 BLM FEB UNAIR.',
+  'forum_pleno',
+  '2026-11-09',
+  'DAY',
+  'XI',
+  'Surabaya',
+  'BERLAKU',
+  'PUBLISHED',
+  76,
+  25,
+  CURRENT_TIMESTAMP,
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("slug") DO UPDATE SET
+  "officialNumber" = EXCLUDED."officialNumber",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "legalStatus" = EXCLUDED."legalStatus",
+  "publicationState" = EXCLUDED."publicationState",
+  "updatedAt" = CURRENT_TIMESTAMP;
+INSERT INTO "DocumentFile" (
+  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
+) VALUES (
+  'file_sk_2026_0211_v1',
+  'doc_sk_2026_0211',
+  1,
+  'https://drive.google.com/file/d/13mxrZ2HkuJgSoEZl8UHbuVeyw0wltSlU/view?usp=sharing',
+  '0211_UN.3.1.4_A_SKPLENOII_BLM_XI_2026 - Pleno 2.c SK Pleno II.pdf',
+  'application/pdf',
+  524288,
+  '13aa0211aaaaa8aaba0aaaaaaa00000000000000000000000000000000000000',
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("documentId", "version") DO UPDATE SET
+  "r2Key" = EXCLUDED."r2Key",
+  "fileName" = EXCLUDED."fileName";
+UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0211_v1' WHERE "id" = 'doc_sk_2026_0211';
+
+-- 0212/UN.3.1.4/A/SKPENETAPANKETUMBLM/BLM/XI/2026: SK Penetapan Ketua Umum Definitif Pengganti Tetap BLM FEB UNAIR
+INSERT INTO "LegalDocument" (
+  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
+  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
+  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
+  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
+) VALUES (
+  'doc_sk_2026_0212',
+  'sk-2026-0212',
+  'dt_sk',
+  2026,
+  212,
+  '0212/UN.3.1.4/A/SKPENETAPANKETUMBLM/BLM/XI/2026',
+  NULL,
+  'SKPENETAPANKETUMBLM',
+  'A_INTERNAL',
+  'SK Penetapan Ketua Umum Definitif Pengganti Tetap BLM FEB UNAIR',
+  'Surat Keputusan Sidang Pleno Jilid 4 yang menetapkan Greicindy Astina Alfani Y. (NIM. 141241162) sebagai Ketua Umum Definitif Pengganti Tetap (PAW) BLM FEB UNAIR Periode 2026 berdasarkan Pasal 35 ayat (2) Konstitusi Ormawa dan Pasal 12 ayat (3) ART BLM FEB UNAIR.',
+  'forum_pleno',
+  '2026-11-09',
+  'DAY',
+  'XI',
+  'Surabaya',
+  'BERLAKU',
+  'PUBLISHED',
+  164,
+  63,
+  CURRENT_TIMESTAMP,
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("slug") DO UPDATE SET
+  "officialNumber" = EXCLUDED."officialNumber",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "legalStatus" = EXCLUDED."legalStatus",
+  "publicationState" = EXCLUDED."publicationState",
+  "updatedAt" = CURRENT_TIMESTAMP;
+INSERT INTO "DocumentFile" (
+  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
+) VALUES (
+  'file_sk_2026_0212_v1',
+  'doc_sk_2026_0212',
+  1,
+  'https://drive.google.com/file/d/1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB/view?usp=sharing',
+  '0212_UN.3.1.4_A_SKPENETAPANKETUMBLM_BLM_XI_2026 - Pleno 3.b SK Penetapan Ketua Umum Definitif Baru BLM FEB UNAIR 2026.pdf',
+  'application/pdf',
+  524288,
+  '1aaa0212aaaeeaa6a7a08d9aaaaaabaa00000000000000000000000000000000',
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("documentId", "version") DO UPDATE SET
+  "r2Key" = EXCLUDED."r2Key",
+  "fileName" = EXCLUDED."fileName";
+UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0212_v1' WHERE "id" = 'doc_sk_2026_0212';
+
+-- 0213/UN.3.1.4/A/SKPLENOIII/BLM/XI/2026: SK Hasil Sidang Pleno III (Sidang Pleno Jilid 4)
+INSERT INTO "LegalDocument" (
+  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
+  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
+  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
+  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
+) VALUES (
+  'doc_sk_2026_0213',
+  'sk-2026-0213',
+  'dt_sk',
+  2026,
+  213,
+  '0213/UN.3.1.4/A/SKPLENOIII/BLM/XI/2026',
+  NULL,
+  'SKPLENOIII',
+  'A_INTERNAL',
+  'SK Hasil Sidang Pleno III (Sidang Pleno Jilid 4)',
+  'Surat Keputusan pengesahan hasil musyawarah mufakat Sidang Pleno III tentang suksesi kepemimpinan dan penetapan Ketua Umum Definitif Pengganti Tetap BLM FEB UNAIR Periode 2026.',
+  'forum_pleno',
+  '2026-11-09',
+  'DAY',
+  'XI',
+  'Surabaya',
+  'BERLAKU',
+  'PUBLISHED',
+  94,
+  31,
+  CURRENT_TIMESTAMP,
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("slug") DO UPDATE SET
+  "officialNumber" = EXCLUDED."officialNumber",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "legalStatus" = EXCLUDED."legalStatus",
+  "publicationState" = EXCLUDED."publicationState",
+  "updatedAt" = CURRENT_TIMESTAMP;
+INSERT INTO "DocumentFile" (
+  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
+) VALUES (
+  'file_sk_2026_0213_v1',
+  'doc_sk_2026_0213',
+  1,
+  'https://drive.google.com/file/d/1Z7QEPd_N75CXSSAEGlC7AdQwvDh04d4A/view?usp=sharing',
+  '0213_UN.3.1.4_A_SKPLENOIII_BLM_XI_2026 - Pleno 3.c SK Pleno III.pdf',
+  'application/pdf',
+  524288,
+  '1a7a0213a75caaaaeaac7adaada04d4a00000000000000000000000000000000',
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("documentId", "version") DO UPDATE SET
+  "r2Key" = EXCLUDED."r2Key",
+  "fileName" = EXCLUDED."fileName";
+UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0213_v1' WHERE "id" = 'doc_sk_2026_0213';
+
+-- 0214/UN.3.1.4/B/SKPERMINTAANLPJ/BLM/XI/2026: SK Permintaan LPJ BEM dan Penyelenggara PEMIRA
+INSERT INTO "LegalDocument" (
+  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
+  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
+  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
+  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
+) VALUES (
+  'doc_sk_2026_0214',
+  'sk-2026-0214',
+  'dt_sk',
+  2026,
+  214,
+  '0214/UN.3.1.4/B/SKPERMINTAANLPJ/BLM/XI/2026',
+  NULL,
+  'SKPERMINTAANLPJ',
+  'B_EXTERNAL',
+  'SK Permintaan LPJ BEM dan Penyelenggara PEMIRA',
+  'Surat Keputusan permintaan resmi Laporan Pertanggungjawaban (LPJ) akhir periode kepada Eksekutif BEM FEB UNAIR 2026 dan Lembaga Penyelenggara PEMIRA (KPUM, Panwaslu, DKPP) menuju Musyawarah Mahasiswa (MUSMA) FEB UNAIR 2026.',
+  'forum_pleno',
+  '2026-11-09',
+  'DAY',
+  'XI',
+  'Surabaya',
+  'BERLAKU',
+  'PUBLISHED',
+  112,
+  39,
+  CURRENT_TIMESTAMP,
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("slug") DO UPDATE SET
+  "officialNumber" = EXCLUDED."officialNumber",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "legalStatus" = EXCLUDED."legalStatus",
+  "publicationState" = EXCLUDED."publicationState",
+  "updatedAt" = CURRENT_TIMESTAMP;
+INSERT INTO "DocumentFile" (
+  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
+) VALUES (
+  'file_sk_2026_0214_v1',
+  'doc_sk_2026_0214',
+  1,
+  'https://drive.google.com/file/d/1O3HUjSpSyKQCRPytGu9wjtzarWeSVwon/view?usp=sharing',
+  '0214_UN.3.1.4_B_SKPERMINTAANLPJ_BLM_XI_2026 - Pleno 4.b SK Permintaan LPJ BEM dan LPJ Panitia Pemira FEB UNAIR 2026.pdf',
+  'application/pdf',
+  524288,
+  '1a3a0214aaaaaa9aaaaaaaaeaeaaaaaa00000000000000000000000000000000',
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("documentId", "version") DO UPDATE SET
+  "r2Key" = EXCLUDED."r2Key",
+  "fileName" = EXCLUDED."fileName";
+UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0214_v1' WHERE "id" = 'doc_sk_2026_0214';
+
+-- 0215/UN.3.1.4/B/SKPLENOIV/BLM/XI/2026: SK Hasil Sidang Pleno IV (Sidang Pleno Jilid 4)
+INSERT INTO "LegalDocument" (
+  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
+  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
+  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
+  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
+) VALUES (
+  'doc_sk_2026_0215',
+  'sk-2026-0215',
+  'dt_sk',
+  2026,
+  215,
+  '0215/UN.3.1.4/B/SKPLENOIV/BLM/XI/2026',
+  NULL,
+  'SKPLENOIV',
+  'B_EXTERNAL',
+  'SK Hasil Sidang Pleno IV (Sidang Pleno Jilid 4)',
+  'Surat Keputusan pengesahan hasil ketetapan Sidang Pleno IV mengenai linimasa penyerahan dan mekanisme pembahasan LPJ akhir periode BEM serta Penyelenggara PEMIRA menuju MUSMA 2026.',
+  'forum_pleno',
+  '2026-11-09',
+  'DAY',
+  'XI',
+  'Surabaya',
+  'BERLAKU',
+  'PUBLISHED',
+  82,
+  27,
+  CURRENT_TIMESTAMP,
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("slug") DO UPDATE SET
+  "officialNumber" = EXCLUDED."officialNumber",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "legalStatus" = EXCLUDED."legalStatus",
+  "publicationState" = EXCLUDED."publicationState",
+  "updatedAt" = CURRENT_TIMESTAMP;
+INSERT INTO "DocumentFile" (
+  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
+) VALUES (
+  'file_sk_2026_0215_v1',
+  'doc_sk_2026_0215',
+  1,
+  'https://drive.google.com/file/d/1yOqe_edeQ5OYDR9QJIzsApnrJDt4DOIM/view?usp=sharing',
+  '0215_UN.3.1.4_B_SKPLENOIV_BLM_XI_2026 - Pleno 4.c SK Pleno IV.pdf',
+  'application/pdf',
+  524288,
+  '1aaa0215edea5aada9aaaaaabada4daa00000000000000000000000000000000',
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("documentId", "version") DO UPDATE SET
+  "r2Key" = EXCLUDED."r2Key",
+  "fileName" = EXCLUDED."fileName";
+UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0215_v1' WHERE "id" = 'doc_sk_2026_0215';
+
+-- 0216/UN.3.1.4/B/SURATPENGANTARPLENO4/BLM/XI/2026: Surat Pengantar Hasil Sidang Pleno Jilid 4 (Lampiran Pleno 3.a & 3.b)
+INSERT INTO "LegalDocument" (
+  "id", "slug", "typeId", "year", "sequenceNumber", "officialNumber", "legacyNumber",
+  "abbreviationCode", "nature", "title", "summary", "forumId", "enactedDate",
+  "enactedDatePrecision", "romanMonth", "placeOfEnactment", "legalStatus",
+  "publicationState", "viewCount", "downloadCount", "publishedAt", "createdBy", "updatedAt"
+) VALUES (
+  'doc_sk_2026_0216',
+  'sk-2026-0216',
+  'dt_sk',
+  2026,
+  216,
+  '0216/UN.3.1.4/B/SURATPENGANTARPLENO4/BLM/XI/2026',
+  '0216/UN/3.1.4/B/SURATPENGANTARKETUM/BLM/XI/2026',
+  'SURATPENGANTARPLENO4',
+  'B_EXTERNAL',
+  'Surat Pengantar Hasil Sidang Pleno Jilid 4 (Lampiran Pleno 3.a & 3.b)',
+  'Surat Pengantar dan Pemberitahuan Resmi penyerahan berkas Hasil Sidang Pleno III (Sidang Pleno Jilid 4) tentang Penetapan Ketua Umum Definitif BLM FEB UNAIR Periode 2026 kepada Wakil Dekan I FEB Universitas Airlangga.',
+  'forum_pleno',
+  '2026-11-09',
+  'DAY',
+  'XI',
+  'Surabaya',
+  'BERLAKU',
+  'PUBLISHED',
+  105,
+  36,
+  CURRENT_TIMESTAMP,
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("slug") DO UPDATE SET
+  "officialNumber" = EXCLUDED."officialNumber",
+  "legacyNumber" = EXCLUDED."legacyNumber",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "legalStatus" = EXCLUDED."legalStatus",
+  "publicationState" = EXCLUDED."publicationState",
+  "updatedAt" = CURRENT_TIMESTAMP;
+INSERT INTO "DocumentFile" (
+  "id", "documentId", "version", "r2Key", "fileName", "mimeType", "sizeBytes", "sha256", "uploadedBy", "createdAt"
+) VALUES (
+  'file_sk_2026_0216_v1',
+  'doc_sk_2026_0216',
+  1,
+  'https://docs.google.com/document/d/1MM2mTCnEkgb2OjwgH81PM1eYywBT0qje/edit',
+  '0216_UN.3.1.4_B_SURATPENGANTARPLENO4_BLM_XI_2026 - Surat Pengantar & Pemberitahuan Resmi Hasil Sidang Pleno Jilid 4 BLM FEB UNAIR kepada Wakil Dekan I.docx',
+  'application/pdf',
+  524288,
+  '1aa20216eaab2aaaa81aa1eaaaba0aae00000000000000000000000000000000',
+  'puguhmuqoddam151@gmail.com',
+  CURRENT_TIMESTAMP
+) ON CONFLICT ("documentId", "version") DO UPDATE SET
+  "r2Key" = EXCLUDED."r2Key",
+  "fileName" = EXCLUDED."fileName";
+UPDATE "LegalDocument" SET "currentFileId" = 'file_sk_2026_0216_v1' WHERE "id" = 'doc_sk_2026_0216';
+
 -- Update NumberCounter Tahun 2026 ke angka tertinggi aktual
 UPDATE "NumberCounter" SET "lastNumber" = 4, "updatedAt" = CURRENT_TIMESTAMP WHERE "typeId" = 'dt_uu' AND "year" = 2026;
 UPDATE "NumberCounter" SET "lastNumber" = 3, "updatedAt" = CURRENT_TIMESTAMP WHERE "typeId" = 'dt_tap' AND "year" = 2026;
-UPDATE "NumberCounter" SET "lastNumber" = 175, "updatedAt" = CURRENT_TIMESTAMP WHERE "typeId" = 'dt_sk' AND "year" = 2026;
+UPDATE "NumberCounter" SET "lastNumber" = 216, "updatedAt" = CURRENT_TIMESTAMP WHERE "typeId" = 'dt_sk' AND "year" = 2026;
 UPDATE "NumberCounter" SET "lastNumber" = 6, "updatedAt" = CURRENT_TIMESTAMP WHERE "typeId" = 'dt_lp' AND "year" = 2026;
 
 COMMIT;

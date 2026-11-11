@@ -4,7 +4,7 @@
  * File: scripts/sync-drive-to-supabase.ts
  *
  * Fungsi:
- * 1. Mengunduh 70 berkas PDF resmi dari Google Drive secara langsung via ID berkas privat.
+ * 1. Mengunduh 80 berkas PDF resmi dari Google Drive secara langsung via ID berkas privat.
  * 2. Mengunggahnya ke Supabase Storage bucket 'produk-hukum'.
  * 3. Menghasilkan URL Supabase Storage permanen untuk setiap produk hukum:
  *    https://sfobevvfofvckkhshzlx.supabase.co/storage/v1/object/public/produk-hukum/{slug}.pdf
@@ -35,8 +35,11 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
 
-async function downloadFileFromGoogleDrive(fileId: string): Promise<Buffer | null> {
-  const directUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+async function downloadFileFromGoogleDrive(fileId: string, driveViewUrl?: string): Promise<Buffer | null> {
+  const isGoogleDoc = driveViewUrl?.includes("docs.google.com/document/");
+  const directUrl = isGoogleDoc
+    ? `https://docs.google.com/document/d/${fileId}/export?format=pdf`
+    : `https://drive.google.com/uc?export=download&id=${fileId}`;
   try {
     const res = await fetch(directUrl);
     if (!res.ok) {
@@ -98,7 +101,7 @@ async function main() {
     console.log(`[${i + 1}/${LEGAL_DOCUMENTS.length}] Memproses ${doc.officialNumber} (${doc.slug})...`);
     
     // Unduh dari Google Drive via direct ID (bukan via folder)
-    const pdfBuffer = await downloadFileFromGoogleDrive(doc.driveFileId);
+    const pdfBuffer = await downloadFileFromGoogleDrive(doc.driveFileId, doc.driveViewUrl);
     if (!pdfBuffer || pdfBuffer.length === 0) {
       console.warn(`   ↳ Gagal mengunduh berkas dari Drive ID ${doc.driveFileId}`);
       failCount++;

@@ -143,11 +143,11 @@ export default function TentangPage() {
     },
   ];
 
-  // 5. Pimpinan Parlemen / KSB (Booklet BLM 2026 Hal. 10-11)
+  // 5. Pimpinan Parlemen / KSB (Booklet BLM 2026 Hal. 10-11 & SK Pleno Jilid 4 No. 0212)
   const ksbLeaders = [
     {
       role: "KETUA UMUM",
-      name: "Muhammad Rafly Siregar",
+      name: "Greicindy Astina Alfani Yovesari",
       desc: "Pimpinan yang menetapkan arahan strategis, menyusun Prosedur Operasional Standar (SOP), serta mengawasi program kerja dan kegiatan organisasi. Menjaga komunikasi dengan ormawa intrakampus FEB Unair, berwenang meminta informasi aktivitas organisasi, memberikan teguran, himbauan, serta arahan kepada anggota, dan melakukan evaluasi kinerja.",
     },
     {
@@ -825,14 +825,14 @@ export default function TentangPage() {
                 </span>
                 <div className="text-xs space-y-1">
                   <div>
-                    Rafly (Ketum):{" "}
+                    Greicindy (Ketum):{" "}
                     <a
-                      href="https://wa.me/628155010561"
+                      href="https://wa.me/6281357333057"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#C6E8F7] hover:underline font-bold"
                     >
-                      +62 815-5010-561
+                      +62 813-5733-3057
                     </a>
                   </div>
                   <div>

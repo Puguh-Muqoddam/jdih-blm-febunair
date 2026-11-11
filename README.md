@@ -25,7 +25,7 @@
 
 **JDIH BLM FEB UNAIR** adalah sistem pangkalan data dan portal temu kembali informasi hukum resmi Badan Legislatif Mahasiswa (BLM) Fakultas Ekonomi dan Bisnis Universitas Airlangga. Dikembangkan dan dikelola di bawah naungan **Departemen Legislasi Parlemen Cakrasena 2026**, portal ini mengadopsi standar tata kelola dan metadata **JDIHN (Jaringan Dokumentasi dan Informasi Hukum Nasional)** untuk menjamin akuntabilitas, transparansi regulasi, serta kemudahan akses hukum bagi seluruh sivitas akademika FEB UNAIR.
 
-Sistem ini mengelola **49 produk hukum resmi** periode 2026 yang terbagi ke dalam empat instrumen hukum:
+Sistem ini mengelola **80 produk hukum resmi** periode 2026 (4 UU, 3 TAP, 67 SK, 6 LP) yang terbagi ke dalam empat instrumen hukum:
 1. **Undang-Undang Mahasiswa (UU):** Peraturan tertinggi tingkat fakultas yang disahkan bersama BEM.
 2. **Ketetapan BLM (TAP):** Keputusan normatif yang mengikat ke dalam sidang dan kelembagaan legislatif.
 3. **Surat Keputusan (SK):** Penetapan administratif berkekuatan hukum, dibagi menjadi:
@@ -131,7 +131,7 @@ jdih-blm-febunair/
 │   │   ├── public/             # HeroSearchBar, DocumentCard, DocumentTable, CatalogClient
 │   │   └── ui/                 # TypeBadge, StatusBadge, CitationBox, CopyButton
 │   └── lib/                    # Logika bisnis & data
-│       ├── data/               # Mock pangkalan 49 dokumen regulasi
+│       ├── data/               # Mock pangkalan 80 dokumen regulasi
 │       ├── numbering.ts        # Algoritma penomoran kanonikal & sitasi
 │       └── db.ts               # Inisialisasi Prisma & Database Client
 ├── tests/                      # Pengujian otomatis (Unit Tests)

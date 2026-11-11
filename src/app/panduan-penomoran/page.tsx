@@ -176,7 +176,7 @@ export default function PanduanPenomoranPage() {
                   Penjelasan Standarisasi SK 4 Digit (0000) & Nomor Lama
                 </h3>
                 <p className="text-xs text-[#4A5568] leading-relaxed">
-                  Pada buku register lama bulan Juli 2026, nomor SK tercatat menggunakan 3 digit angka (misal: <code>100</code> s/d <code>108</code>). Mulai bulan Agustus dan September 2026, Departemen Legislasi menetapkan format 4 digit (misal: <code>0126</code> s/d <code>0170</code>).
+                  Pada buku register lama bulan Juli 2026, nomor SK tercatat menggunakan 3 digit angka (misal: <code>100</code> s/d <code>108</code>). Mulai bulan Agustus hingga November 2026, Departemen Legislasi menetapkan format 4 digit (misal: <code>0126</code> s/d <code>0216</code>).
                 </p>
                 <div className="rounded-xl bg-[#C6E8F7]/25 p-4 text-xs text-[#1A1A1A] space-y-2 border border-[#A3D0EE]">
                   <span className="font-bold text-[#1B67BC] block">

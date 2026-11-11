@@ -140,9 +140,11 @@ export async function GET(
     return NextResponse.redirect(supabaseStorageUrl, 302);
   }
 
-  // 2. Berkas langsung file ID (bukan folder) jika tersimpan di Google Drive
+  // 2. Berkas langsung file ID (bukan folder) jika tersimpan di Google Drive / Docs
   const directFileTargetUrl =
-    (docData.r2Key && docData.r2Key.startsWith("https://drive.google.com/file/d/")
+    (docData.r2Key &&
+    (docData.r2Key.startsWith("https://drive.google.com/file/d/") ||
+      docData.r2Key.startsWith("https://docs.google.com/document/d/"))
       ? docData.r2Key
       : undefined) ||
     mockDoc?.driveViewUrl ||

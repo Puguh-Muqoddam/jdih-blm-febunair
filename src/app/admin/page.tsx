@@ -98,7 +98,7 @@ export default async function AdminDashboardPage() {
           <div className="text-xs text-stone-600 mt-2 flex items-center gap-1.5">
             <span className="font-semibold text-[#1A1A1A]">4 UU</span> •{" "}
             <span className="font-semibold text-[#1A1A1A]">3 TAP</span> •{" "}
-            <span className="font-semibold text-[#1A1A1A]">57 SK</span> •{" "}
+            <span className="font-semibold text-[#1A1A1A]">67 SK</span> •{" "}
             <span className="font-semibold text-[#1A1A1A]">6 LP</span>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default async function AdminDashboardPage() {
               <FileCode2 className="w-4 h-4" />
             </div>
           </div>
-          <div className="text-3xl font-bold font-serif text-[#1A1A1A]">57</div>
+          <div className="text-3xl font-bold font-serif text-[#1A1A1A]">67</div>
           <div className="text-xs text-stone-600 mt-2 flex items-center gap-2">
             <span className="text-[#1B67BC] font-semibold">{totalSkA} Sifat A (Internal)</span>
             <span>•</span>

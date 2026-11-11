@@ -140,10 +140,14 @@ export async function GET(
     return NextResponse.redirect(supabaseStorageUrl, 302);
   }
 
-  // 2. Unduhan langsung dari file ID Google Drive (bukan folder)
+  // 2. Unduhan langsung dari file ID Google Drive / Docs (bukan folder)
   let driveDownloadTarget = mockDoc?.driveDownloadUrl;
-  if (!driveDownloadTarget && docData.r2Key?.startsWith("https://drive.google.com/file/d/")) {
-    const match = docData.r2Key.match(/\/file\/d\/([^/]+)/);
+  if (
+    !driveDownloadTarget &&
+    (docData.r2Key?.startsWith("https://drive.google.com/file/d/") ||
+      docData.r2Key?.startsWith("https://docs.google.com/document/d/"))
+  ) {
+    const match = docData.r2Key.match(/\/(?:file|document)\/d\/([^/]+)/);
     if (match?.[1]) {
       driveDownloadTarget = `https://drive.google.com/uc?export=download&id=${match[1]}`;
     }

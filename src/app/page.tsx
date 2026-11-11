@@ -14,17 +14,17 @@ export default async function HomePage() {
   const visibleDocs = await publicVisibleDocuments();
   const uuCount = visibleDocs.filter((d) => d.type === "UU").length || 4;
   const tapCount = visibleDocs.filter((d) => d.type === "TAP").length || 3;
-  const skCount = visibleDocs.filter((d) => d.type === "SK").length || 57;
+  const skCount = visibleDocs.filter((d) => d.type === "SK").length || 67;
   const lpCount = visibleDocs.filter((d) => d.type === "LP").length || 6;
 
   // Ambil 6 dokumen unggulan / terbaru
   const preferredSlugs = [
+    "sk-2026-0212",
+    "sk-2026-0214",
     "uu-2026-02",
     "tap-2026-002",
     "tap-2026-003",
     "sk-2026-0163",
-    "sk-2026-0165",
-    "lp-2026-004",
   ];
   const featuredDocuments = preferredSlugs
     .map((slug) => visibleDocs.find((d) => d.slug === slug))
@@ -187,7 +187,7 @@ export default async function HomePage() {
                 {/* Baris Link Horizontal Solid di Bawah 4 Kotak */}
                 <div className="rounded-lg bg-[#C6E8F7] border border-[#A3D0EE] p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <span className="font-sans font-bold text-xs sm:text-sm text-[#1B67BC]">
-                    PEDOMAN : Standarisasi & Format Penomoran Resmi Departemen Legislasi (70 Produk Hukum)
+                    PEDOMAN : Standarisasi & Format Penomoran Resmi Departemen Legislasi (80 Produk Hukum)
                   </span>
                   <Link
                     href="/panduan-penomoran"

@@ -100,8 +100,8 @@ Ikuti **4 tahapan berurutan** berikut agar database terisi dengan skema, aturan 
    - Mengaktifkan **Row Level Security (RLS) Zero-Trust** dan mencabut akses langsung (`REVOKE ALL`) dari role publik `anon` serta `authenticated`.
    - Mengisi **Data Master Awal**: 4 Jenis Produk Hukum (`UU`, `TAP`, `SK`, `LP`), 5 Forum Persidangan, Counter Tahun 2026, serta akun Super Admin utama (`puguhmuqoddam151@gmail.com`).
 
-### Tahap 2: Impor 70 Produk Hukum Faktual & Tautan PDF Google Drive
-Seluruh **70 produk hukum resmi** dari [Folder Google Drive JDIH BLM FEB UNAIR](https://drive.google.com/drive/folders/1f4iTq6ABdHVRXfEVd6fAZRfLmiWdeH2U?usp=drive_link) telah dikodifikasi ke dalam skrip SQL siap pakai.
+### Tahap 2: Impor 80 Produk Hukum Faktual & Tautan PDF Google Drive
+Seluruh **80 produk hukum resmi** dari [Folder Google Drive JDIH BLM FEB UNAIR](https://drive.google.com/drive/folders/1f4iTq6ABdHVRXfEVd6fAZRfLmiWdeH2U?usp=drive_link) serta [Folder Sidang Pleno BLM Jilid 4](https://drive.google.com/drive/folders/1Znn6WfjrMGGQ1RU0VhpcbG2FqySuenql?hl=ID) telah dikodifikasi ke dalam skrip SQL siap pakai.
 
 1. Di **SQL Editor** Dashboard Supabase, buat query baru (**New query**).
 2. Buka file [`prisma/manual/01-seed-produk-hukum-drive.sql`](./prisma/manual/01-seed-produk-hukum-drive.sql), salin seluruh isinya, tempelkan ke SQL Editor, lalu klik **Run**.
@@ -110,10 +110,10 @@ Seluruh **70 produk hukum resmi** dari [Folder Google Drive JDIH BLM FEB UNAIR](
    npx tsx prisma/seed/import-register.ts --dry-run
    npx tsx prisma/seed/import-register.ts
    ```
-4. **Rincian 70 Dokumen Faktual & Berkas PDF Google Drive yang Masuk ke Database (`LegalDocument` & `DocumentFile`):**
+4. **Rincian 80 Dokumen Faktual & Berkas PDF Google Drive yang Masuk ke Database (`LegalDocument` & `DocumentFile`):**
    - **4 Dokumen Konstitusi & Undang-Undang (`UU`):** Termasuk `AD-ART BLM FEB UNAIR 2026.pdf`, `KONSTITUSI ORMAWA BLM FEB UNAIR 2026.pdf`, `UU No. 01 Tahun 2026 (PEMIRA)`, dan `UU No. 02 Tahun 2026 (Perubahan UU PEMIRA)`.
    - **3 Ketetapan BLM (`TAP`):** `TAP 001 (Prosedur Tetap Persidangan)`, `TAP 002 (Kebijakan Ospek FEB)`, dan `TAP 003 (Kepengurusan Sementara LPPM SEKTOR)`.
-   - **57 Surat Keputusan (`SK`):** Mencakup SK Awal Tahun (`0005`–`0009`, `0019`), SK Komisi & Pleno II (`0042`–`0048`), SK Pleno I (`0100`–`0108` beserta lampiran & notulensi ringkas), SK PEMIRA (`0126`–`0130`), SK Pleno III & SEKTOR (`0141`–`0152`), hingga SK Rekomendasi & Sanksi Ospek (`0158`–`0175`).
+   - **67 Surat Keputusan (`SK`):** Mencakup SK Awal Tahun (`0005`–`0009`, `0019`), SK Komisi & Pleno II (`0042`–`0048`), SK Pleno I (`0100`–`0108` beserta lampiran & notulensi ringkas), SK PEMIRA (`0126`–`0130`), SK Pleno III & SEKTOR (`0141`–`0152`), SK Rekomendasi & Sanksi Ospek (`0158`–`0175`), hingga SK Sidang Pleno Jilid 4 (`0207`–`0216`).
    - **6 Surat Laporan & Berita Acara (`LP`):** `LP 001` s.d. `LP 005` serta `Surat Rekomendasi DKPP PEMIRA FEB UNAIR 2026.pdf`.
 
 ### Tahap 3: Konfigurasi Autentikasi Pengurus (`Supabase Auth`)
@@ -147,7 +147,7 @@ Bucket `produk-hukum` digunakan untuk melayani pembacaan PDF publik, namun opera
    ```powershell
    npx tsx scripts/sync-drive-to-supabase.ts
    ```
-   - Skrip ini mengunduh ke-70 berkas PDF dari Google Drive secara internal dan mengunggahnya langsung ke Supabase Storage via `service_role`.
+   - Skrip ini mengunduh ke-80 berkas PDF dari Google Drive secara internal dan mengunggahnya langsung ke Supabase Storage via `service_role`.
    - Hasil publikasi tiap dokumen dapat diakses langsung melalui:
      `https://sfobevvfofvckkhshzlx.supabase.co/storage/v1/object/public/produk-hukum/{slug}.pdf`
 

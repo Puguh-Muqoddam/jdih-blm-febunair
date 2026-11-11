@@ -1,15 +1,16 @@
 /**
  * =============================================================================
- * JDIH BLM FEB UNAIR - Data Koleksi 70 Produk Hukum Faktual 2026 (Terintegrasi Google Drive)
+ * JDIH BLM FEB UNAIR - Data Koleksi 80 Produk Hukum Faktual 2026 (Terintegrasi Google Drive)
  * File: src/lib/data/mock-documents.ts
  *
  * Sumber Faktual:
  * 1. Repositori Google Drive Resmi BLM FEB UNAIR:
  *    https://drive.google.com/drive/folders/1f4iTq6ABdHVRXfEVd6fAZRfLmiWdeH2U
+ *    https://drive.google.com/drive/folders/1Znn6WfjrMGGQ1RU0VhpcbG2FqySuenql
  * 2. Buku Register Penomoran Produk Hukum Departemen Legislasi BLM 2026:
  *    - 4 UU & Konstitusi Dasar (UU PEMIRA, Amandemen UU PEMIRA, Konstitusi Ormawa, AD/ART BLM)
  *    - 3 TAP (Ketetapan BLM)
- *    - 57 SK (Surat Keputusan Sidang Konstitusi, AD/ART, Raker BEM, Pleno I-III, & RDP HIMA)
+ *    - 67 SK (Surat Keputusan Sidang Konstitusi, AD/ART, Raker BEM, Pleno I-IV, & RDP HIMA)
  *    - 6 LP (Surat Laporan & Rekomendasi DKPP)
  * =============================================================================
  */
@@ -93,8 +94,8 @@ export const REGULATION_CATEGORIES = [
     id: "cat-sk",
     code: "SK",
     name: "Surat Keputusan (SK) BLM",
-    description: "57 SK Pleno, Komisi, PEMIRA, Ormawa + Lampiran",
-    count: 57,
+    description: "67 SK Pleno, Komisi, PEMIRA, Ormawa + Lampiran",
+    count: 67,
     href: "/produk-hukum/jenis/surat-keputusan",
   },
   {
@@ -2573,6 +2574,408 @@ export const LEGAL_DOCUMENTS: LegalDocumentItem[] = [
     "drivePreviewUrl": "https://drive.google.com/file/d/1P3sYjmF-UZ4-y4J5drA2A8PC4t36qy2Y/preview",
     "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1P3sYjmF-UZ4-y4J5drA2A8PC4t36qy2Y",
     "driveFolderUrl": "https://drive.google.com/drive/folders/1TeaDlFAuSCUTWcvhRLO8RgZiP_rGn0Oe"
+  },
+  {
+    "id": "sk-207",
+    "slug": "sk-2026-0207",
+    "type": "SK",
+    "typeName": "Surat Keputusan",
+    "typeSlug": "surat-keputusan",
+    "sequenceNumber": 207,
+    "year": 2026,
+    "officialNumber": "0207/UN.3.1.4/A/SKAGENDAACARAPLENO4/BLM/XI/2026",
+    "abbreviationCode": "SKAGENDAACARAPLENO4",
+    "nature": "A_INTERNAL",
+    "title": "SK Agenda Acara Sidang Pleno Jilid 4",
+    "summary": "Surat Keputusan pengesahan 4 (empat) agenda pokok persidangan dalam Sidang Pleno Jilid 4 BLM FEB UNAIR Periode 2026 guna menjaga kepastian hukum dan kesinambungan organisasi menjelang PEMIRA dan MUSMA 2026.",
+    "forum": "Sidang Pleno BLM",
+    "enactedDate": "2026-11-09",
+    "enactedDateFormatted": "9 November 2026",
+    "romanMonth": "XI",
+    "placeOfEnactment": "Surabaya",
+    "legalStatus": "BERLAKU",
+    "publicationState": "PUBLISHED",
+    "viewCount": 68,
+    "downloadCount": 24,
+    "tags": [
+      "Sidang Pleno Jilid 4",
+      "Agenda Acara",
+      "Internal"
+    ],
+    "pdfFileName": "0207_UN.3.1.4_A_SKAGENDAACARAPLENO4_BLM_XI_2026 - Pleno 1.b SK_Agenda Acara Pleno BLM.pdf",
+    "driveFileId": "1kez0c5RXSoOh2DPngL31PMfUQZ3bEfIm",
+    "driveViewUrl": "https://drive.google.com/file/d/1kez0c5RXSoOh2DPngL31PMfUQZ3bEfIm/view?usp=sharing",
+    "drivePreviewUrl": "https://drive.google.com/file/d/1kez0c5RXSoOh2DPngL31PMfUQZ3bEfIm/preview",
+    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1kez0c5RXSoOh2DPngL31PMfUQZ3bEfIm",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/1-XjYI95IJT5VY7UdMBXruM4QcP0ts_Iw",
+    "attachments": [
+      {
+        "title": "Pleno 1.a Draft Agenda Acara Sidang Pleno Jilid 4 BLM FEB UNAIR 2026.docx",
+        "driveFileId": "1SWocuWxpqV51Ic44zp1HnHoFXYYy27Yz",
+        "driveViewUrl": "https://drive.google.com/file/d/1SWocuWxpqV51Ic44zp1HnHoFXYYy27Yz/view?usp=sharing",
+        "drivePreviewUrl": "https://drive.google.com/file/d/1SWocuWxpqV51Ic44zp1HnHoFXYYy27Yz/preview",
+        "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1SWocuWxpqV51Ic44zp1HnHoFXYYy27Yz"
+      }
+    ]
+  },
+  {
+    "id": "sk-208",
+    "slug": "sk-2026-0208",
+    "type": "SK",
+    "typeName": "Surat Keputusan",
+    "typeSlug": "surat-keputusan",
+    "sequenceNumber": 208,
+    "year": 2026,
+    "officialNumber": "0208/UN.3.1.4/A/SKTATATERTIBPLENO4/BLM/XI/2026",
+    "abbreviationCode": "SKTATATERTIBPLENO4",
+    "nature": "A_INTERNAL",
+    "title": "SK Tata Tertib Sidang Pleno Jilid 4",
+    "summary": "Surat Keputusan pengesahan Tata Tertib Sidang Pleno Jilid 4 yang mengatur hak bicara dan hak suara Peserta Penuh (14 Pengurus BPI/BPH aktif & Parlemen Legislasi BLM FEB UNAIR), kuorum persidangan, serta mekanisme pengambilan keputusan.",
+    "forum": "Sidang Pleno BLM",
+    "enactedDate": "2026-11-09",
+    "enactedDateFormatted": "9 November 2026",
+    "romanMonth": "XI",
+    "placeOfEnactment": "Surabaya",
+    "legalStatus": "BERLAKU",
+    "publicationState": "PUBLISHED",
+    "viewCount": 72,
+    "downloadCount": 26,
+    "tags": [
+      "Sidang Pleno Jilid 4",
+      "Tata Tertib",
+      "Kuorum"
+    ],
+    "pdfFileName": "0208_UN.3.1.4_A_SKTATATERTIBPLENO4_BLM_XI_2026 - Pleno 1.d SK_Tata Tertib Sidang Pleno BLM.pdf",
+    "driveFileId": "1nNNTq41TnADZgvz_RPEZtmnwcDlYvXt4",
+    "driveViewUrl": "https://drive.google.com/file/d/1nNNTq41TnADZgvz_RPEZtmnwcDlYvXt4/view?usp=sharing",
+    "drivePreviewUrl": "https://drive.google.com/file/d/1nNNTq41TnADZgvz_RPEZtmnwcDlYvXt4/preview",
+    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1nNNTq41TnADZgvz_RPEZtmnwcDlYvXt4",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/1-XjYI95IJT5VY7UdMBXruM4QcP0ts_Iw",
+    "attachments": [
+      {
+        "title": "Pleno 1.c Draft Tata Tertib Sidang Pleno Jilid 4 BLM FEB UNAIR 2026.docx",
+        "driveFileId": "1WG2zxfL8bKnuq08ATaYpJC26Ef9fwMR6",
+        "driveViewUrl": "https://drive.google.com/file/d/1WG2zxfL8bKnuq08ATaYpJC26Ef9fwMR6/view?usp=sharing",
+        "drivePreviewUrl": "https://drive.google.com/file/d/1WG2zxfL8bKnuq08ATaYpJC26Ef9fwMR6/preview",
+        "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1WG2zxfL8bKnuq08ATaYpJC26Ef9fwMR6"
+      }
+    ]
+  },
+  {
+    "id": "sk-209",
+    "slug": "sk-2026-0209",
+    "type": "SK",
+    "typeName": "Surat Keputusan",
+    "typeSlug": "surat-keputusan",
+    "sequenceNumber": 209,
+    "year": 2026,
+    "officialNumber": "0209/UN.3.1.4/A/SKPLENOI/BLM/XI/2026",
+    "abbreviationCode": "SKPLENOI",
+    "nature": "A_INTERNAL",
+    "title": "SK Hasil Sidang Pleno I (Sidang Pleno Jilid 4)",
+    "summary": "Surat Keputusan pengesahan seluruh ketetapan Hasil Sidang Pleno I tentang Agenda Acara dan Tata Tertib Persidangan pada Sidang Pleno Jilid 4 BLM FEB UNAIR Periode 2026.",
+    "forum": "Sidang Pleno BLM",
+    "enactedDate": "2026-11-09",
+    "enactedDateFormatted": "9 November 2026",
+    "romanMonth": "XI",
+    "placeOfEnactment": "Surabaya",
+    "legalStatus": "BERLAKU",
+    "publicationState": "PUBLISHED",
+    "viewCount": 65,
+    "downloadCount": 21,
+    "tags": [
+      "Sidang Pleno Jilid 4",
+      "Pleno I",
+      "Internal"
+    ],
+    "pdfFileName": "0209_UN.3.1.4_A_SKPLENOI_BLM_XI_2026 - Pleno 1.e SK Pleno I BLM FEB UNAIR.pdf",
+    "driveFileId": "1jD3WaL8CLBhOdzAH6WeFol-SFIdI7MKj",
+    "driveViewUrl": "https://drive.google.com/file/d/1jD3WaL8CLBhOdzAH6WeFol-SFIdI7MKj/view?usp=sharing",
+    "drivePreviewUrl": "https://drive.google.com/file/d/1jD3WaL8CLBhOdzAH6WeFol-SFIdI7MKj/preview",
+    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1jD3WaL8CLBhOdzAH6WeFol-SFIdI7MKj",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/1-XjYI95IJT5VY7UdMBXruM4QcP0ts_Iw"
+  },
+  {
+    "id": "sk-210",
+    "slug": "sk-2026-0210",
+    "type": "SK",
+    "typeName": "Surat Keputusan",
+    "typeSlug": "surat-keputusan",
+    "sequenceNumber": 210,
+    "year": 2026,
+    "officialNumber": "0210/UN.3.1.4/A/SKPENGUNDURANDIRIBLM/BLM/XI/2026",
+    "abbreviationCode": "SKPENGUNDURANDIRIBLM",
+    "nature": "A_INTERNAL",
+    "title": "SK Pengunduran Diri Pengurus dan Anggota BLM",
+    "summary": "Surat Keputusan pengesahan pengunduran diri dan pemberhentian dengan hormat 12 pengurus dan anggota BLM FEB UNAIR Periode 2026 sesuai Pasal 8 huruf d & e serta Pasal 28 ART BLM FEB UNAIR 2026.",
+    "forum": "Sidang Pleno BLM",
+    "enactedDate": "2026-11-09",
+    "enactedDateFormatted": "9 November 2026",
+    "romanMonth": "XI",
+    "placeOfEnactment": "Surabaya",
+    "legalStatus": "BERLAKU",
+    "publicationState": "PUBLISHED",
+    "viewCount": 118,
+    "downloadCount": 44,
+    "tags": [
+      "Sidang Pleno Jilid 4",
+      "Pengunduran Diri",
+      "Keanggotaan BLM"
+    ],
+    "pdfFileName": "0210_UN.3.1.4_A_SKPENGUNDURANDIRIBLM_BLM_XI_2026 - Pleno 2.b SK Pengunduran Diri Pengurus dan Anggota BLM.pdf",
+    "driveFileId": "1uBx8MjkliAWBz3z_d51ZmagZsGvop0rB",
+    "driveViewUrl": "https://drive.google.com/file/d/1uBx8MjkliAWBz3z_d51ZmagZsGvop0rB/view?usp=sharing",
+    "drivePreviewUrl": "https://drive.google.com/file/d/1uBx8MjkliAWBz3z_d51ZmagZsGvop0rB/preview",
+    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1uBx8MjkliAWBz3z_d51ZmagZsGvop0rB",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/1-XjYI95IJT5VY7UdMBXruM4QcP0ts_Iw",
+    "attachments": [
+      {
+        "title": "Pleno 2.a Dokumen Bahasan Pengunduran Diri Pengurus dan Anggota BLM FEB UNAIR 2026.pdf",
+        "driveFileId": "1M6vplq0eWEgybsoAUmZuTSPgNIoX8plT",
+        "driveViewUrl": "https://drive.google.com/file/d/1M6vplq0eWEgybsoAUmZuTSPgNIoX8plT/view?usp=sharing",
+        "drivePreviewUrl": "https://drive.google.com/file/d/1M6vplq0eWEgybsoAUmZuTSPgNIoX8plT/preview",
+        "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1M6vplq0eWEgybsoAUmZuTSPgNIoX8plT"
+      }
+    ]
+  },
+  {
+    "id": "sk-211",
+    "slug": "sk-2026-0211",
+    "type": "SK",
+    "typeName": "Surat Keputusan",
+    "typeSlug": "surat-keputusan",
+    "sequenceNumber": 211,
+    "year": 2026,
+    "officialNumber": "0211/UN.3.1.4/A/SKPLENOII/BLM/XI/2026",
+    "abbreviationCode": "SKPLENOII",
+    "nature": "A_INTERNAL",
+    "title": "SK Hasil Sidang Pleno II (Sidang Pleno Jilid 4)",
+    "summary": "Surat Keputusan pengesahan hasil pembahasan dan ketetapan Sidang Pleno II terkait pemberhentian dengan hormat pengurus dan anggota yang mengundurkan diri pada Sidang Pleno Jilid 4 BLM FEB UNAIR.",
+    "forum": "Sidang Pleno BLM",
+    "enactedDate": "2026-11-09",
+    "enactedDateFormatted": "9 November 2026",
+    "romanMonth": "XI",
+    "placeOfEnactment": "Surabaya",
+    "legalStatus": "BERLAKU",
+    "publicationState": "PUBLISHED",
+    "viewCount": 76,
+    "downloadCount": 25,
+    "tags": [
+      "Sidang Pleno Jilid 4",
+      "Pleno II",
+      "Internal"
+    ],
+    "pdfFileName": "0211_UN.3.1.4_A_SKPLENOII_BLM_XI_2026 - Pleno 2.c SK Pleno II.pdf",
+    "driveFileId": "13mxrZ2HkuJgSoEZl8UHbuVeyw0wltSlU",
+    "driveViewUrl": "https://drive.google.com/file/d/13mxrZ2HkuJgSoEZl8UHbuVeyw0wltSlU/view?usp=sharing",
+    "drivePreviewUrl": "https://drive.google.com/file/d/13mxrZ2HkuJgSoEZl8UHbuVeyw0wltSlU/preview",
+    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=13mxrZ2HkuJgSoEZl8UHbuVeyw0wltSlU",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/1-XjYI95IJT5VY7UdMBXruM4QcP0ts_Iw"
+  },
+  {
+    "id": "sk-212",
+    "slug": "sk-2026-0212",
+    "type": "SK",
+    "typeName": "Surat Keputusan",
+    "typeSlug": "surat-keputusan",
+    "sequenceNumber": 212,
+    "year": 2026,
+    "officialNumber": "0212/UN.3.1.4/A/SKPENETAPANKETUMBLM/BLM/XI/2026",
+    "abbreviationCode": "SKPENETAPANKETUMBLM",
+    "nature": "A_INTERNAL",
+    "title": "SK Penetapan Ketua Umum Definitif Pengganti Tetap BLM FEB UNAIR",
+    "summary": "Surat Keputusan Sidang Pleno Jilid 4 yang menetapkan Greicindy Astina Alfani Y. (NIM. 141241162) sebagai Ketua Umum Definitif Pengganti Tetap (PAW) BLM FEB UNAIR Periode 2026 berdasarkan Pasal 35 ayat (2) Konstitusi Ormawa dan Pasal 12 ayat (3) ART BLM FEB UNAIR.",
+    "forum": "Sidang Pleno BLM",
+    "enactedDate": "2026-11-09",
+    "enactedDateFormatted": "9 November 2026",
+    "romanMonth": "XI",
+    "placeOfEnactment": "Surabaya",
+    "legalStatus": "BERLAKU",
+    "publicationState": "PUBLISHED",
+    "viewCount": 164,
+    "downloadCount": 63,
+    "tags": [
+      "Sidang Pleno Jilid 4",
+      "Ketua Umum Definitif",
+      "Greicindy"
+    ],
+    "pdfFileName": "0212_UN.3.1.4_A_SKPENETAPANKETUMBLM_BLM_XI_2026 - Pleno 3.b SK Penetapan Ketua Umum Definitif Baru BLM FEB UNAIR 2026.pdf",
+    "driveFileId": "1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB",
+    "driveViewUrl": "https://drive.google.com/file/d/1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB/view?usp=sharing",
+    "drivePreviewUrl": "https://drive.google.com/file/d/1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB/preview",
+    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/1-XjYI95IJT5VY7UdMBXruM4QcP0ts_Iw",
+    "attachments": [
+      {
+        "title": "Pleno 3.a Berita Acara dan Mekanisme Penetapan Ketua Umum Definitif Baru BLM FEB UNAIR 2026.pdf",
+        "driveFileId": "1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx",
+        "driveViewUrl": "https://drive.google.com/file/d/1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx/view?usp=sharing",
+        "drivePreviewUrl": "https://drive.google.com/file/d/1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx/preview",
+        "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx"
+      }
+    ]
+  },
+  {
+    "id": "sk-213",
+    "slug": "sk-2026-0213",
+    "type": "SK",
+    "typeName": "Surat Keputusan",
+    "typeSlug": "surat-keputusan",
+    "sequenceNumber": 213,
+    "year": 2026,
+    "officialNumber": "0213/UN.3.1.4/A/SKPLENOIII/BLM/XI/2026",
+    "abbreviationCode": "SKPLENOIII",
+    "nature": "A_INTERNAL",
+    "title": "SK Hasil Sidang Pleno III (Sidang Pleno Jilid 4)",
+    "summary": "Surat Keputusan pengesahan hasil musyawarah mufakat Sidang Pleno III tentang suksesi kepemimpinan dan penetapan Ketua Umum Definitif Pengganti Tetap BLM FEB UNAIR Periode 2026.",
+    "forum": "Sidang Pleno BLM",
+    "enactedDate": "2026-11-09",
+    "enactedDateFormatted": "9 November 2026",
+    "romanMonth": "XI",
+    "placeOfEnactment": "Surabaya",
+    "legalStatus": "BERLAKU",
+    "publicationState": "PUBLISHED",
+    "viewCount": 94,
+    "downloadCount": 31,
+    "tags": [
+      "Sidang Pleno Jilid 4",
+      "Pleno III",
+      "Internal"
+    ],
+    "pdfFileName": "0213_UN.3.1.4_A_SKPLENOIII_BLM_XI_2026 - Pleno 3.c SK Pleno III.pdf",
+    "driveFileId": "1Z7QEPd_N75CXSSAEGlC7AdQwvDh04d4A",
+    "driveViewUrl": "https://drive.google.com/file/d/1Z7QEPd_N75CXSSAEGlC7AdQwvDh04d4A/view?usp=sharing",
+    "drivePreviewUrl": "https://drive.google.com/file/d/1Z7QEPd_N75CXSSAEGlC7AdQwvDh04d4A/preview",
+    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1Z7QEPd_N75CXSSAEGlC7AdQwvDh04d4A",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/1-XjYI95IJT5VY7UdMBXruM4QcP0ts_Iw"
+  },
+  {
+    "id": "sk-214",
+    "slug": "sk-2026-0214",
+    "type": "SK",
+    "typeName": "Surat Keputusan",
+    "typeSlug": "surat-keputusan",
+    "sequenceNumber": 214,
+    "year": 2026,
+    "officialNumber": "0214/UN.3.1.4/B/SKPERMINTAANLPJ/BLM/XI/2026",
+    "abbreviationCode": "SKPERMINTAANLPJ",
+    "nature": "B_EXTERNAL",
+    "title": "SK Permintaan LPJ BEM dan Penyelenggara PEMIRA",
+    "summary": "Surat Keputusan permintaan resmi Laporan Pertanggungjawaban (LPJ) akhir periode kepada Eksekutif BEM FEB UNAIR 2026 dan Lembaga Penyelenggara PEMIRA (KPUM, Panwaslu, DKPP) menuju Musyawarah Mahasiswa (MUSMA) FEB UNAIR 2026.",
+    "forum": "Sidang Pleno BLM",
+    "enactedDate": "2026-11-09",
+    "enactedDateFormatted": "9 November 2026",
+    "romanMonth": "XI",
+    "placeOfEnactment": "Surabaya",
+    "legalStatus": "BERLAKU",
+    "publicationState": "PUBLISHED",
+    "viewCount": 112,
+    "downloadCount": 39,
+    "tags": [
+      "Sidang Pleno Jilid 4",
+      "LPJ MUSMA",
+      "BEM & PEMIRA"
+    ],
+    "pdfFileName": "0214_UN.3.1.4_B_SKPERMINTAANLPJ_BLM_XI_2026 - Pleno 4.b SK Permintaan LPJ BEM dan LPJ Panitia Pemira FEB UNAIR 2026.pdf",
+    "driveFileId": "1O3HUjSpSyKQCRPytGu9wjtzarWeSVwon",
+    "driveViewUrl": "https://drive.google.com/file/d/1O3HUjSpSyKQCRPytGu9wjtzarWeSVwon/view?usp=sharing",
+    "drivePreviewUrl": "https://drive.google.com/file/d/1O3HUjSpSyKQCRPytGu9wjtzarWeSVwon/preview",
+    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1O3HUjSpSyKQCRPytGu9wjtzarWeSVwon",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/1-XjYI95IJT5VY7UdMBXruM4QcP0ts_Iw",
+    "attachments": [
+      {
+        "title": "Pleno 4.a Dokumen Bahasan Permintaan LPJ BEM dan LPJ Panitia Pemira Periode 2026.pdf",
+        "driveFileId": "1jmNGmZjcEdw46i189ZoNvxxf6fn2ZQPC",
+        "driveViewUrl": "https://drive.google.com/file/d/1jmNGmZjcEdw46i189ZoNvxxf6fn2ZQPC/view?usp=sharing",
+        "drivePreviewUrl": "https://drive.google.com/file/d/1jmNGmZjcEdw46i189ZoNvxxf6fn2ZQPC/preview",
+        "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1jmNGmZjcEdw46i189ZoNvxxf6fn2ZQPC"
+      }
+    ]
+  },
+  {
+    "id": "sk-215",
+    "slug": "sk-2026-0215",
+    "type": "SK",
+    "typeName": "Surat Keputusan",
+    "typeSlug": "surat-keputusan",
+    "sequenceNumber": 215,
+    "year": 2026,
+    "officialNumber": "0215/UN.3.1.4/B/SKPLENOIV/BLM/XI/2026",
+    "abbreviationCode": "SKPLENOIV",
+    "nature": "B_EXTERNAL",
+    "title": "SK Hasil Sidang Pleno IV (Sidang Pleno Jilid 4)",
+    "summary": "Surat Keputusan pengesahan hasil ketetapan Sidang Pleno IV mengenai linimasa penyerahan dan mekanisme pembahasan LPJ akhir periode BEM serta Penyelenggara PEMIRA menuju MUSMA 2026.",
+    "forum": "Sidang Pleno BLM",
+    "enactedDate": "2026-11-09",
+    "enactedDateFormatted": "9 November 2026",
+    "romanMonth": "XI",
+    "placeOfEnactment": "Surabaya",
+    "legalStatus": "BERLAKU",
+    "publicationState": "PUBLISHED",
+    "viewCount": 82,
+    "downloadCount": 27,
+    "tags": [
+      "Sidang Pleno Jilid 4",
+      "Pleno IV",
+      "Eksternal"
+    ],
+    "pdfFileName": "0215_UN.3.1.4_B_SKPLENOIV_BLM_XI_2026 - Pleno 4.c SK Pleno IV.pdf",
+    "driveFileId": "1yOqe_edeQ5OYDR9QJIzsApnrJDt4DOIM",
+    "driveViewUrl": "https://drive.google.com/file/d/1yOqe_edeQ5OYDR9QJIzsApnrJDt4DOIM/view?usp=sharing",
+    "drivePreviewUrl": "https://drive.google.com/file/d/1yOqe_edeQ5OYDR9QJIzsApnrJDt4DOIM/preview",
+    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1yOqe_edeQ5OYDR9QJIzsApnrJDt4DOIM",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/1-XjYI95IJT5VY7UdMBXruM4QcP0ts_Iw"
+  },
+  {
+    "id": "sk-216",
+    "slug": "sk-2026-0216",
+    "type": "SK",
+    "typeName": "Surat Keputusan",
+    "typeSlug": "surat-keputusan",
+    "sequenceNumber": 216,
+    "year": 2026,
+    "officialNumber": "0216/UN.3.1.4/B/SURATPENGANTARPLENO4/BLM/XI/2026",
+    "legacyNumber": "0216/UN/3.1.4/B/SURATPENGANTARKETUM/BLM/XI/2026",
+    "abbreviationCode": "SURATPENGANTARPLENO4",
+    "nature": "B_EXTERNAL",
+    "title": "Surat Pengantar Hasil Sidang Pleno Jilid 4 (Lampiran Pleno 3.a & 3.b)",
+    "summary": "Surat Pengantar dan Pemberitahuan Resmi penyerahan berkas Hasil Sidang Pleno III (Sidang Pleno Jilid 4) tentang Penetapan Ketua Umum Definitif BLM FEB UNAIR Periode 2026 kepada Wakil Dekan I FEB Universitas Airlangga.",
+    "forum": "Sidang Pleno BLM",
+    "enactedDate": "2026-11-09",
+    "enactedDateFormatted": "9 November 2026",
+    "romanMonth": "XI",
+    "placeOfEnactment": "Surabaya",
+    "legalStatus": "BERLAKU",
+    "publicationState": "PUBLISHED",
+    "viewCount": 105,
+    "downloadCount": 36,
+    "tags": [
+      "Sidang Pleno Jilid 4",
+      "Surat Pengantar",
+      "Ketua Umum Definitif"
+    ],
+    "pdfFileName": "0216_UN.3.1.4_B_SURATPENGANTARPLENO4_BLM_XI_2026 - Surat Pengantar & Pemberitahuan Resmi Hasil Sidang Pleno Jilid 4 BLM FEB UNAIR kepada Wakil Dekan I.docx",
+    "driveFileId": "1MM2mTCnEkgb2OjwgH81PM1eYywBT0qje",
+    "driveViewUrl": "https://docs.google.com/document/d/1MM2mTCnEkgb2OjwgH81PM1eYywBT0qje/edit",
+    "drivePreviewUrl": "https://docs.google.com/document/d/1MM2mTCnEkgb2OjwgH81PM1eYywBT0qje/preview",
+    "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1MM2mTCnEkgb2OjwgH81PM1eYywBT0qje",
+    "driveFolderUrl": "https://drive.google.com/drive/folders/1Znn6WfjrMGGQ1RU0VhpcbG2FqySuenql",
+    "attachments": [
+      {
+        "title": "Pleno 3.a Berita Acara dan Mekanisme Penetapan Ketua Umum Definitif Baru BLM FEB UNAIR 2026.pdf",
+        "driveFileId": "1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx",
+        "driveViewUrl": "https://drive.google.com/file/d/1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx/view?usp=sharing",
+        "drivePreviewUrl": "https://drive.google.com/file/d/1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx/preview",
+        "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1WVs30h30IFTOY9wt_WP6pdqgBJxGbbgx"
+      },
+      {
+        "title": "Pleno 3.b SK Penetapan Ketua Umum Definitif Baru BLM FEB UNAIR 2026.pdf",
+        "driveFileId": "1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB",
+        "driveViewUrl": "https://drive.google.com/file/d/1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB/view?usp=sharing",
+        "drivePreviewUrl": "https://drive.google.com/file/d/1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB/preview",
+        "driveDownloadUrl": "https://drive.google.com/uc?export=download&id=1RWZ4K_W_ssjyEEr6U7zO8D9HvnL_kJyB"
+      }
+    ]
   }
 ];
 

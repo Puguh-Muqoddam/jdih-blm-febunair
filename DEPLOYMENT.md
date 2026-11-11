@@ -50,9 +50,9 @@ npx wrangler hyperdrive create jdih-postgres --connection-string="postgresql://p
 
 ---
 
-### 3. Eksekusi Migrasi & Seeding 49 Produk Hukum
+### 3. Eksekusi Migrasi & Seeding 80 Produk Hukum
 
-Sebelum deploy, inisialisasi tabel dan masukkan seluruh 49 dokumen register ke Supabase:
+Sebelum deploy, inisialisasi tabel dan masukkan seluruh produk hukum register ke Supabase:
 
 1. **Jalankan Skrip DDL:**
    Jalankan file SQL [`prisma/manual/00-setup-database-baru.sql`](file:///c:/Users/ThinkPad/OneDrive/Dokumen/AG/JDIH%20BLM/prisma/manual/00-setup-database-baru.sql) pada menu **SQL Editor** di Dashboard Supabase. Skrip ini secara otomatis memasang:
@@ -61,12 +61,12 @@ Sebelum deploy, inisialisasi tabel dan masukkan seluruh 49 dokumen register ke S
    - Trigger append-only pada tabel `AuditLog`.
    - Kebijakan Zero-Trust RLS (`REVOKE ALL` dari `anon`/`authenticated`).
 
-2. **Jalankan Seeding 49 Data Resmi 2026:**
+2. **Jalankan Seeding Data Resmi 2026:**
    Pastikan variabel `DATABASE_URL` telah disetel di file `.env`, lalu jalankan:
    ```bash
    npx tsx prisma/seed/import-register.ts
    ```
-   *Output akan mengonfirmasi 49 produk hukum resmi (2 UU, 3 TAP, 39 SK, 5 LP) + 3 reservasi (BIRAD 171-173) berhasil di-seed.*
+   *Output akan mengonfirmasi 59 produk hukum register CSV (2 UU, 3 TAP, 49 SK, 5 LP) + 3 reservasi (BIRAD 171-173) berhasil di-seed, atau jalankan [`prisma/manual/01-seed-produk-hukum-drive.sql`](file:///c:/Users/ThinkPad/OneDrive/Dokumen/AG/JDIH%20BLM/prisma/manual/01-seed-produk-hukum-drive.sql) untuk memuat lengkap 80 produk hukum Google Drive (4 UU, 3 TAP, 67 SK, 6 LP).*
 
 ---
 
@@ -136,7 +136,7 @@ https://jdih-blm-febunair.my.id
 
 1. **Portal Publik:**
    - Kunjungi `/` (Beranda dengan hero search & counter statistik).
-   - Kunjungi `/produk-hukum` (Katalog 49 produk hukum dengan filter Grid/Tabel).
+   - Kunjungi `/produk-hukum` (Katalog 80 produk hukum dengan filter Grid/Tabel).
    - Kunjungi `/produk-hukum/undang-undang/2026/01` (Detail UU No. 01 PEMIRA dengan sitasi resmi).
    - Kunjungi `/permohonan` (Uji form permohonan informasi pengunjung).
    - Kunjungi `/feed.xml` dan `/sitemap.xml` (Verifikasi format XML).

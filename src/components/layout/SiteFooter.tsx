@@ -215,14 +215,14 @@ export function SiteFooter() {
                   </a>
                 </div>
                 <div className="flex items-center justify-between text-[11px]">
-                  <span>Rafly</span>
+                  <span>Greicindy</span>
                   <a
-                    href="https://wa.me/628155010561"
+                    href="https://wa.me/6281357333057"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#b96d41] hover:underline font-semibold"
                   >
-                    0815-5010-561
+                    0813-5733-3057
                   </a>
                 </div>
               </div>

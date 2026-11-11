@@ -56,7 +56,7 @@ export function SiteHeader() {
     {
       name: "Surat Keputusan (SK)",
       slug: "surat-keputusan",
-      count: 57,
+      count: 67,
     },
     {
       name: "Surat Laporan (LP)",
@@ -202,7 +202,7 @@ export function SiteHeader() {
                           >
                             <span>Semua Produk Hukum</span>
                             <span className="bg-white text-[#1B67BC] px-2 py-0.5 rounded-xs text-[10px] font-bold">
-                              70
+                              80
                             </span>
                           </Link>
                           {docTypes.map((dt) => (
